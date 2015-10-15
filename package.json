@@ -1,0 +1,25 @@
+{
+  "name": "backbone-issue-tracker",
+  "version": "1.0.0",
+  "description": "This is the skeleton of our capstone project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/portlandcodeschool-jsi/backbone-issue-tracker.git"
+  },
+  "author": "Matt Kelley, Adam Taitano, Patrick Harry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/portlandcodeschool-jsi/backbone-issue-tracker/issues"
+  },
+  "homepage": "https://github.com/portlandcodeschool-jsi/backbone-issue-tracker#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "pg": "^4.4.2"
+  }
+}
