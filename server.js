@@ -6,7 +6,7 @@ var pg = require('pg');
 var app = express();
 var port = process.env.PORT || 5000;
 
-var conString = process.env.ELEPHANTSQL_URL || "postgres://awdtqouh:" + pgconfig.pgkey + "@pellefant.db.elephantsql.com:5432/awdtqouh";
+// var conString = process.env.ELEPHANTSQL_URL || "postgres://awdtqouh:" + pgconfig.pgkey + "@pellefant.db.elephantsql.com:5432/awdtqouh";
 
 app.set('port', port);
 

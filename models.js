@@ -4,13 +4,9 @@ var UserModel = Backbone.Model.extend({
 	}
 });
 
-var IssueModel = Backbone.Model.extend({
+var ProjectModel = Backbone.Model.extend({
 	defaults: {
-		title:'',
-		description:'',
-		creator:'',
-		assignee:'',
-		status:'unassigned',
+		title:''
 	}
 	// Add methods if needed...
 });
@@ -20,5 +16,5 @@ var UserCollection = Backbone.Collection.extend({
 });
 
 var IssueCollection = Backbone.Collection.extend({
-	model:IssueModel
+	model:ProjectModel
 });
