@@ -12,7 +12,6 @@ var NavigationView = Backbone.View.extend({
 	render: function() {
 	},
 	initialize: function() {
-		this.render();
 	},
 	events: {
 	}

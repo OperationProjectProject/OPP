@@ -1,6 +1,6 @@
 var app = app || {};
 
-var editProjectView = Backbone.View.extend({
+var resetPasswordView = Backbone.View.extend({
   render: function() {
 	},
 	initialize: function() {

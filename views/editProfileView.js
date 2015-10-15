@@ -1,6 +1,6 @@
 var app = app || {};
 
-var editProjectView = Backbone.View.extend({
+var editProfileView = Backbone.View.extend({
   render: function() {
 	},
 	initialize: function() {
