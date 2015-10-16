@@ -1,6 +1,6 @@
-var app = app || {};
+// var app = app || {};
 
-var LoginView = Backbone.View.extend({
+App.LoginView = Backbone.View.extend({
 	render: function() {
 		var $form = $('<form class="" action="/register" method="post">');
 		var $inputName = $('<input type="text" name="name" id = "fullName" placeholder="Enter Your Full Name"><br>');

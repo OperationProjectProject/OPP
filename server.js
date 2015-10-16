@@ -4,9 +4,9 @@ var pgconfig = require('./config');
 var pg = require('pg');
 
 var app = express();
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3000;
 
-// var conString = process.env.ELEPHANTSQL_URL || "postgres://awdtqouh:" + pgconfig.pgkey + "@pellefant.db.elephantsql.com:5432/awdtqouh";
+var conString = process.env.ELEPHANTSQL_URL || "postgres://awdtqouh:" + pgconfig.pgkey + "@pellefant.db.elephantsql.com:5432/awdtqouh";
 
 app.set('port', port);
 
@@ -14,9 +14,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname, {index: '/main.html'}));
 
-// app.get('/login', function(request, response, next) {
-//   response.send('hello');
-// });
+app.get('/', function(request, response, next) {
+  response.send("hello");
+});
 
 app.post('/register', function(request, response, next) {
   var name = request.body.name;
@@ -45,6 +45,8 @@ else {
 });
 
 
-app.listen(port, function () {
+var server = app.listen(port, function () {
   console.log("Server is running...");
 });
+
+module.exports = server;

@@ -7,7 +7,7 @@ function GUI(users,tasks,el) {
 	// tasks is collection of Task models
 	// el is selector for where GUI connects in DOM
 	// var RegisterView = new RegisterView();
-	var mainView = new MainView();
+	var mainView = new App.MainView();
 	//...
 }
 

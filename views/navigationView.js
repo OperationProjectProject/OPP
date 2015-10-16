@@ -1,4 +1,4 @@
-var app = app || {};
+// var app = app || {};
 //This view will be consistent within every other view (except Sign-Up and Log-In view)
 
 //1. Link/method to MainView
@@ -8,7 +8,7 @@ var app = app || {};
 //5. Link/method to SignUpView
 //6. Link/method to LoginView
 
-var NavigationView = Backbone.View.extend({
+App.NavigationView = Backbone.View.extend({
 	render: function() {
 	},
 	initialize: function() {
