@@ -1,6 +1,6 @@
-var app = app || {};
+// var app = app || {};
 
-var resetPasswordView = Backbone.View.extend({
+App.ResetPasswordView = Backbone.View.extend({
   render: function() {
 	},
 	initialize: function() {

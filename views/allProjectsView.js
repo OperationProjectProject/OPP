@@ -1,6 +1,6 @@
-var app = app || {};
+// var app = app || {};
 
-var allProjectsView = Backbone.View.extend({
+App.AllProjectsView = Backbone.View.extend({
   render: function() {
 	},
 	initialize: function() {

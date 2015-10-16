@@ -1,6 +1,6 @@
-var app = app || {};
+// var app = app || {};
 
-var forgotPasswordView = Backbone.View.extend({
+App.ForgotPasswordView = Backbone.View.extend({
   render: function() {
 	},
 	initialize: function() {

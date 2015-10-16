@@ -1,6 +1,6 @@
-var app = app || {};
+// var app = app || {};
 
-var MainView = Backbone.View.extend({
+App.MainView = Backbone.View.extend({
   //This view contains NavigationView, multiple links/methods, as well as individual divs for each link/method:
 
   //1. Link/method to MainView
