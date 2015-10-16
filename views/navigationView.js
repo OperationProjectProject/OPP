@@ -10,8 +10,18 @@
 
 App.NavigationView = Backbone.View.extend({
 	render: function() {
+		var $divHome = $('<div id="home">');
+		var $divProfiles = $('<div id="profiles">');
+		var $divProjects = $('<div id="projects">');
+		var $loginButton = $('<button name="button" id="loginButton">').text('Sign-In With GitHub');
+		this.$el.append($divHome);
+		this.$el.append($divProfiles);
+		this.$el.append($divProjects);
+		this.$el.append($loginButton);
+		$('#app').append(this.$el);
 	},
 	initialize: function() {
+		this.render();
 	},
 	events: {
 	}

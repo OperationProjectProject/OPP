@@ -5,8 +5,8 @@ $(function() { //when DOM is ready...
 	// 	{username:'Person1'}
 	// ]);
 
-	
+
 	app.gui = new GUI(app.users,
-						app.tasks,
+						app.projects,
 						'#app');// selector of main div
 });

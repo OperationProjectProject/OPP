@@ -8,6 +8,7 @@ App.LoginView = Backbone.View.extend({
 		var $inputPassword = $('<input type="password" name="password" id = "password" placeholder="Enter A Password"><br>');
 		var $inputConfirmPass = $('<input type="password" name="confirmPass" id = "passwordConfirm" placeholder="Confirm Password"><br>');
 		var $inputSubmit = $('<input type="submit" name="submit" value="Sign Up">');
+		console.log('this is render of login view');
 		$form.append($inputName);
 		$form.append($inputEmail);
 		$form.append($inputPassword);
