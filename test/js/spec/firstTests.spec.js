@@ -72,4 +72,8 @@ describe('Testing Properties of app and app.views', function () {
   it('app.ProjectView should be a function', function() {
     expect(app.ProjectView).to.be.a('function');
   });
+  
+  it('OPP_users should exist in the database', function() {
+    expect(app.OPP_users).to.be.a('object');
+  });
 });
