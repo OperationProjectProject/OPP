@@ -1,6 +1,6 @@
 // var app = app || {};
 
-App.ProjectView = Backbone.View.extend({
+App.Views.ProjectView = Backbone.View.extend({
   render: function() {
 	},
 	initialize: function() {

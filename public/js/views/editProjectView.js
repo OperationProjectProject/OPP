@@ -1,6 +1,6 @@
 // var app = app || {};
 
-App.EditProjectView = Backbone.View.extend({
+App.Views.EditProjectView = Backbone.View.extend({
   render: function() {
 		var $form = $('<form class="" action="/register" method="post">');
 		var $inputName = $('<input type="text" name="name" id = "fullName" placeholder="Enter Your Full Name"><br>');

@@ -30,50 +30,50 @@ describe('Testing Properties of app and app.views', function () {
   });
 
   it('app.AllProjectsView should be a function', function() {
-    expect(app.AllProjectsView).to.be.a('function');
+    expect(app.Views.AllProjectsView).to.be.a('function');
   });
 
   it('typeof app.EditProfileView should be a function', function() {
-    expect(typeof app.EditProfileView).to.equal('function');
+    expect(typeof app.Views.EditProfileView).to.equal('function');
   });
 
   it('app.EditProfileView should be a function', function() {
-    expect(app.EditProfileView).to.be.a('function');
+    expect(app.Views.EditProfileView).to.be.a('function');
   });
 
   it('typeof app.EditProjectView should be a function', function() {
-    expect(typeof app.EditProjectView).to.equal('function');
+    expect(typeof app.Views.EditProjectView).to.equal('function');
   });
 
   it('app.EditProjectView should be a function', function() {
-    expect(app.EditProjectView).to.be.a('function');
+    expect(app.Views.EditProjectView).to.be.a('function');
   });
 
   it('typeof app.ErrorView should be a function', function() {
-    expect(typeof app.ErrorView).to.equal('function');
+    expect(typeof app.Views.ErrorView).to.equal('function');
   });
 
   it('app.ErrorView should be a function', function() {
-    expect(app.ErrorView).to.be.a('function');
+    expect(app.Views.ErrorView).to.be.a('function');
   });
 
   it('typeof app.ForgotPasswordView should be a function', function() {
-    expect(typeof app.ForgotPasswordView).to.equal('function');
+    expect(typeof app.Views.ForgotPasswordView).to.equal('function');
   });
 
   it('app.ForgotPasswordView should be a function', function() {
-    expect(app.ForgotPasswordView).to.be.a('function');
+    expect(app.Views.ForgotPasswordView).to.be.a('function');
   });
 
   it('typeof app.ProjectView should be a function', function() {
-    expect(typeof app.ProjectView).to.equal('function');
+    expect(typeof app.Views.ProjectView).to.equal('function');
   });
 
   it('app.ProjectView should be a function', function() {
-    expect(app.ProjectView).to.be.a('function');
+    expect(app.Views.ProjectView).to.be.a('function');
   });
-  
+
   it('OPP_users should exist in the database', function() {
-    expect(app.OPP_users).to.be.a('object');
+    expect(app.Views.OPP_users).to.be.a('object');
   });
 });

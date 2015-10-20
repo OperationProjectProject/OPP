@@ -1,6 +1,6 @@
 // var app = app || {};
 
-App.EditProfileView = Backbone.View.extend({
+App.Views.EditProfileView = Backbone.View.extend({
   render: function() {
 	},
 	initialize: function() {

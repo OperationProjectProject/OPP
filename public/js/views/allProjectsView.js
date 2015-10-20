@@ -1,6 +1,6 @@
 // var app = app || {};
 
-App.AllProjectsView = Backbone.View.extend({
+App.Views.AllProjectsView = Backbone.View.extend({
   render: function() {
     console.log('you have made a new allprojects view');
 	},
