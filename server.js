@@ -12,7 +12,7 @@ app.set('port', port);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(__dirname, {index: '/main.html'}));
+app.use(express.static(__dirname + '/public', {index: '/main.html'}));
 
 app.get('/', function(request, response, next) {
   response.send("hello");
