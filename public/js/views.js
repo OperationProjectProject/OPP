@@ -2,14 +2,20 @@ var GUI = (function(){ //IIFE for all Views
 
 
 // generic ctor to represent interface:
-function GUI(users,projects,el) {
-	// users is collection of User models
-	// tasks is collection of Task models
-	// el is selector for where GUI connects in DOM
+function GUI( profiles, projects, el ) {
+
+	console.log(" ---- GUI ---- ");
+	console.log(profiles);
+	console.log(projects);
+
+	//console.log("profiles: " , profiles);
+	//console.log("projects: " , projects);
+	console.log("el: " , el);
+
 	var navigationView = new App.Views.NavigationView();
 	var mainView = new App.Views.MainView();
 	var footerView = new App.Views.FooterView();
-	//...
+
 }
 
 return GUI;

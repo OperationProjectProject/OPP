@@ -1,20 +1,24 @@
-var UserModel = Backbone.Model.extend({
+var ProfileModel = Backbone.Model.extend({
 	defaults: {
-		username:''
+		username:'',
+		byline:'',
+		github_url:''
 	}
 });
 
 var ProjectModel = Backbone.Model.extend({
 	defaults: {
-		title:''
+		title:'',
+		mvp:'',
+		tech_used: []
 	}
 	// Add methods if needed...
 });
 
-var UserCollection = Backbone.Collection.extend({
-	model:UserModel
+var ProfileCollection = Backbone.Collection.extend({
+	model: ProfileModel
 });
 
-var IssueCollection = Backbone.Collection.extend({
-	model:ProjectModel
+var ProjectCollection = Backbone.Collection.extend({
+	model: ProjectModel
 });
