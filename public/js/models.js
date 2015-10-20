@@ -12,13 +12,14 @@ var ProjectModel = Backbone.Model.extend({
 		mvp:'',
 		tech_used: []
 	}
-	// Add methods if needed...
 });
 
 var ProfileCollection = Backbone.Collection.extend({
-	model: ProfileModel
+	model: ProfileModel ,
+	url: '/profiles'
 });
 
 var ProjectCollection = Backbone.Collection.extend({
-	model: ProjectModel
+	model: ProjectModel ,
+	url: '/projects'
 });
