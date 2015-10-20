@@ -8,7 +8,7 @@
 //5. Link/method to SignUpView
 //6. Link/method to LoginView
 
-App.NavigationView = Backbone.View.extend({
+App.Views.NavigationView = Backbone.View.extend({
 	render: function() {
 		var $divHome = $('<div id="home">');
 		var $divProfiles = $('<div id="profiles">');

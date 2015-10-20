@@ -1,4 +1,4 @@
-App.AllProfilesView = Backbone.View.extend({
+App.Views.AllProfilesView = Backbone.View.extend({
   render: function() {
     console.log("I am a new allprofiles view");
 	},

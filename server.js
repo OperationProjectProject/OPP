@@ -1,4 +1,5 @@
 var express = require("express");
+var path = require('path');
 var bodyParser = require("body-parser");
 var pgconfig = require('./config');
 var pg = require('pg');
@@ -10,13 +11,27 @@ var conString = process.env.ELEPHANTSQL_URL || "postgres://awdtqouh:" + pgconfig
 
 app.set('port', port);
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
+
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(__dirname + '/public', {index: '/main.html'}));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.get('/', function(request, response, next) {
-  response.send("hello");
+  response.render('index', { title: 'OPP' , layout: 'layout'});
 });
+
+app.get('/test', function(request, response, next) {
+  response.render('index', { title: 'OPP' , layout: 'tests_layout'});
+});
+
+
 
 app.post('/register', function(request, response, next) {
   var name = request.body.name;

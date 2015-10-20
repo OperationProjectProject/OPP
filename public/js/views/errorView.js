@@ -1,6 +1,6 @@
 // var app = app || {};
 
-App.ErrorView = Backbone.View.extend({
+App.Views.ErrorView = Backbone.View.extend({
   render: function() {
 	},
 	initialize: function() {
