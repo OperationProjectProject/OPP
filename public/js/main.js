@@ -17,9 +17,7 @@ $(function() { //when DOM is ready...
 
 		//app.profile_content = new ProfileCollection();
 		//app.project_content = new ProjectCollection();
-		app.gui = new GUI( app.profile_content,
-						app.project_content,
-						'#app');// selector of main div
+		app.gui = new GUI('#app');// selector of main div
 
 		console.log(app.profile_content);
 		console.log(app.project_content);
