@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var config = require('./config.js');
+var db = require('orchestrate')(config.dbkey);
 
 
 var profiles = [
@@ -26,10 +28,18 @@ router.get('/test', function(request, response, next) {
 
 router.get('/profiles', function(request, response, next) {
   console.log('GET request at /profiles');
-  var id = request.params.id;
-  console.log('request.params: ' , request.params);
+  // var id = request.params.id;
+  // console.log('request.params: ' , request.params);
   //console.log('Sending profile to',id);
-  response.send(profiles);
+  db.list('OPP_users')
+      .then(function (result) {
+        var data = result.body.results;
+        var mapped = data.map(function (element, index) {
+          console.log(element.value.name);
+          return {name: element.value.name};
+        });
+        response.send(mapped);
+      });
 });
 
 router.get('/projects', function(request, response, next) {

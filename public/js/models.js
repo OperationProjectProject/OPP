@@ -6,7 +6,6 @@ var ProfileModel = Backbone.Model.extend({
 	} ,
 	urlRoot: '/profiles' ,
 	initialize: function() {
-		this.fetch();
 	}
 });
 
@@ -18,7 +17,6 @@ var ProjectModel = Backbone.Model.extend({
 	} ,
 	urlRoot: '/projects' ,
 	initialize: function() {
-		this.fetch();
 	}
 });
 
