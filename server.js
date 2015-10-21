@@ -1,9 +1,9 @@
 var express = require("express");
 var path = require('path');
 var bodyParser = require("body-parser");
-var pgconfig = require('./config');
+// var pgconfig = require('./config');
 var pg = require('pg');
-var db = require('orchestrate')(config.dbkey);
+// var db = require('orchestrate')(config.dbkey);
 
 var routes = require('./routes/index');
 var users = require('./routes/user');

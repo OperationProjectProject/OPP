@@ -11,7 +11,7 @@
 App.Views.NavigationView = Backbone.View.extend({
 	tagName: 'ul',
 
-	className: 'primary_nav container',
+		className: 'primary_nav container',
 
 	render: function() {
     console.log(" ---- NavigationView rendered ---- ");
@@ -24,9 +24,9 @@ App.Views.NavigationView = Backbone.View.extend({
 
 		//build nav links
 		var $home_a = $('<a href="/" id="home_link" tabindex="1">').html('<img src="http://placehold.it/150x25?text=Home+Link">');
-		var $profiles_a = $('<a href="/profiles" id="profiles_link" tabindex="3">').text('profiles');
-		var $projects_a = $('<a href="/projects" id="projects_link" tabindex="4">').text('projects');
-		var $github_auth_a = $('<a href="/login" id="login_link" tabindex="2">').text('Login With GitHub');
+		var $profiles_a = $('<a href="#" id="profiles_link" tabindex="3">').text('profiles');
+		var $projects_a = $('<a href="#" id="projects_link" tabindex="4">').text('projects');
+		var $github_auth_a = $('<a href="#" id="login_link" tabindex="2">').text('Login With GitHub');
 
 		//append links to list items
 		$home_li.append( $home_a );
@@ -46,5 +46,15 @@ App.Views.NavigationView = Backbone.View.extend({
 	},
 	events: {
 		//Event handling on the links ... ?
+		"click #profiles_link": "loadProfiles",
+		"click #home_link": "loadHome"
+	},
+	loadProfiles: function(){
+		$('.centerdiv').empty();
+		var view = new App.Views.AllProfilesView();
+	},
+	loadHome: function(){
+		$('.centerdiv').empty();
+		var view = new App.Views.MainView();
 	}
 });

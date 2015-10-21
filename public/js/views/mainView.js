@@ -16,7 +16,7 @@ App.Views.MainView = Backbone.View.extend({
     var $divProjects = $('<div id ="projectsDiv">').text('Browse Projects');
     var divs = [$divAbout, $divProfiles, $divProjects];
     this.$el.append(divs);
-    $('#app').append(this.$el);
+    $('.centerdiv').append(this.$el);
   },
   initialize: function() {
     this.render();
