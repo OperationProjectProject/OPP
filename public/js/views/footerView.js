@@ -1,6 +1,11 @@
 App.Views.FooterView = Backbone.View.extend({
+	tagName: 'footer' ,
+
+	className: 'footer container',
+
 	render: function() {
-		var $paragraph = $('<p>').text('© 2015 Operation Project Project. Authors: Patrick Harry, Matt Kelley, Adam Taitano');
+    console.log(" ---- FooterView rendered ---- ");
+		var $paragraph = $('<div>').text('© 2015 Operation Project Project. Authors: Patrick Harry, Matt Kelley, Adam Taitano');
 		this.$el.append($paragraph);
 		$('#app').append(this.$el);
 	},

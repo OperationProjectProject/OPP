@@ -10,9 +10,12 @@
 
 App.Views.NavigationView = Backbone.View.extend({
 	tagName: 'ul',
-	className: 'primary_nav',
+
+	className: 'primary_nav container',
 
 	render: function() {
+    console.log(" ---- NavigationView rendered ---- ");
+
 		//build nav list items
 		var $home_li = $('<li class="nav_element">');
 		var $profiles_li = $('<li class="nav_element">');
@@ -20,10 +23,10 @@ App.Views.NavigationView = Backbone.View.extend({
 		var $github_auth_li = $('<li class="nav_element">');
 
 		//build nav links
-		var $home_a = $('<a href="#" id="home_link" tabindex="1">').html('<img src="http://placehold.it/100x100">');
-		var $profiles_a = $('<a href="#" id="profiles_link" tabindex="3">').text('profiles');
-		var $projects_a = $('<a href="#" id="projects_link" tabindex="4">').text('projects');
-		var $github_auth_a = $('<a href="#" id="login_link" tabindex="2">').text('Login With GitHub');
+		var $home_a = $('<a href="/" id="home_link" tabindex="1">').html('<img src="http://placehold.it/150x25?text=Home+Link">');
+		var $profiles_a = $('<a href="/profiles" id="profiles_link" tabindex="3">').text('profiles');
+		var $projects_a = $('<a href="/projects" id="projects_link" tabindex="4">').text('projects');
+		var $github_auth_a = $('<a href="/login" id="login_link" tabindex="2">').text('Login With GitHub');
 
 		//append links to list items
 		$home_li.append( $home_a );
@@ -36,7 +39,7 @@ App.Views.NavigationView = Backbone.View.extend({
 		this.$el.append($profiles_li);
 		this.$el.append($projects_li);
 		this.$el.append($github_auth_li);
-		$('#app').append(this.$el);
+		$('#app').prepend(this.$el);
 	},
 	initialize: function() {
 		this.render();

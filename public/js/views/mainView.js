@@ -10,6 +10,7 @@
 //var navigationView = new NavigationView
 App.Views.MainView = Backbone.View.extend({
   render: function(){
+    console.log(" ---- MainView rendered ---- ");
     var $divAbout = $('<div id="aboutDiv">').text('Discover The Hottest Tech Talent In Portland (Check Footer Below)');
     var $divProfiles = $('<div id ="profilesDiv">').text('Browse Profiles');
     var $divProjects = $('<div id ="projectsDiv">').text('Browse Projects');
@@ -22,11 +23,11 @@ App.Views.MainView = Backbone.View.extend({
   },
   addProfilesView: function() {
     this.remove();
-    var profilesView = new App.AllProfilesView();
+    var profilesView = new App.Views.AllProfilesView();
   },
   addProjectsView: function() {
     this.remove();
-    var projectsView = new App.AllProjectsView();
+    var projectsView = new App.Views.AllProjectsView();
   },
   events: {
     'click #profilesDiv' : 'addProfilesView',

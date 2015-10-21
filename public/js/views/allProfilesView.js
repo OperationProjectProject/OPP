@@ -1,10 +1,20 @@
+// var app = app || {};
+
 App.Views.AllProfilesView = Backbone.View.extend({
+  tagName: 'div',
+
+  collection: app.profile_content,
+
   render: function() {
-    console.log("I am a new allprofiles view");
+    console.log(" ---- AllProfilesView rendered ---- ");
 	},
-	initialize: function() {
+
+  initialize: function() {
     this.render();
 	},
-	events: {
+
+  events: {
+
 	}
+
 });
