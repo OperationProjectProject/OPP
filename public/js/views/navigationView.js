@@ -21,7 +21,7 @@ App.Views.NavigationView = Backbone.View.extend({
 		var $github_auth_li = $('<li class="nav_element">');
 
 		//build nav links
-		var $home_a = $('<a href="/" id="home_link" tabindex="1">').html('<img src="http://placehold.it/100x100">');
+		var $home_a = $('<a href="/" id="home_link" tabindex="1">').html('<img src="http://placehold.it/150x25?text=Home+Link">');
 		var $profiles_a = $('<a href="/profiles" id="profiles_link" tabindex="3">').text('profiles');
 		var $projects_a = $('<a href="/projects" id="projects_link" tabindex="4">').text('projects');
 		var $github_auth_a = $('<a href="/login" id="login_link" tabindex="2">').text('Login With GitHub');

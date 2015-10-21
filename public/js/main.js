@@ -2,7 +2,7 @@ var app = {};
 
 
 $(function() { //when DOM is ready...
-
+	//console.log(" ---- main.js ---- ");
 	 app.profile_content = new ProfileCollection([
 	 	{username:'Susie', byline:'JS Dev' , github_url: 'http://github.com/example'} ,
 	 	{username:'Frankie', byline:'Front-End' , github_url: 'http://github.com/example'} ,
@@ -15,12 +15,10 @@ $(function() { //when DOM is ready...
 	 	{title:'uber', mvp:'go somewhere' , tech_used: [ 'cars', 'iPhones', 'lawlessness' ]}
 	 ]);
 
+	 //console.log("app.profile_content: " , app.profile_content);
+	 //console.log("app.profile_content: " , app.project_content);
 		//app.profile_content = new ProfileCollection();
 		//app.project_content = new ProjectCollection();
 		app.gui = new GUI('#app');// selector of main div
-
-		console.log(app.profile_content);
-		console.log(app.project_content);
-		console.log(app.gui);
-
+		//console.log("app.gui: " + app.gui);
 });
