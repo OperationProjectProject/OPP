@@ -22,11 +22,12 @@ App.Views.MainView = Backbone.View.extend({
   },
   addProfilesView: function() {
     this.remove();
-    var profilesView = new App.AllProfilesView();
+    console.log(app.profile_content)
+    var profilesView = new App.Views.AllProfilesView();
   },
   addProjectsView: function() {
     this.remove();
-    var projectsView = new App.AllProjectsView();
+    var projectsView = new App.Views.AllProjectsView();
   },
   events: {
     'click #profilesDiv' : 'addProfilesView',
