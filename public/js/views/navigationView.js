@@ -47,7 +47,8 @@ App.Views.NavigationView = Backbone.View.extend({
 	events: {
 		//Event handling on the links ... ?
 		"click #profiles_link": "loadProfiles",
-		"click #home_link": "loadHome"
+		"click #home_link": "loadHome",
+		"click #projects_link": "loadProjects"
 	},
 	loadProfiles: function(){
 		$('.centerdiv').empty();
@@ -56,5 +57,9 @@ App.Views.NavigationView = Backbone.View.extend({
 	loadHome: function(){
 		$('.centerdiv').empty();
 		var view = new App.Views.MainView();
+	},
+	loadProjects: function(){
+		$('.centerdiv').empty();
+		var view = new App.Views.AllProjectsView();
 	}
 });
