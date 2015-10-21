@@ -3,6 +3,7 @@ var path = require('path');
 var bodyParser = require("body-parser");
 var pgconfig = require('./config');
 var pg = require('pg');
+var db = require('orchestrate')(config.dbkey);
 
 var routes = require('./routes/index');
 var users = require('./routes/user');
@@ -11,7 +12,6 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
-var conString = process.env.ELEPHANTSQL_URL || "postgres://awdtqouh:" + pgconfig.pgkey + "@pellefant.db.elephantsql.com:5432/awdtqouh";
 
 app.set('port', port);
 
