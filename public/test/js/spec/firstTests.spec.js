@@ -25,43 +25,43 @@ describe('Testing Properties of app and app.views', function () {
     expect(app).to.be.a('object');
   });
 
-  it('typeof app.AllProjectsView should be a function', function() {
-    expect(typeof app.AllProjectsView).to.equal('function');
+  it('typeof App.AllProjectsView should be a function', function() {
+    expect(typeof App.AllProjectsView).to.equal('function');
   });
 
-  it('app.AllProjectsView should be a function', function() {
-    expect(app.Views.AllProjectsView).to.be.a('function');
+  it('App.AllProjectsView should be a function', function() {
+    expect(App.Views.AllProjectsView).to.be.a('function');
   });
 
-  it('typeof app.EditProfileView should be a function', function() {
-    expect(typeof app.Views.EditProfileView).to.equal('function');
+  it('typeof App.EditProfileView should be a function', function() {
+    expect(typeof App.Views.EditProfileView).to.equal('function');
   });
 
-  it('app.EditProfileView should be a function', function() {
-    expect(app.Views.EditProfileView).to.be.a('function');
+  it('App.EditProfileView should be a function', function() {
+    expect(App.Views.EditProfileView).to.be.a('function');
   });
 
-  it('typeof app.EditProjectView should be a function', function() {
-    expect(typeof app.Views.EditProjectView).to.equal('function');
+  it('typeof App.EditProjectView should be a function', function() {
+    expect(typeof App.Views.EditProjectView).to.equal('function');
   });
 
-  it('app.EditProjectView should be a function', function() {
-    expect(app.Views.EditProjectView).to.be.a('function');
+  it('App.EditProjectView should be a function', function() {
+    expect(App.Views.EditProjectView).to.be.a('function');
   });
 
-  it('typeof app.ErrorView should be a function', function() {
-    expect(typeof app.Views.ErrorView).to.equal('function');
+  it('typeof App.ErrorView should be a function', function() {
+    expect(typeof App.Views.ErrorView).to.equal('function');
   });
 
-  it('app.ErrorView should be a function', function() {
-    expect(app.Views.ErrorView).to.be.a('function');
+  it('App.ErrorView should be a function', function() {
+    expect(App.Views.ErrorView).to.be.a('function');
   });
 
-  it('typeof app.ForgotPasswordView should be a function', function() {
-    expect(typeof app.Views.ForgotPasswordView).to.equal('function');
+  it('typeof App.ForgotPasswordView should be a function', function() {
+    expect(typeof App.Views.ForgotPasswordView).to.equal('function');
   });
 
-  it('app.ForgotPasswordView should be a function', function() {
+  it('App.ForgotPasswordView should be a function', function() {
     expect(app.Views.ForgotPasswordView).to.be.a('function');
   });
 
