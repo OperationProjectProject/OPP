@@ -39,7 +39,7 @@ App.Views.NavigationView = Backbone.View.extend({
 		this.$el.append($profiles_li);
 		this.$el.append($projects_li);
 		this.$el.append($github_auth_li);
-		$('body').prepend(this.$el);
+		$('#app').prepend(this.$el);
 	},
 	initialize: function() {
 		this.render();

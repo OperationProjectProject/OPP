@@ -1,4 +1,4 @@
-describe('Testing Properties of app and app.views', function () {
+describe('Testing Properties of App and app', function () {
 
   before(function () {
     // any code you put here will be run before any of your tests run
@@ -41,8 +41,9 @@ describe('Testing Properties of app and app.views', function () {
     expect(App.Views.EditProfileView).to.be.a('function');
   });
 
-  it('typeof App.EditProjectView should be a function', function() {
-    expect(typeof App.Views.EditProjectView).to.equal('function');
+  it('typeof App.Views.EditProjectView should be a function --- not passing', function() {
+    console.log(App.Views.EditProjectView);
+    expect(typeof App.Views.EditProjectView).to.equal( 'function' );
   });
 
   it('App.EditProjectView should be a function', function() {
@@ -64,15 +65,15 @@ describe('Testing Properties of app and app.views', function () {
   it('App.ForgotPasswordView should be a function', function() {
     expect(app.Views.ForgotPasswordView).to.be.a('function');
   });
-
-  it('typeof app.ProjectView should be a function', function() {
-    expect(typeof app.Views.ProjectView).to.equal('function');
+*/
+  it('typeof App.Views.ProjectView should be a function', function() {
+    expect(typeof App.Views.ProjectView).to.equal('function');
   });
 
-  it('app.ProjectView should be a function', function() {
-    expect(app.Views.ProjectView).to.be.a('function');
+  it('App.Views.ProjectView should be a function', function() {
+    expect(App.Views.ProjectView).to.be.a('function');
   });
-
+/*
   it('OPP_users should exist in the database', function() {
     expect(app.Views.OPP_users).to.be.a('object');
   });
