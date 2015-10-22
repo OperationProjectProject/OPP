@@ -11,11 +11,11 @@ var profiles = [
 ];
 */
 
-var projects = [
- {title:'amazon', mvp:'buy stuff' , tech_used: [ 'fedex' , 'servers' , 'factories' ]} ,
- {title:'google', mvp:'find stuff' , tech_used: [ 'servers', 'ping-pong tables' ]} ,
- {title:'uber', mvp:'go somewhere' , tech_used: [ 'cars', 'iPhones', 'lawlessness' ]}
-];
+// var projects = [
+//  {title:'amazon', mvp:'buy stuff' , tech_used: [ 'fedex' , 'servers' , 'factories' ]} ,
+//  {title:'google', mvp:'find stuff' , tech_used: [ 'servers', 'ping-pong tables' ]} ,
+//  {title:'uber', mvp:'go somewhere' , tech_used: [ 'cars', 'iPhones', 'lawlessness' ]}
+// ];
 
 
 router.get('/', function(request, response, next) {
@@ -60,10 +60,21 @@ router.get('/profiles', function(request, response, next) {
 
 router.get('/projects', function(request, response, next) {
   console.log('GET request at /projects');
-  var id = request.params.id;
-  console.log('request.params: ' , request.params);
-  //console.log('Sending project to',id);
-  response.send(projects);
+  db.list('OPP_projects')
+      .then(function (result) {
+        var data = result.body.results;
+        var mapped = data.map(function (element, index) {
+          //console.log(element.value.name);
+          return {
+            title: element.value.title ,
+            owners: element.value.owners,
+            tools: element.value.tools,
+            desc: element.value.desc
+          };
+        });
+        console.log(mapped);
+        response.send(mapped);
+      });
 });
 
 router.post('/register', function(request, response, next) {

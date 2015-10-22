@@ -42,9 +42,7 @@ App.Views.AllProfilesView = Backbone.View.extend({
       //console.log(profile_preview);
       self.$el.append(profile_preview.$el);
     });
-
-    var $p = $('<p>').text("This is the profile page and these are the profiles:");
-    this.$el.append($p);
+    
 		$(".centerdiv").prepend(this.$el);
 	},
 

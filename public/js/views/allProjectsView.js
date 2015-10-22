@@ -9,12 +9,18 @@ App.Views.AllProjectsView = Backbone.View.extend({
 
   render: function() {
     console.log(" ---- AllProjectsView rendered ---- ");
+    
+    var self = this;
+    
     this.collection.models.forEach(function(e,i){
       console.log(e.attributes.title);
-      console.log(e.attributes.mvp);
+      // console.log(e.attributes.mvp);
+    
+      var profile_preview = new App.Views.ProjectPreviewView({model:e});
+      //console.log(profile_preview);
+      self.$el.append(profile_preview.$el);  
     });
-    var $p = $('<p>').text("This is the profile page and these are the projects:");
-    this.$el.append($p);
+    
 		$(".centerdiv").prepend(this.$el);
 	},
 
