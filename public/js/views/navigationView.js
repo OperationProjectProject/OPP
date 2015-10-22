@@ -11,7 +11,7 @@
 App.Views.NavigationView = Backbone.View.extend({
 	tagName: 'ul',
 
-		className: 'primary_nav container',
+	className: 'primary_nav container',
 
 	render: function() {
     console.log(" ---- NavigationView rendered ---- ");
