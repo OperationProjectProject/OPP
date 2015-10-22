@@ -47,6 +47,10 @@ router.get('/profiles', function(request, response, next) {
             twitter_url: element.value.twitter,
             top_skills: element.value.skills,
             top_tools: element.value.tools,
+            js_tidbit: element.value.favorite,
+            work_status: element.value.job_status,
+            dream_job: element.value.job_hope,
+            projects: element.value.projects
           };
         });
         console.log(mapped);
