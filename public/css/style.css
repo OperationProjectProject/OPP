@@ -53,3 +53,7 @@ a:hover {
   cursor: pointer;
   opacity: .85;
 }
+
+.profile_view {
+  background: rgba(100,100,200,0.1);
+}
