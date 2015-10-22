@@ -12,9 +12,9 @@ App.Views.MainView = Backbone.View.extend({
   render: function(){
     console.log(" ---- MainView rendered ---- ");
     var $divAbout = $('<div id="aboutDiv">').text('Discover The Hottest Tech Talent In Portland (Check Footer Below)');
-    var $divProfiles = $('<div id ="profilesDiv">').text('Browse Profiles');
-    var $divProjects = $('<div id ="projectsDiv">').text('Browse Projects');
-    var divs = [$divAbout, $divProfiles, $divProjects];
+    var $profiles = $('<a id ="profilesDiv" href="/#profiles">').text('Browse Profiles');
+    var $projects = $('<a id ="projectsDiv" href="/#projects">').text('Browse Projects');
+    var divs = [$divAbout, $profiles, $projects];
     this.$el.append(divs);
     $('.centerdiv').append(this.$el);
   },
