@@ -14,5 +14,13 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
   } ,
   initialize: function(){
     this.render();
+  },
+  events:{
+    "click":"link"
+  },
+  link: function(){
+    console.log("profile view rendered");
+    $('.centerdiv').empty();
+    var view = new App.Views.ProfileView({model:this.model});
   }
 });
