@@ -1,8 +1,17 @@
 var ProfileModel = Backbone.Model.extend({
 	defaults: {
-		username:'',
-		byline:'',
-		github_url:''
+		name:'',
+		title:'',
+		github_url:'',
+		personal_site_url:'',
+		linkedin_url:'',
+		twitter_url:'',
+		top_skills:[],
+		top_tools:[],
+		js_tidbit:'',
+		work_status:'',
+		dream_job:'',
+		projects:[]
 	} ,
 	urlRoot: '/profiles' ,
 	initialize: function() {
