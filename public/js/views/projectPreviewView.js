@@ -4,13 +4,9 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
   tagName: 'li' ,
   className: 'project_preview',
   render: function(){
-
-    this.$el.text(this.model.attributes.title + " -- Link to Project");
-    //console.log(this.model.attributes);
-    //console.log(this.model);
-    //console.log(this.model.attributes);
-    //console.log("el: " , this.el);
-    //console.log("$el: " , this.$el);
+    var $project_link = $('<a href="/#projects/'+this.model.attributes.project_urlid+'" id="projects_link" tabindex="3">').text(this.model.attributes.title + " -- Link to Project");
+    this.$el.append($project_link);
+    $(".centerdiv").prepend(this.$el);
   } ,
   initialize: function(){
     this.render();

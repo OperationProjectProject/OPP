@@ -8,6 +8,11 @@ var AppRouter = Backbone.Router.extend({
     console.log("allprofiles route is running");
     // console.log(this.model.attributes.name);
     // user = this.model.attributes.name;
+  },
+  projects: function(project){
+    console.log("allprojects route is running");
+    // console.log(this.model.attributes.name);
+    // user = this.model.attributes.name;
   }
 });
 
@@ -34,10 +39,22 @@ approuter.on('route:profiles', function(user) {
 });
 
 
-approuter.on('route:projects', function(actions) {
+approuter.on('route:projects', function(project) {
   console.log("router on projects is running");
   $('.centerdiv').empty();
-  var view = new App.Views.AllProjectsView();
+  if(project){
+    var projectmodel;
+    console.log("models",app.project_content.models);
+    for(var i=0;i<app.project_content.models.length;i++){
+      if(app.project_content.models[i].attributes.project_urlid == project){
+        projectmodel = app.project_content.models[i];
+      }
+    }
+    console.log("usermodel is ", projectmodel);
+    var view1 = new App.Views.ProjectView({model:projectmodel});
+  }else{
+    var view2 = new App.Views.AllProjectsView();
+  }
 });
 
 Backbone.history.start();

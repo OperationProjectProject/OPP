@@ -17,7 +17,6 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
   },
   link: function(){
     $('.centerdiv').empty();
-    x=1;
     var view = new App.Views.ProfileView({model:this.model});
   }
 });
