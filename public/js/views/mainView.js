@@ -9,6 +9,8 @@
 //Create a Navigation View at the top of the page:
 //var navigationView = new NavigationView
 App.Views.MainView = Backbone.View.extend({
+  tagName: 'div',
+  className: 'main_view',
   render: function(){
     console.log(" ---- MainView rendered ---- ");
     var $divAbout = $('<div id="aboutDiv">').text('Discover The Hottest Tech Talent In Portland (Check Footer Below)');
