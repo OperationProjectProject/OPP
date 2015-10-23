@@ -7,25 +7,25 @@ App.Views.ProfileView = Backbone.View.extend({
 
   render: function() {
     console.log(" ---- ProfileView rendered ---- ");
-    console.log("====================================================================================================");
-    console.log("%c" + this.model.attributes.name,
-      "color:rgba(51,51,51,1.0);\
-      font-size:2em;\
-      text-transform:uppercase;");
-    console.log("%c" + this.model.attributes.title,
-      "color:rgba(51,51,51,1.0);\
-      font-size:1.25em;\
-      text-transform:uppercase;");
-    console.log("  - "+ "%c" + this.model.attributes.github_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-    console.log("  - "+ "%c" + this.model.attributes.personal_site_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-    console.log("  - "+ "%c" + this.model.attributes.linkedin_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-    console.log("  - "+ "%c" + this.model.attributes.twitter_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-    console.log(this.model.attributes.top_skills);
-    console.log(this.model.attributes.top_tools);
-    console.log(this.model.attributes.js_tidbit);
-    console.log(this.model.attributes.work_status);
-    console.log(this.model.attributes.dream_job);
-    console.log(this.model.attributes.projects);
+    // console.log("====================================================================================================");
+    // console.log("%c" + this.model.attributes.name,
+    //   "color:rgba(51,51,51,1.0);\
+    //   font-size:2em;\
+    //   text-transform:uppercase;");
+    // console.log("%c" + this.model.attributes.title,
+    //   "color:rgba(51,51,51,1.0);\
+    //   font-size:1.25em;\
+    //   text-transform:uppercase;");
+    // console.log("  - "+ "%c" + this.model.attributes.github_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
+    // console.log("  - "+ "%c" + this.model.attributes.personal_site_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
+    // console.log("  - "+ "%c" + this.model.attributes.linkedin_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
+    // console.log("  - "+ "%c" + this.model.attributes.twitter_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
+    // console.log(this.model.attributes.top_skills);
+    // console.log(this.model.attributes.top_tools);
+    // console.log(this.model.attributes.js_tidbit);
+    // console.log(this.model.attributes.work_status);
+    // console.log(this.model.attributes.dream_job);
+    // console.log(this.model.attributes.projects);
     console.log("\n\n\n");
 
     //Create Headline & Byline

@@ -4,13 +4,10 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
   tagName: 'li' ,
   className: 'profile_preview',
   render: function(){
+    var $profile_link = $('<a href="/#profiles/'+this.model.attributes.url_id+'" id="profiles_link" tabindex="3">').text(this.model.attributes.name + " -- Link to Profile");
+    this.$el.append($profile_link);
+    $(".centerdiv").prepend(this.$el);
 
-    this.$el.text(this.model.attributes.name + " -- Link to Profile");
-    //console.log(this.model.attributes);
-    //console.log(this.model);
-    //console.log(this.model.attributes);
-    //console.log("el: " , this.el);
-    //console.log("$el: " , this.$el);
   } ,
   initialize: function(){
     this.render();
@@ -19,8 +16,8 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
     "click":"link"
   },
   link: function(){
-    console.log("profile view rendered");
     $('.centerdiv').empty();
+    x=1;
     var view = new App.Views.ProfileView({model:this.model});
   }
 });
