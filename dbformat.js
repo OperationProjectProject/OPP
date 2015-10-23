@@ -5,9 +5,11 @@
   "personal": "https://PatrickHarry.com",
   "linkedin": "https://www.linkedin.com/in/PatHarryUX", 
   "twitter": "https://twitter.com/PatHarryUX", 
+  "url_id":"1",
   "skills": ["User Centered Product Design", "Full Stack Web Development", "Iterative prototyping"], 
   "tools": ["Javascript", "BDD", "HTML5/CSS", "Informative Architecture", "User Research"], 
-  "Favorite": "I feel safe knowing that i can console.log(this); as often as I need to", 
+  "Favorite": "I feel safe knowing that i can console.log(this); as often as I need to",
+  "job_status":"Looking for an Internship, Looking for Freelance work, Looking for Full-Time work", 
   "job_hope": "UX Developer", 
   "Projects": ["Project(project)"], 
   "proj_info": {
@@ -30,7 +32,8 @@
   "github_url": "https://github.com/yahwin",
   "personal": "www.yahnguyen.com",
   "linkedin": "https://www.linkedin.com/in/yahnguyen", 
-  "twitter": "https://twitter.com/yahwinn", 
+  "twitter": "https://twitter.com/yahwinn",
+  "url_id":"2", 
   "skills": ["Patience", "An Eye for Detail", "Dogged Determination"], 
   "tools": ["Node", "Github", "Express", "Backbone", "Jquery"], 
   "favorite": "I like how it has become so integrated into the very fabric of the internet", 
@@ -57,7 +60,8 @@
   "github_url": "https://github.com/mkelley2",
   "personal": "",
   "linkedin": "https://www.linkedin.com/pub/matthew-kelley/107/199/728", 
-  "twitter": "https://twitter.com/MattKelley_Dev", 
+  "twitter": "https://twitter.com/MattKelley_Dev",
+  "url_id":"3", 
   "skills": ["JavaScript", "Backbone", "HTML/CSS"], 
   "tools": ["Backbone", "Jade", "Bootstrap", "Handlebars", "Orchestrate"], 
   "favorite": "That everything is a puzzle that can be solved a million ways but it is up to you to find the best way.", 
@@ -84,7 +88,8 @@
   "github_url": "https://github.com/adamtaitano",
   "personal": "http://www.adam-taitano.com",
   "linkedin": "https://www.linkedin.com/pub/adam-taitano/103/609/a52", 
-  "twitter": "https://twitter.com/AdamTaitano", 
+  "twitter": "https://twitter.com/AdamTaitano",
+  "url_id":"4", 
   "skills": ["Creativity", "Communication", "Teamwork"], 
   "tools": ["JavaScript", "HTML5/CSS3", "SQL", "Backbone.js", "Node.js"], 
   "favorite": "Problem-Solving", 
@@ -109,6 +114,7 @@
 {
   "title": "OPP",
   "owners":["Matt Kelley","Pat Harry", "Adam Taitano"],
+  "project_urlid":"1",
   "tools":[
     "JavaScript",
     "Backbone.js",
@@ -121,6 +127,7 @@
 {
   "title": "mixTapez",
   "owners":["Do Nyugen","Ty Brenner", "Nathan Bennett"],
+  "project_urlid":"2",
   "tools":[
     "Meteor",
     "MongoDB",

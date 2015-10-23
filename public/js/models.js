@@ -6,6 +6,8 @@ var ProfileModel = Backbone.Model.extend({
 		personal_site_url:'',
 		linkedin_url:'',
 		twitter_url:'',
+		job_status:'',
+		url_id:'',
 		top_skills:[],
 		top_tools:[],
 		js_tidbit:'',
