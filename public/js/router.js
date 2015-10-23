@@ -13,17 +13,26 @@ var AppRouter = Backbone.Router.extend({
 
 var approuter = new AppRouter();
 
-approuter.on('route:profiles', function(actions) {
+approuter.on('route:profiles', function(user) {
   console.log("router on profiles is running");
+  console.log("user is ", user);
   $('.centerdiv').empty();
-  var view = new App.Views.AllProfilesView();
+  if(user){
+    var usermodel;
+    console.log("models",app.profile_content.models);
+    for(var i=0;i<app.profile_content.models.length;i++){
+      if(app.profile_content.models[i].attributes.url_id == user){
+        usermodel = app.profile_content.models[i];
+      }
+    }
+    console.log("usermodel is ", usermodel);
+    var view1 = new App.Views.ProfileView({model:usermodel});
+  }
+  else{
+  var view2 = new App.Views.AllProfilesView();
+  }
 });
 
-approuter.on('route:profiles/:user', function(actions) {
-  console.log("router on ind profile is running");
-  $('.centerdiv').empty();
-  var view = new App.Views.ProfilesView({model:e});
-});
 
 approuter.on('route:projects', function(actions) {
   console.log("router on projects is running");

@@ -7,10 +7,6 @@ App.Views.ProfileView = Backbone.View.extend({
 
   render: function() {
     console.log(" ---- ProfileView rendered ---- ");
-    //console.log(this);
-    //console.log(this.model);
-    //console.log(this.el);
-    //console.log(this.$el);
     console.log("====================================================================================================");
     console.log("%c" + this.model.attributes.name,
       "color:rgba(51,51,51,1.0);\

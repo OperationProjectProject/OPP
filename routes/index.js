@@ -45,6 +45,8 @@ router.get('/profiles', function(request, response, next) {
             personal_site_url: element.value.personal,
             linkedin_url: element.value.linkedin,
             twitter_url: element.value.twitter,
+            url_id:element.value.url_id,
+            job_status:element.value.job_status,
             top_skills: element.value.skills,
             top_tools: element.value.tools,
             js_tidbit: element.value.favorite,
