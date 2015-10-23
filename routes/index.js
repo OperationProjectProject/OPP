@@ -70,6 +70,7 @@ router.get('/projects', function(request, response, next) {
           return {
             title: element.value.title ,
             owners: element.value.owners,
+            project_urlid: element.value.project_urlid,
             tools: element.value.tools,
             desc: element.value.desc
           };

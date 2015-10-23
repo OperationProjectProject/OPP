@@ -23,6 +23,7 @@ var ProfileModel = Backbone.Model.extend({
 var ProjectModel = Backbone.Model.extend({
 	defaults: {
 		title:'',
+		project_urlid:'',
 		mvp:'',
 		tech_used: []
 	} ,
