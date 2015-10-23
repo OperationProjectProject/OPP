@@ -39,8 +39,10 @@ App.Views.ProfileView = Backbone.View.extend({
     var $linkedin_url = $('<a target="_blank">').attr("href", this.model.attributes.linkedin_url).text("Linkedin");
     var $twitter_url = $('<a target="_blank">').attr("href", this.model.attributes.twitter_url).text("Twitter");
     [ $github_url , $personal_site_url , $linkedin_url , $twitter_url ].forEach( function(e,i) {
-      $li = $('<li>');
-      $li.append(e);
+      if(e[0].href!=='http://localhost:3000/'){
+        $li = $('<li>');
+        $li.append(e);
+      }
       $social_links.append( $li );
     });
 
