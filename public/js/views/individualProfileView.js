@@ -72,12 +72,12 @@ App.Views.ProfileView = Backbone.View.extend({
     */
 
     //js tidbit
-    var $js_tidbit = $( '<div>' ).html('<span class="question">What is your favorite thing about Javascript?</span>');
+    var $js_tidbit = $( '<div>' ).html('<span class="question">What is your favorite thing about Javascript?</span><br>');
     var $js_answer = $( '<span class="answer">' ).text( this.model.attributes.js_tidbit );
     $js_tidbit.append( $js_answer );
 
     //dream job
-    var $dream_job = $( '<div>' ).html('<span class="question">What is your dream job?</span>');
+    var $dream_job = $( '<div>' ).html('<span class="question">What is your dream job? </span><br>');
     var $dream_answer = $( '<span class="answer">' ).text( this.model.attributes.dream_job );
     $dream_job.append( $dream_answer );
 

@@ -55,7 +55,7 @@ router.get('/profiles', function(request, response, next) {
             projects: element.value.projects
           };
         });
-        console.log(mapped);
+        //console.log(mapped);
         response.send(mapped);
       });
 });
@@ -75,7 +75,7 @@ router.get('/projects', function(request, response, next) {
             desc: element.value.desc
           };
         });
-        console.log(mapped);
+        //console.log(mapped);
         response.send(mapped);
       });
 });

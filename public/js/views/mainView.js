@@ -14,15 +14,15 @@ App.Views.MainView = Backbone.View.extend({
   render: function(){
     console.log(" ---- MainView rendered ---- ");
     var $divAbout = $('<div id="aboutDiv">').text('Discover The Hottest Tech Talent In Portland (Check Footer Below)');
-    var $profiles = $('<a id ="profilesDiv" href="/#profiles">').text('Browse Profiles');
-    var $projects = $('<a id ="projectsDiv" href="/#projects">').text('Browse Projects');
+    var $profiles = $('<a id ="profilesDiv" href="#profiles">').text('Browse Profiles');
+    var $projects = $('<a id ="projectsDiv" href="#projects">').text('Browse Projects');
     var divs = [$divAbout, $profiles, $projects];
     this.$el.append(divs);
     $('.centerdiv').append(this.$el);
   },
   initialize: function() {
     this.render();
-  },
+  } /*,
   addProfilesView: function() {
     this.remove();
     var profilesView = new App.Views.AllProfilesView();
@@ -35,4 +35,5 @@ App.Views.MainView = Backbone.View.extend({
     'click #profilesDiv' : 'addProfilesView',
     'click #projectsDiv' : 'addProjectsView'
   }
+  */
 });
