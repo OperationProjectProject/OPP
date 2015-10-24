@@ -1,5 +1,6 @@
-// var app = app || {};
-
+//Project View
+//
+//
 App.Views.ProjectView = Backbone.View.extend({
   render: function() {
     console.log(" ---- ProjectView rendered ---- ");
@@ -8,8 +9,7 @@ App.Views.ProjectView = Backbone.View.extend({
     $(".centerdiv").prepend(this.$el);
 	},
 	initialize: function() {
+    this.listenTo(this.model, "change", this.render);
     this.render();
-	},
-	events: {
 	}
 });

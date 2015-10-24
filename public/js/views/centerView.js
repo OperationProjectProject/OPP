@@ -8,7 +8,5 @@ App.Views.CenterView = Backbone.View.extend({
 	},
 	initialize: function() {
     this.render();
-	},
-	events: {
 	}
 });

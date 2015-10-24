@@ -1,13 +1,6 @@
-// var app = app || {};
-//This view contains NavigationView, multiple links/methods, as well as individual divs for each link/method:
-
-//1. Link/method to MainView
-//2. Link/method to StudentsView
-//3. Link/method to ProjectsView
-//4. Link/method to ClassesView
-
-//Create a Navigation View at the top of the page:
-//var navigationView = new NavigationView
+//Main View ==> rename this view "landing page view"
+//
+//
 App.Views.MainView = Backbone.View.extend({
   tagName: 'div',
   className: 'main_view',
@@ -22,18 +15,5 @@ App.Views.MainView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-  } /*,
-  addProfilesView: function() {
-    this.remove();
-    var profilesView = new App.Views.AllProfilesView();
-  },
-  addProjectsView: function() {
-    this.remove();
-    var projectsView = new App.Views.AllProjectsView();
-  },
-  events: {
-    'click #profilesDiv' : 'addProfilesView',
-    'click #projectsDiv' : 'addProjectsView'
   }
-  */
 });

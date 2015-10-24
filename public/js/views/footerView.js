@@ -11,7 +11,5 @@ App.Views.FooterView = Backbone.View.extend({
 	},
 	initialize: function() {
 		this.render();
-	},
-	events: {
 	}
 });

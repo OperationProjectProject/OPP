@@ -1,16 +1,3 @@
-//
-// Lazily creates:
-//
-//    App: {
-//      Config: {},
-//      Models: {},
-//      Collections: {},
-//      Routers: {},
-//      Views: {},
-//      Templates: {}
-//    }
-//
-// Class names.
 var App = App   || {};
 App.Config      || (App.Config = {});
 App.Models      || (App.Models = {});

@@ -1,4 +1,5 @@
-//this is the profile preview View
+//Project Preview View
+//
 //
 App.Views.ProjectPreviewView = Backbone.View.extend({
   tagName: 'li' ,
@@ -9,14 +10,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
     $(".centerdiv").prepend(this.$el);
   } ,
   initialize: function(){
+    this.listenTo(this.model, "change", this.render);
     this.render();
-  },
-  events:{
-    "click":"link"
-  },
-  link: function(){
-    console.log("project view rendered");
-    $('.centerdiv').empty();
-    var view = new App.Views.ProjectView({model:this.model});
   }
 });

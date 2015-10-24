@@ -5,7 +5,5 @@ App.Views.ErrorView = Backbone.View.extend({
     console.log(" ---- ErrorView rendered ---- ");
 	},
 	initialize: function() {
-	},
-	events: {
 	}
 });

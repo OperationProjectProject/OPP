@@ -1,15 +1,19 @@
+//Backbone Router
+//
+//
 App.Router = Backbone.Router.extend({
   initialize: function(opts){
     //console.log(opts);
     this.profiles = opts.profiles;
     this.projects = opts.projects;
+
     //console.log(this)
   },
   routes:{
     '' : 'index' ,
     'profiles' : 'profiles' ,
-    //'profiles/:id' : 'profiles' ,
-    //'projects' : 'projects' ,
+    'profiles/:id' : 'profiles' ,
+    'projects' : 'projects' ,
     //'projects/id': 'projects'
   } ,
   index: function(){
@@ -21,14 +25,37 @@ App.Router = Backbone.Router.extend({
     app.mainView = new App.Views.MainView();
     app.footerView = new App.Views.FooterView();
   } ,
-  profiles: function(){
+  profiles: function(id){
+    console.log("Router.profiles")
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView();
     app.centerView = new App.Views.CenterView();
-    console.log("this this this:   " ,this);
-    app.allProfilesView = new App.Views.AllProfilesView({collection: this.profiles});
     app.footerView = new App.Views.FooterView();
+
+    if (!id) {
+      console.log("!id");
+      app.allProfilesView = new App.Views.AllProfilesView({collection: this.profiles});
+      app.allProfilesView.render();
+    } else {
+      console.log("you chose an id in the url! cool!");
+      console.log(this);
+      console.log(this.profiles);
+      console.log(this.profiles.models);
+      console.log(this.profiles.models.length);
+
+      var usermodel;
+
+      //This doesn't work because of an asynch problem
+      for( var i=0; i < this.profiles.models.length; i++ ){
+        if( this.profiles.models[i].attributes.url_id == id){
+          usermodel = this.profiles.models[i];
+        }
+      }
+      console.log("usermodel is ", usermodel);
+      app.ProjectView = new App.Views.ProfileView({model: usermodel});
+    }
   } ,
+
   projects: function(){
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView();
@@ -37,7 +64,6 @@ App.Router = Backbone.Router.extend({
     app.allProjectsView = new App.Views.AllProjectsView({collection: this.projects});
     app.footerView = new App.Views.FooterView();
   }
-
 });
 
 
@@ -45,8 +71,8 @@ App.Router = Backbone.Router.extend({
 
 
 
-App.Router.profiles = function(){
-  console.log("Router.profiles");
+//App.Router.profiles = function(){
+//  console.log("Router.profiles");
   //console.log("user is ", user);
 /*
   $('.centerdiv').empty();
@@ -65,10 +91,10 @@ App.Router.profiles = function(){
   var view2 = new App.Views.AllProfilesView();
   }
 */
-};
+//};
 
-App.Router.projects = function(){
-  console.log("Router.projects");
+//App.Router.projects = function(){
+//  console.log("Router.projects");
   /*
   $('.centerdiv').empty();
   if(project){
@@ -85,4 +111,4 @@ App.Router.projects = function(){
     var view2 = new App.Views.AllProjectsView();
   }
   */
-};
+//};

@@ -19,16 +19,5 @@ App.Views.EditProjectView = Backbone.View.extend({
 	},
 	initialize: function() {
 		this.render();
-	},
-	events: {
-
 	}
 });
-
-//   render: function() {
-// 	},
-// 	initialize: function() {
-// 	},
-// 	events: {
-// 	}
-// });

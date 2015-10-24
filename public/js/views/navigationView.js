@@ -1,13 +1,6 @@
-// var app = app || {};
-//This view will be consistent within every other view (except Sign-Up and Log-In view)
-
-//1. Link/method to MainView
-//2. Link/method to StudentsView
-//3. Link/method to ProjectsView
-//4. Link/method to ClassesView
-//5. Link/method to SignUpView
-//6. Link/method to LoginView
-
+//Navigation View
+//
+//
 App.Views.NavigationView = Backbone.View.extend({
 	tagName: 'ul',
 
@@ -47,24 +40,5 @@ App.Views.NavigationView = Backbone.View.extend({
 	},
 	initialize: function() {
 		this.render();
-	} /*,
-	events: {
-		//Event handling on the links ... ?
-		"click #profiles_link": "loadProfiles",
-		"click #home_link": "loadHome",
-		"click #projects_link": "loadProjects"
-	},
-	loadProfiles: function(){
-		$('.centerdiv').empty();
-		var view = new App.Views.AllProfilesView();
-	},
-	loadHome: function(){
-		$('.centerdiv').empty();
-		var view = new App.Views.MainView();
-	},
-	loadProjects: function(){
-		$('.centerdiv').empty();
-		var view = new App.Views.AllProjectsView();
 	}
-	*/
 });

@@ -1,5 +1,6 @@
-// var app = app || {};
-
+//Profile View
+//
+//
 App.Views.ProfileView = Backbone.View.extend({
   tagName: "div",
 
@@ -7,6 +8,9 @@ App.Views.ProfileView = Backbone.View.extend({
 
   render: function() {
     console.log(" ---- ProfileView rendered ---- ");
+
+    console.log(this);
+    console.log(this.model)
     // console.log("====================================================================================================");
     // console.log("%c" + this.model.attributes.name,
     //   "color:rgba(51,51,51,1.0);\
@@ -94,9 +98,7 @@ App.Views.ProfileView = Backbone.View.extend({
 	},
 
 	initialize: function() {
+    this.listenTo(this.model, "change", this.render);
     this.render();
-	},
-
-	events: {
 	}
 });
