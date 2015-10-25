@@ -9,7 +9,8 @@ App.Views.ProjectView = Backbone.View.extend({
     $(".centerdiv").prepend(this.$el);
 	},
 	initialize: function() {
-    this.listenTo(this.model, "change", this.render);
+    //This view needs to listen to the collection, rather than a specific model
+    this.listenTo(this.collection, "update", this.initialize);
     this.render();
 	}
 });

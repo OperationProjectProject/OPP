@@ -3,6 +3,7 @@
 //
 App.Router = Backbone.Router.extend({
   initialize: function(opts){
+    
     //console.log(opts);
     this.profiles = opts.profiles;
     this.projects = opts.projects;
@@ -12,9 +13,9 @@ App.Router = Backbone.Router.extend({
   routes:{
     '' : 'index' ,
     'profiles' : 'profiles' ,
-    'profiles/:id' : 'profiles' ,
+    'profiles/:url_id' : 'profiles' ,
     'projects' : 'projects' ,
-    //'projects/id': 'projects'
+    //'projects/url_id': 'projects'
   } ,
   index: function(){
     //console.log("Router.index")
@@ -25,35 +26,50 @@ App.Router = Backbone.Router.extend({
     app.mainView = new App.Views.MainView();
     app.footerView = new App.Views.FooterView();
   } ,
-  profiles: function(id){
+  profiles: function(url_id){
     console.log("Router.profiles")
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView();
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
 
-    if (!id) {
-      console.log("!id");
-      app.allProfilesView = new App.Views.AllProfilesView({collection: this.profiles});
-      app.allProfilesView.render();
+    //check whether or not a specific parameter has been passed in the url
+    if ( !url_id ) {
+      console.log("!url_id");
+      app.allProfilesView = new App.Views.AllProfilesView({
+        collection: this.profiles
+      });
     } else {
-      console.log("you chose an id in the url! cool!");
-      console.log(this);
-      console.log(this.profiles);
-      console.log(this.profiles.models);
-      console.log(this.profiles.models.length);
 
-      var usermodel;
-
-      //This doesn't work because of an asynch problem
-      for( var i=0; i < this.profiles.models.length; i++ ){
-        if( this.profiles.models[i].attributes.url_id == id){
-          usermodel = this.profiles.models[i];
+      //check whether or not the url_id exists in this.collection.models[n].url_id
+        //presume that it doesn't exist
+      var url_id_exists = false;
+        // check whether or not it actually exists
+      for ( var i = 0 ; i < this.collection.models.length ; i++ ) {
+        if( this.collection.models[i].attributes.url_id === url_id ){
+          url_id_exists = true;
         }
       }
-      console.log("usermodel is ", usermodel);
-      app.ProjectView = new App.Views.ProfileView({model: usermodel});
-    }
+      console.log( 'url_id_exists: ' , url_id_exists );
+
+
+
+
+
+
+      console.log("you chose an id in the url! cool!");
+      app.ProfileView = new App.Views.ProfileView({
+        collection: this.profiles ,
+        url_id: url_id
+      });
+      //app.ProfilesView.render();
+    } //end of the url_id param 'else' clause
+
+
+
+
+
+
   } ,
 
   projects: function(){
