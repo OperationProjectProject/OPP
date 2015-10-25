@@ -1,60 +1,75 @@
-var AppRouter = Backbone.Router.extend({
+//Backbone Router
+//
+//
+App.Router = Backbone.Router.extend({
+
+  initialize: function(opts){
+    this.profiles = opts.profiles;
+    this.projects = opts.projects;
+  },
+
   routes:{
-    "profiles(/:user)":"profiles",
-    "projects(/:project)":"projects"
-    
-  },
-  profiles: function(user){
-    console.log("allprofiles route is running");
-    // console.log(this.model.attributes.name);
-    // user = this.model.attributes.name;
-  },
-  projects: function(project){
-    console.log("allprojects route is running");
-    // console.log(this.model.attributes.name);
-    // user = this.model.attributes.name;
-  }
-});
+    '' : 'index' ,
+    'profiles' : 'profiles' ,
+    'profiles/:url_id' : 'profiles' ,
+    'projects' : 'projects' ,
+    'projects/:project_url_id': 'projects'
+  } ,
 
-var approuter = new AppRouter();
+  index: function(){
+    console.log("%cRouter '/'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;")
+    $('#app').empty();
+    app.navigationView = new App.Views.NavigationView();
+    app.centerView = new App.Views.CenterView();
+    app.footerView = new App.Views.FooterView();
+    app.mainView = new App.Views.MainView();
+  } ,
 
-approuter.on('route:profiles', function(user) {
-  console.log("router on profiles is running");
-  console.log("user is ", user);
-  $('.centerdiv').empty();
-  if(user){
-    var usermodel;
-    console.log("models",app.profile_content.models);
-    for(var i=0;i<app.profile_content.models.length;i++){
-      if(app.profile_content.models[i].attributes.url_id == user){
-        usermodel = app.profile_content.models[i];
-      }
+  profiles: function( url_id ){
+    console.log("%cRouter '/#profiles'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+    $('#app').empty();
+    app.navigationView = new App.Views.NavigationView();
+    app.centerView = new App.Views.CenterView();
+    app.footerView = new App.Views.FooterView();
+    //check whether a url_id has been passed to the url
+    if ( !url_id ) {
+      console.log("%c!url_id","color:orange; font-size:1.25em;");
+      //Add All Profiles page content to DOM
+      app.allProfilesView = new App.Views.AllProfilesView({
+        collection: this.profiles
+      });
     }
-    console.log("usermodel is ", usermodel);
-    var view1 = new App.Views.ProfileView({model:usermodel});
-  }
-  else{
-  var view2 = new App.Views.AllProfilesView();
-  }
-});
+    else {
+      console.log("%c:url_id","color:green; font-size:1.25em;" );
+      //console.log(this.profiles);
+      app.ProfileView = new App.Views.ProfileView({
+        collection: this.profiles ,
+        url_id: url_id
+      });
+    } //end of the url_id param 'else' clause
+  } ,
 
+  projects: function(project_url_id){
 
-approuter.on('route:projects', function(project) {
-  console.log("router on projects is running");
-  $('.centerdiv').empty();
-  if(project){
-    var projectmodel;
-    console.log("models",app.project_content.models);
-    for(var i=0;i<app.project_content.models.length;i++){
-      if(app.project_content.models[i].attributes.project_urlid == project){
-        projectmodel = app.project_content.models[i];
-      }
+    $('#app').empty();
+    app.navigationView = new App.Views.NavigationView();
+    app.centerView = new App.Views.CenterView();
+    app.footerView = new App.Views.FooterView();
+    //check whether a url_id has been passed to the url
+    if ( !project_url_id ) {
+      console.log("%c!project_url_id","color:orange; font-size:1.25em;");
+      //Add All Profiles page content to DOM
+      app.allProjectsView = new App.Views.AllProjectsView({
+        collection: this.projects
+      });
     }
-    console.log("usermodel is ", projectmodel);
-    var view1 = new App.Views.ProjectView({model:projectmodel});
-  }else{
-    var view2 = new App.Views.AllProjectsView();
+    else {
+      console.log("%c:project_url_id","color:green; font-size:1.25em;" );
+      //console.log(this.profiles);
+      app.ProjectView = new App.Views.ProjectView({
+        collection: this.projects ,
+        project_url_id: project_url_id
+      });
+    } //end of the project_url_id param 'else' clause
   }
 });
-
-Backbone.history.start();

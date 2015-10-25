@@ -19,8 +19,5 @@ App.Views.LoginView = Backbone.View.extend({
 	},
 	initialize: function() {
 		this.render();
-	},
-	events: {
-
 	}
 });

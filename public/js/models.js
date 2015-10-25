@@ -11,7 +11,7 @@ var ProfileModel = Backbone.Model.extend({
 		top_skills:[],
 		top_tools:[],
 		js_tidbit:'',
-		work_status:'',
+		work_status:[],
 		dream_job:'',
 		projects:[]
 	} ,
@@ -23,7 +23,7 @@ var ProfileModel = Backbone.Model.extend({
 var ProjectModel = Backbone.Model.extend({
 	defaults: {
 		title:'',
-		project_urlid:'',
+		project_url_id:'',
 		mvp:'',
 		tech_used: []
 	} ,
@@ -37,8 +37,11 @@ var ProfileCollection = Backbone.Collection.extend({
 	model: ProfileModel ,
 	url: '/profiles' ,
 	initialize: function() {
-		console.log(" ---- ProfileCollection Initialized---- ");
-		this.fetch();
+		this.fetch({
+			success:function(){
+				console.log("%cProfileCollection","color:rgba(100,100,100,1.0);font-size:1.25em;");
+			}
+		});
 	}
 });
 
@@ -47,8 +50,11 @@ var ProjectCollection = Backbone.Collection.extend({
 	model: ProjectModel ,
 	url: '/projects' ,
 	initialize: function() {
-		console.log(" ---- ProjectCollection Initialized ---- ");
-		this.fetch();
+		this.fetch({
+			success:function(){
+				console.log("%cProjectCollection","color:rgba(100,100,100,1.0);font-size:1.25em;");
+			}
+		});
 	}
 });
 

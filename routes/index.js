@@ -1,22 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var config = require('./config.js');
+var config = require('../config.js');
 var db = require('orchestrate')(config.dbkey);
-
-/*
-var profiles = [
- {username:'Susie', byline:'JS Dev' , github_url: 'http://github.com/example'} ,
- {username:'Frankie', byline:'Front-End' , github_url: 'http://github.com/example'} ,
- {username:'Example User', byline:'Example Occupation' , github_url: 'http://github.com/example'}
-];
-*/
-
-// var projects = [
-//  {title:'amazon', mvp:'buy stuff' , tech_used: [ 'fedex' , 'servers' , 'factories' ]} ,
-//  {title:'google', mvp:'find stuff' , tech_used: [ 'servers', 'ping-pong tables' ]} ,
-//  {title:'uber', mvp:'go somewhere' , tech_used: [ 'cars', 'iPhones', 'lawlessness' ]}
-// ];
-
 
 router.get('/', function(request, response, next) {
   console.log('GET request at /');
@@ -37,7 +22,7 @@ router.get('/profiles', function(request, response, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          //console.log(element.value.name);
+          //console.log(element.value);
           return {
             name: element.value.name ,
             title: element.value.title,
@@ -50,12 +35,12 @@ router.get('/profiles', function(request, response, next) {
             top_skills: element.value.skills,
             top_tools: element.value.tools,
             js_tidbit: element.value.favorite,
-            work_status: element.value.job_status,
+            work_status: element.value.work_status,
             dream_job: element.value.job_hope,
             projects: element.value.projects
           };
         });
-        console.log(mapped);
+        //console.log(mapped);
         response.send(mapped);
       });
 });
@@ -66,16 +51,16 @@ router.get('/projects', function(request, response, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          //console.log(element.value.name);
+          console.log(element.value.project_url_id);
           return {
             title: element.value.title ,
-            owners: element.value.owners,
-            project_urlid: element.value.project_urlid,
-            tools: element.value.tools,
-            desc: element.value.desc
+            project_url_id: element.value.project_url_id,
+            mvp: element.value.desc,
+            tech_used: element.value.tools,
+            owners: element.value.owners
           };
         });
-        console.log(mapped);
+        //console.log(mapped);
         response.send(mapped);
       });
 });

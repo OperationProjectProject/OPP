@@ -5,7 +5,5 @@ App.Views.EditProfileView = Backbone.View.extend({
     console.log(" ---- EditProfileView rendered ---- ");
 	},
 	initialize: function() {
-	},
-	events: {
 	}
 });
