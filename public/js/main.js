@@ -7,5 +7,5 @@ $(function() { //when DOM is ready...
 			profiles: app.profile_content ,
 			projects: app.project_content
 		});
-		Backbone.history.start({pushState:false});
+		Backbone.history.start();
 });

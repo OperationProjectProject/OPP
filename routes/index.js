@@ -37,7 +37,7 @@ router.get('/profiles', function(request, response, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          //console.log(element.value.name);
+          console.log(element.value);
           return {
             name: element.value.name ,
             title: element.value.title,
@@ -50,7 +50,7 @@ router.get('/profiles', function(request, response, next) {
             top_skills: element.value.skills,
             top_tools: element.value.tools,
             js_tidbit: element.value.favorite,
-            work_status: element.value.job_status,
+            work_status: element.value.work_status,
             dream_job: element.value.job_hope,
             projects: element.value.projects
           };

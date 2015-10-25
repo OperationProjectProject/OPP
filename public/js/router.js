@@ -3,7 +3,7 @@
 //
 App.Router = Backbone.Router.extend({
   initialize: function(opts){
-    
+
     //console.log(opts);
     this.profiles = opts.profiles;
     this.projects = opts.projects;
@@ -17,68 +17,90 @@ App.Router = Backbone.Router.extend({
     'projects' : 'projects' ,
     //'projects/url_id': 'projects'
   } ,
+
   index: function(){
-    //console.log("Router.index")
-
+    console.log("%cRouter '/'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;")
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView();
     app.centerView = new App.Views.CenterView();
+    app.footerView = new App.Views.FooterView();
     app.mainView = new App.Views.MainView();
-    app.footerView = new App.Views.FooterView();
   } ,
-  profiles: function(url_id){
-    console.log("Router.profiles")
+
+  profiles: function( url_id ){
+    console.log("%cRouter '/#profiles'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView();
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
 
-    //check whether or not a specific parameter has been passed in the url
+    //check whether or not a url_id has been passed to the url
     if ( !url_id ) {
-      console.log("!url_id");
+      console.log("%c!url_id","color:orange; font-size:1.25em;");
+      //Add All Profiles page content to DOM
       app.allProfilesView = new App.Views.AllProfilesView({
         collection: this.profiles
       });
-    } else {
+    }
+    else {
+      console.log("%c:url_id","color:green; font-size:1.25em;" );
+      //console.log(this.profiles);
 
-      //check whether or not the url_id exists in this.collection.models[n].url_id
-        //presume that it doesn't exist
-      var url_id_exists = false;
-        // check whether or not it actually exists
-      for ( var i = 0 ; i < this.collection.models.length ; i++ ) {
-        if( this.collection.models[i].attributes.url_id === url_id ){
-          url_id_exists = true;
-        }
-      }
-      console.log( 'url_id_exists: ' , url_id_exists );
-
-
-
-
-
-
-      console.log("you chose an id in the url! cool!");
       app.ProfileView = new App.Views.ProfileView({
         collection: this.profiles ,
         url_id: url_id
       });
-      //app.ProfilesView.render();
+
+
+/*
+      this.profiles.sync({
+        success: function(collection){
+          console.log("%chello hello hello","color:green; font-size:6em;" );
+          console.log(collection);
+          //presume that the url_id does not exist
+          var model_with_url_id = null;
+          //check for url_id in the collection
+          for ( var i = 0 ; i < collection.models.length ; i++ ) {
+            if( collection.models[i].attributes.url_id === url_id ){
+              model_with_url_id = collection.models[i];
+              console.log(url_id);
+              console.log(collection);
+              console.log(model_with_url_id);
+            }
+          }
+          if ( model_with_url_id ) {
+            console.log(url_id);
+            console.log(collection);
+            console.log(model_with_url_id);
+            app.ProfileView = new App.Views.ProfileView({
+              model: model_with_url_id
+            });
+          } else {
+            console.log("that url doesn't work ");
+          }
+
+        } ,
+        error: function(){
+          console.log("%cgoodbye goodbye goodbye","color:red; font-size:6em;")
+        }
+      });
+*/
+
+
     } //end of the url_id param 'else' clause
-
-
-
-
-
-
   } ,
 
   projects: function(){
+
+    //Remove all children of div#app
     $('#app').empty();
+
+    //Render Primary UI containers
     app.navigationView = new App.Views.NavigationView();
     app.centerView = new App.Views.CenterView();
-    console.log("this this this:   " ,this);
-    app.allProjectsView = new App.Views.AllProjectsView({collection: this.projects});
     app.footerView = new App.Views.FooterView();
+
+    app.allProjectsView = new App.Views.AllProjectsView({collection: this.projects});
   }
 });
 

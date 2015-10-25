@@ -7,7 +7,7 @@ App.Views.NavigationView = Backbone.View.extend({
 	className: 'primary_nav container',
 
 	render: function() {
-    console.log(" ---- NavigationView rendered ---- ");
+		console.log("%cNavigationView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
 		//build nav list items
 		var $home_li = $('<li class="nav_element">');

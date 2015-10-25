@@ -6,7 +6,7 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
   className: 'profile_preview',
   render: function(){
 
-//console.log("preview render");
+//console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 //console.log(this);
     /*
     //Mini-views in console
