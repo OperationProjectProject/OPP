@@ -3,17 +3,13 @@
 //
 App.Views.ProfileView = Backbone.View.extend({
   tagName: "div",
-
   className: "profile_view",
-
   render: function() {
     console.log("%cProfileView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
     for ( var i = 0; i < this.collection.models.length; i++) {
-      if (this.collection.models[i].attributes.url_id == this.url_id){
+      if (this.collection.models[i].attributes.url_id === this.url_id){
         this.model = this.collection.models[i];
-        //console.log(this);
-        //console.log("====================================================================================================");
         console.log("%c" + this.model.attributes.name,
            "color:rgba(100,100,100,1.0);\
            font-size:2.25em;\
@@ -68,28 +64,19 @@ App.Views.ProfileView = Backbone.View.extend({
           $top_tools.append( $li );
         });
 
-
-        console.log(this.model.attributes.work_status);
-
-
         //Create Work Status
-        //Work Status Data Should be Formatted as an Array
-        //This Code will not Work because work_status is currently a string
-
-/*
         var $work_status = $( '<ul class="work_status">' ).text( "Work Status: " );
         this.model.attributes.work_status.forEach(function( e, i ){
           $li = $( '<li>' ).text( e );
           $work_status.append( $li );
         });
 
-*/
-        //js tidbit
+        //Create js tidbit
         var $js_tidbit = $( '<div>' ).html('<span class="question">What is your favorite thing about Javascript?</span><br>');
         var $js_answer = $( '<span class="answer">' ).text( this.model.attributes.js_tidbit );
         $js_tidbit.append( $js_answer );
 
-        //dream job
+        //Create dream job
         var $dream_job = $( '<div>' ).html('<span class="question">What is your dream job? </span><br>');
         var $dream_answer = $( '<span class="answer">' ).text( this.model.attributes.dream_job );
         $dream_job.append( $dream_answer );
@@ -103,110 +90,10 @@ App.Views.ProfileView = Backbone.View.extend({
         this.$el.append($js_tidbit);
         this.$el.append($dream_job);
 
-        $(".centerdiv").prepend(this.$el);
-
+        //Attach this view to the DOM
+        $(".centerdiv").append(this.$el);
       }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}, //this is the end of the render method
 
 	initialize: function(opts) {

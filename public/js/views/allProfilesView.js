@@ -10,7 +10,7 @@ App.Views.AllProfilesView = Backbone.View.extend({
     var self = this;
     this.collection.models.forEach( function(e,i){
       var profile_preview = new App.Views.ProfilePreviewView({model:e});
-      self.$el.append(profile_preview.$el);
+      self.$el.append( profile_preview.$el );
     });
 		$(".centerdiv").prepend(this.$el);
 	},

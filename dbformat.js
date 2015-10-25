@@ -5,7 +5,7 @@
   "personal": "https://PatrickHarry.com",
   "linkedin": "https://www.linkedin.com/in/PatHarryUX",
   "twitter": "https://twitter.com/PatHarryUX",
-  "url_id":"1",
+  "url_id":"PatHarryUX",
   "skills": ["User Centered Product Design", "Full Stack Web Development", "Iterative prototyping"],
   "tools": ["Javascript", "BDD", "HTML5/CSS", "Informative Architecture", "User Research"],
   "Favorite": "I feel safe knowing that i can console.log(this); as often as I need to",
@@ -33,7 +33,7 @@
   "personal": "www.yahnguyen.com",
   "linkedin": "https://www.linkedin.com/in/yahnguyen",
   "twitter": "https://twitter.com/yahwinn",
-  "url_id":"2",
+  "url_id":"yahwinn",
   "skills": ["Patience", "An Eye for Detail", "Dogged Determination"],
   "tools": ["Node", "Github", "Express", "Backbone", "Jquery"],
   "favorite": "I like how it has become so integrated into the very fabric of the internet",
@@ -61,7 +61,7 @@
   "personal": "",
   "linkedin": "https://www.linkedin.com/pub/matthew-kelley/107/199/728",
   "twitter": "https://twitter.com/MattKelley_Dev",
-  "url_id":"3",
+  "url_id":"MattKelley_Dev",
   "skills": ["JavaScript", "Backbone", "HTML/CSS"],
   "tools": ["Backbone", "Jade", "Bootstrap", "Handlebars", "Orchestrate"],
   "favorite": "That everything is a puzzle that can be solved a million ways but it is up to you to find the best way.",
@@ -89,7 +89,7 @@
   "personal": "http://www.adam-taitano.com",
   "linkedin": "https://www.linkedin.com/pub/adam-taitano/103/609/a52",
   "twitter": "https://twitter.com/AdamTaitano",
-  "url_id":"4",
+  "url_id":"AdamTaitano",
   "skills": ["Creativity", "Communication", "Teamwork"],
   "tools": ["JavaScript", "HTML5/CSS3", "SQL", "Backbone.js", "Node.js"],
   "favorite": "Problem-Solving",
@@ -114,7 +114,7 @@
 {
   "title": "OPP",
   "owners":["Matt Kelley","Pat Harry", "Adam Taitano"],
-  "project_urlid":"1",
+  "project_url_id":"OPP",
   "tools":[
     "JavaScript",
     "Backbone.js",
@@ -127,7 +127,7 @@
 {
   "title": "mixTapez",
   "owners":["Do Nyugen","Ty Brenner", "Nathan Bennett"],
-  "project_urlid":"2",
+  "project_url_id":"mixTapez",
   "tools":[
     "Meteor",
     "MongoDB",

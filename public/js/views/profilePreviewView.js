@@ -6,7 +6,7 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
   className: 'profile_preview',
   render: function(){
 
-//console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 //console.log(this);
     /*
     //Mini-views in console
@@ -30,8 +30,6 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
 
     var $profile_link = $('<a href="/#profiles/'+this.model.attributes.url_id+'" id="profiles_link" tabindex="3">').text(this.model.attributes.name + " -- Link to Profile");
     this.$el.append($profile_link);
-    $(".centerdiv").prepend(this.$el);
-
   } ,
   initialize: function(){
     this.listenTo(this.model, "change", this.render);
