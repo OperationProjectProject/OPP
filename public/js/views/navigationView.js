@@ -2,12 +2,84 @@
 //
 //
 App.Views.NavigationView = Backbone.View.extend({
-	tagName: 'ul',
+	tagName: 'nav',
 
-	className: 'primary_nav container',
+	className: 'nav navbar navbar-default',
 
 	render: function() {
 		console.log("%cNavigationView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+
+		//add role="navigtion" to this nav element
+		var $container = $('<div class="container-fluid">');
+
+		//navbar-header
+		var $navbar_header = $('<div class="navbar-header">');
+
+		//collapse container
+		var $navbar_collapse = $('<div class="collapse navbar-collapse">');
+
+		//nav links -- unordered list
+		var $nav_links = $('<ul class="nav navbar-nav">');
+		//Build nav links -- anchor elements
+		var $profiles_link_a = $('<a>').attr('href','#').text('profiles');
+		var $profiles_link_a = $('<a>').attr('href','#').text('projects');
+		//Build nav links -- list items
+			//And append the anchor elements to their parent list items
+		var $profiles_link_li = $('<li>').append( $profiles_link_a );
+		var $projects_link_li = $('<li>').append( $profiles_link_a );
+		//Append profile and project links to their parent unordered list
+		$nav_links.append( $profiles_link_li ).append( $projects_link_li );
+
+
+
+		//Build Log Widget, and append it to it's parent unordered list
+		var $log_widget_list = $('<ul class="nav navbar-nav navbar-right">');
+		var log_Widget_View = new App.Views.LogWidgetView( {user_session: false} );
+		$log_widget_list.append( log_Widget_View.$el );
+
+
+
+		//Append ul to the collapse div
+		$navbar_collapse.append( $nav_links );
+		$navbar_collapse.append( $log_widget_list );
+
+
+		$container.append( $navbar_header );
+		$container.append( $navbar_collapse );
+		$container.append( $log_widget_list );
+
+
+		this.$el.append( $container );
+
+		//attach nav bar to #app div
+		$('#app').prepend(this.$el);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+		//build the parent ul
+		var $ul = $('<ul class="container navbar">');
 
 		//build nav list items
 		var $home_li = $('<li class="nav_element">');
@@ -29,14 +101,15 @@ App.Views.NavigationView = Backbone.View.extend({
 		$profiles_li.append( $profiles_a );
 		$projects_li.append( $projects_a );
 
-		//append list items to nav list
-		var self = this;
+		//append list items to nav_ul
 		[ $home_li , $github_auth_li , $profiles_li , $projects_li ].forEach(function( e, i ){
-			self.$el.append( e );
+			 $nav_ul.append( e );
 		});
 
-		//attach nav bar to #app div
-		$('#app').prepend(this.$el);
+		//attach $nav_ul to this.$el
+		this.$el.append( $nav_ul );
+*/
+
 	},
 	initialize: function() {
 		this.render();
