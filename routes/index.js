@@ -69,19 +69,38 @@ router.get('/', function(request, response, next) {
   }
 });
 
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next(); }
-  // res.redirect('/');
-
-  res.render('index', { title: 'OPP' , layout: 'layout'});
-  console.log("not logged in");
-}
-
 router.get('/test', function(request, response, next) {
   console.log('GET request at /test');
   response.render('index', { title: 'OPP' , layout: 'tests_layout'});
 });
+
+router.get('/account',ensureAuthenticated, function(request, response, next){
+    
+  db.list('OPP_users')
+      .then(function (result) {
+        var data = result.body.results;
+        var mapped = data.map(function (element, index) {
+          //console.log(element.value);
+          if(req.user.profileUrl===element.value.github_url){
+            console.log("user logged in");
+          }else{
+            console.log("this is a new user");
+          }
+        });
+        //console.log(mapped);
+        response.send(mapped);
+      });
+    
+});
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next(); }
+  res.redirect('/login');
+
+  // res.render('index', { title: 'OPP' , layout: 'layout'});
+  // console.log("not logged in");
+}
 
 router.get('/profiles', function(request, response, next) {
   console.log('GET request at /profiles');
@@ -149,7 +168,7 @@ router.get('/auth/github/callback',
       // if(req.user){
       //   // console.log("222req user is", req.user);
       // }
-      res.redirect('/');
+      res.redirect('/account');
       // res.render('index', { title: 'Something dif' , layout: 'layout', user:req.user.id});
     });
     
@@ -157,14 +176,6 @@ router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
-
-
-
-// Simple route middleware to ensure user is authenticated.
-//   Use this route middleware on any resource that needs to be protected.  If
-//   the request is authenticated (typically via a persistent login session),
-//   the request will proceed.  Otherwise, the user will be redirected to the
-//   login page.
 
 // router.post('/register', function(request, response, next) {
 //   var name = request.body.name;
