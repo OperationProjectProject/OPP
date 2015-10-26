@@ -5,8 +5,15 @@ var bodyParser = require("body-parser");
 var pg = require('pg');
 // var db = require('orchestrate')(config.dbkey);
 
+var logger = require('morgan');
+var partials = require('express-partials');
+var util = require('util');
+var session = require('express-session');
+var methodOverride = require('method-override');
+var passport = require('passport');
+
 var routes = require('./routes/index');
-var users = require('./routes/user');
+// var users = require('./routes/user');
 
 var app = express();
 
@@ -24,7 +31,19 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+// app.use('/users', users);
+
+
+app.use(partials());
+app.use(logger('dev'));
+
+app.use(methodOverride());
+app.use(session({ secret: 'keyboard cat', saveUninitialized: false, proxy: true, resave: true }));
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(port, function () {
   console.log("Server is running...");
