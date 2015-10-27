@@ -15,12 +15,13 @@
  *
  */
 
-a {
+a, button {
   transition: background .6s, border .6s;
 }
 
 footer {
-  background: rgba(232,232,232,1.0);
+  margin-top: 2em;
+  background: rgba(207,203,210,1.0);
   padding-top: 4em;
   padding-bottom: 4em;
 }
@@ -29,6 +30,10 @@ footer p {
   margin: 0;
   font-weight: bold;
   color:rgba(100,100,100,1.0);
+}
+
+.all_profiles_view, .all_projects_view {
+  padding-left: 0;
 }
 
 .jumbotron {
@@ -40,6 +45,11 @@ footer p {
   margin: 1em 1em 0 0;
 }
 
+.card{
+  background: rgba(200,200,100,1.0);
+  list-style-type: none;
+}
+
 .centerdiv {
   background: white;
   min-height: 450px;
@@ -47,7 +57,9 @@ footer p {
 
 
 
+
 @media screen and ( max-width: 750px ) {
+
   .jumbotron {
     padding: 5%;
   }

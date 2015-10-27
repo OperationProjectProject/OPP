@@ -10,7 +10,7 @@ App.Views.NavigationView = Backbone.View.extend({
 		console.log("%cNavigationView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
 		//add role="navigtion" to this nav element
-		var $container = $('<div class="container-fluid">');
+		var $container = $('<div class="container">');
 
 		//navbar-header
 		var $navbar_header = $('<div class="navbar-header">');
