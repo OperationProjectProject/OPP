@@ -1,7 +1,7 @@
 // var app = app || {};
 
 App.Views.CenterView = Backbone.View.extend({
-  className: 'centerdiv container',
+  className: 'centerdiv container animated fadeIn',
   render: function() {
 		console.log("%cCenterView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 		$('#app').append(this.$el);

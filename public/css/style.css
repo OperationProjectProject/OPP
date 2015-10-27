@@ -35,7 +35,14 @@
 
 
 a, button {
-  transition: background .6s, border .6s;
+  transition: background .4s, border .4s, color .4s;
+  transition-timing-function: ease-out;
+}
+
+body {
+  background: white;
+  transition: background .4s;
+  transition-timing-function: ease-in;
 }
 
 footer {
@@ -74,8 +81,22 @@ footer p {
   margin: 1em 1em 0 0;
 }
 
+.navbar {
+  padding: 0 0;
+  transition: padding 1s;
+}
+
+.top-nav-collapse {
+  padding: 0;
+}
+
 .primary_site_content_links {
-  background: rgba(200,200,200,1.0);
+  background: rgba(255,255,255,1.0);
+}
+
+.fadeIn {
+  animation-duration: .5s;
+  animation-timing-function: ease-out;
 }
 
 @media screen and ( max-width: 750px ) {
