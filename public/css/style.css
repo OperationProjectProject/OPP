@@ -15,9 +15,47 @@
  *
  */
 
+a {
+  transition: background .6s, border .6s;
+}
+
+footer {
+  background: rgba(232,232,232,1.0);
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+footer p {
+  margin: 0;
+  font-weight: bold;
+  color:rgba(100,100,100,1.0);
+}
+
+.jumbotron {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.jumbotron .btn-lg{
+  margin: 1em 1em 0 0;
+}
+
+.centerdiv {
+  background: white;
+  min-height: 450px;
+}
 
 
 
+@media screen and ( max-width: 750px ) {
+  .jumbotron {
+    padding: 5%;
+  }
+  .jumbotron .btn-lg{
+    display: block;
+    margin: 1em auto;
+  }
+}
 
 
 
