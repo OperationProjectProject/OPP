@@ -28,7 +28,7 @@ console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em
 */
 
 
-    var $profile_link = $('<a href="/#profiles/'+this.model.attributes.url_id+'" id="profiles_link" tabindex="3">').text(this.model.attributes.name + " -- Link to Profile");
+    var $profile_link = $('<a href="/#profiles/'+this.model.attributes.url_id+'" class="preview_link">').text(this.model.attributes.name);
     this.$el.append($profile_link);
   } ,
   initialize: function(){

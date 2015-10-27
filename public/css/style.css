@@ -42,7 +42,7 @@ a, button {
 body {
   background: white;
   transition: background .4s;
-  transition-timing-function: ease-in;
+  transition-timing-function: ease-out;
 }
 
 footer {
@@ -63,8 +63,20 @@ footer p {
 }
 
 .card{
-  background: rgba(200,200,100,1.0);
   list-style-type: none;
+  display: inline-block;
+  margin: 5% 5%;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.07);
+  border-radius: 4px;
+}
+.card .preview_link {
+  text-decoration: none;
+  display: block;
+  background: rgba(255,255,255,1.0);
+  padding: 4em 4em;
+}
+.card .preview_link:hover {
+  background: rgba(240,240,240,1.0);
 }
 
 .centerdiv {
@@ -73,6 +85,7 @@ footer p {
 }
 
 .jumbotron {
+  background: white;
   padding-top: 4em;
   padding-bottom: 4em;
 }
