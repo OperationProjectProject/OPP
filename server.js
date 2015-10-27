@@ -38,7 +38,7 @@ app.use(partials());
 app.use(logger('dev'));
 
 app.use(methodOverride());
-app.use(session({ secret: 'keyboard cat'}));
+app.use(session({ secret: 'keyboard cat', saveUninitialized: false, proxy: true, resave: true }));
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
 app.use(passport.initialize());

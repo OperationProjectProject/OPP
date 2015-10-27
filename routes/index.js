@@ -163,14 +163,7 @@ router.get('/auth/github',
   });
   
 router.get('/auth/github/callback', 
-    passport.authenticate('github', { failureRedirect: '/' }),
-    function(req, res) {
-      // if(req.user){
-      //   // console.log("222req user is", req.user);
-      // }
-      res.redirect('/account');
-      // res.render('index', { title: 'Something dif' , layout: 'layout', user:req.user.id});
-    });
+    passport.authenticate('github', {successRedirect:"/account", failureRedirect: '/' }));
     
 router.get('/logout', function(req, res){
   req.logout();
