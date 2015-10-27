@@ -1,0 +1,596 @@
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *                  Concierge Data Models                -- Profiles
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+
+
+/* Mitch */
+{
+   "site_user_id": "" ,
+   "github_api_data": {
+     "github_id": "",
+     "github_email": "",
+     "github_display_name": "",
+     "github_url": "https://github.com/MitchLillie",
+     "github_avatar": "",
+     "github_username": ""
+   } ,
+   "project_reference": [
+     "site_project_id": "" ,
+   ] ,
+   "profile_content": {
+     "img_urls": {
+       "profile_img": "http://placehold.it/100x100" ,
+       "cover_photo": "http://placehold.it/100x100" ,
+       "hero_img": "http://placehold.it/100x100" ,
+       "action_shot": "http://placehold.it/100x100"
+     } ,
+     "social_urls": {
+       "personal": "http://mitchlillie.com",
+       "linkedin": "https://www.linkedin.com/in/mitchlillie",
+       "twitter": "https://twitter.com/mitchlillie"
+     } ,
+     "editable_text": {
+       "name": "Mitch Lillie",
+       "title": "" ,
+       "url_id": "" ,
+       "skills": [
+         "Web servers" ,
+         "Graphic design" ,
+         "jQuery"
+       ] ,
+       "tools": [
+         "Express" ,
+         "Knex" ,
+         "Backbone" ,
+         "PostgreSQL" ,
+         "Unix"
+       ] ,
+       "q_and_a" : [
+         "js_tidbit": "With enough study and ingenuity it is possible to create any kind of function you can imagine." ,
+         "job_hope": "" ,
+         "politics": ""
+       ]
+     } ,
+     "checkbox_content" : {
+       "work_status": [
+         "Looking for an Internship" ,
+         "Looking for Full-Time work"
+       ]
+     } ,
+   } ,
+}
+/** Mitch **/
+
+
+/** Jason **/
+{
+   "site_user_id": "" ,
+   "github_api_data": {
+     "github_id": "",
+     "github_email": "",
+     "github_display_name": "",
+     "github_url": "https://github.com/JTSiren",
+     "github_avatar": "",
+     "github_username": ""
+   } ,
+   "project_reference": [
+     "site_project_id": "03" ,
+   ] ,
+   "profile_content": {
+     "img_urls": {
+       "profile_img": "http://placehold.it/100x100" ,
+       "cover_photo": "http://placehold.it/100x100" ,
+       "hero_img": "http://placehold.it/100x100" ,
+       "action_shot": "http://placehold.it/100x100"
+     } ,
+     "social_urls": {
+       "personal": "http://www.quarkchasermusic.com/",
+       "twitter": "https://twitter.com/jasonsiren"
+     } ,
+     "editable_text": {
+       "name": "Jason Siren",
+       "title": "UX Developer" ,
+       "url_id": "JasonSiren" ,
+       "skills": [
+         "CSS" ,
+         "SQL" ,
+         "Background in graphic design / Adobe Illustrator proficient"
+       ] ,
+       "tools": [
+         "" ,
+         "" ,
+         "" ,
+         "" ,
+         ""
+       ] ,
+       "q_and_a" : [
+         "js_tidbit": "I feel safe knowing that i can console.log(this); as often as I need to." ,
+         "job_hope": "UX Developer" ,
+         "politics": ""
+       ]
+     } ,
+     "checkbox_content" : {
+       "work_status": [
+         "Looking for an Internship" ,
+         "Looking for Freelance work" ,
+         "Looking for Full-Time work"
+       ]
+     } ,
+   } ,
+}
+/** Jason **/
+
+
+/** Matt **/
+{
+  "site_user_id": "" ,
+  "github_api_data": {
+    "github_id": "",
+    "github_email": "",
+    "github_display_name": "",
+    "github_url": "https://github.com/mkelley2/",
+    "github_avatar": "",
+    "github_username": ""
+  } ,
+  "project_reference": [
+    "site_project_id": ""
+  ] ,
+  "profile_content": {
+    "img_urls": {
+      "profile_img": "http://placehold.it/100x100" ,
+      "cover_photo": "http://placehold.it/100x100" ,
+      "hero_img": "http://placehold.it/100x100" ,
+      "action_shot": "http://placehold.it/100x100"
+    } ,
+    "social_urls": {
+      "linkedin": "https://www.linkedin.com/in/mattkelley3",
+      "twitter": "https://twitter.com/MattKelley_Dev"
+    } ,
+    "user_editable_text": {
+      "name": "Matt Kelley",
+      "title": "Fullstack JS Developer" ,
+      "url_id": "MattKelley" ,
+      "skills": [
+        "Javascript" ,
+        "Backbone" ,
+        "HTML/CSS"
+      ] ,
+      "tools": [
+        "Javascript" ,
+        "BDD" ,
+        "HTML5/CSS" ,
+        "Informative Architecture" ,
+        "User Research"
+      ] ,
+      "q_and_a" : [
+        "js_tidbit": "I feel safe knowing that i can console.log(this); as often as I need to." ,
+        "job_hope": "UX Developer" ,
+        "politics": ""
+      ]
+    } ,
+    "checkbox_content" : {
+      "work_status": [
+        "Looking for an Internship" ,
+        "Looking for Freelance work" ,
+        "Looking for Full-Time work"
+      ]
+    } ,
+  } ,
+}
+/** Matt **/
+
+
+/** Do **/
+{
+  "site_user_id": "" ,
+  "github_api_data": {
+    "github_id": "",
+    "github_email": "",
+    "github_display_name": "",
+    "github_url": "",
+    "github_avatar": "",
+    "github_username": ""
+  } ,
+  "project_reference": [
+    "site_project_id": "01" ,
+    "site_project_id": "zx01"
+  ] ,
+  "profile_content": {
+    "img_urls": {
+      "profile_img": "http://placehold.it/100x100" ,
+      "cover_photo": "http://placehold.it/100x100" ,
+      "hero_img": "http://placehold.it/100x100" ,
+      "action_shot": "http://placehold.it/100x100"
+    } ,
+    "social_urls": {
+      "personal": "https://google.com",
+      "linkedin": "https://www.linkedin.com",
+      "twitter": "https://twitter.com",
+    } ,
+    "editable_text": {
+      "name": "Do Nguyen",
+      "title": "Web Developer" ,
+      "url_id": "PatHarryUX" ,
+      "skills": [
+        "User Centered Product Design" ,
+        "Full Stack Web Development" ,
+        "Iterative prototyping"
+      ] ,
+      "tools": [
+        "Javascript" ,
+        "BDD" ,
+        "HTML5/CSS" ,
+        "Informative Architecture" ,
+        "User Research"
+      ] ,
+      "q_and_a" : [
+        "js_tidbit": "I feel safe knowing that i can console.log(this); as often as I need to." ,
+        "job_hope": "UX Developer" ,
+        "politics": ""
+      ]
+    } ,
+    "checkbox_content" : {
+      "work_status": [
+        "Looking for an Internship" ,
+        "Looking for Freelance work" ,
+        "Looking for Full-Time work"
+      ]
+    } ,
+  } ,
+}
+/** Do **/
+
+
+/** Pat **/
+{
+  "site_user_id": "" ,
+  "github_api_data": {
+    "github_id": "",
+    "github_email": "",
+    "github_display_name": "",
+    "github_url": "",
+    "github_avatar": "",
+    "github_username": ""
+  } ,
+  "project_reference": [
+    "site_project_id": "01" ,
+    "site_project_id": "zx01"
+  ] ,
+  "profile_content": {
+    "img_urls": {
+      "profile_img": "http://placehold.it/100x100" ,
+      "cover_photo": "http://placehold.it/100x100" ,
+      "hero_img": "http://placehold.it/100x100" ,
+      "action_shot": "http://placehold.it/100x100"
+    } ,
+    "social_urls": {
+      "personal": "https://PatrickHarry.com",
+      "linkedin": "https://www.linkedin.com/in/PatHarryUX",
+      "twitter": "https://twitter.com/PatHarryUX",
+    } ,
+    "editable_text": {
+      "name": "Pat Harry",
+      "title": "UX Developer" ,
+      "url_id": "PatHarryUX" ,
+      "skills": [
+        "User Centered Product Design" ,
+        "Full Stack Web Development" ,
+        "Iterative prototyping"
+      ] ,
+      "tools": [
+        "Javascript" ,
+        "BDD" ,
+        "HTML5/CSS" ,
+        "Informative Architecture" ,
+        "User Research"
+      ] ,
+      "q_and_a" : [
+        "js_tidbit": "I feel safe knowing that i can console.log(this); as often as I need to." ,
+        "job_hope": "UX Developer" ,
+        "politics": ""
+      ]
+    } ,
+    "checkbox_content" : {
+      "work_status": [
+        "Looking for an Internship" ,
+        "Looking for Freelance work" ,
+        "Looking for Full-Time work"
+      ]
+    } ,
+  } ,
+}
+/** Pat **/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "name": "Do Nguyen",
+  "title": "Web Developer",
+  "github_url": "https://github.com/yahwin",
+  "personal": "www.yahnguyen.com",
+  "linkedin": "https://www.linkedin.com/in/yahnguyen",
+  "twitter": "https://twitter.com/yahwinn",
+  "url_id":"yahwinn",
+  "skills": ["Patience", "An Eye for Detail", "Dogged Determination"],
+  "tools": ["Node", "Github", "Express", "Backbone", "Jquery"],
+  "favorite": "I like how it has become so integrated into the very fabric of the internet",
+  "work_status": ["Looking for an Intership", "looking for Full-Time work"] ,
+  "job_hope": "A job that will allow me to grow and develop my skill set as a developer. I know where I see myself in the next 5 years and I'm looking for a company that share that vision",
+  "Projects": ["MixTapez"],
+  "proj_info": {
+    "MixTapez":{
+      "desc" :"Bringing the mixtape into the digital age. We are designing a platform for people to use Youtube and Soundcloud to quicklu and easily create the perfect mixtape for any situation",
+      "tools":[
+        "Meteor",
+        "MongoDB",
+        "Youtube API",
+        "Soundcloud API"
+      ],
+      "owners":["Do Nyugen","Ty Brenner", "Nathan Bennett"]
+    }
+  }
+}
+
+{
+  "name": "Matt Kelley",
+  "title": "Fullstack JS Dev",
+  "github_url": "https://github.com/mkelley2",
+  "personal": "",
+  "linkedin": "https://www.linkedin.com/pub/matthew-kelley/107/199/728",
+  "twitter": "https://twitter.com/MattKelley_Dev",
+  "url_id":"MattKelley_Dev",
+  "skills": ["JavaScript", "Backbone", "HTML/CSS"],
+  "tools": ["Backbone", "Jade", "Bootstrap", "Handlebars", "Orchestrate"],
+  "favorite": "That everything is a puzzle that can be solved a million ways but it is up to you to find the best way.",
+  "work_status":["Looking for Full-Time work"] ,
+  "job_hope": "I would like a job that is open to hiring new devs so I can start a successful career in the field",
+  "Projects": ["OPP"],
+  "proj_info": {
+    "MixTapez":{
+      "desc" :"A website that people can share, display and show off their github projects",
+      "tools":[
+        "Bootstrap",
+        "Backbone",
+        "Orchestrate",
+        "Chai"
+      ],
+      "owners":["Matt Kelley","Pat Harry", "Adam Taitano"]
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *                  Concierge Data Models                -- Projects
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+
+  "owners":["Matt Kelley","Pat Harry", "Adam Taitano"],
+
+  "project_url_id":"OPP",
+  "title": "OPP",
+  "mvp" :"A web platform for members of our community to showcase their work."
+  "tech_used": [
+    "JavaScript",
+    "Backbone.js",
+    "Orchestrate",
+    "Mocha",
+    "Node"
+  ]
+}
+
+
+/** OPP **///                      -- Matt & Pat
+{
+  "site_project_id": "" ,
+  "owner_reference": [
+    {
+      "site_user_id": "" ,
+      "site_user_id": ""
+    } ,
+  ] ,
+  "project_content": {
+    "title": "OPP" ,
+    "project_url_id": "OPP" ,
+    "mvp":"A web platform for members of our community to showcase their work." ,
+    "tech_used": [
+      "Orchestrate DB" ,
+      "Backbone &#38; Bootstrap" ,
+      "Mocha & Chai" ,
+      "Github API" ,
+      "Cloudinary" ,
+      "Express"
+    ]
+  }
+}
+/** OPP **/
+
+
+/** Meetworking **///                      -- Mitch & Jeff
+{
+  "site_project_id": "" ,
+  "owner_reference": [
+    {
+      "site_user_id": "" ,
+      "site_user_id": ""
+    } ,
+  ] ,
+  "project_content": {
+    "title": "Meetworking" ,
+    "project_url_id": "Meetworking" ,
+    "mvp": "Looking for an elusive job in tech? Lost in the sea of Meetups? Meetworking helps you target up to three companies, showing you the Meetups those employees are attending as well as the events held at that company's location—a quick way to get your foot in the door. See talking points for each attendee and RSVP right through the app!" ,
+    "tech_used": [
+      "MySQL" ,
+      "Express" ,
+      "Node" ,
+      "Backbone" ,
+      "Jade"
+    ]
+  }
+}
+/** Meetworking **/
+
+
+/** MixTapez **///                      -- Ty, Mitch, and Do
+{
+  "site_project_id": "" ,
+  "owner_reference": [
+    {
+      "site_user_id": "" ,
+      "site_user_id": "" ,
+      "site_user_id": ""
+    } ,
+  ] ,
+  "project_content": {
+    "title": "MixTapez" ,
+    "project_url_id": "MixeTapez" ,
+    "mvp": "Bringing the mixtape into the digital age. We are designing a platform for people to use Youtube and Soundcloud to quickly and easily create the perfect mixtape for any situation. ",
+    "tech_used": [
+      "Meteor"
+    ]
+  }
+}
+/** MixTapez **/
+
+
+/** DashMonster **///                      -- Jennifer, Jason & Erik
+{
+  "site_project_id": "" ,
+  "owner_reference": [
+    {
+      "site_user_id": "" ,
+      "site_user_id": "" ,
+      "site_user_id": ""
+    } ,
+  ] ,
+  "project_content": {
+    "title": "DashMonster" ,
+    "project_url_id": "DashMonster" ,
+    "mvp": "A Meteor crashed in Portland from which DashMonster emerged to boost both convenience and daily productivity in the lives of users. A quick glance at DashMonster will give you the transit and weather info you need without all the stuff you don't. \n DashMonster is the hyper-focused transit and weather app you need most of the time.",
+    "tech_used": [
+      "Meteor JS - JavaScript framework and server" ,
+      "Google Maps API - geolocation" ,
+      "Google Waze API - routes and traffic" ,
+      "Darksky API - weather" ,
+      "Tri-met API - transit"
+    ]
+  }
+}
+/** DashMonster **/
