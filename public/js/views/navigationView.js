@@ -16,8 +16,6 @@ App.Views.NavigationView = Backbone.View.extend({
 		var $navbar_header = $('<div class="navbar-header">');
 
 
- 'href', '#'
-
 		var $toggle_button = $('<button>').attr({
 			"class": 'navbar-toggle collapsed' ,
 			"data-toggle": 'collapse' ,
@@ -30,7 +28,7 @@ App.Views.NavigationView = Backbone.View.extend({
 		$toggle_button.append( $sr_toggle );
 		$toggle_button.append( $hamburger );
 
-		var $brand_link = $( '<a class="navbar-brand">' ).attr( 'href', '#' );
+		var $brand_link = $( '<a class="navbar-brand">' ).attr( 'href', '#' ).text('Project(project)');
 
 
 		$navbar_header.append( $toggle_button );
