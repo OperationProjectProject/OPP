@@ -3,7 +3,7 @@
 //
 App.Views.ProjectPreviewView = Backbone.View.extend({
   tagName: 'li' ,
-  className: 'project_preview',
+  className: 'project_preview card',
   render: function(){
     console.log("%cProjectPreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     console.log(this);

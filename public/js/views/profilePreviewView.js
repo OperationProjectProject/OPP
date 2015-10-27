@@ -3,7 +3,7 @@
 //
 App.Views.ProfilePreviewView = Backbone.View.extend({
   tagName: 'li' ,
-  className: 'profile_preview',
+  className: 'profile_preview card',
   render: function(){
 
 console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
