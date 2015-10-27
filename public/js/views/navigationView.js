@@ -49,7 +49,7 @@ App.Views.NavigationView = Backbone.View.extend({
 		var $navbar_collapse = $('<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">');
 
 		//nav links -- unordered list
-		var $nav_links = $('<ul class="nav navbar-nav">');
+		var $nav_links = $('<ul class="nav navbar-nav primary_site_content_links">');
 		//Build nav links -- anchor elements
 		var $profiles_link_a = $('<a href="#profiles" id="profiles_link">').text('profiles');
 		var $projects_link_a = $('<a href="#projects" id="projects_link">').text('projects');
