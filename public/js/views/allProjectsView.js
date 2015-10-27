@@ -8,6 +8,8 @@ App.Views.AllProjectsView = Backbone.View.extend({
   collection: app.project_content ,
 
   render: function() {
+    $('body').css({'background':'rgba(252,252,244,1.0)'});
+    $('.centerdiv').css({'background':'rgba(252,252,244,1.0)'});
     console.log(" ---- AllProjectsView rendered ---- ");
     var self = this;
     this.collection.models.forEach(function(e,i){

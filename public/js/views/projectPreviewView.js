@@ -7,7 +7,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
   render: function(){
     console.log("%cProjectPreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     console.log(this);
-    var $project_link = $('<a href="/#projects/' + this.model.attributes.project_url_id + '" ' + 'tabindex="3">').text(this.model.attributes.title + " -- Link to Project");
+    var $project_link = $('<a href="/#projects/' + this.model.attributes.project_url_id + '" ' + 'class="preview_link">').text(this.model.attributes.title);
     this.$el.append($project_link);
   } ,
   initialize: function(){

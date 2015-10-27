@@ -2,11 +2,29 @@
  *
  *
  *
- *                            Stylesheet
- *                           ==========
- *                          ==========
- *                         ///////////
- *                        ///////////
+ *                                Stylesheet
+ *                               ==========
+ *                              ==========
+ *                             ==========
+ *                            //////////
+ *                           //////////
+ *                          //////////
+ *                         //////////
+ *                        //////////
+ *                       //////////
+ *                      //////////
+ *                     //////////
+ *                    //////////
+ *                   //////////
+ *                  //////////
+ *                 //////////
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  *
  *
  *
@@ -15,8 +33,16 @@
  *
  */
 
+
 a, button {
-  transition: background .6s, border .6s;
+  transition: background .4s, border .4s, color .4s;
+  transition-timing-function: ease-out;
+}
+
+body {
+  background: white;
+  transition: background .4s;
+  transition-timing-function: ease-out;
 }
 
 footer {
@@ -36,7 +62,30 @@ footer p {
   padding-left: 0;
 }
 
+.card{
+  list-style-type: none;
+  display: inline-block;
+  margin: 5% 5%;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.07);
+  border-radius: 4px;
+}
+.card .preview_link {
+  text-decoration: none;
+  display: block;
+  background: rgba(255,255,255,1.0);
+  padding: 4em 4em;
+}
+.card .preview_link:hover {
+  background: rgba(240,240,240,1.0);
+}
+
+.centerdiv {
+  background: white;
+  min-height: 450px;
+}
+
 .jumbotron {
+  background: white;
   padding-top: 4em;
   padding-bottom: 4em;
 }
@@ -45,93 +94,31 @@ footer p {
   margin: 1em 1em 0 0;
 }
 
-.card{
-  background: rgba(200,200,100,1.0);
-  list-style-type: none;
+.navbar {
+  padding: 0 0;
+  transition: padding 1s;
 }
 
-.centerdiv {
-  background: white;
-  min-height: 450px;
+.top-nav-collapse {
+  padding: 0;
 }
 
+.primary_site_content_links {
+  background: rgba(255,255,255,1.0);
+}
 
-
+.fadeIn {
+  animation-duration: .5s;
+  animation-timing-function: ease-out;
+}
 
 @media screen and ( max-width: 750px ) {
-
   .jumbotron {
     padding: 5%;
   }
+
   .jumbotron .btn-lg{
     display: block;
     margin: 1em auto;
   }
 }
-
-
-
-
-
-
-/*
-body {
-  background: rgba(250,250,255,1.0);
-  min-height: 100%;
-}
-
-footer{
-  background: rgba(220,220,220,1.0);
-  padding: 5% 5%;
-}
-
-a {
-  transition: .4s opacity;
-}
-
-a:hover {
-  text-decoration: none;
-  opacity: 0.6;
-}
-
-.primary_nav {
-  display: block;
-  padding: 3%;
-  background: rgba(220,220,220,1.0);
-}
-
-.primary_nav li{
-  display: inline;
-  background: rgba(210,210,210,1.0);
-  padding: 1% 2.5%;
-  margin: 1%;
-  transition: .4s opacity;
-}
-
-.primary_nav li:hover{
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-
-.profile_preview{
-  padding: 2%;
-  margin: 2%;
-  background: rgba(200,200,200,1.0);
-}
-
-.project_preview{
-  padding: 2%;
-  margin: 2%;
-  background: rgba(200,200,200,1.0);
-}
-
-.profile_preview:hover{
-  cursor: pointer;
-  opacity: .85;
-}
-
-.profile_view {
-  background: rgba(100,100,200,0.1);
-}
-*/
