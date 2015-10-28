@@ -21,11 +21,41 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
   render_user_session: function() {
     console.log("%cLogWidgetView","color:rgba(210,210,210,1.0);font-size:1.35em;");
-    var $img = $('<img>').attr({
-      src: 'http://placehold.it/100x100' ,
-      alt: 'this is test alt text in an img tag'
+    this.$el.addClass('dropdown');
+
+    //Build the dropdown link
+    var $thumbnail_link = $('<a href="#">').attr({
+      "id": "log_widget_toggle",
+      "class": 'dropdown-toggle' ,
+      "data-toggle": 'dropdown' ,
+      "role": 'button' ,
+      "aria-expanded": 'false'
     });
-    this.$el.append( $img );
+    var $thumbnail_img = $( '<img>' ).attr({
+      src: 'http://placehold.it/35x35' ,
+      alt: 'this is your profile image'
+    });
+    var $caret = $( '<span class="caret">' );
+    $thumbnail_link.append( $thumbnail_img );
+    $thumbnail_link.append( $caret );
+
+    //Build the links
+    $dropdown_links = $( '<ul class="dropdown-menu" role="menu">' );
+    $my_profile_link = $( '<li><a href="#profiles">My Profile</a></li>' );
+    $edit_my_profile_link = $( '<li><a href="#profiles">Edit My Profile</a></li>' );
+    $my_projects_link = $( '<li><a href="#projects">My Projects</a></li>' );
+    $logout_link = $( '<li><a href="/logout">Log out</a></li>' );
+
+    [ $my_profile_link ,
+      $edit_my_profile_link ,
+      $my_projects_link ,
+      $logout_link
+    ].forEach( function(e,i) {
+      $dropdown_links.append( e );
+    });
+
+    this.$el.append( $thumbnail_link );
+    this.$el.append( $dropdown_links );
     return this
   } ,
 
