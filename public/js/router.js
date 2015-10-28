@@ -66,7 +66,7 @@ App.Router = Backbone.Router.extend({
     console.log("%cRouter '/#projects'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
     //current url is stored, to be passed to navigation view
     var current_url = '/#projects';
-    if ( url_id ) {
+    if ( project_url_id ) {
       current_url += '/'+ url_id;
     }
     $('#app').empty();
