@@ -4,6 +4,7 @@
 App.Router = Backbone.Router.extend({
 
   initialize: function(opts){
+    this.user_session = opts.user_session;
     this.profiles = opts.profiles;
     this.projects = opts.projects;
   },
@@ -19,7 +20,7 @@ App.Router = Backbone.Router.extend({
   index: function(){
     console.log("%cRouter '/'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;")
     $('#app').empty();
-    app.navigationView = new App.Views.NavigationView();
+    app.navigationView = new App.Views.NavigationView({user_session: this.user_session});
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
     app.mainView = new App.Views.MainView();
@@ -28,7 +29,7 @@ App.Router = Backbone.Router.extend({
   profiles: function( url_id ){
     console.log("%cRouter '/#profiles'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
     $('#app').empty();
-    app.navigationView = new App.Views.NavigationView();
+    app.navigationView = new App.Views.NavigationView({user_session: this.user_session});
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
     //check whether a url_id has been passed to the url
@@ -52,7 +53,7 @@ App.Router = Backbone.Router.extend({
   projects: function(project_url_id){
 
     $('#app').empty();
-    app.navigationView = new App.Views.NavigationView();
+    app.navigationView = new App.Views.NavigationView({user_session: this.user_session});
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
     //check whether a url_id has been passed to the url

@@ -22,7 +22,7 @@ App.Views.LogWidgetView = Backbone.View.extend({
   render_user_session: function() {
     console.log("%cLogWidgetView","color:rgba(210,210,210,1.0);font-size:1.35em;");
     var $img = $('<img>').attr({
-      src: 'http://placehold.it/100x100' ,
+      src: 'http://placehold.it/65x65' ,
       alt: 'this is test alt text in an img tag'
     });
     this.$el.append( $img );

@@ -11,8 +11,8 @@ var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 
 //----------Github passport things----------------
-var GITHUB_CLIENT_ID = "1474405248ddea66c5e5";
-var GITHUB_CLIENT_SECRET = "74586825356bf88ee2b48a29053b5c62becac54c";
+var GITHUB_CLIENT_ID = config.github_client_id;
+var GITHUB_CLIENT_SECRET = config.github_client_secret;
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -30,7 +30,6 @@ passport.use('github', new GitHubStrategy({
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-
       // To keep the example simple, the user's GitHub profile is returned to
       // represent the logged-in user.  In a typical application, you would want
       // to associate the GitHub account with a user record in your database,
@@ -41,26 +40,18 @@ passport.use('github', new GitHubStrategy({
 ));
 
 
-// router.use(partials());
-// router.use(logger('dev'));
-// // router.use(bodyParser());
-// router.use(bodyParser.json());
-// router.use(bodyParser.urlencoded({extended: false}));
-//
 // router.use(methodOverride());
-// router.use(session({ secret: 'keyboard cat', saveUninitialized: false, proxy: true, resave: true }));
-// // Initialize Passport!  Also use passport.session() middleware, to support
-// // persistent login sessions (recommended).
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
 router.use(passport.initialize());
 router.use(passport.session());
-// router.use(express.static(__dirname + '/public'));
+
 
 //----------------------------------------------
 
 router.get('/', function(request, response, next) {
-  console.log("GET ===> '/'");
+  console.log("'/' , 'GET'");
   if(request.user){
-    console.log("requset.user: ", request.user);
     response.render('index', { title: 'Different' , layout: 'layout', user:request.user.id});
   }
   else{
@@ -70,12 +61,12 @@ router.get('/', function(request, response, next) {
 });
 
 router.get('/test', function(request, response, next) {
-  console.log("GET ===> '/test'");
+  console.log("'/test' , 'GET'");
   response.render('index', { title: 'OPP' , layout: 'tests_layout'});
 });
 
 router.get('/account',ensureAuthenticated, function(request, response, next){
-  console.log("GET ===> '/account'");
+  console.log("'/account' , 'GET'");
   db.list('OPP_users')
       .then(function (result) {
         var data = result.body.results;
@@ -103,7 +94,7 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.get('/profiles', function(request, response, next) {
-  console.log("GET ===> '/profiles'");
+  console.log("'/profiles' , 'GET'");
   // var id = request.params.id;
   // console.log('request.params: ' , request.params);
   //console.log('Sending profile to',id);
@@ -135,7 +126,7 @@ router.get('/profiles', function(request, response, next) {
 });
 
 router.get('/projects', function(request, response, next) {
-  console.log("GET ===> '/projects'");
+  console.log("'/projects' , 'GET'");
   db.list('OPP_projects')
       .then(function (result) {
         var data = result.body.results;
@@ -160,13 +151,18 @@ router.get('/auth/github',
   function(req, res){
     // The request will be redirected to GitHub for authentication, so this
     // function will not be called.
-  });
+});
 
-router.get('/auth/github/callback',
-    passport.authenticate('github', {successRedirect:"/account", failureRedirect: '/' }));
+router.get( '/auth/github/callback',
+  passport.authenticate('github', {successRedirect:"/", failureRedirect: '/' } ) ,
+  function(req, res) {
+    console.log(req);
+    console.log(res)
+  }
+);
 
 router.get('/logout', function(req, res){
-  console.log("GET ===> '/logout'");
+  console.log("'/logout' , 'GET'");
   req.logout();
   res.redirect('/');
 });

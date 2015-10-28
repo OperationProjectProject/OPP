@@ -46,7 +46,7 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(port, function () {
-  console.log("Server is running...");
+  console.log("Server is running on port 3000...");
 });
 
 module.exports = server;
