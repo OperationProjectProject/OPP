@@ -172,7 +172,9 @@ router.get('/auth/github',
 ///keep history route
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
   console.log("req.session.returnTo: ", req.session.returnTo);
-    res.redirect(req.session.returnTo || "/account");
+  console.log("req: ", req.session.path);
+  // console.log("res: ", res);
+    res.redirect(req.session.returnTo || "/#profiles");
     req.session.returnTo = null;
 }); 
 ///////////
