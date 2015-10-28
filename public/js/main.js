@@ -12,5 +12,6 @@ $(function() { //when DOM is ready...
 			profiles: app.profile_content ,
 			projects: app.project_content
 		});
+		console.log("history ran");
 		Backbone.history.start();
 });
