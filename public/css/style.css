@@ -68,6 +68,7 @@ footer p {
 }
 
 .profile_preview a.preview_link, .project_preview a.preview_link {
+  height: 250px;
   border-radius: 4px;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.07);
   text-decoration: none;
@@ -125,6 +126,10 @@ footer p {
 .fadeIn {
   animation-duration: .5s;
   animation-timing-function: ease-out;
+}
+
+.user_title {
+  font-weight: 300;
 }
 
 @media screen and ( max-width: 750px ) {
