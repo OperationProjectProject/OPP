@@ -33,7 +33,7 @@ App.Router = Backbone.Router.extend({
   profiles: function( url_id ){
     console.log("%cRouter '/#profiles'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
     //current url is stored, to be passed to navigation view
-    var current_url = '/#profiles';
+    var current_url = '/%23profiles';
     if ( url_id ) {
       current_url += '/'+ url_id;
     }
@@ -65,7 +65,7 @@ App.Router = Backbone.Router.extend({
   projects: function(project_url_id){
     console.log("%cRouter '/#projects'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
     //current url is stored, to be passed to navigation view
-    var current_url = '/#projects';
+    var current_url = '/%23projects';
     if ( project_url_id ) {
       current_url += '/'+ project_url_id;
     }

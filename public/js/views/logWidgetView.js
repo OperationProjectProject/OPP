@@ -10,13 +10,10 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
   render_no_user_session: function() {
     console.log("%cLogWidgetView","color:rgba(210,210,210,1.0);font-size:1.35em;");
-
-    console.log(this);
-    console.log(this.el);
-    console.log(this.$el);
     var $link = $('<a>').attr( 'href', "/auth/github?url=" + this.current_url ).text( 'Login with Github' );
     this.$el.append( $link );
-    return this;
+    console.log( "%c" + $link.attr('href') ,"color:rgba(210,10,10,1.0);font-size:2.35em;");
+    return this
   } ,
 
   render_user_session: function() {
@@ -62,11 +59,11 @@ App.Views.LogWidgetView = Backbone.View.extend({
   initialize: function( opts ) {
     this.current_url = opts.current_url
     if ( opts.user_session === false ){
-      console.log("%c opts.user_session === false; ","color:rgba(210,10,10,1.0);font-size:2.5em;");
+      //console.log("%c opts.user_session === false; ","color:rgba(210,10,10,1.0);font-size:2.5em;");
       this.user_session = false;
       this.render_no_user_session();
     } else {
-      console.log("%c opts.user_session === true; ","color:rgba(10,210,210,1.0);font-size:2.5em;");
+      //console.log("%c opts.user_session === true; ","color:rgba(10,210,210,1.0);font-size:2.5em;");
       this.user_session = true;
       this.render_user_session();
     }
