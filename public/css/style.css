@@ -84,6 +84,19 @@ footer p {
   min-height: 450px;
 }
 
+#log_widget_toggle {
+  padding: 0;
+}
+
+#log_widget_toggle img{
+  border-radius: 100%;
+}
+
+#log_widget_toggle .caret{
+  margin-left: 10px;
+  border-radius: 100%;
+}
+
 .jumbotron {
   background: white;
   padding-top: 4em;
