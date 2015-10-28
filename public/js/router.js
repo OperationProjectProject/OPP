@@ -19,8 +19,12 @@ App.Router = Backbone.Router.extend({
 
   index: function(){
     console.log("%cRouter '/'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;")
+    var current_url = '/'
     $('#app').empty();
-    app.navigationView = new App.Views.NavigationView({user_session: this.user_session});
+    app.navigationView = new App.Views.NavigationView({
+      user_session: this.user_session ,
+      current_url: current_url
+    });
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
     app.mainView = new App.Views.MainView();
@@ -28,8 +32,16 @@ App.Router = Backbone.Router.extend({
 
   profiles: function( url_id ){
     console.log("%cRouter '/#profiles'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+    //current url is stored, to be passed to navigation view
+    var current_url = '/#profiles';
+    if ( url_id ) {
+      current_url += '/'+ url_id;
+    }
     $('#app').empty();
-    app.navigationView = new App.Views.NavigationView({user_session: this.user_session});
+    app.navigationView = new App.Views.NavigationView({
+      user_session: this.user_session ,
+      current_url: current_url
+    });
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
     //check whether a url_id has been passed to the url
@@ -51,9 +63,17 @@ App.Router = Backbone.Router.extend({
   } ,
 
   projects: function(project_url_id){
-
+    console.log("%cRouter '/#projects'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+    //current url is stored, to be passed to navigation view
+    var current_url = '/#projects';
+    if ( url_id ) {
+      current_url += '/'+ url_id;
+    }
     $('#app').empty();
-    app.navigationView = new App.Views.NavigationView({user_session: this.user_session});
+    app.navigationView = new App.Views.NavigationView({
+      user_session: this.user_session ,
+      current_url: current_url
+    });
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
     //check whether a url_id has been passed to the url
