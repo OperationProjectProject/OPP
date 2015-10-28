@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
+var logger = require('morgan');
 
 //----------Github passport things----------------
 var GITHUB_CLIENT_ID = config.github_client_id;
@@ -46,12 +47,12 @@ passport.use('github', new GitHubStrategy({
 // persistent login sessions (recommended).
 router.use(passport.initialize());
 router.use(passport.session());
+router.use(logger('dev'));
 
 
 //----------------------------------------------
 
 router.get('/', function(request, response, next) {
-  console.log("'/' , 'GET'");
   if(request.user){
     response.render('index', { title: request.user.username , layout: 'layout', user:request.user.id , banana:'yellow' , client_user_session: true});
   }
@@ -62,7 +63,6 @@ router.get('/', function(request, response, next) {
 });
 
 router.get('/test', function(request, response, next) {
-  console.log("'/test' , 'GET'");
   response.render('index', { title: 'OPP' , layout: 'tests_layout'});
 });
 
@@ -102,7 +102,6 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.get('/profiles', function(request, response, next) {
-  console.log("'/profiles' , 'GET'");
   // var id = request.params.id;
   // console.log('request.params: ' , request.params);
   //console.log('Sending profile to',id);
@@ -134,7 +133,6 @@ router.get('/profiles', function(request, response, next) {
 });
 
 router.get('/projects', function(request, response, next) {
-  console.log("'/projects' , 'GET'");
   db.list('OPP_projects')
       .then(function (result) {
         var data = result.body.results;
@@ -153,17 +151,12 @@ router.get('/projects', function(request, response, next) {
       });
 });
 
-router.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
-
 router.get('/auth/github',
 function(req, res, done){
   // console.log("req path", req.path);
   // console.log("req session", req.session);
   // console.log("req.query.url", req.query.url);
-  console.log(req.query.url);
+  console.log("query",req.query);
   req.session.returnTo = req.query.url;
   console.log("1req.session.returnTo: ", req.session.returnTo);
   done();
@@ -196,7 +189,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
 ///////////
 
 router.get('/logout', function(req, res){
-  console.log("'/logout' , 'GET'");
+  req.session.returnTo = req.query.url;
   console.log("3req.session.returnTo: ", req.session.returnTo);
   req.logout();
   res.redirect(req.session.returnTo || "/");
