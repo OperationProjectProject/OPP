@@ -4,7 +4,7 @@
 App.Views.AllProfilesView = Backbone.View.extend({
   tagName: 'ul',
 
-  className: 'all_profiles_view',
+  className: 'all_profiles_view row',
 
   render: function() {
     $('body').css({'background':'rgba(244,244,252,1.0)'});
