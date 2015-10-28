@@ -153,6 +153,13 @@ router.get('/projects', function(request, response, next) {
 
 
 router.get('/auth/github',
+function(req, res, done){
+  console.log("req path", req.path);
+  console.log("req session", req.session);
+  console.log("req.query.url", req.query.url);
+  // req.session.returnTo = req.path;
+  done();
+},
   passport.authenticate('github', { scope: [ 'user:email' ] }),
   function(req, res){
     // The request will be redirected to GitHub for authentication, so this
@@ -172,8 +179,8 @@ router.get('/auth/github',
 
 ///keep history route
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
-  console.log("req.session.returnTo: ", req.session.returnTo);
-  console.log("req: ", req.session.path);
+  // console.log("req.session.returnTo: ", req.session.returnTo);
+  // console.log("req: ", req.session.path);
   // console.log("res: ", res);
     res.redirect(req.session.returnTo || "/");
     req.session.returnTo = null;
