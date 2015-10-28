@@ -1,8 +1,10 @@
 var app = app || {};
 
-app.user_session = false;
+//app.user_session = false;
 
 $(function() { //when DOM is ready...
+
+
 		app.profile_content = new ProfileCollection();
 		app.project_content = new ProjectCollection();
 		app.router = new App.Router({
