@@ -29,8 +29,8 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
+// 
+// app.use('/', routes);
 // app.use('/users', users);
 
 
@@ -43,7 +43,9 @@ app.use(session({ secret: 'keyboard cat', saveUninitialized: false, proxy: true,
 // persistent login sessions (recommended).
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(__dirname + '/public'));
+
+
+app.use('/', routes);
 
 var server = app.listen(port, function () {
   console.log("Server is running on port 3000...");
