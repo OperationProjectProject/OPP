@@ -62,7 +62,10 @@ App.Views.NavigationView = Backbone.View.extend({
 		$nav_links.append( $projects_link_li );
 		//Build Log Widget, and append it to it's parent unordered list
 		var $log_widget_list = $('<ul class="nav navbar-nav navbar-right">');
-		this.log_Widget_View = new App.Views.LogWidgetView( {user_session: this.user_session} );
+		this.log_Widget_View = new App.Views.LogWidgetView({
+			user_session: this.user_session ,
+			current_url: this.current_url
+		});
 		$log_widget_list.append( this.log_Widget_View.$el );
 
 		//Append ul to the collapse div
@@ -138,6 +141,7 @@ App.Views.NavigationView = Backbone.View.extend({
 	},
 	initialize: function(opts) {
 		this.user_session = opts.user_session;
+		this.current_url = opts.current_url;
 		this.render();
 	}
 });
