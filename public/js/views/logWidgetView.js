@@ -16,7 +16,7 @@ App.Views.LogWidgetView = Backbone.View.extend({
     console.log(this.$el);
     var $link = $('<a>').attr( 'href', "/auth/github?url=" + this.current_url ).text( 'Login with Github' );
     this.$el.append( $link );
-    return this
+    return this;
   } ,
 
   render_user_session: function() {

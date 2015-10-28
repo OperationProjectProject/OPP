@@ -18,8 +18,8 @@ App.Router = Backbone.Router.extend({
   } ,
 
   index: function(){
-    console.log("%cRouter '/'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;")
-    var current_url = '/'
+    console.log("%cRouter '/'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+    var current_url = '/';
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
