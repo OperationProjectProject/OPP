@@ -57,8 +57,8 @@
      } ,
      "editable_text": {
        "name": "Mitch Lillie",
-       "title": "" ,
-       "url_id": "" ,
+       "title": "Full-stack developer and designer" ,
+       "url_id": "MitchLillie" ,
        "skills": [
          "Web servers" ,
          "Graphic design" ,
@@ -72,8 +72,8 @@
          "Unix"
        ] ,
        "q_and_a" : [
-         "js_tidbit": "With enough study and ingenuity it is possible to create any kind of function you can imagine." ,
-         "job_hope": "" ,
+         "js_tidbit": "I love its newfound flexibility, especially with frameworks like React and Electron" ,
+         "job_hope": "A challenging but supportive environment with a good blend of structure and time to experiment and explore." ,
          "politics": ""
        ]
      } ,
@@ -100,7 +100,7 @@
      "github_username": ""
    } ,
    "project_reference": [
-     "site_project_id": "03" ,
+     "site_project_id": "" ,
    ] ,
    "profile_content": {
      "img_urls": {
@@ -115,8 +115,8 @@
      } ,
      "editable_text": {
        "name": "Jason Siren",
-       "title": "UX Developer" ,
-       "url_id": "JasonSiren" ,
+       "title": "UX Designer" ,
+       "url_id": "JTSiren" ,
        "skills": [
          "CSS" ,
          "SQL" ,
@@ -130,15 +130,14 @@
          ""
        ] ,
        "q_and_a" : [
-         "js_tidbit": "I feel safe knowing that i can console.log(this); as often as I need to." ,
-         "job_hope": "UX Developer" ,
+         "js_tidbit": "With enough study and ingenuity it is possible to create any kind of function you can imagine." ,
+         "job_hope": "Entry level Database management or internship in Web and UX design" ,
          "politics": ""
        ]
      } ,
      "checkbox_content" : {
        "work_status": [
          "Looking for an Internship" ,
-         "Looking for Freelance work" ,
          "Looking for Full-Time work"
        ]
      } ,
@@ -182,22 +181,20 @@
         "HTML/CSS"
       ] ,
       "tools": [
-        "Javascript" ,
-        "BDD" ,
-        "HTML5/CSS" ,
-        "Informative Architecture" ,
-        "User Research"
+        "Backbone" ,
+        "Jade" ,
+        "Bootstrap" ,
+        "Handlebars" ,
+        "Orchestrate"
       ] ,
       "q_and_a" : [
-        "js_tidbit": "I feel safe knowing that i can console.log(this); as often as I need to." ,
-        "job_hope": "UX Developer" ,
+        "js_tidbit": "That everything is a puzzle that can be solved a million ways but it is up to you to find the best way." ,
+        "job_hope": "I would like a job that is open to hiring new devs so I can start a successful career in the the field." ,
         "politics": ""
       ]
     } ,
     "checkbox_content" : {
       "work_status": [
-        "Looking for an Internship" ,
-        "Looking for Freelance work" ,
         "Looking for Full-Time work"
       ]
     } ,
@@ -218,8 +215,7 @@
     "github_username": ""
   } ,
   "project_reference": [
-    "site_project_id": "01" ,
-    "site_project_id": "zx01"
+    "site_project_id": ""
   ] ,
   "profile_content": {
     "img_urls": {
@@ -243,22 +239,21 @@
         "Iterative prototyping"
       ] ,
       "tools": [
-        "Javascript" ,
-        "BDD" ,
-        "HTML5/CSS" ,
-        "Informative Architecture" ,
-        "User Research"
+        "Node" ,
+        "Github" ,
+        "Express" ,
+        "Backbone" ,
+        "Jquery"
       ] ,
       "q_and_a" : [
-        "js_tidbit": "I feel safe knowing that i can console.log(this); as often as I need to." ,
-        "job_hope": "UX Developer" ,
+        "js_tidbit": "I like how it has become so integrated into the very fabric of the internet." ,
+        "job_hope": "A job that will allow me to grow and develop my skill set as a developer. I know where I see myself in the next 5 years and I'm looking for a company that shares that vision." ,
         "politics": ""
       ]
     } ,
     "checkbox_content" : {
       "work_status": [
         "Looking for an Internship" ,
-        "Looking for Freelance work" ,
         "Looking for Full-Time work"
       ]
     } ,
@@ -279,8 +274,8 @@
     "github_username": ""
   } ,
   "project_reference": [
-    "site_project_id": "01" ,
-    "site_project_id": "zx01"
+    "site_project_id": "" ,
+    "site_project_id": ""
   ] ,
   "profile_content": {
     "img_urls": {
@@ -338,101 +333,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{
-  "name": "Do Nguyen",
-  "title": "Web Developer",
-  "github_url": "https://github.com/yahwin",
-  "personal": "www.yahnguyen.com",
-  "linkedin": "https://www.linkedin.com/in/yahnguyen",
-  "twitter": "https://twitter.com/yahwinn",
-  "url_id":"yahwinn",
-  "skills": ["Patience", "An Eye for Detail", "Dogged Determination"],
-  "tools": ["Node", "Github", "Express", "Backbone", "Jquery"],
-  "favorite": "I like how it has become so integrated into the very fabric of the internet",
-  "work_status": ["Looking for an Intership", "looking for Full-Time work"] ,
-  "job_hope": "A job that will allow me to grow and develop my skill set as a developer. I know where I see myself in the next 5 years and I'm looking for a company that share that vision",
-  "Projects": ["MixTapez"],
-  "proj_info": {
-    "MixTapez":{
-      "desc" :"Bringing the mixtape into the digital age. We are designing a platform for people to use Youtube and Soundcloud to quicklu and easily create the perfect mixtape for any situation",
-      "tools":[
-        "Meteor",
-        "MongoDB",
-        "Youtube API",
-        "Soundcloud API"
-      ],
-      "owners":["Do Nyugen","Ty Brenner", "Nathan Bennett"]
-    }
-  }
-}
-
-{
-  "name": "Matt Kelley",
-  "title": "Fullstack JS Dev",
-  "github_url": "https://github.com/mkelley2",
-  "personal": "",
-  "linkedin": "https://www.linkedin.com/pub/matthew-kelley/107/199/728",
-  "twitter": "https://twitter.com/MattKelley_Dev",
-  "url_id":"MattKelley_Dev",
-  "skills": ["JavaScript", "Backbone", "HTML/CSS"],
-  "tools": ["Backbone", "Jade", "Bootstrap", "Handlebars", "Orchestrate"],
-  "favorite": "That everything is a puzzle that can be solved a million ways but it is up to you to find the best way.",
-  "work_status":["Looking for Full-Time work"] ,
-  "job_hope": "I would like a job that is open to hiring new devs so I can start a successful career in the field",
-  "Projects": ["OPP"],
-  "proj_info": {
-    "MixTapez":{
-      "desc" :"A website that people can share, display and show off their github projects",
-      "tools":[
-        "Bootstrap",
-        "Backbone",
-        "Orchestrate",
-        "Chai"
-      ],
-      "owners":["Matt Kelley","Pat Harry", "Adam Taitano"]
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
  *
  *
@@ -456,45 +356,6 @@
  *
  */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{
-
-  "owners":["Matt Kelley","Pat Harry", "Adam Taitano"],
-
-  "project_url_id":"OPP",
-  "title": "OPP",
-  "mvp" :"A web platform for members of our community to showcase their work."
-  "tech_used": [
-    "JavaScript",
-    "Backbone.js",
-    "Orchestrate",
-    "Mocha",
-    "Node"
-  ]
-}
 
 
 /** OPP **///                      -- Matt & Pat

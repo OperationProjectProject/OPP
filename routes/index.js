@@ -14,6 +14,7 @@ var partials = require('express-partials');
 var GITHUB_CLIENT_ID = config.github_client_id;
 var GITHUB_CLIENT_SECRET = config.github_client_secret;
 
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -52,11 +53,11 @@ router.use(passport.session());
 router.get('/', function(request, response, next) {
   console.log("'/' , 'GET'");
   if(request.user){
-    response.render('index', { title: request.user.username , layout: 'layout', user:request.user.id});
+    response.render('index', { title: request.user.username , layout: 'layout', user:request.user.id , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!request.user");
-    response.render('index', { title: 'OPP' , layout: 'layout'});
+    response.render('index', { title: 'OPP' , layout: 'layout' , banana:'red' , client_user_session: false });
   }
 });
 
@@ -89,12 +90,13 @@ function ensureAuthenticated(req, res, next) {
     console.log("req.path: ", req.path);
     req.session.returnTo = req.path;
     return next(); }
-    
-  // req.session.returnTo = req.path; 
+
+  // req.session.returnTo = req.path;
   else{
     // res.redirect('/');
     console.log("somthing");
   }
+
   // res.render('index', { title: 'OPP' , layout: 'layout'});
   // console.log("not logged in");
 }
@@ -184,7 +186,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
   // console.log("res: ", res);
     res.redirect(req.session.returnTo || "/");
     req.session.returnTo = null;
-}); 
+});
 ///////////
 
 router.get('/logout', function(req, res){

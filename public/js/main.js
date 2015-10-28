@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.user_session = false;
+
 
 $(function() { //when DOM is ready...
 		app.profile_content = new ProfileCollection();
@@ -10,6 +10,5 @@ $(function() { //when DOM is ready...
 			profiles: app.profile_content ,
 			projects: app.project_content
 		});
-		console.log("history ran");
 		Backbone.history.start();
 });
