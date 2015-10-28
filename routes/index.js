@@ -153,13 +153,18 @@ router.get('/projects', function(request, response, next) {
       });
 });
 
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 router.get('/auth/github',
 function(req, res, done){
-  console.log("req path", req.path);
-  console.log("req session", req.session);
-  console.log("req.query.url", req.query.url);
-  // req.session.returnTo = req.path;
+  // console.log("req path", req.path);
+  // console.log("req session", req.session);
+  // console.log("req.query.url", req.query.url);
+  req.session.returnTo = req.query.url;
+  console.log("1req.session.returnTo: ", req.session.returnTo);
   done();
 },
   passport.authenticate('github', { scope: [ 'user:email' ] }),
@@ -181,7 +186,7 @@ function(req, res, done){
 
 ///keep history route
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
-  // console.log("req.session.returnTo: ", req.session.returnTo);
+  console.log("2req.session.returnTo: ", req.session.returnTo);
   // console.log("req: ", req.session.path);
   // console.log("res: ", res);
     res.redirect(req.session.returnTo || "/");
