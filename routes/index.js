@@ -14,8 +14,6 @@ var partials = require('express-partials');
 var GITHUB_CLIENT_ID = config.github_client_id;
 var GITHUB_CLIENT_SECRET = config.github_client_secret;
 
-console.log(config.github_client_id)
-console.log(config.github_client_secret)
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -55,9 +53,7 @@ router.use(passport.session());
 router.get('/', function(request, response, next) {
   console.log("'/' , 'GET'");
   if(request.user){
-
-    response.render('index', { title: request.user.username , layout: 'layout', user:request.user.id});
-
+    response.render('index', { title: request.user.username , layout: 'layout', user:request.user.id , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!request.user");

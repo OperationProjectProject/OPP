@@ -61,6 +61,7 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
   initialize: function( opts ) {
     if ( opts.user_session === false ){
+      console.log("%c opts.user_session === false; ","color:rgba(210,10,10,1.0);font-size:2.5em;");
       this.user_session = false;
       this.render_no_user_session();
     } else {
