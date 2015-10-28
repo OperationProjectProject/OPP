@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.user_session = true;
+app.user_session = false;
 
 $(function() { //when DOM is ready...
 		app.profile_content = new ProfileCollection();
