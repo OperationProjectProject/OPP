@@ -52,7 +52,7 @@ router.use(passport.session());
 router.get('/', function(request, response, next) {
   console.log("'/' , 'GET'");
   if(request.user){
-    response.render('index', { title: 'Different' , layout: 'layout', user:request.user.id});
+    response.render('index', { title: request.user.username , layout: 'layout', user:request.user.id});
   }
   else{
     console.log("!request.user");
@@ -65,30 +65,36 @@ router.get('/test', function(request, response, next) {
   response.render('index', { title: 'OPP' , layout: 'tests_layout'});
 });
 
-router.get('/account',ensureAuthenticated, function(request, response, next){
-  console.log("'/account' , 'GET'");
-  db.list('OPP_users')
-      .then(function (result) {
-        var data = result.body.results;
-        var mapped = data.map(function (element, index) {
-          //console.log(element.value);
-          if(req.user.profileUrl===element.value.github_url){
-            console.log("user logged in");
-          }else{
-            console.log("this is a new user");
-          }
-        });
-        //console.log(mapped);
-        response.send(mapped);
-      });
-
-});
+// router.get('/account',ensureAuthenticated, function(request, response, next){
+//   console.log("'/account' , 'GET'");
+//   // db.list('OPP_users')
+//   //     .then(function (result) {
+//   //       var data = result.body.results;
+//   //       var mapped = data.map(function (element, index) {
+//   //         //console.log(element.value);
+//   //         if(request.user.profileUrl===element.value.github_url){
+//   //           console.log("user logged in");
+//   //         }else{
+//   //           console.log("this is a new user");
+//   //         }
+//   //       });
+//   //       //console.log(mapped);
+//   //       response.send(mapped);
+//   //     });
+//   response.send(request.user);
+// });
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
+    console.log("req.path: ", req.path);
+    req.session.returnTo = req.path;
     return next(); }
-  res.redirect('/login');
-
+    
+  // req.session.returnTo = req.path; 
+  else{
+    // res.redirect('/');
+    console.log("somthing");
+  }
   // res.render('index', { title: 'OPP' , layout: 'layout'});
   // console.log("not logged in");
 }
@@ -153,13 +159,26 @@ router.get('/auth/github',
     // function will not be called.
 });
 
-router.get( '/auth/github/callback',
-  passport.authenticate('github', {successRedirect:"/", failureRedirect: '/' } ) ,
-  function(req, res) {
-    console.log(req);
-    console.log(res)
-  }
-);
+////////Old route
+
+// router.get( '/auth/github/callback',
+//   passport.authenticate('github', {successRedirect:"/account", failureRedirect: '/' } ) ,
+//   function(req, res) {
+//     console.log("req: ", req);
+//     console.log("res: ", res);
+//   }
+// );
+//////////
+
+///keep history route
+router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
+  console.log("req.session.returnTo: ", req.session.returnTo);
+  console.log("req: ", req.session.path);
+  // console.log("res: ", res);
+    res.redirect(req.session.returnTo || "/");
+    req.session.returnTo = null;
+}); 
+///////////
 
 router.get('/logout', function(req, res){
   console.log("'/logout' , 'GET'");
