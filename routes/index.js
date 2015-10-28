@@ -163,6 +163,7 @@ function(req, res, done){
   // console.log("req path", req.path);
   // console.log("req session", req.session);
   // console.log("req.query.url", req.query.url);
+  console.log(req.query.url);
   req.session.returnTo = req.query.url;
   console.log("1req.session.returnTo: ", req.session.returnTo);
   done();
@@ -196,8 +197,10 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
 
 router.get('/logout', function(req, res){
   console.log("'/logout' , 'GET'");
+  console.log("3req.session.returnTo: ", req.session.returnTo);
   req.logout();
   res.redirect(req.session.returnTo || "/");
+  req.session.returnTo = null;
 });
 
 // router.post('/register', function(request, response, next) {
