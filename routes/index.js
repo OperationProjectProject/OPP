@@ -197,7 +197,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
 router.get('/logout', function(req, res){
   console.log("'/logout' , 'GET'");
   req.logout();
-  res.redirect('/');
+  res.redirect(req.session.returnTo || "/");
 });
 
 // router.post('/register', function(request, response, next) {
