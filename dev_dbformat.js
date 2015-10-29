@@ -174,7 +174,7 @@
     "user_editable_text": {
       "name": "Matt Kelley",
       "title": "Fullstack JS Developer" ,
-      "url_id": "MattKelley" ,
+      "url_id": "mkelley2" ,
       "skills": [
         "Javascript" ,
         "Backbone" ,
@@ -210,7 +210,7 @@
     "github_id": "",
     "github_email": "",
     "github_display_name": "",
-    "github_url": "",
+    "github_url": "https://github.com/yahwin",
     "github_avatar": "",
     "github_username": ""
   } ,
@@ -232,7 +232,7 @@
     "editable_text": {
       "name": "Do Nguyen",
       "title": "Web Developer" ,
-      "url_id": "PatHarryUX" ,
+      "url_id": "do" ,
       "skills": [
         "User Centered Product Design" ,
         "Full Stack Web Development" ,
@@ -268,7 +268,7 @@
   "github_api_data": {
     "github_id": "",
     "github_email": "",
-    "github_display_name": "",
+    "github_display_name": "https://github.com/PatHarryUX",
     "github_url": "",
     "github_avatar": "",
     "github_username": ""

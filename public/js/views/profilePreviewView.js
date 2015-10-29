@@ -5,37 +5,11 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
   tagName: 'li' ,
   className: 'profile_preview card row',
   render: function(){
-
-console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
-//console.log(this);
-    /*
-    //Mini-views in console
-    //Can be removed for production code
-    console.log("====================================================================================================");
-    console.log("%c" + this.model.attributes.name,
-      "color:rgba(51,51,51,1.0);\
-      font-size:2em;\
-      text-transform:uppercase;");
-    console.log("%c" + this.model.attributes.title,
-      "color:rgba(51,51,51,1.0);\
-      font-size:1.25em;\
-      text-transform:uppercase;");
-    console.log("  - "+ "%c" + this.model.attributes.github_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-    console.log("  - "+ "%c" + this.model.attributes.personal_site_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-    console.log("  - "+ "%c" + this.model.attributes.linkedin_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-    console.log("  - "+ "%c" + this.model.attributes.twitter_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-    console.log("\n\n\n");
-*/
-
-
+    console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     var $profile_link = $('<a href="/#profiles/'+this.model.attributes.url_id+'" class="preview_link">');
-
     var $text_div = $('<div class="col-sm-12 col-lg-6">');
     var $user_name = $('<h2 class="user_name">').text(this.model.attributes.name);
     var $user_title = $('<h3 class="user_title">').text(this.model.attributes.title);
-
-    console.log( $user_name );
-    console.log( $user_title );
 
     [ $user_name , $user_title ].forEach( function(e,i){
       $text_div.append( e );
@@ -44,7 +18,6 @@ console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em
     $profile_link.append( $text_div );
 
     this.$el.append($profile_link);
-
   } ,
   initialize: function(){
     this.listenTo(this.model, "change", this.render);

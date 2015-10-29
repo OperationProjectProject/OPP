@@ -30,31 +30,21 @@ passport.use('github', new GitHubStrategy({
     callbackURL: "http://127.0.0.1:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification, for effect...
     process.nextTick(function () {
-      // To keep the example simple, the user's GitHub profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the GitHub account with a user record in your database,
-      // and return that user instead.
       return done(null, profile);
     });
   }
 ));
 
-
-// router.use(methodOverride());
-// Initialize Passport!  Also use passport.session() middleware, to support
-// persistent login sessions (recommended).
 router.use(passport.initialize());
 router.use(passport.session());
 router.use(logger('dev'));
-
 
 //----------------------------------------------
 
 router.get('/', function(request, response, next) {
   if(request.user){
-    response.render('index', { title: request.user.username , layout: 'layout', user:request.user.id , banana:'yellow' , client_user_session: true});
+    response.render('user_session', { title: request.user.username , layout: 'layout', user:request.user.id , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!request.user");
@@ -66,45 +56,18 @@ router.get('/test', function(request, response, next) {
   response.render('index', { title: 'OPP' , layout: 'tests_layout'});
 });
 
-// router.get('/account',ensureAuthenticated, function(request, response, next){
-//   console.log("'/account' , 'GET'");
-//   // db.list('OPP_users')
-//   //     .then(function (result) {
-//   //       var data = result.body.results;
-//   //       var mapped = data.map(function (element, index) {
-//   //         //console.log(element.value);
-//   //         if(request.user.profileUrl===element.value.github_url){
-//   //           console.log("user logged in");
-//   //         }else{
-//   //           console.log("this is a new user");
-//   //         }
-//   //       });
-//   //       //console.log(mapped);
-//   //       response.send(mapped);
-//   //     });
-//   response.send(request.user);
-// });
-
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     console.log("req.path: ", req.path);
     req.session.returnTo = req.path;
-    return next(); }
-
-  // req.session.returnTo = req.path;
-  else{
-    // res.redirect('/');
+    return next();
+  }
+  else {
     console.log("somthing");
   }
-
-  // res.render('index', { title: 'OPP' , layout: 'layout'});
-  // console.log("not logged in");
 }
 
 router.get('/profiles', function(request, response, next) {
-  // var id = request.params.id;
-  // console.log('request.params: ' , request.params);
-  //console.log('Sending profile to',id);
   db.list('OPP_users')
       .then(function (result) {
         var data = result.body.results;
@@ -167,18 +130,7 @@ function(req, res, done){
     // function will not be called.
 });
 
-////////Old route
-
-// router.get( '/auth/github/callback',
-//   passport.authenticate('github', {successRedirect:"/account", failureRedirect: '/' } ) ,
-//   function(req, res) {
-//     console.log("req: ", req);
-//     console.log("res: ", res);
-//   }
-// );
-//////////
-
-///keep history route
+//keep history route
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
   console.log("2req.session.returnTo: ", req.session.returnTo);
   // console.log("req: ", req.session.path);
@@ -186,7 +138,6 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
     res.redirect(req.session.returnTo || "/");
     req.session.returnTo = null;
 });
-///////////
 
 router.get('/logout', function(req, res){
   req.session.returnTo = req.query.url;
@@ -195,32 +146,6 @@ router.get('/logout', function(req, res){
   res.redirect(req.session.returnTo || "/");
   req.session.returnTo = null;
 });
-
-// router.post('/register', function(request, response, next) {
-//   var name = request.body.name;
-//   var email = request.body.email;
-//   var password = request.body.password;
-//   var confirmPass = request.body.confirmPass;
-//   var formInfo = {name: name, email: email, password: password, confirmPass: confirmPass};
-//   if (password === confirmPass) {
-//   pg.connect(conString, function(err, client, done) {
-//     if(err) {
-//       return console.error('error fetching client from pool', err);
-//     }
-//     client.query("insert into users (name, email, password) values ('"+name+"', '"+email+"', '"+password+"')", function(err, result) {
-//       done();
-//       console.log(result);
-//       if(err) {
-//         return console.error('error running query', err);
-//       }
-//     });
-//   });
-//     response.send(formInfo);
-// }
-// else {
-//   response.send('error');
-// }
-// });
 
 
 module.exports = router;

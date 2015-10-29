@@ -1,8 +1,6 @@
 <div id="app"></div>
 <script type="text/javascript">
-
-    app.user_session = {{ client_user_session }};
-    //console.log( "%c{{ banana }} banana" , "font-size: 4em");
-    //console.log( {{ client_user_session }} );
-
+  var app = app || {};
+  app.user_session = {{ client_user_session }};
 </script>
+<script type="text/javascript" src="js/main.js"></script>

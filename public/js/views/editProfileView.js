@@ -1,5 +1,5 @@
 // var app = app || {};
-
+/*
 App.Views.EditProfileView = Backbone.View.extend({
   render: function() {
     console.log(" ---- EditProfileView rendered ---- ");
@@ -7,3 +7,4 @@ App.Views.EditProfileView = Backbone.View.extend({
 	initialize: function() {
 	}
 });
+*/
