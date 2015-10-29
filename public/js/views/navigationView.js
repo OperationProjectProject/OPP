@@ -28,35 +28,99 @@ App.Views.NavigationView = Backbone.View.extend({
 		$toggle_button.append( $sr_toggle );
 		$toggle_button.append( $hamburger );
 
-		var $brand_link = $( '<a class="navbar-brand">' ).attr( 'href', '#' ).text('Project(project)');
+		var randomNinjaEntrance = function() {
+			//console.log("randomNinjaEntrance");
+			var str = "hello ---- this is the string that has a lot of words, but when this function works, this string will actually be and empty string, or an animate css class name";
+			//console.log("str: " , str);
+			function getRandomIntInclusive(min, max) {
+			  return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			var diceRoll = getRandomIntInclusive( 1 , 12 );
+			//console.log("DiceRoll: " , diceRoll );
+			switch (diceRoll) {
+			  case 1:
+					str = "bounceInRight";
+			    break;
+			  case 2:
+					str = "bounceInLeft";
+			    break;
+			  case 3:
+					str = "bounceInDown";
+			    break;
+			  case 4:
+					str = "bounceInUp";
+			    break;
+			  case 5:
+					str = "zoomin";
+					break;
+			  case 6:
+					str = "fadeInDownBig";
+			    break;
+				case 7:
+					str = "fadeInUpBig";
+				  break;
+				case 8:
+					str = "fadeIn";
+					break;
+				case 9:
+					str = "fadeIn";
+					break;
+				case 10:
+					str = "";
+					break;
+				case 11:
+					str = "";
+					break;
+				case 12:
+					str = "bounceInTop";
+					break;
+			  default:
+			    str = "";
+			}
+			return str;
+		}
 
+		var $brand_link = $( '<a class="navbar-brand">' ).attr( 'href', '#' );
+		var $demo_day_ninja_h1 = $( '<h1 id="brand_logo_h1">' )
+			.html('	<span class="logo_demo_day">DemoDay</span> \
+							<span class="logo_dot animated fadeIn">.</span> \
+							<span class="logo_ninja animated ' + randomNinjaEntrance() + '">Ninja</span>');
+
+		$brand_link.append( $demo_day_ninja_h1 );
 
 		$navbar_header.append( $toggle_button );
 		$navbar_header.append( $brand_link );
-
-
-
-
-
-
-
-
-
-
-
 
 		//collapse container
 		var $navbar_collapse = $('<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">');
 
 		//nav links -- unordered list
 		var $nav_links = $('<ul class="nav navbar-nav primary_site_content_links">');
+
 		//Build nav links -- anchor elements
-		var $profiles_link_a = $('<a href="#profiles" id="profiles_link">').text('profiles');
-		var $projects_link_a = $('<a href="#projects" id="projects_link">').text('projects');
+		var $profiles_link_a = $('<a href="#profiles" id="profiles_link">').text('profiles').addClass('navigation_link');
+		var $projects_link_a = $('<a href="#projects" id="projects_link">').text('projects').addClass('navigation_link');
+
 		//Build nav links -- list items
 			//And append the anchor elements to their parent list items
 		var $profiles_link_li = $('<li>').append( $profiles_link_a );
 		var $projects_link_li = $('<li>').append( $projects_link_a );
+
+
+		console.log( "%c active_link: " + this.active_link , "color:rgba(220,120,120,0.8); font-size:2em;")
+		if ( this.active_link === "profiles_link_active" ) {
+			$( $profiles_link_a ).parent().addClass("active");
+			$( $profiles_link_a ).append('<span class="sr-only">(current)</span>');
+		} else if ( this.active_link === "projects_link_active" ) {
+			$( $projects_link_a ).parent().addClass("active");
+			$( $projects_link_a ).append('<span class="sr-only">(current)</span>');
+		}
+
+
+
+
+
+
 		//Append profile and project links to their parent unordered list
 		$nav_links.append( $profiles_link_li );
 		$nav_links.append( $projects_link_li );
@@ -142,6 +206,7 @@ App.Views.NavigationView = Backbone.View.extend({
 	initialize: function(opts) {
 		this.user_session = opts.user_session;
 		this.current_url = opts.current_url;
+		this.active_link = opts.active_link;
 		this.render();
 	}
 });
