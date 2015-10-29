@@ -382,13 +382,20 @@
 
 
 
-/** OPP **///                      -- Matt & Pat
+/** OPP **///                 Matt        &       Pat
 {
-  "owner_reference": [] ,
+  "owner_reference": [ "0d66ea50a720ab94" ,"0d66ecfc4320ebd6"] ,
   "project_content": {
     "title": "OPP" ,
     "project_url_id": "OPP" ,
-    "mvp":"A web platform for members of our community to showcase their work." ,
+    "mvp": "A web platform for members of our community to showcase their work." ,
+    "img_urls": {
+      "main_img": "http://placehold.it/100x100"
+    } ,
+    "out_link_urls" : {
+      "github_repo_url": "" ,
+      "live_project_site_url": ""
+    } ,
     "tech_used": [
       "Orchestrate DB" ,
       "Backbone &#38; Bootstrap" ,
@@ -409,6 +416,13 @@
     "title": "Meetworking" ,
     "project_url_id": "Meetworking" ,
     "mvp": "Looking for an elusive job in tech? Lost in the sea of Meetups? Meetworking helps you target up to three companies, showing you the Meetups those employees are attending as well as the events held at that company's location—a quick way to get your foot in the door. See talking points for each attendee and RSVP right through the app!" ,
+    "img_urls": {
+      "main_img": "http://placehold.it/100x100"
+    } ,
+    "out_link_urls" : {
+      "github_repo_url": "" ,
+      "live_project_site_url": ""
+    } ,
     "tech_used": [
       "MySQL" ,
       "Express" ,
@@ -428,6 +442,13 @@
     "title": "MixTapez" ,
     "project_url_id": "MixeTapez" ,
     "mvp": "Bringing the mixtape into the digital age. We are designing a platform for people to use Youtube and Soundcloud to quickly and easily create the perfect mixtape for any situation. ",
+    "img_urls": {
+      "main_img": "http://placehold.it/100x100"
+    } ,
+    "out_link_urls" : {
+      "github_repo_url": "" ,
+      "live_project_site_url": ""
+    } ,
     "tech_used": [
       "Meteor"
     ]
@@ -443,6 +464,13 @@
     "title": "DashMonster" ,
     "project_url_id": "DashMonster" ,
     "mvp": "A Meteor crashed in Portland from which DashMonster emerged to boost both convenience and daily productivity in the lives of users. A quick glance at DashMonster will give you the transit and weather info you need without all the stuff you don't. \n DashMonster is the hyper-focused transit and weather app you need most of the time.",
+    "img_urls": {
+      "main_img": "http://placehold.it/100x100"
+    } ,
+    "out_link_urls" : {
+      "github_repo_url": "" ,
+      "live_project_site_url": ""
+    } ,
     "tech_used": [
       "Meteor JS - JavaScript framework and server" ,
       "Google Maps API - geolocation" ,

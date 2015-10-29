@@ -72,7 +72,7 @@ router.get('/profiles', function(request, response, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          console.log(element.path.key);
+          console.log("profile: " ,element.path.key);
           /*
           console.log(element);
           console.log(element.value);
@@ -116,6 +116,7 @@ router.get('/projects', function(request, response, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
+          console.log("project: " , element.path.key);
           //console.log(element);
           /*
           console.log(element.value.project_content.project_url_id);
