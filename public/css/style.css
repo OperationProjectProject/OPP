@@ -35,13 +35,13 @@
 
 
 a, button {
-  transition: background .4s, border .4s, color .4s;
+  transition: background .3s, border .3s, color .3s;
   transition-timing-function: ease-out;
 }
 
 body {
   background: white;
-  transition: background .4s;
+  transition: background .3s;
   transition-timing-function: ease-out;
 }
 
@@ -58,9 +58,27 @@ footer p {
   color:rgba(100,100,100,1.0);
 }
 
+a#profiles_link.navigation_link ,
+a#projects_link.navigation_link  {
+  /*color: rgba(69,130,236,1.0);*/
+  color: rgba(100,100,100,1.0);
+}
+
+
+.active a#profiles_link.navigation_link ,
+.active a#projects_link.navigation_link  {
+  /*color: rgba(69,130,236,1.0);*/
+  color: rgba(100,100,100,1.0);
+}
+
 .all_profiles_view, .all_projects_view {
   padding-left: 0;
   padding-right: 0;
+}
+
+.centerdiv {
+  background: white;
+  min-height: 450px;
 }
 
 .profile_preview, .project_preview {
@@ -80,11 +98,6 @@ footer p {
 
 .profile_preview .preview_link:hover, .project_preview .preview_link:hover {
   background: rgba(240,240,240,1.0);
-}
-
-.centerdiv {
-  background: white;
-  min-height: 450px;
 }
 
 #log_widget_toggle {
@@ -124,13 +137,37 @@ footer p {
 }
 
 .fadeIn {
-  animation-duration: .5s;
+  animation-duration: .3s;
   animation-timing-function: ease-out;
 }
 
 .user_title {
   font-weight: 300;
 }
+
+
+.navbar-brand:hover #brand_logo_h1{
+    color: rgba(120,120,120,1.0);;
+}
+
+#brand_logo_h1 {
+  color: rgba(200,200,200,1.0);
+  font-weight: 700;
+  font-size: 3rem;
+  margin-top: 0.175rem;
+  transition: color .6s;
+  transition-timing-function: ease-in-out;
+}
+#brand_logo_h1 .logo_dot{
+  font-family: 'Open Sans', sans-serif;
+  animation-duration: .6s;
+ }
+#brand_logo_h1 .logo_ninja {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2.5rem;
+  animation-duration: .45s;
+ }
+
 
 @media screen and ( max-width: 750px ) {
   .jumbotron {
@@ -144,5 +181,10 @@ footer p {
 
   .profile_preview, .project_preview {
     margin: 3.5%;
+  }
+
+  #brand_logo_h1 {
+    font-size: 3.5rem;
+    margin-top: .2rem;
   }
 }

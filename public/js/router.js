@@ -41,7 +41,8 @@ App.Router = Backbone.Router.extend({
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
-      current_url: current_url
+      current_url: current_url ,
+      active_link: "profiles_link_active"
     });
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
@@ -73,7 +74,8 @@ App.Router = Backbone.Router.extend({
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
-      current_url: current_url
+      current_url: current_url ,
+      active_link: "projects_link_active"
     });
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
