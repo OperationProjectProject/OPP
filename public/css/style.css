@@ -71,7 +71,8 @@ a#projects_link.navigation_link  {
   color: rgba(100,100,100,1.0);
 }
 
-.all_profiles_view, .all_projects_view {
+.all_profiles_view ,
+.all_projects_view {
   padding-left: 0;
   padding-right: 0;
 }
@@ -81,11 +82,13 @@ a#projects_link.navigation_link  {
   min-height: 450px;
 }
 
-.profile_preview, .project_preview {
+.profile_preview ,
+.project_preview {
   list-style-type: none;
 }
 
-.profile_preview a.preview_link, .project_preview a.preview_link {
+.profile_preview a.preview_link ,
+.project_preview a.preview_link {
   height: 250px;
   border-radius: 4px;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.07);
@@ -96,21 +99,9 @@ a#projects_link.navigation_link  {
   margin-bottom: 40px;
 }
 
-.profile_preview .preview_link:hover, .project_preview .preview_link:hover {
+.profile_preview .preview_link:hover ,
+.project_preview .preview_link:hover {
   background: rgba(240,240,240,1.0);
-}
-
-#log_widget_toggle {
-  padding: 0;
-}
-
-#log_widget_toggle img{
-  border-radius: 100%;
-}
-
-#log_widget_toggle .caret{
-  margin-left: 10px;
-  border-radius: 100%;
 }
 
 .jumbotron {
@@ -123,10 +114,6 @@ a#projects_link.navigation_link  {
   margin: 1em 1em 0 0;
 }
 
-.navbar {
-  padding: 0 0;
-  transition: padding 1s;
-}
 
 .top-nav-collapse {
   padding: 0;
@@ -141,17 +128,21 @@ a#projects_link.navigation_link  {
   animation-timing-function: ease-out;
 }
 
-.user_title {
-  font-weight: 300;
+.navbar {
+  padding: 0 0;
+  transition: padding 1s;
 }
-
 
 .navbar-brand:hover #brand_logo_h1{
     color: rgba(120,120,120,1.0);;
 }
 
+.user_title {
+  font-weight: 300;
+}
+
 #brand_logo_h1 {
-  color: rgba(200,200,200,1.0);
+  color: rgba(160,160,160,1.0);
   font-weight: 700;
   font-size: 3rem;
   margin-top: 0.175rem;
@@ -168,6 +159,23 @@ a#projects_link.navigation_link  {
   animation-duration: .45s;
  }
 
+ #log_widget_toggle {
+   padding: 0;
+ }
+
+ #log_widget_toggle img{
+   border-radius: 100%;
+ }
+
+ #log_widget_toggle .caret{
+   color: rgba(160,160,160,1.0);
+   margin-left: 10px;
+
+   border-top:6px dashed;
+   border-right:6px solid transparent;
+   border-left:6px solid transparent;
+
+ }
 
 @media screen and ( max-width: 750px ) {
   .jumbotron {
@@ -179,7 +187,8 @@ a#projects_link.navigation_link  {
     margin: 1em auto;
   }
 
-  .profile_preview, .project_preview {
+  .profile_preview ,
+  .project_preview {
     margin: 3.5%;
   }
 

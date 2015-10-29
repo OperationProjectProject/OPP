@@ -5,6 +5,8 @@ App.Views.ProjectView = Backbone.View.extend({
   tagName: "div",
   className: "project_view",
   render: function() {
+    $('body').css({'background':'rgba(252,252,244,1.0)'});
+
     console.log("%cProjectView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
     for( var i=0; i < this.collection.models.length; i++ ){
