@@ -1,7 +1,4 @@
 var app = app || {};
-
-
-
 $(function() { //when DOM is ready...
 		app.profile_content = new ProfileCollection();
 		app.project_content = new ProjectCollection();
@@ -10,5 +7,8 @@ $(function() { //when DOM is ready...
 			profiles: app.profile_content ,
 			projects: app.project_content
 		});
+		//This sets up routes with hashtags. Like /#blog , /#products , /#users
 		Backbone.history.start();
+		//This sets up routes with hashtags. Like /blog , /products , /users
+		//Backbone.history.start({ pushState: true });
 });

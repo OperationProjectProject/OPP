@@ -174,7 +174,7 @@
     "user_editable_text": {
       "name": "Matt Kelley",
       "title": "Fullstack JS Developer" ,
-      "url_id": "MattKelley" ,
+      "url_id": "mkelley2" ,
       "skills": [
         "Javascript" ,
         "Backbone" ,
@@ -232,7 +232,7 @@
     "editable_text": {
       "name": "Do Nguyen",
       "title": "Web Developer" ,
-      "url_id": "PatHarryUX" ,
+      "url_id": "do" ,
       "skills": [
         "User Centered Product Design" ,
         "Full Stack Web Development" ,

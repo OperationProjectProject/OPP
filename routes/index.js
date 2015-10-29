@@ -54,7 +54,7 @@ router.use(logger('dev'));
 
 router.get('/', function(request, response, next) {
   if(request.user){
-    response.render('index', { title: request.user.username , layout: 'layout', user:request.user.id , banana:'yellow' , client_user_session: true});
+    response.render('user_session', { title: request.user.username , layout: 'layout', user:request.user.id , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!request.user");
