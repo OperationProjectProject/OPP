@@ -361,12 +361,7 @@
 /** OPP **///                      -- Matt & Pat
 {
   "site_project_id": "" ,
-  "owner_reference": [
-    {
-      "site_user_id": "" ,
-      "site_user_id": ""
-    } ,
-  ] ,
+  "owner_reference": [] ,
   "project_content": {
     "title": "OPP" ,
     "project_url_id": "OPP" ,
@@ -387,12 +382,7 @@
 /** Meetworking **///                      -- Mitch & Jeff
 {
   "site_project_id": "" ,
-  "owner_reference": [
-    {
-      "site_user_id": "" ,
-      "site_user_id": ""
-    } ,
-  ] ,
+  "owner_reference": [] ,
   "project_content": {
     "title": "Meetworking" ,
     "project_url_id": "Meetworking" ,
@@ -412,13 +402,7 @@
 /** MixTapez **///                      -- Ty, Mitch, and Do
 {
   "site_project_id": "" ,
-  "owner_reference": [
-    {
-      "site_user_id": "" ,
-      "site_user_id": "" ,
-      "site_user_id": ""
-    } ,
-  ] ,
+  "owner_reference": [] ,
   "project_content": {
     "title": "MixTapez" ,
     "project_url_id": "MixeTapez" ,
@@ -434,13 +418,7 @@
 /** DashMonster **///                      -- Jennifer, Jason & Erik
 {
   "site_project_id": "" ,
-  "owner_reference": [
-    {
-      "site_user_id": "" ,
-      "site_user_id": "" ,
-      "site_user_id": ""
-    } ,
-  ] ,
+  "owner_reference": [] ,
   "project_content": {
     "title": "DashMonster" ,
     "project_url_id": "DashMonster" ,

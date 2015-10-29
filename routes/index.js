@@ -100,13 +100,19 @@ router.get('/projects', function(request, response, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          console.log(element.value.project_url_id);
+          console.log(element.value.project_content.project_url_id);
+          console.log(element.value);
+          console.log(element.value.site_project_id);
+          console.log(element.value.site_project_id);
+          console.log(element.value.project_content.title);
+          console.log(element.value.project_content.project_url_id);
+          console.log(element.value.project_content.mvp);
+          console.log(element.value.project_content.tech_used);
           return {
-            title: element.value.title ,
-            project_url_id: element.value.project_url_id,
-            mvp: element.value.desc,
-            tech_used: element.value.tools,
-            owners: element.value.owners
+            title: element.value.project_content.title ,
+            project_url_id: element.value.project_content.project_url_id,
+            mvp: element.value.project_content.mvp,
+            tech_used: element.value.project_content.tech_used
           };
         });
         //console.log(mapped);
