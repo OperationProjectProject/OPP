@@ -14,7 +14,8 @@ App.Router = Backbone.Router.extend({
     'profiles' : 'profiles' ,
     'profiles/:url_id' : 'profiles' ,
     'projects' : 'projects' ,
-    'projects/:project_url_id': 'projects'
+    'projects/:project_url_id': 'projects' ,
+    '*notFound': 'notFound'
   } ,
 
   index: function(){
@@ -92,5 +93,19 @@ App.Router = Backbone.Router.extend({
         project_url_id: project_url_id
       });
     } //end of the project_url_id param 'else' clause
+  } ,
+
+  notFound: function() {
+    console.log("%cnotFound '/'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+    var current_url = '/';
+    $('#app').empty();
+    app.navigationView = new App.Views.NavigationView({
+      user_session: this.user_session ,
+      current_url: current_url
+    });
+    app.centerView = new App.Views.CenterView();
+    app.footerView = new App.Views.FooterView();
+    app.mainView = new App.Views.MainView();
   }
+
 });

@@ -1,10 +1,3 @@
 $(document).ready( function() {
-  // js - css "hello world"
-
-/*
-  //Collapse navbar on scroll
-  $(window).scroll(function() {
-    $(".navbar").addClass("top-nav-collapse");
-  });
-*/
+  console.log("%cBootstrap UI","font-size: 2em; color:rgba(200,200,200,1.0);");
 });

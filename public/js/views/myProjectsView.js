@@ -1,4 +1,4 @@
-App.Views.AllProjectsView = Backbone.View.extend({
+App.Views.MyProjectsView = Backbone.View.extend({
   tagName: 'ul' ,
 
   className: 'my_projects_view' ,

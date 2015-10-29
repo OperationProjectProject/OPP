@@ -1,5 +1,5 @@
 // var app = app || {};
-
+/*
 App.Views.EditProjectView = Backbone.View.extend({
   render: function() {
     console.log(" ---- EditProjectView rendered ---- ");
@@ -21,3 +21,4 @@ App.Views.EditProjectView = Backbone.View.extend({
 		this.render();
 	}
 });
+*/
