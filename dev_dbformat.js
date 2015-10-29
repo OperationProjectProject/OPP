@@ -27,11 +27,52 @@
  *
  */
 
+ /* JSON format */
+ {
+    "github_api_data": {
+      "github_id": "",
+      "github_email": "",
+      "github_display_name": "",
+      "github_url": "",
+      "github_avatar": "",
+      "github_username": ""
+    } ,
+    "project_reference": [] ,
+    "profile_content": {
+      "img_urls": {
+        "profile_img": "" ,
+        "cover_photo": "" ,
+        "hero_img": "" ,
+        "action_shot": ""
+      } ,
+      "social_urls": {
+        "personal": "",
+        "linkedin": "",
+        "twitter": ""
+      } ,
+      "editable_text": {
+        "name": "",
+        "title": "" ,
+        "url_id": "" ,
+        "skills": [] ,
+        "tools": [] ,
+        "q_and_a" : {
+            "js_tidbit": "" ,
+            "job_hope": "" ,
+            "politics": ""
+        }
+      } ,
+      "checkbox_content" : {
+        "work_status": []
+      }
+    }
+ }
+ /** JSON format **/
+
 
 
 /* Mitch */
 {
-   "site_user_id": "" ,
    "github_api_data": {
      "github_id": "",
      "github_email": "",
@@ -40,9 +81,7 @@
      "github_avatar": "",
      "github_username": ""
    } ,
-   "project_reference": [
-     "site_project_id": "" ,
-   ] ,
+   "project_reference": [] ,
    "profile_content": {
      "img_urls": {
        "profile_img": "http://placehold.it/100x100" ,
@@ -71,26 +110,25 @@
          "PostgreSQL" ,
          "Unix"
        ] ,
-       "q_and_a" : [
-         "js_tidbit": "I love its newfound flexibility, especially with frameworks like React and Electron" ,
-         "job_hope": "A challenging but supportive environment with a good blend of structure and time to experiment and explore." ,
-         "politics": ""
-       ]
+       "q_and_a" : {
+           "js_tidbit": "I love its newfound flexibility, especially with frameworks like React and Electron" ,
+           "job_hope": "A challenging but supportive environment with a good blend of structure and time to experiment and explore." ,
+           "politics": ""
+       }
      } ,
      "checkbox_content" : {
        "work_status": [
          "Looking for an Internship" ,
          "Looking for Full-Time work"
        ]
-     } ,
-   } ,
+     }
+   }
 }
 /** Mitch **/
 
 
 /** Jason **/
 {
-   "site_user_id": "" ,
    "github_api_data": {
      "github_id": "",
      "github_email": "",
@@ -99,9 +137,7 @@
      "github_avatar": "",
      "github_username": ""
    } ,
-   "project_reference": [
-     "site_project_id": "" ,
-   ] ,
+   "project_reference": [] ,
    "profile_content": {
      "img_urls": {
        "profile_img": "http://placehold.it/100x100" ,
@@ -129,83 +165,27 @@
          "" ,
          ""
        ] ,
-       "q_and_a" : [
+       "q_and_a" : {
          "js_tidbit": "With enough study and ingenuity it is possible to create any kind of function you can imagine." ,
          "job_hope": "Entry level Database management or internship in Web and UX design" ,
          "politics": ""
-       ]
+       }
      } ,
      "checkbox_content" : {
        "work_status": [
          "Looking for an Internship" ,
          "Looking for Full-Time work"
        ]
-     } ,
-   } ,
+     }
+   }
 }
 /** Jason **/
 
 
-/** Matt **/
-{
-  "site_user_id": "" ,
-  "github_api_data": {
-    "github_id": "",
-    "github_email": "",
-    "github_display_name": "",
-    "github_url": "https://github.com/mkelley2/",
-    "github_avatar": "",
-    "github_username": ""
-  } ,
-  "project_reference": [
-    "site_project_id": ""
-  ] ,
-  "profile_content": {
-    "img_urls": {
-      "profile_img": "http://placehold.it/100x100" ,
-      "cover_photo": "http://placehold.it/100x100" ,
-      "hero_img": "http://placehold.it/100x100" ,
-      "action_shot": "http://placehold.it/100x100"
-    } ,
-    "social_urls": {
-      "linkedin": "https://www.linkedin.com/in/mattkelley3",
-      "twitter": "https://twitter.com/MattKelley_Dev"
-    } ,
-    "user_editable_text": {
-      "name": "Matt Kelley",
-      "title": "Fullstack JS Developer" ,
-      "url_id": "mkelley2" ,
-      "skills": [
-        "Javascript" ,
-        "Backbone" ,
-        "HTML/CSS"
-      ] ,
-      "tools": [
-        "Backbone" ,
-        "Jade" ,
-        "Bootstrap" ,
-        "Handlebars" ,
-        "Orchestrate"
-      ] ,
-      "q_and_a" : [
-        "js_tidbit": "That everything is a puzzle that can be solved a million ways but it is up to you to find the best way." ,
-        "job_hope": "I would like a job that is open to hiring new devs so I can start a successful career in the the field." ,
-        "politics": ""
-      ]
-    } ,
-    "checkbox_content" : {
-      "work_status": [
-        "Looking for Full-Time work"
-      ]
-    } ,
-  } ,
-}
-/** Matt **/
 
 
 /** Do **/
 {
-  "site_user_id": "" ,
   "github_api_data": {
     "github_id": "",
     "github_email": "",
@@ -214,9 +194,7 @@
     "github_avatar": "",
     "github_username": ""
   } ,
-  "project_reference": [
-    "site_project_id": ""
-  ] ,
+  "project_reference": [] ,
   "profile_content": {
     "img_urls": {
       "profile_img": "http://placehold.it/100x100" ,
@@ -227,7 +205,7 @@
     "social_urls": {
       "personal": "https://google.com",
       "linkedin": "https://www.linkedin.com",
-      "twitter": "https://twitter.com",
+      "twitter": "https://twitter.com"
     } ,
     "editable_text": {
       "name": "Do Nguyen",
@@ -245,26 +223,25 @@
         "Backbone" ,
         "Jquery"
       ] ,
-      "q_and_a" : [
+      "q_and_a" : {
         "js_tidbit": "I like how it has become so integrated into the very fabric of the internet." ,
         "job_hope": "A job that will allow me to grow and develop my skill set as a developer. I know where I see myself in the next 5 years and I'm looking for a company that shares that vision." ,
         "politics": ""
-      ]
+      }
     } ,
     "checkbox_content" : {
       "work_status": [
         "Looking for an Internship" ,
         "Looking for Full-Time work"
       ]
-    } ,
-  } ,
+    }
+  }
 }
 /** Do **/
 
 
 /** Pat **/
 {
-  "site_user_id": "" ,
   "github_api_data": {
     "github_id": "",
     "github_email": "",
@@ -273,10 +250,7 @@
     "github_avatar": "",
     "github_username": ""
   } ,
-  "project_reference": [
-    "site_project_id": "" ,
-    "site_project_id": ""
-  ] ,
+  "project_reference": [] ,
   "profile_content": {
     "img_urls": {
       "profile_img": "http://placehold.it/100x100" ,
@@ -287,7 +261,7 @@
     "social_urls": {
       "personal": "https://PatrickHarry.com",
       "linkedin": "https://www.linkedin.com/in/PatHarryUX",
-      "twitter": "https://twitter.com/PatHarryUX",
+      "twitter": "https://twitter.com/PatHarryUX"
     } ,
     "editable_text": {
       "name": "Pat Harry",
@@ -305,11 +279,11 @@
         "Informative Architecture" ,
         "User Research"
       ] ,
-      "q_and_a" : [
+        "q_and_a" : {
         "js_tidbit": "I feel safe knowing that i can console.log(this); as often as I need to." ,
         "job_hope": "UX Developer" ,
         "politics": ""
-      ]
+        }
     } ,
     "checkbox_content" : {
       "work_status": [
@@ -317,11 +291,64 @@
         "Looking for Freelance work" ,
         "Looking for Full-Time work"
       ]
-    } ,
-  } ,
+    }
+  }
 }
 /** Pat **/
 
+
+/** Matt **/
+{
+  "github_api_data": {
+    "github_id": "",
+    "github_email": "",
+    "github_display_name": "",
+    "github_url": "https://github.com/mkelley2",
+    "github_avatar": "",
+    "github_username": ""
+  } ,
+  "project_reference": [] ,
+  "profile_content": {
+    "img_urls": {
+      "profile_img": "http://placehold.it/100x100" ,
+      "cover_photo": "http://placehold.it/100x100" ,
+      "hero_img": "http://placehold.it/100x100" ,
+      "action_shot": "http://placehold.it/100x100"
+    } ,
+    "social_urls": {
+      "linkedin": "https://www.linkedin.com/in/mattkelley3",
+      "twitter": "https://twitter.com/MattKelley_Dev"
+    } ,
+    "editable_text": {
+      "name": "Matt Kelley",
+      "title": "Fullstack JS Developer" ,
+      "url_id": "mkelley2" ,
+      "skills": [
+        "Javascript" ,
+        "Backbone" ,
+        "HTML/CSS"
+      ] ,
+      "tools": [
+        "Backbone" ,
+        "Jade" ,
+        "Bootstrap" ,
+        "Handlebars" ,
+        "Orchestrate"
+      ] ,
+      "q_and_a" : {
+        "js_tidbit": "That everything is a puzzle that can be solved a million ways but it is up to you to find the best way." ,
+        "job_hope": "I would like a job that is open to hiring new devs so I can start a successful career in the the field." ,
+        "politics": ""
+      }
+    } ,
+    "checkbox_content" : {
+      "work_status": [
+        "Looking for Full-Time work"
+      ]
+    }
+  }
+}
+/** Matt **/
 
 
 
@@ -360,7 +387,6 @@
 
 /** OPP **///                      -- Matt & Pat
 {
-  "site_project_id": "" ,
   "owner_reference": [] ,
   "project_content": {
     "title": "OPP" ,
@@ -381,7 +407,6 @@
 
 /** Meetworking **///                      -- Mitch & Jeff
 {
-  "site_project_id": "" ,
   "owner_reference": [] ,
   "project_content": {
     "title": "Meetworking" ,
@@ -401,7 +426,6 @@
 
 /** MixTapez **///                      -- Ty, Mitch, and Do
 {
-  "site_project_id": "" ,
   "owner_reference": [] ,
   "project_content": {
     "title": "MixTapez" ,
@@ -417,7 +441,6 @@
 
 /** DashMonster **///                      -- Jennifer, Jason & Erik
 {
-  "site_project_id": "" ,
   "owner_reference": [] ,
   "project_content": {
     "title": "DashMonster" ,
