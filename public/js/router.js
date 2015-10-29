@@ -71,6 +71,8 @@ App.Router = Backbone.Router.extend({
     if ( project_url_id ) {
       current_url += '/'+ project_url_id;
     }
+
+
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
@@ -79,6 +81,7 @@ App.Router = Backbone.Router.extend({
     });
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
+
     //check whether a url_id has been passed to the url
     if ( !project_url_id ) {
       console.log("%c!project_url_id","color:orange; font-size:1.25em;");

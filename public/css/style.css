@@ -77,10 +77,33 @@ a#projects_link.navigation_link  {
   padding-right: 0;
 }
 
+.preview_text {
+  border-top: 1px solid rgba(220,220,220,1.0);
+  box-shadow: inset 0px 1px 0px 0px rgba(200,200,200,1.0);
+  margin-top: 0;
+  padding-left: 0;
+}
+
 .centerdiv {
   background: white;
   min-height: 450px;
 }
+
+
+
+.profile_link {
+  display: block;
+}
+
+.profile_img_preview {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  border-radius: 100%;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+
 
 .profile_preview ,
 .project_preview {
@@ -89,13 +112,14 @@ a#projects_link.navigation_link  {
 
 .profile_preview a.preview_link ,
 .project_preview a.preview_link {
-  height: 250px;
+  /*height: 250px;*/
   border-radius: 4px;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.07);
   text-decoration: none;
-  display: block;
+  width: 100%;
+  display: inline-block;
   background: rgba(255,255,255,1.0);
-  padding: 4em 4em;
+  padding: 5em 5em;
   margin-bottom: 40px;
 }
 
@@ -177,7 +201,134 @@ a#projects_link.navigation_link  {
 
  }
 
-@media screen and ( max-width: 750px ) {
+
+@media (min-width: 993px) and ( max-width: 2048px ) {
+
+  .all_profiles_view ,
+  .all_projects_view {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .profile_img_preview {
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    border-radius: 100%;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+  }
+
+  .profile_preview a.preview_link ,
+  .project_preview a.preview_link {
+    /*height: 250px;*/
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.07);
+    text-decoration: none;
+    width: 100%;
+    display: inline-block;
+    background: rgba(255,255,255,1.0);
+    padding: 5em 5em;
+    margin-bottom: 40px;
+  }
+
+  .profile_preview .preview_link:hover ,
+  .project_preview .preview_link:hover {
+    background: rgba(240,240,240,1.0);
+  }
+
+  .jumbotron {
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
+
+  .jumbotron .btn-lg{
+    margin: 1em 1em 0 0;
+  }
+
+  .top-nav-collapse {
+    padding: 0;
+  }
+  .navbar {
+    padding: 0 0;
+  }
+
+  .navbar-brand:hover #brand_logo_h1{
+      color: rgba(120,120,120,1.0);;
+  }
+
+  .user_name {
+    margin-bottom: 0;
+  }
+  .user_title {
+    font-weight: 300;
+    margin-top: 0;
+  }
+
+  #brand_logo_h1 {
+    color: rgba(160,160,160,1.0);
+    font-weight: 700;
+    font-size: 3rem;
+    margin-top: 0.175rem;
+  }
+  #brand_logo_h1 .logo_ninja {
+    font-size: 2.5rem;
+   }
+
+
+}
+
+
+
+@media (min-width: 769px) and ( max-width: 992px ) {
+
+   .jumbotron {
+     padding: 5%;
+   }
+
+   .jumbotron .btn-lg{
+     display: block;
+     margin: 1em auto;
+   }
+
+   .profile_preview ,
+   .project_preview {
+     margin: 3.5%;
+   }
+
+   #brand_logo_h1 {
+     font-size: 3.5rem;
+     margin-top: .2rem;
+   }
+
+
+   .profile_preview a.preview_link ,
+   .project_preview a.preview_link {
+     border-radius: 4px;
+     padding: 2.5em 2.5em;
+     margin-bottom: 40px;
+   }
+
+   .profile_img_preview {
+     display: block;
+     margin: 0 0;
+     width: 25%;
+   }
+   .preview_text {
+     margin-top: 10%;
+   }
+
+   .user_name {
+     margin-bottom: 0;
+   }
+   .user_title {
+     font-weight: 300;
+     margin-top: 0;
+   }
+
+
+
+ }
+
+@media screen and ( max-width: 768px ) {
   .jumbotron {
     padding: 5%;
   }
@@ -195,5 +346,29 @@ a#projects_link.navigation_link  {
   #brand_logo_h1 {
     font-size: 3.5rem;
     margin-top: .2rem;
+  }
+
+  .profile_preview a.preview_link ,
+  .project_preview a.preview_link {
+    border-radius: 4px;
+    padding: 2em 2em;
+    margin-bottom: 40px;
+  }
+
+  .profile_img_preview {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+  }
+  .preview_text {
+    margin-top: 10%;
+  }
+
+  .user_name {
+    margin-bottom: 0;
+  }
+  .user_title {
+    font-weight: 300;
+    margin-top: 0;
   }
 }
