@@ -93,17 +93,18 @@ router.get('/profiles', function(request, response, next) {
           */
           return {
             name: element.value.profile_content.editable_text.name ,
-            title: element.value.profile_content.editable_text.title,
-            github_url: element.value.github_api_data.github_url,
-            personal_site_url: element.value.profile_content.social_urls.personal,
-            linkedin_url: element.value.profile_content.social_urls.linkedin,
-            twitter_url: element.value.profile_content.social_urls.twitter,
-            url_id: element.value.profile_content.editable_text.url_id,
-            top_skills: element.value.profile_content.editable_text.skills,
-            top_tools: element.value.profile_content.editable_text.tools,
-            js_tidbit: element.value.profile_content.editable_text.q_and_a.js_tidbit,
-            work_status: element.value.profile_content.checkbox_content.work_status,
-            dream_job: element.value.profile_content.editable_text.q_and_a.job_hope,
+            title: element.value.profile_content.editable_text.title ,
+            github_url: element.value.github_api_data.github_url ,
+            profile_img_url: element.value.profile_content.img_urls.profile_img ,
+            personal_site_url: element.value.profile_content.social_urls.personal ,
+            linkedin_url: element.value.profile_content.social_urls.linkedin ,
+            twitter_url: element.value.profile_content.social_urls.twitter ,
+            url_id: element.value.profile_content.editable_text.url_id ,
+            top_skills: element.value.profile_content.editable_text.skills ,
+            top_tools: element.value.profile_content.editable_text.tools ,
+            js_tidbit: element.value.profile_content.editable_text.q_and_a.js_tidbit ,
+            work_status: element.value.profile_content.checkbox_content.work_status ,
+            dream_job: element.value.profile_content.editable_text.q_and_a.job_hope ,
           };
         });
         //console.log(mapped);

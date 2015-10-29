@@ -3,6 +3,7 @@ var ProfileModel = Backbone.Model.extend({
 		name:'',
 		title:'',
 		github_url:'',
+		profile_img_url:'',
 		personal_site_url:'',
 		linkedin_url:'',
 		twitter_url:'',
