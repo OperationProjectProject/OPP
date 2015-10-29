@@ -70,7 +70,6 @@
  /** JSON format **/
 
 
-
 /* Mitch */
 {
    "github_api_data": {
@@ -180,8 +179,6 @@
    }
 }
 /** Jason **/
-
-
 
 
 /** Do **/
