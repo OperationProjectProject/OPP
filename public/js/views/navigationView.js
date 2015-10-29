@@ -35,7 +35,7 @@ App.Views.NavigationView = Backbone.View.extend({
 			function getRandomIntInclusive(min, max) {
 			  return Math.floor(Math.random() * (max - min + 1)) + min;
 			}
-			var diceRoll = getRandomIntInclusive( 1 , 12 );
+			var diceRoll = getRandomIntInclusive( 1 , 21 );
 			//console.log("DiceRoll: " , diceRoll );
 			switch (diceRoll) {
 			  case 1:
@@ -73,6 +73,30 @@ App.Views.NavigationView = Backbone.View.extend({
 					break;
 				case 12:
 					str = "bounceInTop";
+					break;
+				case 13:
+					str = "fadeIn";
+					break;
+				case 14:
+					str = "";
+					break;
+				case 16:
+					str = "";
+					break;
+				case 17:
+					str = "";
+					break;
+				case 18:
+					str = "";
+					break;
+				case 19:
+					str = "";
+					break;
+				case 20:
+					str = "fadeIn";
+					break;
+				case 21:
+					str = "";
 					break;
 			  default:
 			    str = "";
