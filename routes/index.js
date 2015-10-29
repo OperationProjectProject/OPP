@@ -72,22 +72,37 @@ router.get('/profiles', function(request, response, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          //console.log(element.value);
+          /*
+          console.log(element);
+          console.log(element.value);
+          console.log(element.value.profile_content);
+          console.log(element.value.profile_content.editable_text.name);
+          console.log(element.value.profile_content.editable_text.title);
+          console.log(element.value.github_api_data.github_url);
+          console.log(element.value.profile_content.social_urls);
+          console.log(element.value.profile_content.social_urls.personal);
+          console.log(element.value.profile_content.social_urls.linkedin);
+          console.log(element.value.profile_content.social_urls.twitter);
+          console.log(element.value.profile_content.editable_text.url_id);
+          console.log(element.value.profile_content.checkbox_content.work_status);
+          console.log(element.value.profile_content.editable_text.skills);
+          console.log(element.value.profile_content.editable_text.tools);
+          console.log(element.value.profile_content.editable_text.q_and_a.js_tidbit);
+          console.log(element.value.profile_content.editable_text.q_and_a.job_hope);
+          */
           return {
-            name: element.value.name ,
-            title: element.value.title,
-            github_url: element.value.github_url,
-            personal_site_url: element.value.personal,
-            linkedin_url: element.value.linkedin,
-            twitter_url: element.value.twitter,
-            url_id:element.value.url_id,
-            job_status:element.value.job_status,
-            top_skills: element.value.skills,
-            top_tools: element.value.tools,
-            js_tidbit: element.value.favorite,
-            work_status: element.value.work_status,
-            dream_job: element.value.job_hope,
-            projects: element.value.projects
+            name: element.value.profile_content.editable_text.name ,
+            title: element.value.profile_content.editable_text.title,
+            github_url: element.value.github_api_data.github_url,
+            personal_site_url: element.value.profile_content.social_urls.personal,
+            linkedin_url: element.value.profile_content.social_urls.linkedin,
+            twitter_url: element.value.profile_content.social_urls.twitter,
+            url_id: element.value.profile_content.editable_text.url_id,
+            top_skills: element.value.profile_content.editable_text.skills,
+            top_tools: element.value.profile_content.editable_text.tools,
+            js_tidbit: element.value.profile_content.editable_text.q_and_a.js_tidbit,
+            work_status: element.value.profile_content.checkbox_content.work_status,
+            dream_job: element.value.profile_content.editable_text.q_and_a.job_hope,
           };
         });
         //console.log(mapped);
@@ -100,13 +115,22 @@ router.get('/projects', function(request, response, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          console.log(element.value.project_url_id);
+          //console.log(element);
+          /*
+          console.log(element.value.project_content.project_url_id);
+          console.log(element.value);
+          console.log(element.value.site_project_id);
+          console.log(element.value.site_project_id);
+          console.log(element.value.project_content.title);
+          console.log(element.value.project_content.project_url_id);
+          console.log(element.value.project_content.mvp);
+          console.log(element.value.project_content.tech_used);
+          */
           return {
-            title: element.value.title ,
-            project_url_id: element.value.project_url_id,
-            mvp: element.value.desc,
-            tech_used: element.value.tools,
-            owners: element.value.owners
+            title: element.value.project_content.title ,
+            project_url_id: element.value.project_content.project_url_id,
+            mvp: element.value.project_content.mvp,
+            tech_used: element.value.project_content.tech_used
           };
         });
         //console.log(mapped);
