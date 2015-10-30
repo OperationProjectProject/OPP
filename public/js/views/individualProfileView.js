@@ -115,13 +115,14 @@ App.Views.ProfileView = Backbone.View.extend({
               .attr("href", this.model.attributes.twitter_url)
               .text("Twitter")
               .prepend('<i class="fa fa-twitter fa-lg"></i>');
+
         [ $personal_site_url , $github_url , $linkedin_url , $twitter_url ].forEach( function(e,i) {
-          console.log(e[0]);
+          console.log(e[0].href);
           if ( e[0].href !== 'http://localhost:3000/' ) {
             var $social_link_list_item = $( '<li class="social_link_list_item">' );
             $social_link_list_item.append( e );
-            $social_link_list.append( $social_link_list_item );
           }
+          $social_link_list.append( $social_link_list_item );
         });
 
         //Append social link list to social list car
