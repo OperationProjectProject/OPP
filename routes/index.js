@@ -210,17 +210,32 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
           console.log("db post failed");
         });
     }
-    // function setCookie(){
-    //   res.cookie("url", result.body.results[0].value.profile_content.editable_text.url_id);
-    // }
+    
+    function updateInfo(key){
+      console.log("update key", key);
+      db.newPatchBuilder("OPP_users", key)
+        .replace("github_api_data.github_id",req.user.id )
+        .replace("github_api_data.github_email",req.user._json.email )
+        .replace("github_api_data.github_display_name",req.user.displayName )
+        .replace("github_api_data.github_url",req.user.profileUrl )
+        .replace("github_api_data.github_avatar",req.user._json.avatar_url )
+        .replace("github_api_data.github_username",req.user.username )
+        .replace("profile_content.img_urls.profile_img",req.user._json.avatar_url )
+        .replace("profile_content.editable_text.name",req.user.displayName )
+        .replace("profile_content.editable_text.url_id",req.user.username )
+        .apply()
+      .fail(function (err) {
+        console.log("patch failed");
+      });
+    }
+    
     db.search('OPP_users', req.user.username)
       .then(function (result) {
         if(result.body.count>0){
           console.log("user exists");
-          // console.log("url: ", result.body.results[0].value.profile_content.editable_text.url_id);
           cookieValue = result.body.results[0].value.profile_content.editable_text.url_id;
-          // console.log("value", cookieValue);
-          // return cookieValue;
+          console.log("key", result.body.results[0].path.key);
+          updateInfo(result.body.results[0].path.key);
         }
         else{
           register();
