@@ -207,7 +207,7 @@
     "editable_text": {
       "name": "Do Nguyen",
       "title": "Web Developer" ,
-      "url_id": "do" ,
+      "url_id": "yahwin" ,
       "skills": [
         "User Centered Product Design" ,
         "Full Stack Web Development" ,
@@ -242,8 +242,8 @@
   "github_api_data": {
     "github_id": "",
     "github_email": "",
-    "github_display_name": "https://github.com/PatHarryUX",
-    "github_url": "",
+    "github_display_name": "",
+    "github_url": "https://github.com/PatHarryUX",
     "github_avatar": "",
     "github_username": ""
   } ,
@@ -256,7 +256,7 @@
       "action_shot": "http://placehold.it/100x100"
     } ,
     "social_urls": {
-      "personal": "https://PatrickHarry.com",
+      "personal": "http://PatrickHarry.com",
       "linkedin": "https://www.linkedin.com/in/PatHarryUX",
       "twitter": "https://twitter.com/PatHarryUX"
     } ,
@@ -384,7 +384,7 @@
 
 /** OPP **///                 Matt        &       Pat
 {
-  "owner_reference": [ "0d66ea50a720ab94" ,"0d66ecfc4320ebd6"] ,
+  "owner_reference": [ "0d6e81893f206895" ,"0d6e7ed5da20f957"] ,
   "project_content": {
     "title": "OPP" ,
     "project_url_id": "OPP" ,
