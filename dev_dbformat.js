@@ -242,8 +242,8 @@
   "github_api_data": {
     "github_id": "",
     "github_email": "",
-    "github_display_name": "https://github.com/PatHarryUX",
-    "github_url": "",
+    "github_display_name": "",
+    "github_url": "https://github.com/PatHarryUX",
     "github_avatar": "",
     "github_username": ""
   } ,

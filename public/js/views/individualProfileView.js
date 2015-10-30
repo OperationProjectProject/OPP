@@ -8,9 +8,12 @@ App.Views.ProfileView = Backbone.View.extend({
     $('body').css({'background':'rgba(235,235,240,1.0)'});
     console.log("%cProfileView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
+
+
     for ( var i = 0; i < this.collection.models.length; i++) {
       if (this.collection.models[i].attributes.url_id === this.url_id){
         this.model = this.collection.models[i];
+/*
         console.log("%c" + this.model.attributes.name,
            "color:rgba(100,100,100,1.0);\
            font-size:2.25em;\
@@ -32,6 +35,7 @@ App.Views.ProfileView = Backbone.View.extend({
         console.log(this.model.attributes.dream_job);
         console.log(this.model.attributes.projects);
         console.log("\n\n\n");
+*/
 
         //create row 01
         var $row_01 =  $('<div>').attr({
@@ -58,8 +62,7 @@ App.Views.ProfileView = Backbone.View.extend({
           'id': this.model.attributes.url_id + '_profile_img' ,
         });
 
-
-        //Create profile headline div box
+        //Create profile headline div
         var $profile_headline = $('<div>').attr({
           'class': 'profile_headline col-sm-12 col-md-6 col-lg-6'
         });
@@ -68,13 +71,13 @@ App.Views.ProfileView = Backbone.View.extend({
         var $name = $('<h2 class="headline">').text(this.model.attributes.name);
         var $byline = $('<h3 class="byline">').text(this.model.attributes.title);
 
-        //Append profile image, name, and byline to basic info
+        //Append name and headline to profile headline div
         [ $name , $byline ].forEach(function( e, i ){
           console.log(e)
           $profile_headline.append( e );
         });
 
-        //Append profile image, name, and byline to basic info
+        //Append profile image and profile headline to basic info card
         [ $profile_img , $profile_headline ].forEach(function( e, i ){
           console.log(e)
           $basic_info_card.append( e );
@@ -113,19 +116,18 @@ App.Views.ProfileView = Backbone.View.extend({
               .text("Twitter")
               .prepend('<i class="fa fa-twitter fa-lg"></i>');
         [ $personal_site_url , $github_url , $linkedin_url , $twitter_url ].forEach( function(e,i) {
+          console.log(e[0]);
           if ( e[0].href !== 'http://localhost:3000/' ) {
-            $li = $( '<li>' );
-            $li.append( e );
+            var $social_link_list_item = $( '<li class="social_link_list_item">' );
+            $social_link_list_item.append( e );
+            $social_link_list.append( $social_link_list_item );
           }
-          $social_link_list.append( $li );
         });
 
         //Append social link list to social list car
         $social_links_card.append( $social_link_list );
-
         //Append
         $social_links_div.append( $social_links_card );
-
         //Append basic info and social links to row 01
         $row_01.append( $basic_info );
         $row_01.append( $social_links_div );
@@ -138,9 +140,9 @@ App.Views.ProfileView = Backbone.View.extend({
         });
 
         //Create content card for social links
-        var $skills_and_tools = $('<div>').attr({
+        var $skills_and_tools_div = $('<div>').attr({
           'class': 'content_box col-sm-12 col-sm-4 col-lg-4' ,
-          'id': 'skills_and_tools'
+          'id': 'skills_and_tools_div'
         });
 
         //Create Skills list
@@ -157,12 +159,10 @@ App.Views.ProfileView = Backbone.View.extend({
           $top_tools.append( $li );
         });
 
-
+        //Attach top skills and top tools to skills and tools div
         [ $top_skills , $top_tools ].forEach(function( e, i ){
-            $skills_and_tools.append( e );
+            $skills_and_tools_div.append( e );
         });
-
-
 
         //Create Work Status
         var $work_status = $( '<ul class="work_status">' ).text( "Work Status: " );
@@ -181,16 +181,11 @@ App.Views.ProfileView = Backbone.View.extend({
         var $dream_answer = $( '<span class="answer">' ).text( this.model.attributes.dream_job );
         $dream_job.append( $dream_answer );
 
-
-
+        //Append bootstrap rows to this view
         var self = this;
-
         [ $row_01 , $row_02 ].forEach(function( e, i ){
             self.$el.append( e );
         });
-
-
-
 
         this.$el.append($top_skills);
         this.$el.append($top_tools);
