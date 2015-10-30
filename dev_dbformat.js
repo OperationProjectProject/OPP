@@ -256,7 +256,7 @@
       "action_shot": "http://placehold.it/100x100"
     } ,
     "social_urls": {
-      "personal": "https://PatrickHarry.com",
+      "personal": "http://PatrickHarry.com",
       "linkedin": "https://www.linkedin.com/in/PatHarryUX",
       "twitter": "https://twitter.com/PatHarryUX"
     } ,
