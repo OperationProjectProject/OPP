@@ -84,9 +84,14 @@ App.Views.ProfileView = Backbone.View.extend({
         $basic_info.append($basic_info_card);
 
         //Create content box for social links
-        var $social_links = $('<div>').attr({
-          'class': 'content_box col-sm-12 col-sm-4 col-lg-4' ,
-          'id': 'social_links'
+        var $social_links_div = $('<div>').attr({
+          'class': 'content_box col-sm-12 col-md-12 col-lg-4' ,
+          'id': 'social_links_div'
+        });
+
+        //Create card for basic info
+        var $social_links_card = $('<div>').attr({
+          'class': 'card'
         });
 
         //Create Social Links
@@ -96,19 +101,22 @@ App.Views.ProfileView = Backbone.View.extend({
         var $linkedin_url = $('<a target="_blank">').attr("href", this.model.attributes.linkedin_url).text("Linkedin");
         var $twitter_url = $('<a target="_blank">').attr("href", this.model.attributes.twitter_url).text("Twitter");
         [ $github_url , $personal_site_url , $linkedin_url , $twitter_url ].forEach( function(e,i) {
-          if(e[0].href!=='http://localhost:3000/'){
-            $li = $('<li>');
-            $li.append(e);
+          if ( e[0].href !== 'http://localhost:3000/' ) {
+            $li = $( '<li>' );
+            $li.append( e );
           }
           $social_link_list.append( $li );
         });
 
-        //$social_links
-        $social_links.append( $social_link_list );
+        //Append social link list to social list car
+        $social_links_card.append( $social_link_list );
+
+        //Append
+        $social_links_div.append( $social_links_card );
 
         //Append basic info and social links to row 01
         $row_01.append( $basic_info );
-        $row_01.append( $social_links );
+        $row_01.append( $social_links_div );
 
 
         //create row 02

@@ -148,7 +148,8 @@ a#projects_link.navigation_link  {
 
 .profile_preview .preview_link:hover ,
 .project_preview .preview_link:hover {
-  background: rgba(240,240,240,1.0);
+  background: rgba(245,245,245,0.8);
+  color: rgba(45,45,145,0.5);
 }
 
 .jumbotron {
@@ -175,6 +176,7 @@ a#projects_link.navigation_link  {
 }
 
 .navbar {
+  margin-bottom: 30px;
   padding: 0 0;
   transition: padding 1s;
 }
@@ -207,21 +209,21 @@ a#projects_link.navigation_link  {
   animation-duration: .35s;
  }
 
- #log_widget_toggle {
-   padding: 0;
- }
+#log_widget_toggle {
+  padding: 0;
+}
 
- #log_widget_toggle img{
-   border-radius: 100%;
- }
+#log_widget_toggle img{
+  border-radius: 100%;
+}
 
- #log_widget_toggle .caret{
-   color: rgba(160,160,160,1.0);
-   margin-left: 10px;
-   border-top:6px dashed;
-   border-right:6px solid transparent;
-   border-left:6px solid transparent;
- }
+#log_widget_toggle .caret{
+  color: rgba(160,160,160,1.0);
+  margin-left: 10px;
+  border-top:6px dashed;
+  border-right:6px solid transparent;
+  border-left:6px solid transparent;
+}
 
 
 .headline {
@@ -447,5 +449,14 @@ a#projects_link.navigation_link  {
   .profile_headline {
     margin: 5% 0 0 0;
     padding: 0;
+  }
+
+  .content_box {
+    padding: 2% 5%;
+    background: transparent;
+    /*background: rgba(200,200,200,1.0);*/
+  }
+  .card {
+    padding: 5%;
   }
 }
