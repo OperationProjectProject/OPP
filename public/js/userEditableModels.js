@@ -10,7 +10,7 @@ var ProfileEditorModel = Backbone.Model.extend({
 	defaults: {
 		name:''
 	} ,
-	urlRoot: '/edit_profile' ,
+	urlRoot: '/user_profile' ,
 	initialize: function() {
 		this.fetch({
 			success:function(){
@@ -25,7 +25,7 @@ var ProjectEditorModel = Backbone.Model.extend({
 	defaults: {
 		title:''
 	} ,
-	urlRoot: '/edit_project/:project' ,
+	urlRoot: '/user_project/:project' ,
 	initialize: function() {
 		this.fetch({
 			success:function(){

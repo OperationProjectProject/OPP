@@ -40,7 +40,7 @@ App.Views.LogWidgetView = Backbone.View.extend({
     $dropdown_links = $( '<ul class="dropdown-menu" role="menu">' );
 
     var logged_user_name = this.logged_user;
-    
+
 
     $my_profile_link = $( '<li><a href="#profiles/'+logged_user_name+'">My Profile</a></li>' );
     $edit_my_profile_link = $( '<li><a href="#profiles">Edit My Profile</a></li>' );
@@ -71,7 +71,9 @@ App.Views.LogWidgetView = Backbone.View.extend({
       this.user_session = true;
       this.logged_user = opts.logged_user;
       this.render_user_session();
-
+      console.log("%c logged_user: " , "font-size: 1.2em; color: blue;");
+      console.log(opts.logged_user);
+      console.log(this.model);
       // console.log("log", opts.logged_user);
     }
 

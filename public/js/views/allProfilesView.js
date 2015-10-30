@@ -17,7 +17,7 @@ App.Views.AllProfilesView = Backbone.View.extend({
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
       var coinFlip = getRandomIntInclusive(0,1);
-      console.log(coinFlip);
+      //console.log(coinFlip);
       if (coinFlip === 0) {
         self.$el.append( profile_preview.$el );
       } else {
