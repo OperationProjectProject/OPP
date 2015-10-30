@@ -5,7 +5,7 @@ App.Views.ProfileView = Backbone.View.extend({
   tagName: "div",
   className: "profile_view",
   render: function() {
-    $('body').css({'background':'rgba(244,244,252,1.0)'});
+    $('body').css({'background':'rgba(235,235,240,1.0)'});
     console.log("%cProfileView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
     for ( var i = 0; i < this.collection.models.length; i++) {
