@@ -7,6 +7,8 @@ App.Router = Backbone.Router.extend({
     this.user_session = opts.user_session;
     this.profiles = opts.profiles;
     this.projects = opts.projects;
+    this.logged_user = opts.logged_user;
+    // console.log("ou", opts.logged_user);
   },
 
   routes:{
@@ -24,7 +26,8 @@ App.Router = Backbone.Router.extend({
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
-      current_url: current_url
+      current_url: current_url,
+      logged_user: this.logged_user
     });
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
