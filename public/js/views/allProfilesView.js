@@ -8,7 +8,6 @@ App.Views.AllProfilesView = Backbone.View.extend({
 
   render: function() {
     $('body').css({'background':'rgba(235,235,240,1.0)'});
-    $('.centerdiv').css({'background':'rgba(235,235,240,1.0)'});
     console.log("%cAllProfilesView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
     var self = this;

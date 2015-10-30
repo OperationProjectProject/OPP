@@ -6,7 +6,6 @@ App.Views.MainView = Backbone.View.extend({
   className: 'main_view jumbotron',
   render: function(){
     $('body').css({'background':'rgba(240,235,235,1.0)'});
-    $('.centerdiv').css({'background':'rgba(240,235,235,1.0)'});
 		console.log("%cMainView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     var $about = $('<h1 id="aboutDiv">').text("Discover the Hottest Tech Talent");
     var $profiles = $('<a id="profilesDiv" href="#profiles" class="btn btn-primary btn-lg">').text('Browse Profiles');
