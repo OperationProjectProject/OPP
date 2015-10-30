@@ -115,7 +115,7 @@ App.Views.ProfileView = Backbone.View.extend({
               .attr("href", this.model.attributes.twitter_url)
               .text("Twitter")
               .prepend('<i class="fa fa-twitter fa-lg"></i>');
-
+        console.log("personal", this.model.attributes);
         [ $personal_site_url , $github_url , $linkedin_url , $twitter_url ].forEach( function(e,i) {
           console.log(e[0].href);
           if ( e[0].href !== 'http://localhost:3000/' ) {

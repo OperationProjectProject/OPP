@@ -47,7 +47,7 @@ router.use(cookieParser());
 router.get('/', function(request, response, next) {
   if(request.user){
     console.log("cookie", request.cookies.user);
-    response.render('user_session', { title: request.user.username , layout: 'layout', user:request.cookies.url , banana:'yellow' , client_user_session: true});
+    response.render('user_session', { title: request.user.username ,layout: 'layout', logged_user:request.cookies.url , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!request.user");
@@ -164,7 +164,7 @@ function(req, res, done){
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
   console.log("2req.session.returnTo: ", req.session.returnTo);
     res.cookie("logged", true);
-    // res.cookie("user", req.user.username);
+    res.cookie("user", req.user.username);
     var cookieValue;
     function register(){
       db.post('OPP_users', {
@@ -172,14 +172,14 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
            "github_id": req.user.id,
            "github_email": req.user._json.email,
            "github_display_name": req.user.displayName,
-           "github_url": req.user.profileURL,
+           "github_url": req.user.profileUrl,
            "github_avatar": req.user._json.avatar_url,
            "github_username": req.user.username
          } ,
          "project_reference": [] ,
          "profile_content": {
            "img_urls": {
-             "profile_img": "" ,
+             "profile_img": req.user._json.avatar_url ,
              "cover_photo": "" ,
              "hero_img": "" ,
              "action_shot": ""

@@ -38,7 +38,11 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
     //Build the links
     $dropdown_links = $( '<ul class="dropdown-menu" role="menu">' );
-    $my_profile_link = $( '<li><a href="#profiles/'+app.logged_user+'">My Profile</a></li>' );
+
+    var logged_user_name = this.logged_user;
+    
+
+    $my_profile_link = $( '<li><a href="#profiles/'+logged_user_name+'">My Profile</a></li>' );
     $edit_my_profile_link = $( '<li><a href="#profiles">Edit My Profile</a></li>' );
     $my_projects_link = $( '<li><a href="#projects">My Projects</a></li>' );
     $logout_link = $( '<li><a href="/logout?url=' + this.current_url + '">Log out</a></li>' );
@@ -65,7 +69,10 @@ App.Views.LogWidgetView = Backbone.View.extend({
     } else {
       //console.log("%c opts.user_session === true; ","color:rgba(10,210,210,1.0);font-size:2.5em;");
       this.user_session = true;
+      this.logged_user = opts.logged_user;
       this.render_user_session();
+
+      // console.log("log", opts.logged_user);
     }
 
   }
