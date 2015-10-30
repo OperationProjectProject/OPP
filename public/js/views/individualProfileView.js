@@ -96,11 +96,23 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Create Social Links
         var $social_link_list = $('<ul class="social_links">');
-        var $github_url = $('<a target="_blank">').attr("href", this.model.attributes.github_url).text("Github");
-        var $personal_site_url = $('<a target="_blank">').attr("href", this.model.attributes.personal_site_url).text("My website");
-        var $linkedin_url = $('<a target="_blank">').attr("href", this.model.attributes.linkedin_url).text("Linkedin");
-        var $twitter_url = $('<a target="_blank">').attr("href", this.model.attributes.twitter_url).text("Twitter");
-        [ $github_url , $personal_site_url , $linkedin_url , $twitter_url ].forEach( function(e,i) {
+        var $personal_site_url = $('<a target="_blank">')
+              .attr("href", this.model.attributes.personal_site_url)
+              .text("My website")
+              .prepend('<i class="fa fa-bullseye fa-lg"></i>');
+        var $github_url = $('<a target="_blank">')
+              .attr('href', this.model.attributes.github_url)
+              .text('Github')
+              .prepend('<i class="fa fa-github fa-lg"></i>');
+        var $linkedin_url = $('<a target="_blank">')
+              .attr("href", this.model.attributes.linkedin_url)
+              .text("Linkedin")
+              .prepend('<i class="fa fa-linkedin-square fa-lg"></i>');
+        var $twitter_url = $('<a target="_blank">')
+              .attr("href", this.model.attributes.twitter_url)
+              .text("Twitter")
+              .prepend('<i class="fa fa-twitter fa-lg"></i>');
+        [ $personal_site_url , $github_url , $linkedin_url , $twitter_url ].forEach( function(e,i) {
           if ( e[0].href !== 'http://localhost:3000/' ) {
             $li = $( '<li>' );
             $li.append( e );
