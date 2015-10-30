@@ -10,6 +10,7 @@ var methodOverride = require('method-override');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 var logger = require('morgan');
+var cookieParser = require('cookie-parser');
 
 //----------Github passport things----------------
 var GITHUB_CLIENT_ID = config.github_client_id;
@@ -39,12 +40,14 @@ passport.use('github', new GitHubStrategy({
 router.use(passport.initialize());
 router.use(passport.session());
 router.use(logger('dev'));
+router.use(cookieParser());
 
 //----------------------------------------------
 
 router.get('/', function(request, response, next) {
   if(request.user){
-    response.render('user_session', { title: request.user.username , layout: 'layout', user:request.user.id , banana:'yellow' , client_user_session: true});
+    console.log("cookie", request.cookies.user);
+    response.render('user_session', { title: request.user.username , layout: 'layout', user:request.cookies.url , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!request.user");
@@ -160,9 +163,79 @@ function(req, res, done){
 //keep history route
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
   console.log("2req.session.returnTo: ", req.session.returnTo);
-  // console.log("req: ", req.session.path);
-  // console.log("res: ", res);
-    res.redirect(req.session.returnTo || "/");
+    res.cookie("logged", true);
+    // res.cookie("user", req.user.username);
+    var cookieValue;
+    function register(){
+      db.post('OPP_users', {
+         "github_api_data": {
+           "github_id": req.user.id,
+           "github_email": req.user._json.email,
+           "github_display_name": req.user.displayName,
+           "github_url": req.user.profileURL,
+           "github_avatar": req.user._json.avatar_url,
+           "github_username": req.user.username
+         } ,
+         "project_reference": [] ,
+         "profile_content": {
+           "img_urls": {
+             "profile_img": "" ,
+             "cover_photo": "" ,
+             "hero_img": "" ,
+             "action_shot": ""
+           } ,
+           "social_urls": {
+             "personal": "",
+             "linkedin": "",
+             "twitter": ""
+           } ,
+           "editable_text": {
+             "name": req.user.displayName,
+             "title": "" ,
+             "url_id": req.user.username,
+             "skills": [] ,
+             "tools": [] ,
+             "q_and_a" : {
+                 "js_tidbit": "" ,
+                 "job_hope": "" ,
+                 "politics": ""
+             }
+           } ,
+           "checkbox_content" : {
+             "work_status": []
+           }
+         }
+      },false)
+      .fail(function(err){
+          console.log("db post failed");
+        });
+    }
+    // function setCookie(){
+    //   res.cookie("url", result.body.results[0].value.profile_content.editable_text.url_id);
+    // }
+    db.search('OPP_users', req.user.username)
+      .then(function (result) {
+        if(result.body.count>0){
+          console.log("user exists");
+          // console.log("url: ", result.body.results[0].value.profile_content.editable_text.url_id);
+          cookieValue = result.body.results[0].value.profile_content.editable_text.url_id;
+          // console.log("value", cookieValue);
+          // return cookieValue;
+        }
+        else{
+          register();
+        }
+        res.cookie("url", cookieValue);
+        // 
+        res.redirect(req.session.returnTo || "/");
+      })
+      .fail(function (err) {
+        console.log("db search failed");
+      });
+      
+    // res.cookie("url", cookieValue);
+    // // 
+    // res.redirect(req.session.returnTo || "/");
     req.session.returnTo = null;
 });
 
@@ -170,6 +243,11 @@ router.get('/logout', function(req, res){
   req.session.returnTo = req.query.url;
   console.log("3req.session.returnTo: ", req.session.returnTo);
   req.logout();
+  res.clearCookie("logged");
+  res.clearCookie("user");
+  res.clearCookie("url");
+  
+  
   res.redirect(req.session.returnTo || "/");
   req.session.returnTo = null;
 });

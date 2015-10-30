@@ -13,7 +13,7 @@ App.Views.LogWidgetView = Backbone.View.extend({
     var $link = $('<a>').attr( 'href', "/auth/github?url=" + this.current_url ).text( 'Login with Github' );
     this.$el.append( $link );
     console.log( "%c" + $link.attr('href') ,"color:rgba(210,10,10,0.5);font-size:2.35em;");
-    return this
+    return this;
   } ,
 
   render_user_session: function() {
@@ -38,7 +38,7 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
     //Build the links
     $dropdown_links = $( '<ul class="dropdown-menu" role="menu">' );
-    $my_profile_link = $( '<li><a href="#profiles">My Profile</a></li>' );
+    $my_profile_link = $( '<li><a href="#profiles/'+app.logged_user+'">My Profile</a></li>' );
     $edit_my_profile_link = $( '<li><a href="#profiles">Edit My Profile</a></li>' );
     $my_projects_link = $( '<li><a href="#projects">My Projects</a></li>' );
     $logout_link = $( '<li><a href="/logout?url=' + this.current_url + '">Log out</a></li>' );
@@ -53,11 +53,11 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
     this.$el.append( $thumbnail_link );
     this.$el.append( $dropdown_links );
-    return this
+    return this;
   } ,
 
   initialize: function( opts ) {
-    this.current_url = opts.current_url
+    this.current_url = opts.current_url;
     if ( opts.user_session === false ){
       //console.log("%c opts.user_session === false; ","color:rgba(210,10,10,1.0);font-size:2.5em;");
       this.user_session = false;
