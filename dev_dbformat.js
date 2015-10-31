@@ -70,6 +70,63 @@
  /** JSON format **/
 
 
+
+
+/* Joe */
+ {
+   "github_api_data" : {
+     "github_id" : "11266326",
+     "github_email" : "jose.fraley@gmail.com",
+     "github_display_name" : "Joe Fraley",
+     "github_url" : "https://github.com/joefraley",
+     "github_avatar" : "https://avatars.githubusercontent.com/u/11266326?v=3",
+     "github_username" : "joefraley"
+   } ,
+   "project_reference" : [ ],
+   "profile_content" : {
+     "img_urls" : {
+       "profile_img" : "https://avatars.githubusercontent.com/u/11266326?v=3",
+       "cover_photo" : "",
+       "hero_img" : "",
+       "action_shot" : ""
+    } ,
+    "social_urls" : {
+      "personal" : "",
+      "linkedin" : "",
+      "twitter" : ""
+    },
+    "editable_text" : {
+      "name" : "Joe Fraley",
+      "title" : "",
+      "url_id" : "joefraley",
+      "skills" : [ ],
+      "tools" : [ ],
+      "q_and_a" : {
+        "js_tidbit" : "",
+        "job_hope" : "",
+        "politics" : ""
+      }
+    } ,
+    "checkbox_content" : {
+      "work_status" : [ ]
+    }
+  }
+}
+/* Joe */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Mitch */
 {
    "github_api_data": {
