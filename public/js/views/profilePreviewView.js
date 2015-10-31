@@ -15,7 +15,7 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
       $text_div.append( e );
     });
 
-    console.log("%c profile_img: " + this.model.attributes.profile_img_url , "color: purple; font-size: 1.25em;");
+    //console.log("%c profile_img: " + this.model.attributes.profile_img_url , "color: purple; font-size: 1.25em;");
 
     var $profile_img_box = $('<div class="col-sm-12 col-md-4 col-lg-4">')
     var $profile_img = $("<img>").attr({

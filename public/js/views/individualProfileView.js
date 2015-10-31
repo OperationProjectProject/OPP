@@ -8,34 +8,9 @@ App.Views.ProfileView = Backbone.View.extend({
     $('body').css({'background':'rgba(235,235,240,1.0)'});
     console.log("%cProfileView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
-
-
     for ( var i = 0; i < this.collection.models.length; i++) {
       if (this.collection.models[i].attributes.url_id === this.url_id){
         this.model = this.collection.models[i];
-/*
-        console.log("%c" + this.model.attributes.name,
-           "color:rgba(100,100,100,1.0);\
-           font-size:2.25em;\
-           font-weight:bold;\
-           text-transform:uppercase;");
-        console.log("%c" + this.model.attributes.title,
-           "color:rgba(120,120,120,1.0);\
-           font-size: 1.25em;\
-           font-weight: bold;\
-           text-transform:uppercase;");
-        console.log("  - "+ "%c" + this.model.attributes.github_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-        console.log("  - "+ "%c" + this.model.attributes.personal_site_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-        console.log("  - "+ "%c" + this.model.attributes.linkedin_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-        console.log("  - "+ "%c" + this.model.attributes.twitter_url, "color:rgba(51,51,151,1.0); text-decoration:underline;");
-        console.log(this.model.attributes.top_skills);
-        console.log(this.model.attributes.top_tools);
-        console.log(this.model.attributes.js_tidbit);
-        console.log(this.model.attributes.work_status);
-        console.log(this.model.attributes.dream_job);
-        console.log(this.model.attributes.projects);
-        console.log("\n\n\n");
-*/
 
         //create row 01
         var $row_01 =  $('<div>').attr({
@@ -73,56 +48,74 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Append name and headline to profile headline div
         [ $name , $byline ].forEach(function( e, i ){
-          console.log(e)
+          console.log(e);
           $profile_headline.append( e );
         });
 
         //Append profile image and profile headline to basic info card
         [ $profile_img , $profile_headline ].forEach(function( e, i ){
-          console.log(e)
+          console.log(e);
           $basic_info_card.append( e );
         });
 
         //Append basic info card to basic info box
         $basic_info.append($basic_info_card);
 
-        //Create content box for social links
+        //Create Social Links Content Box
         var $social_links_div = $('<div>').attr({
           'class': 'content_box col-sm-12 col-md-12 col-lg-4' ,
           'id': 'social_links_div'
         });
 
-        //Create card for basic info
+        //Create Social Links Card
         var $social_links_card = $('<div>').attr({
           'class': 'card'
         });
 
-        //Create Social Links
+        //Create Social Links List
         var $social_link_list = $('<ul class="social_links">');
-        var $personal_site_url = $('<a target="_blank">')
-              .attr("href", this.model.attributes.personal_site_url)
+        var self = this;
+        [ this.model.attributes.personal_site_url ,
+          this.model.attributes.github_url ,
+          this.model.attributes.linkedin_url ,
+          this.model.attributes.twitter_url
+        ].forEach( function( e, i, arr ){
+          if (e) {
+            console.log("%c " + e , "color:purple; font-size: 2em;");
+            var $anchor = $('<a target="_blank">');
+            var $list_item = $('<li class="social_link_list_item">');
+            if ( e === self.model.attributes.personal_site_url ) {
+              console.log("site url");
+              $anchor.attr({
+                'href': e
+              })
               .text("My website")
               .prepend('<i class="fa fa-bullseye fa-lg"></i>');
-        var $github_url = $('<a target="_blank">')
-              .attr('href', this.model.attributes.github_url)
-              .text('Github')
+            } else if ( e === self.model.attributes.github_url) {
+              console.log("github url");
+              $anchor.attr({
+                'href': e
+              })
+              .text("Github")
               .prepend('<i class="fa fa-github fa-lg"></i>');
-        var $linkedin_url = $('<a target="_blank">')
-              .attr("href", this.model.attributes.linkedin_url)
+            } else if ( e === self.model.attributes.linkedin_url ) {
+              console.log("linkedin url");
+              $anchor.attr({
+                'href': e
+              })
               .text("Linkedin")
               .prepend('<i class="fa fa-linkedin-square fa-lg"></i>');
-        var $twitter_url = $('<a target="_blank">')
-              .attr("href", this.model.attributes.twitter_url)
+            } else if ( e === self.model.attributes.twitter_url ) {
+              console.log("twitter url");
+              $anchor.attr({
+                'href': e
+              })
               .text("Twitter")
               .prepend('<i class="fa fa-twitter fa-lg"></i>');
-        console.log("personal", this.model.attributes);
-        [ $personal_site_url , $github_url , $linkedin_url , $twitter_url ].forEach( function(e,i) {
-          console.log(e[0].href);
-          if ( e[0].href !== 'http://localhost:3000/' ) {
-            var $social_link_list_item = $( '<li class="social_link_list_item">' );
-            $social_link_list_item.append( e );
+            }
+            $list_item.append( $anchor );
+            $social_link_list.append( $list_item );
           }
-          $social_link_list.append( $social_link_list_item );
         });
 
         //Append social link list to social list car
@@ -132,7 +125,6 @@ App.Views.ProfileView = Backbone.View.extend({
         //Append basic info and social links to row 01
         $row_01.append( $basic_info );
         $row_01.append( $social_links_div );
-
 
         //create row 02
         var $row_02 =  $('<div>').attr({
@@ -203,7 +195,5 @@ App.Views.ProfileView = Backbone.View.extend({
     this.url_id = opts.url_id;
     this.listenTo(this.collection, "update", this.render);
     this.render();
-    //console.log("%c " + this.url_id, "color:rgba(250,200,200,1.0);font-size:2.5em;");
-    //console.log(this.collection);
 	}
 });

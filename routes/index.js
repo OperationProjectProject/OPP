@@ -210,7 +210,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
           console.log("db post failed");
         });
     }
-    
+
     function updateInfo(key){
       console.log("update key", key);
       db.newPatchBuilder("OPP_users", key)
@@ -228,7 +228,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
         console.log("patch failed");
       });
     }
-    
+
     db.search('OPP_users', req.user.username)
       .then(function (result) {
         if(result.body.count>0){
@@ -241,15 +241,15 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
           register();
         }
         res.cookie("url", cookieValue);
-        // 
+        //
         res.redirect(req.session.returnTo || "/");
       })
       .fail(function (err) {
         console.log("db search failed");
       });
-      
+
     // res.cookie("url", cookieValue);
-    // // 
+    // //
     // res.redirect(req.session.returnTo || "/");
     req.session.returnTo = null;
 });
@@ -261,8 +261,8 @@ router.get('/logout', function(req, res){
   res.clearCookie("logged");
   res.clearCookie("user");
   res.clearCookie("url");
-  
-  
+
+
   res.redirect(req.session.returnTo || "/");
   req.session.returnTo = null;
 });

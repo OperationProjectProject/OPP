@@ -8,15 +8,20 @@
 //Logged-in User only ever has access to one Profile Edit Model
 var ProfileEditorModel = Backbone.Model.extend({
 	defaults: {
-		name:''
+		profile_img_url:'',
+		url_id
 	} ,
-	urlRoot: '/edit_profile' ,
+	urlRoot: '/user_profile' ,
 	initialize: function() {
 		this.fetch({
 			success:function(){
 				console.log("%cProfileEditModel","color:rgba(100,100,100,1.0);font-size:1.25em;");
 			}
 		});
+	} ,
+	save_edit: function() {
+		//this will model.save()
+		//Make a put request at /user_profile
 	}
 });
 
@@ -25,12 +30,23 @@ var ProjectEditorModel = Backbone.Model.extend({
 	defaults: {
 		title:''
 	} ,
-	urlRoot: '/edit_project/:project' ,
+	urlRoot: '/user_project/:project_url_id' ,
 	initialize: function() {
 		this.fetch({
 			success:function(){
 				console.log("%cProjectEditModel","color:rgba(100,100,100,1.0);font-size:1.25em;");
 			}
 		});
+	} ,
+	add_new_project: function() {
+		//model.save()
+		//Make a post request at /user_project/:project_url_id
+	},
+	save_project_edit: function() {
+		//model.save()
+		//Make a put request at /user_project/:project_url_id
+	} ,
+	delete_project_edit: function() {
+		//model.destroy()
 	}
 });

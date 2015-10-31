@@ -1,5 +1,12 @@
 var app = app || {};
 $(function() { //when DOM is ready...
+
+		if ( app.user_session ) {
+			console.log( "%c session" , "font-size: 3em; color: blue;" );
+		} else {
+			console.log( "%c no session" , "font-size: 3em; color: red;" );
+		}
+
 		app.profile_content = new ProfileCollection();
 		app.project_content = new ProjectCollection();
 		app.router = new App.Router({
