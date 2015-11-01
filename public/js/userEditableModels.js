@@ -6,10 +6,12 @@
 //===============
 
 //Logged-in User only ever has access to one Profile Edit Model
+//prof img & url id
 var ProfileEditorModel = Backbone.Model.extend({
 	defaults: {
-		profile_img_url:'',
-		url_id
+		profile_img_url:'' ,
+		arbitrary_string: '',
+		arbitrary_boolean: false
 	} ,
 	urlRoot: '/user_profile' ,
 	initialize: function() {

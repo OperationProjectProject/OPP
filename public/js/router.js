@@ -15,6 +15,7 @@ App.Router = Backbone.Router.extend({
     '' : 'index' ,
     'profiles' : 'profiles' ,
     'profiles/:url_id' : 'profiles' ,
+    'profiles/:url_id/edit' : 'profile_editor' ,
     'projects' : 'projects' ,
     'projects/:project_url_id': 'projects' ,
     '*notFound': 'notFound'
@@ -114,6 +115,9 @@ App.Router = Backbone.Router.extend({
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
     app.mainView = new App.Views.MainView();
-  }
+  } ,
 
+  profile_editor: function() {
+    console.log( "profile_editor" );
+  }
 });

@@ -2,9 +2,9 @@ var app = app || {};
 $(function() { //when DOM is ready...
 
 		if ( app.user_session ) {
-			console.log( "%c session" , "font-size: 3em; color: blue;" );
+			console.log( "%csession" , "font-size: 2em; color: rgba(100,100,200,1.0);" );
 		} else {
-			console.log( "%c no session" , "font-size: 3em; color: red;" );
+			console.log( "%cno session" , "font-size: 2em; color: rgba(200,100,100,1.0);" );
 		}
 
 		app.profile_content = new ProfileCollection();
