@@ -42,10 +42,11 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
     var logged_user_name = this.logged_user;
 
+    
 
     $my_profile_link = $( '<li><a href="#profiles/' + logged_user_name + '">My Profile</a></li>' );
     $edit_my_profile_link = $( '<li><a href="#profiles/' + logged_user_name + '/edit">Edit My Profile</a></li>' );
-    $my_projects_link = $( '<li><a href="#projects">My Projects</a></li>' );
+    $my_projects_link = $( '<li><a href="#projects/my_projects">My Projects</a></li>' );
     $logout_link = $( '<li><a href="/logout?url=' + this.current_url + '">Log out</a></li>' );
 
     [ $my_profile_link ,
