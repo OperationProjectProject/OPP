@@ -83,13 +83,22 @@ A web platform for members of our community to showcase their work.
 
 ##ROUTES:
 
-| prefix       | verb   | URI pattern       |
-| ------------ | ------ | ----------------- |
-| root         | GET    | /                 |
-| profiles     | GET    | /projects         |
-| projects     | GET    | /profiles         |
-| edit_profile | GET    | /edit_profile/:id |
-| edit_project | GET    | /edit_project/:id |
+| verb   | URI pattern                   |
+| ------ | ----------------------------- |
+| GET    | /                             |
+| GET    | /test                         |
+| GET    | /projects                     |
+| GET    | /profiles                     |
+| GET    | /auth/github                  |
+| GET    | /logout                       |
+| GET    | /user_profile                 |
+| PUT    | /user_profile                 |
+| DELETE | /user_profile                 |
+| GET    | /user_project/:project_url_id |
+| POST   | /user_project/:project_url_id |
+| PUT    | /user_project/:project_url_id |
+| DELETE | /user_project/:project_url_id |
 
 ##CONTACT OUR TEAM:
-[Suburban.Design](http://suburban.design)
+[Matt](https://github.com/mkelley2)
+[Pat](http://patrickharry.com)

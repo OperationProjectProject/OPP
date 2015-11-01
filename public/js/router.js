@@ -8,7 +8,6 @@ App.Router = Backbone.Router.extend({
     this.profiles = opts.profiles;
     this.projects = opts.projects;
     this.logged_user = opts.logged_user;
-    // console.log("ou", opts.logged_user);
   },
 
   routes:{
@@ -46,6 +45,7 @@ App.Router = Backbone.Router.extend({
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
       current_url: current_url ,
+      logged_user: this.logged_user ,
       active_link: "profiles_link_active"
     });
     app.centerView = new App.Views.CenterView();
@@ -75,12 +75,11 @@ App.Router = Backbone.Router.extend({
     if ( project_url_id ) {
       current_url += '/'+ project_url_id;
     }
-
-
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
       current_url: current_url ,
+      logged_user: this.logged_user ,
       active_link: "projects_link_active"
     });
     app.centerView = new App.Views.CenterView();
@@ -110,7 +109,8 @@ App.Router = Backbone.Router.extend({
     $('#app').empty();
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
-      current_url: current_url
+      current_url: current_url ,
+      logged_user: this.logged_user
     });
     app.centerView = new App.Views.CenterView();
     app.footerView = new App.Views.FooterView();
@@ -119,5 +119,23 @@ App.Router = Backbone.Router.extend({
 
   profile_editor: function() {
     console.log( "profile_editor" );
+    //create a new instance of
+    this.profile_edit_model = new ProfileEditorModel({
+      arbitrary_string: 'halloween'
+    });
+    var current_url = '/';
+    $('#app').empty();
+    app.navigationView = new App.Views.NavigationView({
+      user_session: this.user_session ,
+      current_url: current_url ,
+      logged_user: this.logged_user
+    });
+    app.centerView = new App.Views.CenterView();
+    app.footerView = new App.Views.FooterView();
+    console.log(this.profile_edit_model);
+    app.profileEditView = new App.Views.EditProfileView({
+      model: this.profile_edit_model
+    });
+    console.log(app.profileEditView);
   }
 });

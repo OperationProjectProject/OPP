@@ -30,7 +30,8 @@ App.Views.LogWidgetView = Backbone.View.extend({
     });
     var $thumbnail_img = $( '<img>' ).attr({
       src: 'http://placehold.it/35x35' ,
-      alt: 'this is your profile image'
+      alt: 'Your profile image.' ,
+      id: 'log_widget_profile_img'
     });
     var $caret = $( '<span class="caret">' );
     $thumbnail_link.append( $thumbnail_img );
@@ -42,8 +43,8 @@ App.Views.LogWidgetView = Backbone.View.extend({
     var logged_user_name = this.logged_user;
 
 
-    $my_profile_link = $( '<li><a href="#profiles/'+logged_user_name+'">My Profile</a></li>' );
-    $edit_my_profile_link = $( '<li><a href="#profiles">Edit My Profile</a></li>' );
+    $my_profile_link = $( '<li><a href="#profiles/' + logged_user_name + '">My Profile</a></li>' );
+    $edit_my_profile_link = $( '<li><a href="#profiles/' + logged_user_name + '/edit">Edit My Profile</a></li>' );
     $my_projects_link = $( '<li><a href="#projects">My Projects</a></li>' );
     $logout_link = $( '<li><a href="/logout?url=' + this.current_url + '">Log out</a></li>' );
 

@@ -75,17 +75,17 @@
 /* Joe */
  {
    "github_api_data" : {
-     "github_id" : "11266326",
-     "github_email" : "jose.fraley@gmail.com",
-     "github_display_name" : "Joe Fraley",
+     "github_id" : "",
+     "github_email" : "",
+     "github_display_name" : "",
      "github_url" : "https://github.com/joefraley",
-     "github_avatar" : "https://avatars.githubusercontent.com/u/11266326?v=3",
-     "github_username" : "joefraley"
+     "github_avatar" : "",
+     "github_username" : ""
    } ,
    "project_reference" : [ ],
    "profile_content" : {
      "img_urls" : {
-       "profile_img" : "https://avatars.githubusercontent.com/u/11266326?v=3",
+       "profile_img" : "",
        "cover_photo" : "",
        "hero_img" : "",
        "action_shot" : ""

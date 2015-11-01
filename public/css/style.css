@@ -225,6 +225,10 @@ a#projects_link.navigation_link  {
   border-left:6px solid transparent;
 }
 
+#log_widget_profile_img {
+  width: 35px;
+}
+
 .headline {
   margin-top: .25em;
   margin-bottom: .05em;
