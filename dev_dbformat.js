@@ -70,6 +70,63 @@
  /** JSON format **/
 
 
+
+
+/* Joe */
+ {
+   "github_api_data" : {
+     "github_id" : "",
+     "github_email" : "",
+     "github_display_name" : "",
+     "github_url" : "https://github.com/joefraley",
+     "github_avatar" : "",
+     "github_username" : ""
+   } ,
+   "project_reference" : [ ],
+   "profile_content" : {
+     "img_urls" : {
+       "profile_img" : "",
+       "cover_photo" : "",
+       "hero_img" : "",
+       "action_shot" : ""
+    } ,
+    "social_urls" : {
+      "personal" : "",
+      "linkedin" : "",
+      "twitter" : ""
+    },
+    "editable_text" : {
+      "name" : "Joe Fraley",
+      "title" : "",
+      "url_id" : "joefraley",
+      "skills" : [ ],
+      "tools" : [ ],
+      "q_and_a" : {
+        "js_tidbit" : "",
+        "job_hope" : "",
+        "politics" : ""
+      }
+    } ,
+    "checkbox_content" : {
+      "work_status" : [ ]
+    }
+  }
+}
+/* Joe */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Mitch */
 {
    "github_api_data": {
@@ -379,6 +436,27 @@
  *
  *
  */
+
+ /** JSON format **/
+ {
+   "owner_reference": [] ,
+   "project_content": {
+     "title": "" ,
+     "project_url_id": "" ,
+     "mvp": "" ,
+     "img_urls": {
+       "main_img": ""
+     } ,
+     "out_link_urls" : {
+       "github_repo_url": "" ,
+       "live_project_site_url": ""
+     } ,
+     "tech_used": []
+   }
+ }
+ /** JSON format **/
+
+
 
 
 

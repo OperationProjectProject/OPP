@@ -48,13 +48,13 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Append name and headline to profile headline div
         [ $name , $byline ].forEach(function( e, i ){
-          console.log(e);
+          //console.log(e);
           $profile_headline.append( e );
         });
 
         //Append profile image and profile headline to basic info card
         [ $profile_img , $profile_headline ].forEach(function( e, i ){
-          console.log(e);
+          //console.log(e);
           $basic_info_card.append( e );
         });
 
@@ -81,32 +81,32 @@ App.Views.ProfileView = Backbone.View.extend({
           this.model.attributes.twitter_url
         ].forEach( function( e, i, arr ){
           if (e) {
-            console.log("%c " + e , "color:purple; font-size: 2em;");
+            console.log("%c" + e , "color:rgba(200,100,240,1.0); font-size: 1em;");
             var $anchor = $('<a target="_blank">');
             var $list_item = $('<li class="social_link_list_item">');
             if ( e === self.model.attributes.personal_site_url ) {
-              console.log("site url");
+              //console.log("site url");
               $anchor.attr({
                 'href': e
               })
               .text("My website")
               .prepend('<i class="fa fa-bullseye fa-lg"></i>');
             } else if ( e === self.model.attributes.github_url) {
-              console.log("github url");
+              //console.log("github url");
               $anchor.attr({
                 'href': e
               })
               .text("Github")
               .prepend('<i class="fa fa-github fa-lg"></i>');
             } else if ( e === self.model.attributes.linkedin_url ) {
-              console.log("linkedin url");
+              //console.log("linkedin url");
               $anchor.attr({
                 'href': e
               })
               .text("Linkedin")
               .prepend('<i class="fa fa-linkedin-square fa-lg"></i>');
             } else if ( e === self.model.attributes.twitter_url ) {
-              console.log("twitter url");
+              //console.log("twitter url");
               $anchor.attr({
                 'href': e
               })

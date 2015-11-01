@@ -131,7 +131,7 @@ App.Views.NavigationView = Backbone.View.extend({
 		var $projects_link_li = $('<li>').append( $projects_link_a );
 
 
-		console.log( "%c active_link: " + this.active_link , "color:rgba(220,120,120,0.8); font-size:2em;")
+		console.log( "%cactive_link: " + this.active_link , "color:rgba(220,120,120,0.8); font-size:2em;")
 		if ( this.active_link === "profiles_link_active" ) {
 			$( $profiles_link_a ).parent().addClass("active");
 			$( $profiles_link_a ).append('<span class="sr-only">(current)</span>');

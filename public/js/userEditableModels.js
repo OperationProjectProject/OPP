@@ -6,20 +6,23 @@
 //===============
 
 //Logged-in User only ever has access to one Profile Edit Model
+//prof img & url id
 var ProfileEditorModel = Backbone.Model.extend({
 	defaults: {
-		profile_img_url:'',
-		url_id
+		profile_img_url:'http://placehold.it/100x100' ,
+		arbitrary_string: '',
+		arbitrary_boolean: false
 	} ,
 	urlRoot: '/user_profile' ,
 	initialize: function() {
-		this.fetch({
-			success:function(){
-				console.log("%cProfileEditModel","color:rgba(100,100,100,1.0);font-size:1.25em;");
-			}
-		});
+		console.log("initialize profile editor model");
+		//this.fetch({
+		//	success:function(){
+		//		console.log("%cProfileEditModel","color:rgba(100,100,100,1.0);font-size:1.25em;");
+		//	}
+		//});
 	} ,
-	save_edit: function() {
+	save_profile: function() {
 		//this will model.save()
 		//Make a put request at /user_profile
 	}
@@ -38,15 +41,15 @@ var ProjectEditorModel = Backbone.Model.extend({
 			}
 		});
 	} ,
-	add_new_project: function() {
+	add_project: function() {
 		//model.save()
 		//Make a post request at /user_project/:project_url_id
 	},
-	save_project_edit: function() {
+	save_project: function() {
 		//model.save()
 		//Make a put request at /user_project/:project_url_id
 	} ,
-	delete_project_edit: function() {
+	delete_project: function() {
 		//model.destroy()
 	}
 });
