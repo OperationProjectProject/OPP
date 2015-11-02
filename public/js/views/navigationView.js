@@ -14,7 +14,7 @@ App.Views.NavigationView = Backbone.View.extend({
 
 		//console.log("%cTesting Area" ,"font-size:4em; color:rgba(200,200,200,1.0);");
 		//console.log(this);
-		console.log(this.collection);
+		//console.log(this.collection);
 		//console.log(this.model);
 		//console.log(this.logged_user);
 		//console.log(this.user_profile_img_url);

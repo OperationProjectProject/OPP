@@ -21,7 +21,7 @@ A web platform for members of our community to showcase their work.
 ##DATA MODELS:
 * **Profile Object**
 ```javascript
-  {
+  { "active": true ,
     "github_api_data": {
       "github_id": "",
       "github_email": "",
@@ -63,9 +63,9 @@ A web platform for members of our community to showcase their work.
 ```
 * **Project Object**
 ```javascript
-{
-   "owner_reference": [] ,
-   "project_content": {
+{ "active": true ,
+  "owner_reference": [] ,
+  "project_content": {
      "title": "" ,
      "project_url_id": "" ,
      "mvp": "" ,
@@ -86,17 +86,16 @@ A web platform for members of our community to showcase their work.
 | ------ | ----------------------------- |
 | GET    | /                             |
 | GET    | /test                         |
-| GET    | /projects                     |
-| GET    | /profiles                     |
 | GET    | /auth/github                  |
 | GET    | /logout                       |
-| GET    | /user_profile                 |
-| PUT    | /user_profile                 |
-| DELETE | /user_profile                 |
-| GET    | /user_project/:project_url_id |
-| POST   | /user_project/:project_url_id |
-| PUT    | /user_project/:project_url_id |
-| DELETE | /user_project/:project_url_id |
+| GET    | /profiles                     |
+| PUT    | /profiles/:id                 |
+| DELETE | /profiles/:id                 |
+| GET    | /projects                     |
+| POST   | /projects                     |
+| PUT    | /profiles/:id                 |
+| DELETE | /profiles/:id                 |
+
 
 ##RESOURCES USED:
 * Twitter Bootstrap

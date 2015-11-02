@@ -40,7 +40,10 @@ var ProfileCollection = Backbone.Collection.extend({
 	initialize: function() {
 		this.fetch({
 			success:function(){
-				//console.log("%cProfileCollection","color:rgba(100,100,100,1.0);font-size:1.25em;");
+				console.log("%cProfileCollection success!","color:rgba(100,200,200,1.0);font-size:1.25em;");
+			} ,
+			error: function() {
+				console.log("%cProfileCollection error!!","color:rgba(200,100,100,1.0);font-size:1.25em;");
 			}
 		});
 	}
@@ -53,7 +56,10 @@ var ProjectCollection = Backbone.Collection.extend({
 	initialize: function() {
 		this.fetch({
 			success:function(){
-				//console.log("%cProjectCollection","color:rgba(100,100,100,1.0);font-size:1.25em;");
+				console.log("%cProjectCollection fetch success!","color:rgba(100,200,200,1.0);font-size:1.25em;");
+			} ,
+			error: function() {
+				console.log("%cProjectCollection fetch error!!","color:rgba(200,100,100,1.0);font-size:1.25em;");
 			}
 		});
 	}
