@@ -135,21 +135,17 @@ App.Router = Backbone.Router.extend({
   profile_editor: function() {
     console.log("%cRouter '/#profiles/:url_id/edit'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
 
-    //create a new instance of
-    this.profile_edit_model = new ProfileEditorModel({
-      arbitrary_string: 'halloween'
-    });
     var current_url = '/profiles/' + this.logged_user + '/edit';
     this.set_up_dom();
     app.navigationView = new App.Views.NavigationView({
       collection: this.profiles ,
       user_session: this.user_session ,
-      current_url: current_url ,
+      current_url: '#profiles/' + this.logged_user ,
       logged_user: this.logged_user
     });
     //console.log(this.profile_edit_model);
     app.profileEditView = new App.Views.EditProfileView({
-      model: this.profile_edit_model ,
+      collection: this.profiles ,
       user_session: this.user_session ,
       logged_user: this.logged_user
     });
