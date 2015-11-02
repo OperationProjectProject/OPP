@@ -25,7 +25,7 @@ App.Views.AllProfilesView = Backbone.View.extend({
         self.$el.prepend( profile_preview.$el );
       }
     });
-    
+
 		$(".centerdiv").prepend(this.$el);
 	},
 

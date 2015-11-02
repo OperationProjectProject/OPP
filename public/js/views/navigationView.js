@@ -8,8 +8,39 @@ App.Views.NavigationView = Backbone.View.extend({
 
 	render: function() {
 		console.log("%cNavigationView","color:rgba(200,200,200,1.0);font-size:1.25em;");
-		console.log(this.collection);
+		//console.log(this.collection);
 		//add role="navigtion" to this nav element
+		this.model = null;
+
+		//console.log("%cTesting Area" ,"font-size:4em; color:rgba(200,200,200,1.0);");
+		//console.log(this);
+		console.log(this.collection);
+		//console.log(this.model);
+		//console.log(this.logged_user);
+		//console.log(this.user_profile_img_url);
+		var self = this;
+		//console.log(self);
+		this.collection.models.forEach(function(e,i){
+			if ( self.logged_user === e.attributes.url_id ) {
+				//console.log(self.user_profile_img_url);
+				//console.log(self.logged_user);
+				//console.log(e.attributes.url_id);
+				//console.log(e.attributes.url_id);
+				//console.log(self.user_profile_img_url);
+				//console.log(e.attributes.profile_img_url);
+				self.user_profile_img_url = e.attributes.profile_img_url;
+				//console.log(self.user_profile_img_url);
+			}
+		});
+
+		//console.log(this.user_profile_img_url);
+
+
+
+
+
+		this.$el.empty();
+
 		var $container = $('<div class="container">');
 
 		//navbar-header
@@ -149,16 +180,53 @@ App.Views.NavigationView = Backbone.View.extend({
 
 		//console.log(this.collection.models);
 
-		//console.log(this.collection.models);
+
 		//console.log(this.collection.models.attributes);
 		//console.log(this.collection.models.attributes);
 
+
+		//console.log(this);
+		//console.log(this.collection);
+		//console.log(this.collection.models);
+		//console.log(this.logged_user);
+
+
+		//Capture profile_img_url of current logged_user_name
+			//It should be an http:// link for user avatar img
+			//And set it as profile_img_url  in the new instance of
+
+
+
+		//this.collection.models.forEach( function( e, i ){
+
+			//console.log(self);
+			//console.log(self.logged_user);
+			//console.log(self.user_profile_img_url);
+				//console.log( e );
+			//console.log( e.attributes );
+			//console.log( e.attributes.profile_img_url );
+			//console.log( e.attributes.url_id );
+			//console.log( self.profile_img_url );
+			//console.log( self.url_id );
+			//if( e.attributes === self.logged_user ) {
+
+				//console.log( e.attributes );
+				//console.log( self.logged_user );
+			//}
+
+		//});
+
+		//console.log(this);
+		//console.log(this);
+
+
+
 		var $log_widget_list = $('<ul class="nav navbar-nav navbar-right">');
 		this.log_Widget_View = new App.Views.LogWidgetView({
-			//Or the nav could just pass a string to the logwidget view
-			profile_img_url: 'testing 01 02 03',
+			//Or the nav should just pass a string to the logwidget view
+			profile_img_url: this.user_profile_img_url ,
 			user_session: this.user_session ,
-			current_url: this.current_url,
+			current_url: this.current_url ,
 			logged_user: this.logged_user
 		});
 		$log_widget_list.append( this.log_Widget_View.$el );
@@ -182,11 +250,12 @@ App.Views.NavigationView = Backbone.View.extend({
 		this.current_url = opts.current_url;
 		this.active_link = opts.active_link;
 		this.logged_user = opts.logged_user;
+		this.user_profile_img_url = null;
 		this.render();
 
 		//Why does this creat two navs?
 		//:
-		//this.listenTo(this.collection, "update", this.render);
+		this.listenTo(this.collection, "update", this.render);
 		//?
 	}
 });

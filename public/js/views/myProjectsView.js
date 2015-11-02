@@ -1,5 +1,5 @@
 App.Views.MyProjectsView = Backbone.View.extend({
-  tagName: 'ul' ,
+  tagName: 'div' ,
 
   className: 'my_projects_view' ,
 
@@ -7,6 +7,10 @@ App.Views.MyProjectsView = Backbone.View.extend({
     $('body').css({'background':'rgba(240,240,235,1.0)'});
     console.log("%cMyProjectsView","color:rgba(210,210,210,1.0);font-size:1.35em;");
     console.log(this.collection);
+
+    //This is terrible practice, but solves a short-term problem
+    //All views in this app will need to be refactored
+    this.$el.empty();
 
     //create row 01
     var $row_01 =  $('<div>').attr({
@@ -46,7 +50,7 @@ App.Views.MyProjectsView = Backbone.View.extend({
 	} ,
 
   initialize: function(opts) {
-    //this.listenTo(this.collection, "update", this.render);
     this.render();
+    this.listenTo(this.collection, "update", this.render);
 	}
 });

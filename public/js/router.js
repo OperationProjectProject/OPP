@@ -75,7 +75,7 @@ App.Router = Backbone.Router.extend({
     else {
       console.log("%c:url_id","color:green; font-size:1.25em;" );
       //console.log(this.profiles);
-      app.ProfileView = new App.Views.ProfileView({
+      app.profileView = new App.Views.ProfileView({
         collection: this.profiles ,
         url_id: url_id ,
         user_session: this.user_session ,
@@ -111,7 +111,7 @@ App.Router = Backbone.Router.extend({
     else {
       console.log("%c:project_url_id","color:green; font-size:1.25em;" );
       //console.log(this.profiles);
-      app.ProjectView = new App.Views.ProjectView({
+      app.projectView = new App.Views.ProjectView({
         collection: this.projects ,
         project_url_id: project_url_id
       });
@@ -133,7 +133,8 @@ App.Router = Backbone.Router.extend({
   },
 
   profile_editor: function() {
-    console.log( "profile_editor" );
+    console.log("%cRouter '/#profiles/:url_id/edit'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+
     //create a new instance of
     this.profile_edit_model = new ProfileEditorModel({
       arbitrary_string: 'halloween'
@@ -141,6 +142,7 @@ App.Router = Backbone.Router.extend({
     var current_url = '/profiles/' + this.logged_user + '/edit';
     this.set_up_dom();
     app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles ,
       user_session: this.user_session ,
       current_url: current_url ,
       logged_user: this.logged_user
@@ -155,15 +157,16 @@ App.Router = Backbone.Router.extend({
   } ,
 
   my_projects: function(){
+    console.log("%cRouter '/#projects/my_projects'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
     var current_url = '/#projects/my_projects';
     this.set_up_dom();
     app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles ,
       user_session: this.user_session ,
       current_url: current_url,
       logged_user: this.logged_user
     });
-
-    app.my_projects_view = new App.Views.MyProjectsView({
+    app.myProjectsView = new App.Views.MyProjectsView({
       collection: this.projects ,
       user_session: this.user_session ,
       logged_user: this.logged_user
