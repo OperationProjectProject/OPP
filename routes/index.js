@@ -44,19 +44,19 @@ router.use(cookieParser());
 
 //----------------------------------------------
 
-router.get('/', function(request, response, next) {
-  if(request.user){
-    console.log("cookie", request.cookies.user);
-    response.render('user_session', { title: request.user.username ,layout: 'layout', logged_user:request.cookies.url , banana:'yellow' , client_user_session: true});
+router.get('/', function(req, res, next) {
+  if(req.user){
+    console.log("cookie", req.cookies.user);
+    res.render('user_session', { title: req.user.username ,layout: 'layout', logged_user:req.cookies.url , banana:'yellow' , client_user_session: true});
   }
   else{
-    console.log("!request.user");
-    response.render('index', { title: 'OPP' , layout: 'layout' , banana:'red' , client_user_session: false });
+    console.log("!req.user");
+    res.render('index', { title: 'OPP' , layout: 'layout' , banana:'red' , client_user_session: false });
   }
 });
 
-router.get('/test', function(request, response, next) {
-  response.render('index', { title: 'OPP' , layout: 'tests_layout'});
+router.get('/test', function(req, res, next) {
+  res.render('index', { title: 'OPP' , layout: 'tests_layout'});
 });
 
 function ensureAuthenticated(req, res, next) {
@@ -70,7 +70,20 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
-router.get('/profiles', function(request, response, next) {
+router.put("/profiles/:id", function(req, res, next){
+    var id = req.params.id;
+    db.put('OPP_users', id, {
+      "github_api_data" : req.body.github_api_data,
+      "profile_content" : req.body.profile_content, 
+      "project_reference" : req.body.project_reference
+    })
+    .then(function(result) {
+      console.log("profile updated");
+      res.send({id: id});
+    });
+});
+
+router.get('/profiles', function(req, res, next) {
   db.list('OPP_users')
       .then(function (result) {
         var data = result.body.results;
@@ -95,6 +108,7 @@ router.get('/profiles', function(request, response, next) {
           console.log(element.value.profile_content.editable_text.q_and_a.job_hope);
           */
           return {
+            id: element.path.key,
             name: element.value.profile_content.editable_text.name ,
             title: element.value.profile_content.editable_text.title ,
             github_url: element.value.github_api_data.github_url ,
@@ -111,11 +125,23 @@ router.get('/profiles', function(request, response, next) {
           };
         });
         //console.log(mapped);
-        response.send(mapped);
+        res.send(mapped);
       });
 });
 
-router.get('/projects', function(request, response, next) {
+router.put("/projects/:id", function(req, res, next){
+    var id = req.params.id;
+    db.put('OPP_users', id, {
+      "owner_reference" : req.body.owner_reference, 
+      "project_content" : req.body.project_content
+    })
+    .then(function(result) {
+      console.log("project updated");
+      res.send({id: id});
+    });
+});
+
+router.get('/projects', function(req, res, next) {
   db.list('OPP_projects')
       .then(function (result) {
         var data = result.body.results;
@@ -133,6 +159,7 @@ router.get('/projects', function(request, response, next) {
           console.log(element.value.project_content.tech_used);
           */
           return {
+            id: element.path.key,
             title: element.value.project_content.title ,
             project_url_id: element.value.project_content.project_url_id,
             mvp: element.value.project_content.mvp,
@@ -140,7 +167,7 @@ router.get('/projects', function(request, response, next) {
           };
         });
         //console.log(mapped);
-        response.send(mapped);
+        res.send(mapped);
       });
 });
 
@@ -156,7 +183,7 @@ function(req, res, done){
 },
   passport.authenticate('github', { scope: [ 'user:email' ] }),
   function(req, res){
-    // The request will be redirected to GitHub for authentication, so this
+    // The req will be redirected to GitHub for authentication, so this
     // function will not be called.
 });
 
