@@ -82,7 +82,6 @@ A web platform for members of our community to showcase their work.
 ```
 
 ##ROUTES:
-
 | verb   | URI pattern                   |
 | ------ | ----------------------------- |
 | GET    | /                             |
@@ -99,6 +98,15 @@ A web platform for members of our community to showcase their work.
 | PUT    | /user_project/:project_url_id |
 | DELETE | /user_project/:project_url_id |
 
+##RESOURCES USED:
+* Twitter Bootstrap
+* Backbone.js
+* Express.js
+* Node.js / npm
+* Github API
+* Orchestrate.io
+
 ##CONTACT OUR TEAM:
-[Matt](https://github.com/mkelley2)
-[Pat](http://patrickharry.com)
+[Matt Kelley](https://github.com/mkelley2)
+|
+[Pat Harry](http://patrickharry.com)

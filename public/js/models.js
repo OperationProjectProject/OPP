@@ -40,7 +40,7 @@ var ProfileCollection = Backbone.Collection.extend({
 	initialize: function() {
 		this.fetch({
 			success:function(){
-				console.log("%cProfileCollection","color:rgba(100,100,100,1.0);font-size:1.25em;");
+				//console.log("%cProfileCollection","color:rgba(100,100,100,1.0);font-size:1.25em;");
 			}
 		});
 	}
@@ -53,7 +53,7 @@ var ProjectCollection = Backbone.Collection.extend({
 	initialize: function() {
 		this.fetch({
 			success:function(){
-				console.log("%cProjectCollection","color:rgba(100,100,100,1.0);font-size:1.25em;");
+				//console.log("%cProjectCollection","color:rgba(100,100,100,1.0);font-size:1.25em;");
 			}
 		});
 	}

@@ -9,6 +9,7 @@ App.Views.AllProfilesView = Backbone.View.extend({
   render: function() {
     $('body').css({'background':'rgba(235,235,240,1.0)'});
     console.log("%cAllProfilesView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+		console.log(this.collection);
 
     var self = this;
     this.collection.models.forEach( function(e,i){
@@ -24,6 +25,7 @@ App.Views.AllProfilesView = Backbone.View.extend({
         self.$el.prepend( profile_preview.$el );
       }
     });
+    
 		$(".centerdiv").prepend(this.$el);
 	},
 
