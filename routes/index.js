@@ -47,7 +47,7 @@ router.use(cookieParser());
 router.get('/', function(req, res, next) {
   if(req.user){
     console.log("cookie", req.cookies.user);
-    res.render('user_session', { title: req.user.username ,layout: 'layout', logged_user:req.cookies.url , banana:'yellow' , client_user_session: true});
+    res.render('user_session', { title: "Hello, " + req.user.displayName ,layout: 'layout', logged_user:req.cookies.url , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!req.user");
@@ -72,18 +72,27 @@ function ensureAuthenticated(req, res, next) {
 
 router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-    db.put('OPP_users', id, {
-      "github_api_data" : req.body.github_api_data,
-      "profile_content" : req.body.profile_content, 
-      "project_reference" : req.body.project_reference
-    })
-    .then(function(result) {
-      console.log("profile updated");
-      console.log("github_api_data:", req.body.github_api_data);
-      console.log("profile_content:", req.body.profile_content);
-      console.log("project_reference:", req.body.project_reference);
-      res.send({id: id});
-    });
+    
+    console.log("profile updated(not really)");
+    console.log("github_api_data:", req.body.github_api_data);
+    console.log("profile_content:", req.body.profile_content);
+    console.log("project_reference:", req.body.project_reference);
+    // db.put('OPP_users', id, {
+    //   "github_api_data" : req.body.github_api_data,
+    //   "profile_content" : req.body.profile_content, 
+    //   "project_reference" : req.body.project_reference
+    // })
+    // .then(function(result) {
+    //   console.log("profile updated");
+    //   console.log("github_api_data:", req.body.github_api_data);
+    //   console.log("profile_content:", req.body.profile_content);
+    //   console.log("project_reference:", req.body.project_reference);
+    //   res.send({id: id});
+    // })
+    // .fail(function(err){
+    //   console.log("profiles put failed:", err);
+    //   send(err);
+    // });
 });
 
 router.get('/profiles', function(req, res, next) {
@@ -92,6 +101,7 @@ router.get('/profiles', function(req, res, next) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
           console.log("profile: " ,element.path.key);
+          console.log("element values: ", element.value.profile_content.editable_text);
           /*
           console.log(element);
           console.log(element.value);
@@ -125,26 +135,40 @@ router.get('/profiles', function(req, res, next) {
             top_tools: element.value.profile_content.editable_text.tools ,
             js_tidbit: element.value.profile_content.editable_text.q_and_a.js_tidbit ,
             work_status: element.value.profile_content.checkbox_content.work_status ,
-            dream_job: element.value.profile_content.editable_text.q_and_a.job_hope ,
+            dream_job: element.value.profile_content.editable_text.q_and_a.job_hope
           };
         // }
       });
         //console.log(mapped);
         res.send(mapped);
+      })    
+      .fail(function(err){
+        console.log("profiles get failed:", err);
+        send(err);
       });
 });
 
 router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-    db.put('OPP_projects', id, {
-      "owner_reference" : req.body.owner_reference, 
-      "project_content" : req.body.project_content
-    })
-    .then(function(result) {
-      console.log("project updated");
-      console.log("owner_reference", req.body.owner_reference);
-      res.send({id: id});
-    });
+    
+    console.log("project updated(not really)");
+    console.log("owner_reference", req.body.owner_reference);
+    console.log("project_content", req.body.project_content);
+    
+    // db.put('OPP_projects', id, {
+    //   "owner_reference" : req.body.owner_reference, 
+    //   "project_content" : req.body.project_content
+    // })
+    // .then(function(result) {
+    //   console.log("project updated");
+    //   console.log("owner_reference", req.body.owner_reference);
+    //   console.log("project_content", req.body.project_content);
+    //   res.send({id: id});
+    // })    
+    // .fail(function(err){
+    //   console.log("projects put failed:", err);
+    //   send(err);
+    // });
 });
 
 router.post("/projects", ensureAuthenticated, function(req, res, next){
@@ -156,7 +180,8 @@ router.post("/projects", ensureAuthenticated, function(req, res, next){
     console.log("project added");
   })
   .fail(function (err) {
-    console.log("project post failed");
+    console.log("project post failed", err);
+    send(err);
   });
 });
 
@@ -189,6 +214,10 @@ router.get('/projects', function(req, res, next) {
       });
         //console.log(mapped);
         res.send(mapped);
+      })    
+      .fail(function(err){
+        console.log("projects get failed:", err);
+        send(err);
       });
 });
 
@@ -211,8 +240,6 @@ function(req, res, done){
 //keep history route
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
   console.log("2req.session.returnTo: ", req.session.returnTo);
-    res.cookie("logged", true);
-    res.cookie("user", req.user.username);
     var cookieValue;
     function register(){
       db.post('OPP_users', {
@@ -255,9 +282,13 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
            }
          }
       },false)
+      .then(function(result){
+        console.log("register function ran");
+      })
       .fail(function(err){
-          console.log("db post failed");
+          console.log("db post failed:",err);
         });
+        res.cookie("url", req.user.username);
     }
 
     function updateInfo(key){
@@ -285,22 +316,22 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
           cookieValue = result.body.results[0].value.profile_content.editable_text.url_id;
           console.log("key", result.body.results[0].path.key);
           updateInfo(result.body.results[0].path.key);
+          res.cookie("url", cookieValue);
         }
         else{
           register();
         }
-        res.cookie("url", cookieValue);
-        //
+      })
+      .then(function(result){
+        res.cookie("logged", true);
+        res.cookie("user", req.user.username);
+        console.log("2cookievalue: ", cookieValue);
         res.redirect(req.session.returnTo || "/");
+        req.session.returnTo = null;
       })
       .fail(function (err) {
-        console.log("db search failed");
+        console.log("db search failed:", err);
       });
-
-    // res.cookie("url", cookieValue);
-    // //
-    // res.redirect(req.session.returnTo || "/");
-    req.session.returnTo = null;
 });
 
 router.get('/logout', function(req, res){
