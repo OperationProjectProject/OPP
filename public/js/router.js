@@ -23,7 +23,7 @@ App.Router = Backbone.Router.extend({
     'profiles/:url_id' : 'profiles' ,
     'profiles/:url_id/edit' : 'profile_editor' ,
     'projects' : 'projects' ,
-    'projects/my_projects' : 'projects' ,
+    'projects/my_projects' : 'my_projects' ,
     'projects/:project_url_id': 'projects' ,
     '*notFound': 'notFound'
   },
@@ -100,8 +100,6 @@ App.Router = Backbone.Router.extend({
       active_link: "projects_link_active"
     });
 
-
-
     //check whether a url_id has been passed to the url
     if ( !project_url_id ) {
       console.log("%c!project_url_id","color:orange; font-size:1.25em;");
@@ -140,22 +138,36 @@ App.Router = Backbone.Router.extend({
     this.profile_edit_model = new ProfileEditorModel({
       arbitrary_string: 'halloween'
     });
-    var current_url = '/';
+    var current_url = '/profiles/' + this.logged_user + '/edit';
     this.set_up_dom();
     app.navigationView = new App.Views.NavigationView({
       user_session: this.user_session ,
       current_url: current_url ,
       logged_user: this.logged_user
     });
-
     //console.log(this.profile_edit_model);
-
     app.profileEditView = new App.Views.EditProfileView({
       model: this.profile_edit_model ,
       user_session: this.user_session ,
       logged_user: this.logged_user
     });
-
     //console.log(app.profileEditView);
+  } ,
+
+  my_projects: function(){
+    var current_url = '/#projects/my_projects';
+    this.set_up_dom();
+    app.navigationView = new App.Views.NavigationView({
+      user_session: this.user_session ,
+      current_url: current_url,
+      logged_user: this.logged_user
+    });
+
+    app.my_projects_view = new App.Views.MyProjectsView({
+      collection: this.projects ,
+      user_session: this.user_session ,
+      logged_user: this.logged_user
+    });
   }
+
 });
