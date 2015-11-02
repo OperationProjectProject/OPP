@@ -29,6 +29,7 @@
 
  /* JSON format */
  {
+   "active": true,
     "github_api_data": {
       "github_id": "",
       "github_email": "",
@@ -537,6 +538,7 @@
 
 /** DashMonster **///                      -- Jennifer, Jason & Erik
 {
+  "active": true,
   "owner_reference": [] ,
   "project_content": {
     "title": "DashMonster" ,
