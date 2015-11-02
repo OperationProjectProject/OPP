@@ -1,6 +1,7 @@
 App.Views.EditProfileView = Backbone.View.extend({
   render: function() {
-    console.log(" ---- EditProfileView rendered ---- ");
+    $('body').css({'background':'rgba(235,235,240,1.0)'});
+    console.log("%cEditProfileView","color:rgba(210,210,210,1.0);font-size:1.35em;");
 
     console.log(this.model);
     //create row 01
@@ -14,8 +15,7 @@ App.Views.EditProfileView = Backbone.View.extend({
       'id': 'edit_save_button_box'
     });
 
-    var $my_content_header = $( '<h2>' ).addClass(' my_content_header' ).text( 'My Profile Editor' );
-
+    var $my_content_header = $( '<h2>' ).addClass('my_content_header' ).text( 'My Profile Editor' );
 
     console.log("create 'edit my profile' button for logged-in-users");
     var $edit_my_profile = $( '<a>' ).attr({

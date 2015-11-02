@@ -27,7 +27,7 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
     //this.$el.parent().empty();
 
-
+		this.$el.empty();
 
     this.$el.addClass('dropdown');
 
@@ -45,6 +45,13 @@ App.Views.LogWidgetView = Backbone.View.extend({
     //Capture the url for this user's profile photo
     //var thumbnail_img_src_url_string = '';
 
+
+
+
+
+
+
+
     //console.log("this.collection: " , this.collection);
     //console.log(this.collection.models);
 
@@ -55,12 +62,28 @@ App.Views.LogWidgetView = Backbone.View.extend({
       //console.log(e.attributes);
       //thumbnail_img_src_url_string = e.attributes.profile_img_url;
     //});
+    //console.log(this.profile_img_url);
 
-    var $thumbnail_img = $( '<img>' ).attr({
-      src: 'http://placehold.it/100x100' ,
-      alt: 'Your profile image.' ,
-      id: 'log_widget_profile_img'
-    });
+
+    var $thumbnail_img = $( '<img>' )
+    if ( this.profile_img_url === null ) {
+      $thumbnail_img.attr({
+        src: 'http://placehold.it/100x300' ,
+        alt: 'Your profile image.' ,
+        id: 'log_widget_profile_img' ,
+        class: 'animated fadeInDownBig user_avatar'
+      });
+    } else {
+      $thumbnail_img.attr({
+        src: this.profile_img_url ,
+        alt: 'Your profile image.' ,
+        id: 'log_widget_profile_img' ,
+        class: 'user_avatar'
+      });
+    }
+
+
+
     var $caret = $( '<span class="caret">' );
     $thumbnail_link.append( $thumbnail_img );
     $thumbnail_link.append( $caret );
@@ -102,9 +125,11 @@ App.Views.LogWidgetView = Backbone.View.extend({
       //This is a user session
       //So, this view will be a dropdown menu
       //console.log(this);
+      this.profile_img_url = opts.profile_img_url;
       this.user_session = true;
       this.logged_user = opts.logged_user;
       this.render_user_session();
+      this.listenTo(this.model, "change", this.render);
     }
   }
 

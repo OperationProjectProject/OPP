@@ -23,7 +23,7 @@ App.Router = Backbone.Router.extend({
     'profiles/:url_id' : 'profiles' ,
     'profiles/:url_id/edit' : 'profile_editor' ,
     'projects' : 'projects' ,
-    'projects/my_projects' : 'projects' ,
+    'projects/my_projects' : 'my_projects' ,
     'projects/:project_url_id': 'projects' ,
     '*notFound': 'notFound'
   },
@@ -75,7 +75,7 @@ App.Router = Backbone.Router.extend({
     else {
       console.log("%c:url_id","color:green; font-size:1.25em;" );
       //console.log(this.profiles);
-      app.ProfileView = new App.Views.ProfileView({
+      app.profileView = new App.Views.ProfileView({
         collection: this.profiles ,
         url_id: url_id ,
         user_session: this.user_session ,
@@ -100,8 +100,6 @@ App.Router = Backbone.Router.extend({
       active_link: "projects_link_active"
     });
 
-
-
     //check whether a url_id has been passed to the url
     if ( !project_url_id ) {
       console.log("%c!project_url_id","color:orange; font-size:1.25em;");
@@ -113,7 +111,7 @@ App.Router = Backbone.Router.extend({
     else {
       console.log("%c:project_url_id","color:green; font-size:1.25em;" );
       //console.log(this.profiles);
-      app.ProjectView = new App.Views.ProjectView({
+      app.projectView = new App.Views.ProjectView({
         collection: this.projects ,
         project_url_id: project_url_id
       });
@@ -135,27 +133,44 @@ App.Router = Backbone.Router.extend({
   },
 
   profile_editor: function() {
-    console.log( "profile_editor" );
+    console.log("%cRouter '/#profiles/:url_id/edit'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+
     //create a new instance of
     this.profile_edit_model = new ProfileEditorModel({
       arbitrary_string: 'halloween'
     });
-    var current_url = '/';
+    var current_url = '/profiles/' + this.logged_user + '/edit';
     this.set_up_dom();
     app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles ,
       user_session: this.user_session ,
       current_url: current_url ,
       logged_user: this.logged_user
     });
-
     //console.log(this.profile_edit_model);
-
     app.profileEditView = new App.Views.EditProfileView({
       model: this.profile_edit_model ,
       user_session: this.user_session ,
       logged_user: this.logged_user
     });
-
     //console.log(app.profileEditView);
+  } ,
+
+  my_projects: function(){
+    console.log("%cRouter '/#projects/my_projects'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+    var current_url = '/#projects/my_projects';
+    this.set_up_dom();
+    app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles ,
+      user_session: this.user_session ,
+      current_url: current_url,
+      logged_user: this.logged_user
+    });
+    app.myProjectsView = new App.Views.MyProjectsView({
+      collection: this.projects ,
+      user_session: this.user_session ,
+      logged_user: this.logged_user
+    });
   }
+
 });
