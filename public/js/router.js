@@ -10,7 +10,7 @@ App.Router = Backbone.Router.extend({
     this.logged_user = opts.logged_user;
     this.logged_user_img_url = opts.logged_user_img_url;
     this.set_up_dom = function(){
-      console.log("%cset_up_dom","font-size:3em; color:orange;");
+      console.log("%cset_up_dom","font-size:2.5em; color:orange;");
       $('#app').empty();
       app.centerView = new App.Views.CenterView();
       app.footerView = new App.Views.FooterView();
@@ -32,29 +32,39 @@ App.Router = Backbone.Router.extend({
     console.log("%cRouter '/'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
     var current_url = '/';
     this.set_up_dom();
+
     app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles ,
       user_session: this.user_session ,
       current_url: current_url,
       logged_user: this.logged_user
     });
+
     app.mainView = new App.Views.MainView();
   },
 
   profiles: function( url_id ){
     console.log("%cRouter '/#profiles'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
-    //current url is stored, to be passed to navigation view
+
+    //Store current url, to be passed to navigation view
     var current_url = '/%23profiles';
     if ( url_id ) {
       current_url += '/'+ url_id;
     }
+
+    //Set up DOM
     this.set_up_dom();
+
+    //Create Nav View
     app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles ,
       user_session: this.user_session ,
       current_url: current_url ,
       logged_user: this.logged_user ,
       active_link: "profiles_link_active"
     });
-    //check whether a url_id has been passed to the url
+
+    //Check whether a url_id has been passed to the url
     if ( !url_id ) {
       console.log("%c!url_id","color:orange; font-size:1.25em;");
       //Add All Profiles page content to DOM
@@ -67,7 +77,9 @@ App.Router = Backbone.Router.extend({
       //console.log(this.profiles);
       app.ProfileView = new App.Views.ProfileView({
         collection: this.profiles ,
-        url_id: url_id
+        url_id: url_id ,
+        user_session: this.user_session ,
+        logged_user: this.logged_user
       });
     } //end of the url_id param 'else' clause
   },
@@ -81,11 +93,13 @@ App.Router = Backbone.Router.extend({
     }
     this.set_up_dom();
     app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles ,
       user_session: this.user_session ,
       current_url: current_url ,
       logged_user: this.logged_user ,
       active_link: "projects_link_active"
     });
+
 
 
     //check whether a url_id has been passed to the url
@@ -111,6 +125,7 @@ App.Router = Backbone.Router.extend({
     var current_url = '/';
     this.set_up_dom();
     app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles ,
       user_session: this.user_session ,
       current_url: current_url ,
       logged_user: this.logged_user
@@ -132,10 +147,15 @@ App.Router = Backbone.Router.extend({
       current_url: current_url ,
       logged_user: this.logged_user
     });
-    console.log(this.profile_edit_model);
+
+    //console.log(this.profile_edit_model);
+
     app.profileEditView = new App.Views.EditProfileView({
-      model: this.profile_edit_model
+      model: this.profile_edit_model ,
+      user_session: this.user_session ,
+      logged_user: this.logged_user
     });
-    console.log(app.profileEditView);
+
+    //console.log(app.profileEditView);
   }
 });

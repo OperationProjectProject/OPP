@@ -226,6 +226,7 @@ a#projects_link.navigation_link  {
 }
 
 #log_widget_profile_img {
+  height: 35px;
   width: 35px;
 }
 
@@ -257,7 +258,9 @@ ul.social_links:last-child {
   margin-bottom: 0px;
 }
 
-
+.edit_save_button {
+  float:right;
+}
 
 
 

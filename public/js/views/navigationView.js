@@ -8,13 +8,12 @@ App.Views.NavigationView = Backbone.View.extend({
 
 	render: function() {
 		console.log("%cNavigationView","color:rgba(200,200,200,1.0);font-size:1.25em;");
-
+		console.log(this.collection);
 		//add role="navigtion" to this nav element
 		var $container = $('<div class="container">');
 
 		//navbar-header
 		var $navbar_header = $('<div class="navbar-header">');
-
 
 		var $toggle_button = $('<button>').attr({
 			"class": 'navbar-toggle collapsed' ,
@@ -66,7 +65,7 @@ App.Views.NavigationView = Backbone.View.extend({
 					str = "fadeIn";
 					break;
 				case 10:
-					str = "";
+					str = "bounceInLeft";
 					break;
 				case 11:
 					str = "";
@@ -81,13 +80,13 @@ App.Views.NavigationView = Backbone.View.extend({
 					str = "";
 					break;
 				case 16:
-					str = "";
+					str = "bounceInTop";
 					break;
 				case 17:
-					str = "";
+					str = "bounceInTop";
 					break;
 				case 18:
-					str = "";
+					str = "bounceInTop";
 					break;
 				case 19:
 					str = "";
@@ -130,7 +129,6 @@ App.Views.NavigationView = Backbone.View.extend({
 		var $profiles_link_li = $('<li>').append( $profiles_link_a );
 		var $projects_link_li = $('<li>').append( $projects_link_a );
 
-
 		console.log( "%cactive_link: " + this.active_link , "color:rgba(220,120,120,0.8); font-size:2em;")
 		if ( this.active_link === "profiles_link_active" ) {
 			$( $profiles_link_a ).parent().addClass("active");
@@ -140,17 +138,25 @@ App.Views.NavigationView = Backbone.View.extend({
 			$( $projects_link_a ).append('<span class="sr-only">(current)</span>');
 		}
 
-
-
-
-
-
 		//Append profile and project links to their parent unordered list
 		$nav_links.append( $profiles_link_li );
 		$nav_links.append( $projects_link_li );
 		//Build Log Widget, and append it to it's parent unordered list
+
+		//determine which model in this.collection is the one that represents the logged in user
+		//console.log(this);
+		//console.log(this.collection);
+
+		//console.log(this.collection.models);
+
+		//console.log(this.collection.models);
+		//console.log(this.collection.models.attributes);
+		//console.log(this.collection.models.attributes);
+
 		var $log_widget_list = $('<ul class="nav navbar-nav navbar-right">');
 		this.log_Widget_View = new App.Views.LogWidgetView({
+			//Or the nav could just pass a string to the logwidget view
+			profile_img_url: 'testing 01 02 03',
 			user_session: this.user_session ,
 			current_url: this.current_url,
 			logged_user: this.logged_user
@@ -165,67 +171,10 @@ App.Views.NavigationView = Backbone.View.extend({
 		$container.append( $navbar_header );
 		$container.append( $navbar_collapse );
 
-
 		this.$el.append( $container );
 
 		//attach nav bar to #app div
 		$('#app').prepend(this.$el);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-		//build the parent ul
-		var $ul = $('<ul class="container navbar">');
-
-		//build nav list items
-		var $home_li = $('<li class="nav_element">');
-		var $github_auth_li = $('<li class="nav_element">');
-		var $profiles_li = $('<li class="nav_element">');
-		var $projects_li = $('<li class="nav_element">');
-
-
-		//build nav links
-		var $home_a = $('<a href="/" id="home_link" tabindex="1">').html('<img src="http://placehold.it/150x25?text=Home+Link">');
-		var $github_auth_a = $('<a href="/auth/github" id="login_link" tabindex="2">').text('Login With GitHub');
-		var $profiles_a = $('<a href="#profiles" id="profiles_link" tabindex="3">').text('profiles');
-		var $projects_a = $('<a href="#projects" id="projects_link" tabindex="4">').text('projects');
-
-
-		//append links to list items
-		$home_li.append( $home_a );
-		$github_auth_li.append( $github_auth_a );
-		$profiles_li.append( $profiles_a );
-		$projects_li.append( $projects_a );
-
-		//append list items to nav_ul
-		[ $home_li , $github_auth_li , $profiles_li , $projects_li ].forEach(function( e, i ){
-			 $nav_ul.append( e );
-		});
-
-		//attach $nav_ul to this.$el
-		this.$el.append( $nav_ul );
-*/
 
 	},
 	initialize: function(opts) {
@@ -234,5 +183,10 @@ App.Views.NavigationView = Backbone.View.extend({
 		this.active_link = opts.active_link;
 		this.logged_user = opts.logged_user;
 		this.render();
+
+		//Why does this creat two navs?
+		//:
+		//this.listenTo(this.collection, "update", this.render);
+		//?
 	}
 });

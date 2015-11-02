@@ -7,15 +7,56 @@ App.Views.ProfileView = Backbone.View.extend({
   render: function() {
     $('body').css({'background':'rgba(235,235,240,1.0)'});
     console.log("%cProfileView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+    console.log(this);
 
     for ( var i = 0; i < this.collection.models.length; i++) {
       if (this.collection.models[i].attributes.url_id === this.url_id){
         this.model = this.collection.models[i];
 
+
+
+
+
         //create row 01
         var $row_01 =  $('<div>').attr({
           'class': 'row' ,
           'id': 'row_01'
+        });
+
+        //Create content box for basic info
+        var $edit_save_button_box = $('<div>').attr({
+          'class': 'content_box col-sm-12 col-md-12 col-lg-12' ,
+          'id': 'edit_save_button_box'
+        });
+
+
+
+        if ( (this.user_session === true) && ( this.url_id === this.logged_user ) ) {
+          console.log("create 'edit my profile' button for logged-in-users");
+
+          var $my_content_header = $( '<h2>' ).addClass(' my_content_header' ).text( 'My Profile' );
+
+          var $edit_my_profile = $( '<a>' ).attr({
+            'class' : 'btn btn-primary btn-lg edit_save_button',
+            'href': '#profiles/' + this.logged_user + '/edit'
+          }).text(
+            "Edit My Profile"
+          );
+          $edit_save_button_box.append( $my_content_header );
+          $edit_save_button_box.append( $edit_my_profile );
+        }
+
+        $row_01.append( $edit_save_button_box );
+
+
+
+
+
+
+        //create row 02
+        var $row_02 =  $('<div>').attr({
+          'class': 'row' ,
+          'id': 'row_02'
         });
 
         //Create content box for basic info
@@ -123,13 +164,13 @@ App.Views.ProfileView = Backbone.View.extend({
         //Append
         $social_links_div.append( $social_links_card );
         //Append basic info and social links to row 01
-        $row_01.append( $basic_info );
-        $row_01.append( $social_links_div );
+        $row_02.append( $basic_info );
+        $row_02.append( $social_links_div );
 
         //create row 02
-        var $row_02 =  $('<div>').attr({
+        var $row_03 =  $('<div>').attr({
           'class': 'row' ,
-          'id': 'row_02'
+          'id': 'row_03'
         });
 
         //Create content card for social links
@@ -176,7 +217,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Append bootstrap rows to this view
         var self = this;
-        [ $row_01 , $row_02 ].forEach(function( e, i ){
+        [ $row_01 , $row_02 , $row_03 ].forEach(function( e, i ){
             self.$el.append( e );
         });
 
@@ -193,6 +234,8 @@ App.Views.ProfileView = Backbone.View.extend({
 
 	initialize: function(opts) {
     this.url_id = opts.url_id;
+    this.user_session = opts.user_session;
+    this.logged_user = opts.logged_user;
     this.listenTo(this.collection, "update", this.render);
     this.render();
 	}
