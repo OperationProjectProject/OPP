@@ -77,14 +77,13 @@ router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     // console.log("request body", req.body);
     console.log("twitter:", req.body.twitter_url);
     console.log("linkedin_url:", req.body.linkedin_url);
+    console.log("personal_site_url:", req.body.personal_site_url);
     
-    // db.newPatchBuilder("OPP_users", key)
+    // db.newPatchBuilder("OPP_users", id)
     //   .replace("profile_content.social_urls.twitter", req.body.twitter_url)
     //   .replace("profile_content.social_urls.linkedin", req.body.linkedin_url)
-    //   .then(function(result){
-    //     console.log("profile updated");
-    //     res.send({id: id});
-    //   })
+    //   .replace("profile_content.social_urls.personal", req.body.personal_site_url)
+    //   .apply()
     //   .fail(function(err){
     //     console.log("profiles update failed", err);
     //     send(err);
