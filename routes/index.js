@@ -61,12 +61,12 @@ router.get('/test', function(req, res, next) {
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    console.log("req.path: ", req.path);
+    // console.log("req.path: ", req.path);
     req.session.returnTo = req.path;
     return next();
   }
   else {
-    console.log("somthing");
+    console.log("ensure authentication failed");
   }
 }
 
@@ -74,25 +74,21 @@ router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
     
     console.log("profile updated(not really)");
-    console.log("github_api_data:", req.body.github_api_data);
-    console.log("profile_content:", req.body.profile_content);
-    console.log("project_reference:", req.body.project_reference);
-    // db.put('OPP_users', id, {
-    //   "github_api_data" : req.body.github_api_data,
-    //   "profile_content" : req.body.profile_content, 
-    //   "project_reference" : req.body.project_reference
-    // })
-    // .then(function(result) {
-    //   console.log("profile updated");
-    //   console.log("github_api_data:", req.body.github_api_data);
-    //   console.log("profile_content:", req.body.profile_content);
-    //   console.log("project_reference:", req.body.project_reference);
-    //   res.send({id: id});
-    // })
-    // .fail(function(err){
-    //   console.log("profiles put failed:", err);
-    //   send(err);
-    // });
+    // console.log("request body", req.body);
+    console.log("twitter:", req.body.twitter_url);
+    console.log("linkedin_url:", req.body.linkedin_url);
+    
+    // db.newPatchBuilder("OPP_users", key)
+    //   .replace("profile_content.social_urls.twitter", req.body.twitter_url)
+    //   .replace("profile_content.social_urls.linkedin", req.body.linkedin_url)
+    //   .then(function(result){
+    //     console.log("profile updated");
+    //     res.send({id: id});
+    //   })
+    //   .fail(function(err){
+    //     console.log("profiles update failed", err);
+    //     send(err);
+    //   });
 });
 
 router.get('/profiles', function(req, res, next) {
@@ -100,8 +96,8 @@ router.get('/profiles', function(req, res, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          console.log("profile: " ,element.path.key);
-          console.log("element values: ", element.value.profile_content.editable_text);
+          // console.log("profile: " ,element.path.key);
+          // console.log("element values: ", element.value.profile_content.editable_text);
           /*
           console.log(element);
           console.log(element.value);
@@ -139,7 +135,7 @@ router.get('/profiles', function(req, res, next) {
           };
         // }
       });
-        //console.log(mapped);
+        // console.log("mapped: ", mapped);
         res.send(mapped);
       })    
       .fail(function(err){
@@ -152,8 +148,6 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
     
     console.log("project updated(not really)");
-    console.log("owner_reference", req.body.owner_reference);
-    console.log("project_content", req.body.project_content);
     
     // db.put('OPP_projects', id, {
     //   "owner_reference" : req.body.owner_reference, 
@@ -172,17 +166,18 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
 });
 
 router.post("/projects", ensureAuthenticated, function(req, res, next){
-  db.post('OPP_projects', {
-    "owner_reference": req.body.owner_reference,
-    "project_content": req.body.project_content
-  })
-  .then(function (result) {
-    console.log("project added");
-  })
-  .fail(function (err) {
-    console.log("project post failed", err);
-    send(err);
-  });
+console.log("post for projects ran");
+  // db.post('OPP_projects', {
+  //   "owner_reference": req.body.owner_reference,
+  //   "project_content": req.body.project_content
+  // })
+  // .then(function (result) {
+  //   console.log("project added");
+  // })
+  // .fail(function (err) {
+  //   console.log("project post failed", err);
+  //   send(err);
+  // });
 });
 
 router.get('/projects', function(req, res, next) {

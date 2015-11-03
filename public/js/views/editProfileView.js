@@ -195,12 +195,15 @@ if (this.model == null) {
   },
   update_profile: function() {
     console.log("%cupdate_profile","font-size: 2em; color: red;");
+    console.log("linked in input: ", $('input[id="' + this.logged_user + '_linkedin_url_input"]').val());
+    console.log("this user is: ", this.logged_user);
     //console.log(this.model);
     this.model.set({
-      personal_site_url: $('input[id="' + self.logged_user + '_personal_site_url_input"]').val(),
-  		linkedin_url:  $('input[id="' + self.logged_user + '_linkedin_url_input"]').val(),
-  		twitter_url:  $('input[id="' + self.logged_user + '_twitter_url_input"]').val()
+      personal_site_url: $('input[id="' + this.logged_user + '_personal_site_url_input"]').val(),
+  		linkedin_url:  $('input[id="' + this.logged_user + '_linkedin_url_input"]').val(),
+  		twitter_url:  $('input[id="' + this.logged_user + '_twitter_url_input"]').val()
     });
+    console.log("this model is being sent:", this.model);
     this.model.save();
   }
 });
