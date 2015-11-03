@@ -85,22 +85,22 @@ A web platform for members of our community to showcase their work.
 
 * **View Routing**
 | use case                  | verb     | URI pattern   |
-| ------------------------- | -------- |-------------- |
+|---------------------------|----------|---------------|
 | site root, landing page   | GET      | /             |
 | run client mocha tests    | GET      | /test         |
 | authenticate user session | GET      | /auth/github  |
 | end a user session        | GET      | /logout       |
 
 * **API**
-| Backbone.js Object  | method     | HTTP verb   | Express URI pattern      |
-|-------------------- | ---------- | ----------- | ------------------------ |
-| profile collection  | .fetch()   | GET         | /profiles                |
-| profile model       | .save()    | PUT         | /profiles/:id            |
-| profile model       | .destroy() | DELETE      | /profiles/:id            |
-| project collection  | .fetch()   | GET         | /projects                |
-| project model       | .create()  | POST        | /projects                |
-| project model       | .save()    | PUT         | /projects/:id            |
-| project model       | .destroy() | DELETE      | /projects/:id            |
+| Backbone.js Object | method     | HTTP verb   | Express URI pattern |
+|--------------------|------------|-------------|---------------------|
+| profile collection | .fetch()   | GET         | /profiles           |
+| profile model      | .save()    | PUT         | /profiles/:id       |
+| profile model      | .destroy() | DELETE      | /profiles/:id       |
+| project collection | .fetch()   | GET         | /projects           |
+| project model      | .create()  | POST        | /projects           |
+| project model      | .save()    | PUT         | /projects/:id       |
+| project model      | .destroy() | DELETE      | /projects/:id       |
 
 ##RESOURCES USED:
 * Twitter Bootstrap
