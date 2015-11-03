@@ -17,144 +17,6 @@ App.Views.EditProfileView = Backbone.View.extend({
     });
 
 
-
-
-
-    if (this.model !== null) {
-      console.log(this.logged_user);
-      console.log(this.model.attributes);
-      console.log("%c TEST AREA" , "color:rgba(200,100,240,1.0); font-size: 2em;");
-      //Build unordered list for editing social urls
-      var $social_urls = $('<ul class="social_link_editor_list">');
-
-
-      //this.model.attributes.personal_site_url
-      //Build list item with label and input for Personal Site URL
-      var $personal_site_url_li = $('<li>');
-      var $personal_site_url_label = $('<label class="social_link_editor_label">');
-      var $personal_site_url_input = $('<input type="text" class="social_link_editor_input">');
-
-
-      $personal_site_url_label.attr({
-        'for': this.logged_user + '_personal_site_url_input'
-      })
-      .text("My website")
-      .prepend('<i class="fa fa-bullseye fa-lg"></i>');
-
-      $personal_site_url_input.attr({
-        'id': this.logged_user + '_personal_site_url_input',
-        'class': 'form-control',
-        'value': this.model.attributes.personal_site_url
-      });
-
-      //Attach personal_site_url label and input to personal_site_url list item
-      [ $personal_site_url_label ,
-        $personal_site_url_input
-      ].forEach(function(e,i){
-          $personal_site_url_li.append(e);
-      });
-
-
-      //this.model.attributes.linkedin_url
-      //Build list item with label and input for Linkedin URL
-      var $linkedin_url_li = $('<li>');
-      var $linkedin_url_label = $('<label class="social_link_editor_input">');
-      var $linkedin_url_input = $('<input type="text" class="social_link_editor_input">');
-
-
-      console.log(this.logged_user);
-      $linkedin_url_label.attr({
-        'for': this.logged_user + '_linkedin_url_input'
-      })
-      .text("Linkedin")
-      .prepend('<i class="fa fa-linkedin-square fa-lg"></i>');
-
-      console.log(this.model.attributes.linkedin_url);
-      $linkedin_url_input.attr({
-        'id': this.logged_user + '_linkedin_url_input',
-        'class': 'form-control',
-        'value': this.model.attributes.linkedin_url
-      });
-
-
-
-      //Attach linkedin_url label and input to linkedin_url list item
-      [ $linkedin_url_label ,
-        $linkedin_url_input
-      ].forEach(function(e,i){
-          $linkedin_url_li.append(e);
-      });
-
-
-      //this.model.attributes.twitter_url
-      //Build list item with label and input for Twitter URL
-      var $twitter_url_li = $('<li class="form-group">');
-      var $twitter_url_label = $('<label>');
-      var $twitter_url_input = $('<input type="text">');
-
-
-      console.log(this.logged_user);
-      $twitter_url_label.attr({
-        'for': this.logged_user + '_twitter_url_input' ,
-        'class' :'control-label'
-      })
-      .text("Twitter")
-      .prepend('<i class="fa fa-twitter fa-lg"></i>');
-
-      console.log(this.model.attributes.twitter_url);
-      $twitter_url_input.attr({
-        'id': this.logged_user + '_twitter_url_input',
-        'class': 'form-control',
-        'value': this.model.attributes.twitter_url
-      });
-
-
-
-      //Attach linkedin_url label and input to twitter list item
-      [ $twitter_url_label ,
-        $twitter_url_input
-      ].forEach(function(e,i){
-          $twitter_url_li.append(e);
-      });
-
-
-      //Attach social url list items to their parent unordered list
-      [ $personal_site_url_li ,
-        $linkedin_url_li ,
-        $twitter_url_li
-      ].forEach(function(e,i){
-        $social_urls.append( e );
-      });
-    }
-
-
-
-
-
-
-
-
-
-if (this.model == null) {
-
-
-  console.log("chill pill")
-
-} //end of if statement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //create row 01
     var $row_01 =  $('<div>').attr({
       'class': 'row' ,
@@ -179,8 +41,146 @@ if (this.model == null) {
     $edit_save_button_box.prepend( $my_content_header );
     $edit_save_button_box.append( $edit_my_profile );
     $row_01.append( $edit_save_button_box );
+
+
+
+
+    //create row 02
+    var $row_02 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_02'
+    });
+    //Create content box for social links edit
+    var $edit_social_links_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
+      'id': 'edit_social_links_box'
+    });
+    //Create content box for social links edit
+    var $edit_social_links_card = $('<div>').attr({
+      'class': 'card' ,
+    });
+
+    $edit_social_links_box.append( $edit_social_links_card );
+    $row_02.append( $edit_social_links_box );
+
+    //Build social link editing elements
+    if (this.model !== null) {
+      console.log(this.logged_user);
+      console.log(this.model.attributes);
+      console.log("%c TEST AREA" , "color:rgba(200,100,240,1.0); font-size: 2em;");
+      //Build unordered list for editing social urls
+      var $social_urls = $('<ul class="social_link_editor_list">');
+
+      //this.model.attributes.personal_site_url
+      //Build list item with label and input for Personal Site URL
+      var $personal_site_url_li = $('<li>');
+      var $personal_site_url_label = $('<label class="social_link_editor_label">');
+      var $personal_site_url_input = $('<input type="text" class="social_link_editor_input">');
+
+      $personal_site_url_label.attr({
+        'for': this.logged_user + '_personal_site_url_input'
+      })
+      .text("My website")
+      .prepend('<i class="fa fa-bullseye fa-lg"></i>');
+
+      $personal_site_url_input.attr({
+        'id': this.logged_user + '_personal_site_url_input',
+        'class': 'form-control',
+        'value': this.model.attributes.personal_site_url
+      });
+
+      //Attach personal_site_url label and input to personal_site_url list item
+      [ $personal_site_url_label ,
+        $personal_site_url_input
+      ].forEach(function(e,i){
+          $personal_site_url_li.append(e);
+      });
+
+      //this.model.attributes.linkedin_url
+      //Build list item with label and input for Linkedin URL
+      var $linkedin_url_li = $('<li>');
+      var $linkedin_url_label = $('<label class="social_link_editor_input">');
+      var $linkedin_url_input = $('<input type="text" class="social_link_editor_input">');
+
+      console.log(this.logged_user);
+      $linkedin_url_label.attr({
+        'for': this.logged_user + '_linkedin_url_input'
+      })
+      .text("Linkedin")
+      .prepend('<i class="fa fa-linkedin-square fa-lg"></i>');
+
+      console.log(this.model.attributes.linkedin_url);
+      $linkedin_url_input.attr({
+        'id': this.logged_user + '_linkedin_url_input',
+        'class': 'form-control',
+        'value': this.model.attributes.linkedin_url
+      });
+
+      //Attach linkedin_url label and input to linkedin_url list item
+      [ $linkedin_url_label ,
+        $linkedin_url_input
+      ].forEach(function(e,i){
+          $linkedin_url_li.append(e);
+      });
+
+      //this.model.attributes.twitter_url
+      //Build list item with label and input for Twitter URL
+      var $twitter_url_li = $('<li class="form-group">');
+      var $twitter_url_label = $('<label>');
+      var $twitter_url_input = $('<input type="text">');
+
+      console.log(this.logged_user);
+      $twitter_url_label.attr({
+        'for': this.logged_user + '_twitter_url_input' ,
+        'class' :'control-label'
+      })
+      .text("Twitter")
+      .prepend('<i class="fa fa-twitter fa-lg"></i>');
+
+      console.log(this.model.attributes.twitter_url);
+      $twitter_url_input.attr({
+        'id': this.logged_user + '_twitter_url_input',
+        'class': 'form-control',
+        'value': this.model.attributes.twitter_url
+      });
+
+      //Attach linkedin_url label and input to twitter list item
+      [ $twitter_url_label ,
+        $twitter_url_input
+      ].forEach(function(e,i){
+          $twitter_url_li.append(e);
+      });
+
+      //Attach social url list items to their parent unordered list
+      [ $personal_site_url_li ,
+        $linkedin_url_li ,
+        $twitter_url_li
+      ].forEach(function(e,i){
+        $social_urls.append( e );
+      });
+
+
+      $edit_social_links_card.append($social_urls);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     this.$el.append( $row_01 );
-    this.$el.append( $social_urls );
+    this.$el.append( $row_02 );
 		$( ".centerdiv" ).prepend( this.$el );
 	},
 	initialize: function(opts) {

@@ -49,6 +49,42 @@
  ***********
  ***********/
 
+
+
+/*
+ *
+ *        This is why the entire site is grayscale
+ *
+ */
+ img {
+   -webkit-filter: grayscale(100%);
+   filter: grayscale(100%);
+ }
+
+ a,h2,h3,li,i {
+   color: rgba(120,120,120,1.0);
+ }
+a:hover,
+a:active, {
+  color: rgba(60,60,60,1.0);
+}
+
+.btn ,
+.badge {
+  background: rgba(120,120,120,1.0);
+  border-color:rgba(120,120,120,1.0);
+}
+.btn:hover{
+  background: rgba(80,80,80,1.0);
+}
+.btn:active {
+  background: rgba(60,60,60,1.0);
+}
+
+
+
+
+
 a, button {
   transition: background .3s, border .3s, color .3s;
   transition-timing-function: ease-out;
@@ -72,6 +108,7 @@ footer p {
   font-weight: bold;
   color:rgba(100,100,100,1.0);
 }
+
 
 a#profiles_link.navigation_link ,
 a#projects_link.navigation_link  {
@@ -316,6 +353,36 @@ ul.social_links li {
 ul.social_links:last-child {
   margin-bottom: 0px;
 }
+
+
+
+
+ul.social_link_editor_list{
+  list-style-type: none;
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+ul.social_link_editor_list i {
+  margin-right: 1em;
+}
+
+ul.social_link_editor_list li {
+  font-size: 1.4em;
+  margin-top: .75em;
+  margin-bottom: .75em;
+}
+
+ul.social_link_editor_list:last-child {
+  margin-bottom: 0px;
+}
+
+#profile_editor .row {
+  margin-bottom: 40px;
+}
+
+
+
 
 .edit_save_button {
   float:right;
@@ -603,7 +670,9 @@ div.content_box{
     overflow: hidden;
   }
 
-
+footer {
+  text-align: center;
+}
 
 
 }
