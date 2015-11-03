@@ -13,10 +13,6 @@ App.Views.ProfileView = Backbone.View.extend({
       if (this.collection.models[i].attributes.url_id === this.url_id){
         this.model = this.collection.models[i];
 
-
-
-
-
         //create row 01
         var $row_01 =  $('<div>').attr({
           'class': 'row' ,
@@ -72,11 +68,23 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Create Profile Image this.model.attributes.profile_img_url
         var $profile_img = $('<img>').attr({
-          'src': this.model.attributes.profile_img_url ,
           'alt': this.model.attributes.name + " profile photo." ,
           'class': 'profile_img col-sm-12 col-md-6 col-lg-6' ,
           'id': this.model.attributes.url_id + '_profile_img' ,
         });
+
+        if ( this.model.attributes.profile_img_url !== '') {
+          $profile_img.attr({
+            'src': this.model.attributes.profile_img_url
+          });
+        } else {
+          $profile_img.attr({
+            'src': 'http://www.rammandir.ca/sites/default/files/default_images/defaul-avatar_0.jpg'
+          });
+        }
+
+
+
 
         //Create profile headline div
         var $profile_headline = $('<div>').attr({
@@ -114,7 +122,7 @@ App.Views.ProfileView = Backbone.View.extend({
         });
 
         //Create Social Links List
-        var $social_link_list = $('<ul class="social_links">');
+        var $social_link_list = $('<ul class="social_links col-sm-12 col-md-12 col-lg-12">');
         var self = this;
         [ this.model.attributes.personal_site_url ,
           this.model.attributes.github_url ,
@@ -167,65 +175,52 @@ App.Views.ProfileView = Backbone.View.extend({
         $row_02.append( $basic_info );
         $row_02.append( $social_links_div );
 
-        //create row 02
+        //create row 03
         var $row_03 =  $('<div>').attr({
           'class': 'row' ,
           'id': 'row_03'
         });
 
-        //Create content card for social links
-        var $skills_and_tools_div = $('<div>').attr({
-          'class': 'content_box col-sm-12 col-sm-4 col-lg-4' ,
-          'id': 'skills_and_tools_div'
+        //Create content box for skill pills
+        var $skill_pills_box = $('<div>').attr({
+          'class': 'content_box col-sm-12 col-md-12 col-lg-8 col-lg-2-offset' ,
+          'id': 'skill_pills_box'
         });
 
-        //Create Skills list
-        var $top_skills = $( '<ol class="top_skills">' ).text( "Top 3 Skills: " );
-        this.model.attributes.top_skills.forEach(function( e, i ){
-          $li = $( '<li>' ).text( e );
-          $top_skills.append( $li );
+        //Create card for skill pills
+        var $skill_pill_card = $('<div>').attr({
+          'class': 'card'
         });
 
-        //Create Tools List
-        var $top_tools = $( '<ol class="top_tools">' ).text( "Top 5 Tools: " );
-        this.model.attributes.top_tools.forEach(function( e, i ){
-          $li = $( '<li>' ).text( e );
-          $top_tools.append( $li );
+        //Append card to box, and box to row
+        $skill_pills_box.append( $skill_pill_card );
+        $row_03.append( $skill_pills_box )
+
+
+        console.log("%cTEST AREA","font-size: 3em; color: rgba(220,220,220,1.0);");
+
+        var user_top_three_skills = this.model.attributes.top_skills;
+        var user_top_five_tools = this.model.attributes.top_tools;
+        var skill_pill_text_list = user_top_three_skills.concat( user_top_five_tools );
+        var $skill_pill_ul = $('<ul class="col-sm-12 col-md-12 col-lg-12">');
+
+        skill_pill_text_list.forEach( function( e, i ) {
+          var $skill_pill = $( '<li>' );
+          $skill_pill.attr({
+            'class': 'badge'
+          }).text( e );
+          //console.log(e);
+
+          $skill_pill_ul.append( $skill_pill );
         });
+        $skill_pill_card.append( $skill_pill_ul );
 
-        //Attach top skills and top tools to skills and tools div
-        [ $top_skills , $top_tools ].forEach(function( e, i ){
-            $skills_and_tools_div.append( e );
-        });
-
-        //Create Work Status
-        var $work_status = $( '<ul class="work_status">' ).text( "Work Status: " );
-        this.model.attributes.work_status.forEach(function( e, i ){
-          $li = $( '<li>' ).text( e );
-          $work_status.append( $li );
-        });
-
-        //Create js tidbit
-        var $js_tidbit = $( '<div>' ).html('<span class="question">What is your favorite thing about Javascript?</span><br>');
-        var $js_answer = $( '<span class="answer">' ).text( this.model.attributes.js_tidbit );
-        $js_tidbit.append( $js_answer );
-
-        //Create dream job
-        var $dream_job = $( '<div>' ).html('<span class="question">What is your dream job? </span><br>');
-        var $dream_answer = $( '<span class="answer">' ).text( this.model.attributes.dream_job );
-        $dream_job.append( $dream_answer );
 
         //Append bootstrap rows to this view
         var self = this;
         [ $row_01 , $row_02 , $row_03 ].forEach(function( e, i ){
             self.$el.append( e );
         });
-
-        this.$el.append($top_skills);
-        this.$el.append($top_tools);
-        this.$el.append($js_tidbit);
-        this.$el.append($dream_job);
-
         //Attach this view to the DOM
         $(".centerdiv").append(this.$el);
       }

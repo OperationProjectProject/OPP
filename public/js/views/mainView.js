@@ -8,6 +8,9 @@ App.Views.MainView = Backbone.View.extend({
     $('body').css({'background':'rgba(240,235,235,1.0)'});
 		console.log("%cMainView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     var $about = $('<h1 id="aboutDiv">').text("Discover the Hottest Tech Talent");
+    $about.addClass("animated fadeIn")
+
+
     var $profiles = $('<a id="profilesDiv" href="#profiles" class="btn btn-primary btn-lg">').text('Browse Profiles');
     var $projects = $('<a id="projectsDiv" href="#projects" class="btn btn-primary btn-lg">').text('Browse Projects');
     var divs = [$about, $profiles, $projects];
