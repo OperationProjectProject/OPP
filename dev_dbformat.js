@@ -75,7 +75,8 @@
 
 /* Joe */
  {
-   "github_api_data" : {
+    "active": true,
+    "github_api_data" : {
      "github_id" : "",
      "github_email" : "",
      "github_display_name" : "",
@@ -130,6 +131,7 @@
 
 /* Mitch */
 {
+    "active": true,
    "github_api_data": {
      "github_id": "",
      "github_email": "",
@@ -186,6 +188,7 @@
 
 /** Jason **/
 {
+    "active": true,
    "github_api_data": {
      "github_id": "",
      "github_email": "",
@@ -241,6 +244,7 @@
 
 /** Do **/
 {
+  "active": true,
   "github_api_data": {
     "github_id": "",
     "github_email": "",
@@ -297,6 +301,7 @@
 
 /** Pat **/
 {
+  "active": true,
   "github_api_data": {
     "github_id": "",
     "github_email": "",
@@ -354,6 +359,7 @@
 
 /** Matt **/
 {
+  "active": true,
   "github_api_data": {
     "github_id": "",
     "github_email": "",

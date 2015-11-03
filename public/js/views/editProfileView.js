@@ -16,67 +16,143 @@ App.Views.EditProfileView = Backbone.View.extend({
       }
     });
 
+
+
+
+
     if (this.model !== null) {
-      console.log(self.model.attributes);
+      console.log(this.logged_user);
+      console.log(this.model.attributes);
+      console.log("%c TEST AREA" , "color:rgba(200,100,240,1.0); font-size: 2em;");
+      //Build unordered list for editing social urls
+      var $social_urls = $('<ul class="social_link_editor_list">');
 
-      var $social_urls = $('<ul class="social_links">');
-      [ this.model.attributes.personal_site_url ,
-        this.model.attributes.linkedin_url ,
-        this.model.attributes.twitter_url
-      ].forEach( function( e, i, arr ){
-        if (e) {
-          console.log("%c" + e , "color:rgba(200,100,240,1.0); font-size: 1em;");
-          var $label = $('<label>');
-          var $input = $('<input type="text">');
-          var $list_item = $('<li class="social_link_list_item">');
 
-          if ( e === self.model.attributes.personal_site_url ) {
-            //console.log("site url");
-            $label.attr({
-              'for': self.logged_user + '_personal_site_url_input',
-              'class': 'control-label'
-            })
-            .text("My website")
-            .prepend('<i class="fa fa-bullseye fa-lg"></i>');
-            $input.attr({
-              'id': self.logged_user + '_personal_site_url_input',
-              'placeholder': e,
-              'class': 'form-control'
-            });
-          } else if ( e === self.model.attributes.linkedin_url ) {
-            //console.log("linkedin url");
-            $label.attr({
-              'for': self.logged_user + '_linkedin_url_input' ,
-              'class': 'control-label'
-            })
-            .text("Linkedin")
-            .prepend('<i class="fa fa-linkedin-square fa-lg"></i>');
-            $input.attr({
-              'id': self.logged_user + '_linkedin_url_input',
-              'placeholder': e ,
-              'class': 'form-control'
-            });
-          } else if ( e === self.model.attributes.twitter_url ) {
-            //console.log("twitter url");
-            $label.attr({
-              'for': self.logged_user + '_twitter_url_input',
-              'class': 'control-label'
-            })
-            .text("Twitter")
-            .prepend('<i class="fa fa-twitter fa-lg"></i>');
-            $input.attr({
-              'id': self.logged_user + '_twitter_url_input',
-              'placeholder': e ,
-              'class': 'form-control'
-            });
-          }
+      //this.model.attributes.personal_site_url
+      //Build list item with label and input for Personal Site URL
+      var $personal_site_url_li = $('<li>');
+      var $personal_site_url_label = $('<label class="social_link_editor_label">');
+      var $personal_site_url_input = $('<input type="text" class="social_link_editor_input">');
 
-          $list_item.append( $label );
-          $list_item.append( $input );
-          $social_urls.append( $list_item );
-        }
+
+      $personal_site_url_label.attr({
+        'for': this.logged_user + '_personal_site_url_input'
+      })
+      .text("My website")
+      .prepend('<i class="fa fa-bullseye fa-lg"></i>');
+
+      $personal_site_url_input.attr({
+        'id': this.logged_user + '_personal_site_url_input',
+        'class': 'form-control',
+        'value': this.model.attributes.personal_site_url
+      });
+
+      //Attach personal_site_url label and input to personal_site_url list item
+      [ $personal_site_url_label ,
+        $personal_site_url_input
+      ].forEach(function(e,i){
+          $personal_site_url_li.append(e);
+      });
+
+
+      //this.model.attributes.linkedin_url
+      //Build list item with label and input for Linkedin URL
+      var $linkedin_url_li = $('<li>');
+      var $linkedin_url_label = $('<label class="social_link_editor_input">');
+      var $linkedin_url_input = $('<input type="text" class="social_link_editor_input">');
+
+
+      console.log(this.logged_user);
+      $linkedin_url_label.attr({
+        'for': this.logged_user + '_linkedin_url_input'
+      })
+      .text("Linkedin")
+      .prepend('<i class="fa fa-linkedin-square fa-lg"></i>');
+
+      console.log(this.model.attributes.linkedin_url);
+      $linkedin_url_input.attr({
+        'id': this.logged_user + '_linkedin_url_input',
+        'class': 'form-control',
+        'value': this.model.attributes.linkedin_url
+      });
+
+
+
+      //Attach linkedin_url label and input to linkedin_url list item
+      [ $linkedin_url_label ,
+        $linkedin_url_input
+      ].forEach(function(e,i){
+          $linkedin_url_li.append(e);
+      });
+
+
+      //this.model.attributes.twitter_url
+      //Build list item with label and input for Twitter URL
+      var $twitter_url_li = $('<li class="form-group">');
+      var $twitter_url_label = $('<label>');
+      var $twitter_url_input = $('<input type="text">');
+
+
+      console.log(this.logged_user);
+      $twitter_url_label.attr({
+        'for': this.logged_user + '_twitter_url_input' ,
+        'class' :'control-label'
+      })
+      .text("Twitter")
+      .prepend('<i class="fa fa-twitter fa-lg"></i>');
+
+      console.log(this.model.attributes.twitter_url);
+      $twitter_url_input.attr({
+        'id': this.logged_user + '_twitter_url_input',
+        'class': 'form-control',
+        'value': this.model.attributes.twitter_url
+      });
+
+
+
+      //Attach linkedin_url label and input to twitter list item
+      [ $twitter_url_label ,
+        $twitter_url_input
+      ].forEach(function(e,i){
+          $twitter_url_li.append(e);
+      });
+
+
+      //Attach social url list items to their parent unordered list
+      [ $personal_site_url_li ,
+        $linkedin_url_li ,
+        $twitter_url_li
+      ].forEach(function(e,i){
+        $social_urls.append( e );
       });
     }
+
+
+
+
+
+
+
+
+
+if (this.model == null) {
+
+
+  console.log("chill pill")
+
+} //end of if statement
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //create row 01
@@ -92,7 +168,7 @@ App.Views.EditProfileView = Backbone.View.extend({
 
     var $my_content_header = $( '<h2>' ).addClass('my_content_header' ).text( 'My Profile Editor' );
 
-    console.log("create 'edit my profile' button for logged-in-users");
+    //console.log("create 'edit my profile' button for logged-in-users");
     var $edit_my_profile = $( '<a>' ).attr({
       'class' : 'btn btn-primary btn-lg edit_save_button',
       'href': '#profiles/' + this.logged_user,
