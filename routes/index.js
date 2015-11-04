@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var config = require('../config.js');
+var config = (process.env.HEROKU) ? {dbkey : process.env.DBKEY} : require('./config.js');
 var db = require('orchestrate')(config.dbkey);
 var passport = require('passport');
 var util = require('util');
@@ -82,18 +82,18 @@ router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     console.log("top_skills:", req.body.top_skills);
     console.log("top_tools:", req.body.top_tools);
 
-    // db.newPatchBuilder("OPP_users", id)
-    //   .replace("profile_content.social_urls.twitter", req.body.twitter_url)
-    //   .replace("profile_content.social_urls.linkedin", req.body.linkedin_url)
-    //   .replace("profile_content.editable_text.title", req.body.title)
-    //   .replace("profile_content.social_urls.personal", req.body.personal_site_url)
-    //   .replace("profile_content.editable_text.skills", req.body.top_skills)
-    //   .replace("profile_content.editable_text.tools", req.body.top_tools)
-    //   .apply()
-    //   .fail(function(err){
-    //     console.log("profiles update failed");
-    //     send(err);
-    //   });
+    db.newPatchBuilder("OPP_users", id)
+      .replace("profile_content.social_urls.twitter", req.body.twitter_url)
+      .replace("profile_content.social_urls.linkedin", req.body.linkedin_url)
+      .replace("profile_content.editable_text.title", req.body.title)
+      .replace("profile_content.social_urls.personal", req.body.personal_site_url)
+      .replace("profile_content.editable_text.skills", req.body.top_skills)
+      .replace("profile_content.editable_text.tools", req.body.top_tools)
+      .apply()
+      .fail(function(err){
+        console.log("profiles update failed");
+        send(err);
+      });
 });
 
 router.get('/profiles', function(req, res, next) {
@@ -101,26 +101,6 @@ router.get('/profiles', function(req, res, next) {
       .then(function (result) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
-          // console.log("profile: " ,element.path.key);
-          // console.log("element values: ", element.value.profile_content.editable_text);
-          /*
-          console.log(element);
-          console.log(element.value);
-          console.log(element.value.profile_content);
-          console.log(element.value.profile_content.editable_text.name);
-          console.log(element.value.profile_content.editable_text.title);
-          console.log(element.value.github_api_data.github_url);
-          console.log(element.value.profile_content.social_urls);
-          console.log(element.value.profile_content.social_urls.personal);
-          console.log(element.value.profile_content.social_urls.linkedin);
-          console.log(element.value.profile_content.social_urls.twitter);
-          console.log(element.value.profile_content.editable_text.url_id);
-          console.log(element.value.profile_content.checkbox_content.work_status);
-          console.log(element.value.profile_content.editable_text.skills);
-          console.log(element.value.profile_content.editable_text.tools);
-          console.log(element.value.profile_content.editable_text.q_and_a.js_tidbit);
-          console.log(element.value.profile_content.editable_text.q_and_a.job_hope);
-          */
           // if(element.value.active === true){
           return {
             id: element.path.key,
@@ -157,7 +137,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     console.log("project_url_id:", req.body.project_url_id);
     console.log("mvp:", req.body.mvp);
     console.log("tech_used:", req.body.tech_used);
-
+    
     // db.newPatchBuilder("OPP_projects", id)
     // .replace("project_content.title", req.body.title)
     // .replace("project_content.owner_reference", req.body.owner_reference)
@@ -173,31 +153,33 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
 
 router.post("/projects", ensureAuthenticated, function(req, res, next){
 console.log("post for projects ran");
-  // db.post('OPP_projects', {
-  //   "active": true,
-  //   "owner_reference": req.body.owner_reference,
-  //   "project_content": {
-  //     "title": req.body.title ,
-  //     "project_url_id": req.body.project_url_id ,
-  //     "mvp": req.body.mvp,
-  //     "img_urls": {
-  //       "main_img": "http://placehold.it/100x100"
-  //     } ,
-  //     "out_link_urls" : {
-  //       "github_repo_url": "" ,
-  //       "live_project_site_url": ""
-  //     } ,
-  //     "tech_used": req.body.tech_used
-  //   }
-  // })
-  // .then(function (result) {
-  //   console.log("project added");
-  //   send(result);
-  // })
-  // .fail(function (err) {
-  //   console.log("project post failed", err);
-  //   send(err);
-  // });
+  db.post('OPP_projects', {
+    "active": true,
+    "owner_reference": req.body.owner_reference,
+    "project_content": {
+      "title": req.body.title ,
+      "project_url_id": req.body.project_url_id ,
+      "mvp": req.body.mvp,
+      "img_urls": {
+        "main_img": "http://placehold.it/100x100"
+      } ,
+      "out_link_urls" : {
+        "github_repo_url": "" ,
+        "live_project_site_url": ""
+      } ,
+      "tech_used": req.body.tech_used
+    }
+  })
+  .then(function (result) {
+    console.log("project added");
+    console.log("posted object is:", result.body.results[0].value);
+    console.log("posted key is:", result.body.results[0].path.key);
+    send({id:result.body.results[0].path.key, value: result.body.results[0].value});
+  })
+  .fail(function (err) {
+    console.log("project post failed", err);
+    send(err);
+  });
 });
 
 router.get('/projects', function(req, res, next) {
@@ -328,6 +310,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       .then(function (result) {
         if(result.body.count>0){
           console.log("user exists");
+          console.log("user object is:", result.body.results[0].value);
           cookieValue = result.body.results[0].value.profile_content.editable_text.url_id;
           console.log("key", result.body.results[0].path.key);
           updateInfo(result.body.results[0].path.key);
