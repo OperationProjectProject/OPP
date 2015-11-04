@@ -387,7 +387,10 @@ ul.social_link_editor_list:last-child{
 
 .edit_save_button {
   float:right;
+  margin-top: 40px;
 }
+
+
 
 .my_content_header {
   margin-top: 0;
@@ -641,6 +644,10 @@ div.content_box{
   }
   .card {
     padding: 5%;
+  }
+
+  .edit_save_button_bottom {
+    display: block;
   }
 
   .navbar {
