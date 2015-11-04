@@ -85,10 +85,13 @@ router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     // db.newPatchBuilder("OPP_users", id)
     //   .replace("profile_content.social_urls.twitter", req.body.twitter_url)
     //   .replace("profile_content.social_urls.linkedin", req.body.linkedin_url)
+    //   .replace("profile_content.editable_text.title", req.body.title)
     //   .replace("profile_content.social_urls.personal", req.body.personal_site_url)
+    //   .replace("profile_content.editable_text.skills", req.body.top_skills)
+    //   .replace("profile_content.editable_text.tools", req.body.top_tools)
     //   .apply()
     //   .fail(function(err){
-    //     console.log("profiles update failed", err);
+    //     console.log("profiles update failed");
     //     send(err);
     //   });
 });
@@ -150,17 +153,18 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
 
     console.log("project updated(not really)");
+    console.log("title:", req.body.title);
+    console.log("project_url_id:", req.body.project_url_id);
+    console.log("mvp:", req.body.mvp);
+    console.log("tech_used:", req.body.tech_used);
 
-    // db.put('OPP_projects', id, {
-    //   "owner_reference" : req.body.owner_reference,
-    //   "project_content" : req.body.project_content
-    // })
-    // .then(function(result) {
-    //   console.log("project updated");
-    //   console.log("owner_reference", req.body.owner_reference);
-    //   console.log("project_content", req.body.project_content);
-    //   res.send({id: id});
-    // })
+    // db.newPatchBuilder("OPP_projects", id)
+    // .replace("project_content.title", req.body.title)
+    // .replace("project_content.owner_reference", req.body.owner_reference)
+    // .replace("project_content.project_url_id", req.body.project_url_id)
+    // .replace("project_content.mvp", req.body.mvp)
+    // .replace("project_content.tech_used", req.body.tech_used)
+    // .apply()
     // .fail(function(err){
     //   console.log("projects put failed:", err);
     //   send(err);
@@ -170,11 +174,25 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
 router.post("/projects", ensureAuthenticated, function(req, res, next){
 console.log("post for projects ran");
   // db.post('OPP_projects', {
+  //   "active": true,
   //   "owner_reference": req.body.owner_reference,
-  //   "project_content": req.body.project_content
+  //   "project_content": {
+  //     "title": req.body.title ,
+  //     "project_url_id": req.body.project_url_id ,
+  //     "mvp": req.body.mvp,
+  //     "img_urls": {
+  //       "main_img": "http://placehold.it/100x100"
+  //     } ,
+  //     "out_link_urls" : {
+  //       "github_repo_url": "" ,
+  //       "live_project_site_url": ""
+  //     } ,
+  //     "tech_used": req.body.tech_used
+  //   }
   // })
   // .then(function (result) {
   //   console.log("project added");
+  //   send(result);
   // })
   // .fail(function (err) {
   //   console.log("project post failed", err);
