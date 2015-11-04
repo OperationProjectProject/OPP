@@ -49,6 +49,42 @@
  ***********
  ***********/
 
+
+
+/*
+ *
+ *        This is why the entire site is grayscale
+ *
+ */
+ img {
+   -webkit-filter: grayscale(100%);
+   filter: grayscale(100%);
+ }
+
+ a,h2,h3,label,li,i {
+   color: rgba(120,120,120,1.0);
+ }
+a:hover,
+a:active, {
+  color: rgba(60,60,60,1.0);
+}
+
+.btn ,
+.badge {
+  background: rgba(120,120,120,1.0);
+  border-color:rgba(120,120,120,1.0);
+}
+.btn:hover{
+  background: rgba(80,80,80,1.0);
+}
+.btn:active {
+  background: rgba(60,60,60,1.0);
+}
+
+
+
+
+
 a, button {
   transition: background .3s, border .3s, color .3s;
   transition-timing-function: ease-out;
@@ -72,6 +108,7 @@ footer p {
   font-weight: bold;
   color:rgba(100,100,100,1.0);
 }
+
 
 a#profiles_link.navigation_link ,
 a#projects_link.navigation_link  {
@@ -154,7 +191,11 @@ a#projects_link.navigation_link  {
 }
 
 
-
+.user_editor_input_label {
+  font-size: 1.4em;
+  margin-top: .75em;
+  margin-bottom: .75em;
+}
 
 .profile_headline {
   border-top: 1px solid rgba(220,220,220,1.0);
@@ -298,23 +339,50 @@ a#projects_link.navigation_link  {
   margin-top: 0;
 }
 
-ul.social_links {
+
+legend {
+  color: rgba(120,120,120,1.0);
+  margin-bottom: 1.5em;
+  text-align: right;
+}
+legend i {
+  margin-left: 1em;
+}
+
+ul.social_links,
+ol.top_skills_edit_list,
+ol.top_tools_edit_list,
+ul.social_link_editor_list {
   list-style-type: none;
-  padding-left: 15px;
+  padding-left: 0px;
   margin-bottom: 0;
 }
 
-ul.social_links i {
+ul.social_links i,
+ol.top_skills_edit_list i,
+ol.top_tools_edit_list i,
+ul.social_link_editor_list i {
   margin-right: 1em;
 }
 
-ul.social_links li {
+ul.social_links li ,
+ol.top_skills_edit_list li,
+ol.top_tools_edit_list li,
+ul.social_link_editor_list li{
   font-size: 1.4em;
   margin-bottom: .85em;
 }
 
-ul.social_links:last-child {
+ul.social_links:last-child ,
+ol.top_skills_edit_list:last-child,
+ol.top_tools_edit_list:last-child,
+ul.social_link_editor_list:last-child{
   margin-bottom: 0px;
+}
+
+
+#profile_editor .row {
+  margin-bottom: 40px;
 }
 
 .edit_save_button {
@@ -326,10 +394,7 @@ ul.social_links:last-child {
   text-align: center;
 }
 
-
-
 .skill_pill {
-
   border-radius: 5px;
   color: rgba(255,255,255,1.0);
   font-size: 1.5rem;
@@ -603,7 +668,9 @@ div.content_box{
     overflow: hidden;
   }
 
-
+footer {
+  text-align: center;
+}
 
 
 }

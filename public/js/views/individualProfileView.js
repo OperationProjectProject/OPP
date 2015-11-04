@@ -3,7 +3,7 @@
 //
 App.Views.ProfileView = Backbone.View.extend({
   tagName: "div",
-  className: "profile_view",
+  className: "profile_view animated fadeIn",
   render: function() {
     $('body').css({'background':'rgba(235,235,240,1.0)'});
     console.log("%cProfileView","color:rgba(200,200,200,1.0);font-size:1.25em;");
@@ -202,9 +202,39 @@ App.Views.ProfileView = Backbone.View.extend({
         var user_top_three_skills = this.model.attributes.top_skills;
         var user_top_five_tools = this.model.attributes.top_tools;
         var skill_pill_text_list = user_top_three_skills.concat( user_top_five_tools );
+
+
+        console.log(user_top_three_skills);
+        console.log(user_top_five_tools);
+        console.log(skill_pill_text_list);
+
+        function shuffle(array) {
+          var currentIndex = array.length, temporaryValue, randomIndex ;
+
+          // While there remain elements to shuffle...
+          while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+
+          return array;
+        }
+
+        var shuffled_skill_pills = shuffle( skill_pill_text_list );
+
+
+        console.log(shuffled_skill_pills);
+
         var $skill_pill_ul = $('<ul class="col-sm-12 col-md-12 col-lg-12">');
 
-        skill_pill_text_list.forEach( function( e, i ) {
+        shuffled_skill_pills.forEach( function( e, i ) {
           var $skill_pill = $( '<li>' );
           $skill_pill.attr({
             'class': 'badge'

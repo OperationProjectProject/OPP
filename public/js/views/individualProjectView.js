@@ -3,7 +3,7 @@
 //
 App.Views.ProjectView = Backbone.View.extend({
   tagName: "div",
-  className: "project_view",
+  className: "project_view animated fadeIn",
   render: function() {
     $('body').css({'background':'rgba(240,240,235,1.0)'});
     console.log("%cProjectView","color:rgba(200,200,200,1.0);font-size:1.25em;");
