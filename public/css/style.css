@@ -66,7 +66,7 @@
  }
 a:hover,
 a:active, {
-  color: rgba(60,60,60,1.0);
+  color: #07E1FF !important;
 }
 
 .btn ,
@@ -285,6 +285,38 @@ a#projects_link.navigation_link  {
     color: rgba(120,120,120,1.0);;
 }
 
+.btn {
+  border: 0px;
+  color: white;
+  text-shadow: 0px 0px 0px #07E1FF, 0px 0px 0px rgb(255,0,121);
+  box-shadow:
+    0 0 0 0px rgba(255,0,121,1.0),
+    0 0 0 0px #07E1FF;
+  background: rgba(110,110,110,1.0);
+  transition: text-shadow .2s, box-shadow .2s, background .3s;
+}
+
+.btn:hover{
+  border: 0px;
+  text-shadow: 0px 1px 0px #07E1FF, 1px -1px 0px #FF0079;
+  box-shadow:
+    0px 0px 0px 4px transparent,
+    0px 0px 0px 2px #07E1FF;
+}
+
+.btn:active{
+  background: rgba(255,255,255,1.0) !important;
+  box-shadow:
+    0px 0px 0px 1000px rgba(255,0,121,0.05),
+    0px 0px 0px 0px #07E1FF;
+}
+
+.jumbotron {
+  color: rgba(110,110,110,1.0);
+}
+
+
+
 .user_title {
   font-weight: 300;
 }
@@ -304,10 +336,21 @@ a#projects_link.navigation_link  {
  }
 
 #brand_logo_h1 .logo_ninja {
+  display: inline;
   font-family: 'Permanent Marker', cursive;
+  text-shadow: 0px 0px 0px #FF0079, 0px 0px 0px #07E1FF;
   font-size: 2.5rem;
+  color: rgba(140,140,140,1.0);
   animation-duration: .35s;
+  z-index:1000;
+  transition: color .3s, text-shadow .2s;
  }
+#brand_logo_h1:hover .logo_ninja {
+  color: rgba(100,100,100,1.0);
+  text-shadow: 0px 1px 0px #FF0079, 1px -1px 0px #07E1FF;
+}
+
+
 
 #log_widget_toggle {
   padding: 0;
@@ -329,6 +372,15 @@ a#projects_link.navigation_link  {
   height: 35px;
   width: 35px;
 }
+
+#login_button {
+  color: #07E1FF;
+  transition: color 2s;
+}
+
+
+
+
 
 .headline {
   margin-top: .25em;
