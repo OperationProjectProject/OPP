@@ -24,7 +24,9 @@ App.Router = Backbone.Router.extend({
     'profiles/:url_id/edit' : 'profile_editor' ,
     'projects' : 'projects' ,
     'projects/my_projects' : 'my_projects' ,
+    'projects/new': 'project_editor' ,
     'projects/:project_url_id': 'projects' ,
+    'projects/:project_url_id/edit': 'project_editor' ,
     '*notFound': 'notFound'
   },
 
@@ -135,7 +137,7 @@ App.Router = Backbone.Router.extend({
   profile_editor: function() {
     console.log("%cRouter '/#profiles/:url_id/edit'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
 
-    var current_url = '/profiles/' + this.logged_user + '/edit';
+    var current_url = '/%23profiles/' + this.logged_user + '/edit';
     this.set_up_dom();
     app.navigationView = new App.Views.NavigationView({
       collection: this.profiles ,
@@ -146,6 +148,39 @@ App.Router = Backbone.Router.extend({
     //console.log(this.profile_edit_model);
     app.profileEditView = new App.Views.EditProfileView({
       collection: this.profiles ,
+      user_session: this.user_session ,
+      logged_user: this.logged_user
+    });
+    //console.log(app.profileEditView);
+  } ,
+
+  project_editor: function(project_url_id) {
+
+    var current_url = '';
+
+    if (project_url_id) {
+      console.log("%cRouter '/#projects/:url_id/edit'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+      current_url = '/%23projects/' + project_url_id + '/edit';
+      console.log(current_url);
+    } else if (!project_url_id) {
+      console.log("%cRouter '/#projects/new'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+      current_url = '/%23projects/new';
+      console.log(current_url);
+    } else {
+      console.log("%cRouter --> something's broken in project_editor method.", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
+      console.log(current_url);
+    }
+
+    this.set_up_dom();
+    app.navigationView = new App.Views.NavigationView({
+      collection: this.profiles,
+      user_session: this.user_session,
+      current_url: current_url,
+      logged_user: this.logged_user
+    });
+    //console.log(this.profile_edit_model);
+    app.projectEditView = new App.Views.EditProjectView({
+      collection: this.projects ,
       user_session: this.user_session ,
       logged_user: this.logged_user
     });

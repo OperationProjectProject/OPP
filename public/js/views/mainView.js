@@ -6,7 +6,7 @@ App.Views.MainView = Backbone.View.extend({
   className: 'main_view jumbotron',
   render: function(){
     $('body').css({'background':'rgba(240,235,235,1.0)'});
-		console.log("%cMainView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+		console.log("%cMainView --- LOOK AT THIS!!!","color:rgba(200,200,200,1.0);font-size:1.25em;");
     var $about = $('<h1 id="aboutDiv">').text("Discover the Hottest Tech Talent");
     $about.addClass("animated fadeIn")
 

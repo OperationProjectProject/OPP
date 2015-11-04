@@ -30,7 +30,7 @@ App.Views.MyProjectsView = Backbone.View.extend({
     //Create add project link
     var $add_new_project = $( '<a>' ).attr({
       'class' : 'btn btn-primary btn-lg edit_save_button',
-      'href': '#'
+      'href': '#projects/new'
     }).text(
       "Add New Project"
     );
