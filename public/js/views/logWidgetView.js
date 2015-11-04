@@ -11,6 +11,9 @@ App.Views.LogWidgetView = Backbone.View.extend({
   render_no_user_session: function() {
     console.log("%cLogWidgetView","color:rgba(210,210,210,1.0);font-size:1.35em;");
     var $link = $('<a>').attr( 'href', "/auth/github?url=" + this.current_url ).text( 'Login with Github' );
+    $link.attr({
+      'id': 'login_button'
+    });
     this.$el.append( $link );
     console.log( "%c" + $link.attr('href') ,"color:rgba(210,10,10,0.5);font-size:2em;");
     return this;
