@@ -443,11 +443,11 @@ $row_06.append( $edit_save_button_bottom_box );
         $('input[id="top_skill_3"]').val()
       ],
       top_tools: [
-        $('input[id="top_skill_1"]').val(),
-        $('input[id="top_skill_2"]').val(),
-        $('input[id="top_skill_3"]').val(),
-        $('input[id="top_skill_4"]').val(),
-        $('input[id="top_skill_5"]').val()
+        $('input[id="top_tool_1"]').val(),
+        $('input[id="top_tool_2"]').val(),
+        $('input[id="top_tool_3"]').val(),
+        $('input[id="top_tool_4"]').val(),
+        $('input[id="top_tool_5"]').val()
       ]
     });
     console.log("this model is being sent:", this.model);
