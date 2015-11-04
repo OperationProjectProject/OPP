@@ -72,13 +72,16 @@ function ensureAuthenticated(req, res, next) {
 
 router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-    
+
     console.log("profile updated(not really)");
     // console.log("request body", req.body);
+    console.log("title:", req.body.title);
     console.log("twitter:", req.body.twitter_url);
     console.log("linkedin_url:", req.body.linkedin_url);
     console.log("personal_site_url:", req.body.personal_site_url);
-    
+    console.log("top_skills:", req.body.top_skills);
+    console.log("top_tools:", req.body.top_tools);
+
     // db.newPatchBuilder("OPP_users", id)
     //   .replace("profile_content.social_urls.twitter", req.body.twitter_url)
     //   .replace("profile_content.social_urls.linkedin", req.body.linkedin_url)
@@ -136,7 +139,7 @@ router.get('/profiles', function(req, res, next) {
       });
         // console.log("mapped: ", mapped);
         res.send(mapped);
-      })    
+      })
       .fail(function(err){
         console.log("profiles get failed:", err);
         send(err);
@@ -145,11 +148,11 @@ router.get('/profiles', function(req, res, next) {
 
 router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-    
+
     console.log("project updated(not really)");
-    
+
     // db.put('OPP_projects', id, {
-    //   "owner_reference" : req.body.owner_reference, 
+    //   "owner_reference" : req.body.owner_reference,
     //   "project_content" : req.body.project_content
     // })
     // .then(function(result) {
@@ -157,7 +160,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     //   console.log("owner_reference", req.body.owner_reference);
     //   console.log("project_content", req.body.project_content);
     //   res.send({id: id});
-    // })    
+    // })
     // .fail(function(err){
     //   console.log("projects put failed:", err);
     //   send(err);
@@ -208,7 +211,7 @@ router.get('/projects', function(req, res, next) {
       });
         //console.log(mapped);
         res.send(mapped);
-      })    
+      })
       .fail(function(err){
         console.log("projects get failed:", err);
         send(err);
@@ -237,7 +240,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
     var cookieValue;
     function register(){
       db.post('OPP_users', {
-         "active":true,  
+         "active":true,
          "github_api_data": {
            "github_id": req.user.id,
            "github_email": req.user._json.email,

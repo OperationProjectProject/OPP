@@ -65,7 +65,8 @@ App.Views.EditProfileView = Backbone.View.extend({
     var $user_job_title_edit_legend = $('<legend>');
     $user_job_title_edit_legend.attr({
       'class': 'test test test'
-    }).text('Basic Info');
+    }).text('About Me');
+    $user_job_title_edit_legend.append('<i class="fa fa-child fa-lg"></i>');
     $user_job_title_edit_card.append( $user_job_title_edit_legend );
 
 
@@ -74,12 +75,12 @@ App.Views.EditProfileView = Backbone.View.extend({
     //Build User Title Label and input
     var $user_job_title_edit_label = $('<label>');
     $user_job_title_edit_label.attr({
-      'for': 'testing',
-      'class': 'user_editor_input_label'
+      'for': 'user_title_input',
+      'class': 'user_editor_input_label control-label'
     }).text("My Ideal Job Title");
     var $user_job_title_edit_input = $('<input type="text">');
     $user_job_title_edit_input.attr({
-      'id': 'testing',
+      'id': 'user_title_input',
       'class': 'form-control',
       'value': this.model.attributes.title
     });
@@ -118,7 +119,8 @@ App.Views.EditProfileView = Backbone.View.extend({
     var $edit_social_links_legend = $('<legend>');
     $edit_social_links_legend.attr({
       'class': 'test test test'
-    }).text('My Web Presence');
+    }).text('Web Presence');
+    $edit_social_links_legend.append('<i class="fa fa-desktop fa-lg"></i>');
     $edit_social_links_card.append( $edit_social_links_legend );
 
 
@@ -261,8 +263,8 @@ App.Views.EditProfileView = Backbone.View.extend({
       var $top_skills_legend = $('<legend>');
       $top_skills_legend.attr({
         'class': 'test test test'
-      }).text('My Top Skills');
-      $top_skills_legend.append('<i class="fa fa-code fa-lg"></i>');
+      }).text('Top Skills');
+      $top_skills_legend.append('<i class="fa fa-code-fork fa-lg"></i>');
       $top_skills_edit_card.append( $top_skills_legend );
 
       var $top_skills_edit_list = $('<ol class="top_skills_edit_list">');
@@ -339,7 +341,7 @@ App.Views.EditProfileView = Backbone.View.extend({
       var $top_tools_legend = $('<legend>');
       $top_tools_legend.attr({
         'class': 'test test test'
-      }).text('My Top Tools');
+      }).text('Top Tools');
       $top_tools_legend.append('<i class="fa fa-wrench fa-lg"></i>');
       $top_tools_edit_card.append( $top_tools_legend );
 
@@ -378,8 +380,30 @@ App.Views.EditProfileView = Backbone.View.extend({
 
 
 
+//Create row 6
+//create row 01
+var $row_06 =  $('<div>').attr({
+  'class': 'row' ,
+  'id': 'row_06'
+});
+//Create content box for basic info
+var $edit_save_button_bottom_box = $('<div>').attr({
+  'class': 'content_box col-sm-12 col-md-12 col-lg-12' ,
+  'id': 'edit_save_button_bottom_box'
+});
+
+//console.log("create 'edit my profile' button for logged-in-users");
+var $edit_my_profile_bottom_button = $( '<a>' ).attr({
+  'class' : 'btn btn-primary btn-lg edit_save_button_bottom',
+  'href': '#profiles/' + this.logged_user,
+  'id': 'edit_my_profile_bottom_button'
+}).text(
+  "Save and Publish"
+);
 
 
+$edit_save_button_bottom_box.append( $edit_my_profile_bottom_button );
+$row_06.append( $edit_save_button_bottom_box );
 
 
 
@@ -389,6 +413,7 @@ App.Views.EditProfileView = Backbone.View.extend({
     this.$el.append( $row_03 );
     this.$el.append( $row_04 );
     this.$el.append( $row_05 );
+    this.$el.append( $row_06 );
 		$( ".centerdiv" ).prepend( this.$el );
 	},
 	initialize: function(opts) {
@@ -399,7 +424,8 @@ App.Views.EditProfileView = Backbone.View.extend({
     this.listenTo(this.collection, "update", this.render);
 	},
   events: {
-    'click #save_and_publish_profile': 'update_profile'
+    'click #save_and_publish_profile': 'update_profile',
+    'click #edit_my_profile_bottom_button': 'update_profile'
   },
   update_profile: function() {
     console.log("%cupdate_profile","font-size: 2em; color: red;");
@@ -407,9 +433,22 @@ App.Views.EditProfileView = Backbone.View.extend({
     console.log("this user is: ", this.logged_user);
     //console.log(this.model);
     this.model.set({
+      title: $('input[id="user_title_input"]').val(),
       personal_site_url: $('input[id="' + this.logged_user + '_personal_site_url_input"]').val(),
   		linkedin_url:  $('input[id="' + this.logged_user + '_linkedin_url_input"]').val(),
-  		twitter_url:  $('input[id="' + this.logged_user + '_twitter_url_input"]').val()
+  		twitter_url:  $('input[id="' + this.logged_user + '_twitter_url_input"]').val(),
+      top_skills: [
+        $('input[id="top_skill_1"]').val(),
+        $('input[id="top_skill_2"]').val(),
+        $('input[id="top_skill_3"]').val()
+      ],
+      top_tools: [
+        $('input[id="top_skill_1"]').val(),
+        $('input[id="top_skill_2"]').val(),
+        $('input[id="top_skill_3"]').val(),
+        $('input[id="top_skill_4"]').val(),
+        $('input[id="top_skill_5"]').val()
+      ]
     });
     console.log("this model is being sent:", this.model);
     this.model.save();
