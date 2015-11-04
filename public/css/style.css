@@ -412,6 +412,22 @@ ul.social_link_editor_list:last-child{
   overflow: hidden;
 }
 
+.testing_the_projects {
+  color: red;
+  font-family: sans-serif;
+}
+
+.profile_preview_text_span {
+  font-family: sans-serif;
+  font-size: 2em;
+}
+
+
+
+label {
+  background: white;
+  display: block;
+}
 
 
 

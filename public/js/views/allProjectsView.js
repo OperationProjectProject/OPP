@@ -11,11 +11,21 @@ App.Views.AllProjectsView = Backbone.View.extend({
     $('body').css({'background':'rgba(240,240,235,1.0)'});
     console.log("%cAllProjectsView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     var self = this;
+
+
+
+
+
+
     this.collection.models.forEach(function(e,i){
       var project_preview = new App.Views.ProjectPreviewView({model:e});
+
+
       function getRandomIntInclusive(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
+
+
       var coinFlip = getRandomIntInclusive(0,1);
       //console.log(coinFlip);
       if (coinFlip === 0) {
@@ -23,6 +33,7 @@ App.Views.AllProjectsView = Backbone.View.extend({
       } else {
         self.$el.prepend( project_preview.$el );
       }
+
     });
 		$(".centerdiv").prepend(this.$el);
 	} ,
