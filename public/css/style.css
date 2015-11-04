@@ -63,7 +63,9 @@
 
  a,h2,h3,label,li,i {
    color: rgba(120,120,120,1.0);
+   
  }
+
 a:hover,
 a:active, {
   color: #07E1FF !important;

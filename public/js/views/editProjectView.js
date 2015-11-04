@@ -1,7 +1,8 @@
 // var app = app || {};
-/*
+
 App.Views.EditProjectView = Backbone.View.extend({
   render: function() {
+  /*
     console.log(" ---- EditProjectView rendered ---- ");
 		var $form = $('<form class="" action="/register" method="post">');
 		var $inputName = $('<input type="text" name="name" id = "fullName" placeholder="Enter Your Full Name"><br>');
@@ -16,6 +17,7 @@ App.Views.EditProjectView = Backbone.View.extend({
 		$form.append($inputSubmit);
 		this.$el.append($form);
 		$('#app').append(this.$el);
+  */
 	},
 	initialize: function() {
 		this.render();
@@ -24,4 +26,3 @@ App.Views.EditProjectView = Backbone.View.extend({
     this.collection.create();
   }
 });
-*/
