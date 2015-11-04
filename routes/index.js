@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var config = (process.env.HEROKU) ? {dbkey : process.env.DBKEY} : require('./config.js');
+var config = (process.env.HEROKU) ? {dbkey : process.env.DBKEY, github_client_id: process.env.github_client_id, github_client_secret: process.env.github_client_secret} : require('./config.js');
 var db = require('orchestrate')(config.dbkey);
 var passport = require('passport');
 var util = require('util');
