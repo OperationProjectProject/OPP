@@ -300,19 +300,7 @@ App.Views.EditProfileView = Backbone.View.extend({
 
 
 
-    //CREATE TOP FIVE TOOLS INPUT CARD
-    console.log("%c TEST AREA" , "color:rgba(200,100,240,1.0); font-size: 2em;");
-    console.log(this);
-    console.log(this.collection);
-    console.log(this.collection.models);
-    console.log(this.model);
-    console.log(this.model.attributes);
-    console.log(this.model.attributes.top_tools);
-    console.log("%c" + this.model.attributes.top_tools[0], "color: red; font-size:3em;");
-    console.log("%c" + this.model.attributes.top_tools[1], "color: red; font-size:3em;");
-    console.log("%c" + this.model.attributes.top_tools[2], "color: red; font-size:3em;");
-    console.log("%c" + this.model.attributes.top_tools[3], "color: red; font-size:3em;");
-    console.log("%c" + this.model.attributes.top_tools[4], "color: red; font-size:3em;");
+
 //CREATE TOP TOP FIVE TOOLS INPUT CARD
 
     //create row 05
