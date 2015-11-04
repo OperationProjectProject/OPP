@@ -45,10 +45,64 @@ App.Views.EditProfileView = Backbone.View.extend({
 
 
 
+
     //create row 02
     var $row_02 =  $('<div>').attr({
       'class': 'row' ,
       'id': 'row_02'
+    });
+
+    //Create content box for user info box
+    var $user_job_title_edit_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
+      'id': 'edit_title_box'
+    });
+    //Create content box for social links edit
+    var $user_job_title_edit_card = $('<div>').attr({
+      'class': 'card' ,
+    });
+
+    var $user_job_title_edit_legend = $('<legend>');
+    $user_job_title_edit_legend.attr({
+      'class': 'test test test'
+    }).text('Basic Info');
+    $user_job_title_edit_card.append( $user_job_title_edit_legend );
+
+
+
+
+    //Build User Title Label and input
+    var $user_job_title_edit_label = $('<label>');
+    $user_job_title_edit_label.attr({
+      'for': 'testing',
+      'class': 'user_editor_input_label'
+    }).text("My Ideal Job Title");
+    var $user_job_title_edit_input = $('<input type="text">');
+    $user_job_title_edit_input.attr({
+      'id': 'testing',
+      'class': 'form-control',
+      'value': this.model.attributes.title
+    });
+
+    $user_job_title_edit_card.append( $user_job_title_edit_label );
+    $user_job_title_edit_card.append( $user_job_title_edit_input );
+
+
+
+    $user_job_title_edit_box.append( $user_job_title_edit_card );
+    $row_02.append( $user_job_title_edit_box );
+
+
+
+
+
+
+
+
+    //create row 03
+    var $row_03 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_03'
     });
     //Create content box for social links edit
     var $edit_social_links_box = $('<div>').attr({
@@ -60,14 +114,26 @@ App.Views.EditProfileView = Backbone.View.extend({
       'class': 'card' ,
     });
 
+
+    var $edit_social_links_legend = $('<legend>');
+    $edit_social_links_legend.attr({
+      'class': 'test test test'
+    }).text('My Web Presence');
+    $edit_social_links_card.append( $edit_social_links_legend );
+
+
+
+
+
+
+
     $edit_social_links_box.append( $edit_social_links_card );
-    $row_02.append( $edit_social_links_box );
+    $row_03.append( $edit_social_links_box );
 
     //Build social link editing elements
     if (this.model !== null) {
-      console.log(this.logged_user);
-      console.log(this.model.attributes);
-      console.log("%c TEST AREA" , "color:rgba(200,100,240,1.0); font-size: 2em;");
+      //console.log(this.logged_user);
+      //console.log(this.model.attributes);
       //Build unordered list for editing social urls
       var $social_urls = $('<ul class="social_link_editor_list">');
 
@@ -78,9 +144,10 @@ App.Views.EditProfileView = Backbone.View.extend({
       var $personal_site_url_input = $('<input type="text" class="social_link_editor_input">');
 
       $personal_site_url_label.attr({
-        'for': this.logged_user + '_personal_site_url_input'
+        'for': this.logged_user + '_personal_site_url_input',
+        'class': 'control-label'
       })
-      .text("My website")
+      .text("Personal Website URL")
       .prepend('<i class="fa fa-bullseye fa-lg"></i>');
 
       $personal_site_url_input.attr({
@@ -102,14 +169,15 @@ App.Views.EditProfileView = Backbone.View.extend({
       var $linkedin_url_label = $('<label class="social_link_editor_input">');
       var $linkedin_url_input = $('<input type="text" class="social_link_editor_input">');
 
-      console.log(this.logged_user);
+      //console.log(this.logged_user);
       $linkedin_url_label.attr({
-        'for': this.logged_user + '_linkedin_url_input'
+        'for': this.logged_user + '_linkedin_url_input',
+        'class': 'control-label'
       })
-      .text("Linkedin")
+      .text("Linkedin URL")
       .prepend('<i class="fa fa-linkedin-square fa-lg"></i>');
 
-      console.log(this.model.attributes.linkedin_url);
+      //console.log(this.model.attributes.linkedin_url);
       $linkedin_url_input.attr({
         'id': this.logged_user + '_linkedin_url_input',
         'class': 'form-control',
@@ -129,15 +197,15 @@ App.Views.EditProfileView = Backbone.View.extend({
       var $twitter_url_label = $('<label>');
       var $twitter_url_input = $('<input type="text">');
 
-      console.log(this.logged_user);
+      //console.log(this.logged_user);
       $twitter_url_label.attr({
         'for': this.logged_user + '_twitter_url_input' ,
         'class' :'control-label'
       })
-      .text("Twitter")
+      .text("Twitter URL")
       .prepend('<i class="fa fa-twitter fa-lg"></i>');
 
-      console.log(this.model.attributes.twitter_url);
+      //console.log(this.model.attributes.twitter_url);
       $twitter_url_input.attr({
         'id': this.logged_user + '_twitter_url_input',
         'class': 'form-control',
@@ -159,14 +227,151 @@ App.Views.EditProfileView = Backbone.View.extend({
         $social_urls.append( e );
       });
 
-
       $edit_social_links_card.append($social_urls);
-
     }
 
 
 
 
+//CREATE TOP THREE SKILLS INPUT CARD
+
+    //create row 04
+    var $row_04 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_04'
+    });
+    //Create content box for top skills edit
+    var $top_skills_edit_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
+      'id': 'top_skills_edit_box'
+    });
+    //Create content box for social links edit
+    var $top_skills_edit_card = $('<div>').attr({
+      'class': 'card' ,
+    });
+
+    $top_skills_edit_box.append( $top_skills_edit_card );
+    $row_04.append( $top_skills_edit_box );
+
+
+
+    //Build social link editing elements
+    if (this.model !== null) {
+
+      var $top_skills_legend = $('<legend>');
+      $top_skills_legend.attr({
+        'class': 'test test test'
+      }).text('My Top Skills');
+      $top_skills_legend.append('<i class="fa fa-code fa-lg"></i>');
+      $top_skills_edit_card.append( $top_skills_legend );
+
+      var $top_skills_edit_list = $('<ol class="top_skills_edit_list">');
+
+      for ( var i = 0; i <3; i++ ) {
+        console.log(i);
+        var $top_skills_edit_li = $('<li>');
+
+        var $top_skills_edit_label = $('<label>');
+        $top_skills_edit_label.attr({
+          'for': 'top_skill_' + (i+1),
+          'class': 'form-group'
+        })
+        .text('0'+ (i + 1) + '.');
+
+        $top_skills_edit_li.append( $top_skills_edit_label );
+
+
+        var $top_skills_edit_input = $('<input type="text" class="top_skill_edit_input">');
+        $top_skills_edit_input.attr({
+          'id': 'top_skill_' + (i+1) ,
+          'class': 'form-control',
+          'value': this.model.attributes.top_skills[i]
+        });
+        //Append input to list item
+        $top_skills_edit_li.append( $top_skills_edit_input );
+        //Append list itemordered list
+        $top_skills_edit_list.append( $top_skills_edit_li );
+      }
+      //Append ordered list to card
+      $top_skills_edit_card.append( $top_skills_edit_list );
+    }
+
+
+
+    //CREATE TOP FIVE TOOLS INPUT CARD
+    console.log("%c TEST AREA" , "color:rgba(200,100,240,1.0); font-size: 2em;");
+    console.log(this);
+    console.log(this.collection);
+    console.log(this.collection.models);
+    console.log(this.model);
+    console.log(this.model.attributes);
+    console.log(this.model.attributes.top_tools);
+    console.log("%c" + this.model.attributes.top_tools[0], "color: red; font-size:3em;");
+    console.log("%c" + this.model.attributes.top_tools[1], "color: red; font-size:3em;");
+    console.log("%c" + this.model.attributes.top_tools[2], "color: red; font-size:3em;");
+    console.log("%c" + this.model.attributes.top_tools[3], "color: red; font-size:3em;");
+    console.log("%c" + this.model.attributes.top_tools[4], "color: red; font-size:3em;");
+//CREATE TOP TOP FIVE TOOLS INPUT CARD
+
+    //create row 05
+    var $row_05 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_05'
+    });
+    //Create content box for top skills edit
+    var $top_tools_edit_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
+      'id': 'top_tools_edit_box'
+    });
+    //Create content box for social links edit
+    var $top_tools_edit_card = $('<div>').attr({
+      'class': 'card' ,
+    });
+
+    $top_tools_edit_box.append( $top_tools_edit_card );
+    $row_05.append( $top_tools_edit_box );
+
+
+
+    //Build social link editing elements
+    if (this.model !== null) {
+
+      var $top_tools_legend = $('<legend>');
+      $top_tools_legend.attr({
+        'class': 'test test test'
+      }).text('My Top Tools');
+      $top_tools_legend.append('<i class="fa fa-wrench fa-lg"></i>');
+      $top_tools_edit_card.append( $top_tools_legend );
+
+      var $top_tools_edit_list = $('<ol class="top_tools_edit_list">');
+
+      for ( var i = 0; i < 5; i++ ) {
+        console.log(i);
+        var $top_tools_edit_li = $('<li>');
+
+        var $top_tools_edit_label = $('<label>');
+        $top_tools_edit_label.attr({
+          'for': 'top_tools_' + (i+1),
+          'class': 'form-group'
+        })
+        .text('0'+ (i + 1) + '.');
+        $top_tools_edit_li.append($top_tools_edit_label);
+
+
+        var $top_tools_edit_input = $('<input type="text" class="top_tools_edit_input">');
+        $top_tools_edit_input.attr({
+          'id': 'top_tools_' + (i+1) ,
+          'class': 'form-control',
+          'value': this.model.attributes.top_tools[i]
+        });
+        //Append input to list item
+        $top_tools_edit_li.append( $top_tools_edit_input );
+        //Append list itemordered list
+        $top_tools_edit_list.append( $top_tools_edit_li );
+      }
+      //Append ordered list to card
+      $top_tools_edit_card.append( $top_tools_edit_list );
+    }
 
 
 
@@ -181,6 +386,9 @@ App.Views.EditProfileView = Backbone.View.extend({
 
     this.$el.append( $row_01 );
     this.$el.append( $row_02 );
+    this.$el.append( $row_03 );
+    this.$el.append( $row_04 );
+    this.$el.append( $row_05 );
 		$( ".centerdiv" ).prepend( this.$el );
 	},
 	initialize: function(opts) {
