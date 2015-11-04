@@ -271,9 +271,9 @@
       "title": "Web Developer" ,
       "url_id": "yahwin" ,
       "skills": [
-        "User Centered Product Design" ,
-        "Full Stack Web Development" ,
-        "Iterative prototyping"
+        "patience" ,
+        "an eye for detail" ,
+        "dogged determination"
       ] ,
       "tools": [
         "Node" ,
@@ -336,7 +336,7 @@
         "Javascript" ,
         "BDD" ,
         "HTML5/CSS" ,
-        "Informative Architecture" ,
+        "Information Architecture" ,
         "User Research"
       ] ,
         "q_and_a" : {
