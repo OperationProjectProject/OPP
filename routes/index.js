@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var config = (process.env.HEROKU) ? {dbkey : process.env.dbkey, github_client_id: process.env.github_client_id, github_client_secret: process.env.github_client_secret} : require('./config.js');
+var config = (process.env.HEROKU) ? {dbkey : process.env.dbkey, github_client_id: process.env.github_client_id, github_client_secret: process.env.github_client_secret} : require('../config.js');
 var db = require('orchestrate')(config.dbkey);
 var passport = require('passport');
 var util = require('util');
@@ -25,10 +25,12 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+var callback = (process.env.HEROKU) ? "https://operationprojectproject.herokuapp.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+
 passport.use('github', new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "https://operationprojectproject.herokuapp.com/auth/github/callback"
+    callbackURL: callback
   },
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
