@@ -7,7 +7,7 @@ App.Views.AllProfilesView = Backbone.View.extend({
   className: 'all_profiles_view row',
 
   render: function() {
-    $('body').css({'background':'rgba(235,235,240,1.0)'});
+    $('body').css({'background':'rgba(240,240,240,1.0)'});
     console.log("%cAllProfilesView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 		console.log(this.collection);
 

@@ -5,7 +5,7 @@ App.Views.ProfileView = Backbone.View.extend({
   tagName: "div",
   className: "profile_view animated fadeIn",
   render: function() {
-    $('body').css({'background':'rgba(235,235,240,1.0)'});
+    $('body').css({'background':'rgba(240,240,240,1.0)'});
     console.log("%cProfileView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     console.log(this);
 
@@ -79,8 +79,8 @@ App.Views.ProfileView = Backbone.View.extend({
           });
         } else {
           $profile_img.attr({
-            'src': 'http://www.rammandir.ca/sites/default/files/default_images/defaul-avatar_0.jpg'
-          });
+            'src': 'https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/diamond.gif'
+          }).css('rgba(200,200,200,1.0)');
         }
 
 
@@ -232,7 +232,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
         console.log(shuffled_skill_pills);
 
-        var $skill_pill_ul = $('<ul class="col-sm-12 col-md-12 col-lg-12">');
+        var $skill_pill_ul = $('<ul class="skill_pills col-sm-12 col-md-12 col-lg-12">');
 
         shuffled_skill_pills.forEach( function( e, i ) {
           var $skill_pill = $( '<li>' );

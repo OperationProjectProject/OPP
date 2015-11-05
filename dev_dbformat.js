@@ -143,10 +143,10 @@
    "project_reference": [] ,
    "profile_content": {
      "img_urls": {
-       "profile_img": "http://placehold.it/100x100" ,
-       "cover_photo": "http://placehold.it/100x100" ,
-       "hero_img": "http://placehold.it/100x100" ,
-       "action_shot": "http://placehold.it/100x100"
+       "profile_img": "" ,
+       "cover_photo": "" ,
+       "hero_img": "" ,
+       "action_shot": ""
      } ,
      "social_urls": {
        "personal": "http://mitchlillie.com",
@@ -200,10 +200,10 @@
    "project_reference": [] ,
    "profile_content": {
      "img_urls": {
-       "profile_img": "http://placehold.it/100x100" ,
-       "cover_photo": "http://placehold.it/100x100" ,
-       "hero_img": "http://placehold.it/100x100" ,
-       "action_shot": "http://placehold.it/100x100"
+       "profile_img": "" ,
+       "cover_photo": "" ,
+       "hero_img": "" ,
+       "action_shot": ""
      } ,
      "social_urls": {
        "personal": "http://www.quarkchasermusic.com/",
@@ -256,10 +256,10 @@
   "project_reference": [] ,
   "profile_content": {
     "img_urls": {
-      "profile_img": "http://placehold.it/100x100" ,
-      "cover_photo": "http://placehold.it/100x100" ,
-      "hero_img": "http://placehold.it/100x100" ,
-      "action_shot": "http://placehold.it/100x100"
+      "profile_img": "" ,
+      "cover_photo": "" ,
+      "hero_img": "" ,
+      "action_shot": ""
     } ,
     "social_urls": {
       "personal": "https://google.com",
@@ -469,16 +469,16 @@
 
 /** OPP **///                 Matt        &       Pat
 {
-  "owner_reference": [ "0d6e81893f206895" ,"0d6e7ed5da20f957"] ,
+  "owner_reference": [ "0d7f883ac6206a42" ,"0d8576581f208262"] ,
   "project_content": {
     "title": "OPP" ,
     "project_url_id": "OPP" ,
     "mvp": "A web platform for members of our community to showcase their work." ,
     "img_urls": {
-      "main_img": "http://placehold.it/100x100"
+      "main_img": "https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/animat-lightbulb-color.gif"
     } ,
     "out_link_urls" : {
-      "github_repo_url": "" ,
+      "github_repo_url": "OperationProjectProject/OPP" ,
       "live_project_site_url": ""
     } ,
     "tech_used": [
@@ -494,18 +494,18 @@
 /** OPP **/
 
 
-/** Meetworking **///                      -- Mitch & Jeff
+/** Meetworking **///      -- Mitch        & Jeff
 {
-  "owner_reference": [] ,
+  "owner_reference": [ "0d8581f5eb20f846" ] ,
   "project_content": {
     "title": "Meetworking" ,
     "project_url_id": "Meetworking" ,
     "mvp": "Looking for an elusive job in tech? Lost in the sea of Meetups? Meetworking helps you target up to three companies, showing you the Meetups those employees are attending as well as the events held at that company's location—a quick way to get your foot in the door. See talking points for each attendee and RSVP right through the app!" ,
     "img_urls": {
-      "main_img": "http://placehold.it/100x100"
+      "main_img": "https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/animat-rocket-color.gif"
     } ,
     "out_link_urls" : {
-      "github_repo_url": "" ,
+      "github_repo_url": "MeetWorking/meetworking-app" ,
       "live_project_site_url": ""
     } ,
     "tech_used": [
@@ -520,18 +520,18 @@
 /** Meetworking **/
 
 
-/** MixTapez **///                      -- Ty, Mitch, and Do
+/** MixTapez **///     --        Do        Ty, Mitch
 {
-  "owner_reference": [] ,
+  "owner_reference": [ "0d857cdcec208264" ] ,
   "project_content": {
     "title": "MixTapez" ,
     "project_url_id": "MixeTapez" ,
     "mvp": "Bringing the mixtape into the digital age. We are designing a platform for people to use Youtube and Soundcloud to quickly and easily create the perfect mixtape for any situation. ",
     "img_urls": {
-      "main_img": "http://placehold.it/100x100"
+      "main_img": "https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/animat-customize-color.gif"
     } ,
     "out_link_urls" : {
-      "github_repo_url": "" ,
+      "github_repo_url": "MixtapeCaptstone/mixtape" ,
       "live_project_site_url": ""
     } ,
     "tech_used": [
@@ -551,7 +551,7 @@
     "project_url_id": "DashMonster" ,
     "mvp": "A Meteor crashed in Portland from which DashMonster emerged to boost both convenience and daily productivity in the lives of users. A quick glance at DashMonster will give you the transit and weather info you need without all the stuff you don't. \n DashMonster is the hyper-focused transit and weather app you need most of the time.",
     "img_urls": {
-      "main_img": "http://placehold.it/100x100"
+      "main_img": "https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/animat-linechart-color.gif"
     } ,
     "out_link_urls" : {
       "github_repo_url": "" ,

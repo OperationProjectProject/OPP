@@ -139,7 +139,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     console.log("project_url_id:", req.body.project_url_id);
     console.log("mvp:", req.body.mvp);
     console.log("tech_used:", req.body.tech_used);
-    
+
     // db.newPatchBuilder("OPP_projects", id)
     // .replace("project_content.title", req.body.title)
     // .replace("project_content.owner_reference", req.body.owner_reference)
@@ -163,10 +163,10 @@ console.log("post for projects ran");
       "project_url_id": req.body.project_url_id ,
       "mvp": req.body.mvp,
       "img_urls": {
-        "main_img": "http://placehold.it/100x100"
+        "main_img": req.body.main_img
       } ,
       "out_link_urls" : {
-        "github_repo_url": "" ,
+        "github_repo_url": req.body.github_repo_url ,
         "live_project_site_url": ""
       } ,
       "tech_used": req.body.tech_used
@@ -190,6 +190,8 @@ router.get('/projects', function(req, res, next) {
         var data = result.body.results;
         var mapped = data.map(function (element, index) {
           console.log("project: " , element.path.key);
+          console.log("main_img: " , element.value.project_content.img_urls.main_img);
+
           //console.log(element);
           /*
           console.log(element.value.project_content.project_url_id);
@@ -201,12 +203,17 @@ router.get('/projects', function(req, res, next) {
           console.log(element.value.project_content.mvp);
           console.log(element.value.project_content.tech_used);
           */
+
+
           // if(element.value.active === true){
           return {
             id: element.path.key,
+            owner_reference: element.value.owner_reference,
             title: element.value.project_content.title ,
             project_url_id: element.value.project_content.project_url_id,
+            github_repo_url: element.value.project_content.out_link_urls.github_repo_url,
             mvp: element.value.project_content.mvp,
+            main_img: element.value.project_content.img_urls.main_img,
             tech_used: element.value.project_content.tech_used
           };
         // }

@@ -69,8 +69,8 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
         return Math.random() * (max - min) + min;
       }
 
-      var random_animation_durations = getRandomArbitrary(0.25, 1.0)
-      console.log('%c'+ random_animation_durations,'color:orange; font-size:3em;')
+      var random_animation_durations = getRandomArbitrary(0.2,0.8)
+      console.log('%c'+ random_animation_durations,'color:orange; font-size:3em;');
       $span.css('animation-duration' , random_animation_durations + 's');
 
 
