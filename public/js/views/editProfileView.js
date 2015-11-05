@@ -1,10 +1,18 @@
 App.Views.EditProfileView = Backbone.View.extend({
-  tagName: 'div',
+  tagName: 'div' ,
 
-  id: 'profile_editor',
+  id: 'profile_editor' ,
+
+  initialize: function(opts) {
+    this.model = null;
+    this.user_session = opts.user_session;
+    this.logged_user = opts.logged_user;
+    this.render();
+    this.listenTo(this.collection, "update", this.render);
+  } ,
 
   render: function() {
-    $('body').css({'background':'rgba(235,235,240,1.0)'});
+    $('body').css({'background':'rgba(240,240,240,1.0)'});
     console.log("%cEditProfileView","color:rgba(210,210,210,1.0);font-size:1.35em;");
 
     //console.log(this.collection);
@@ -403,13 +411,6 @@ $row_06.append( $edit_save_button_bottom_box );
     this.$el.append( $row_05 );
     this.$el.append( $row_06 );
 		$( ".centerdiv" ).prepend( this.$el );
-	},
-	initialize: function(opts) {
-    this.model = null;
-    this.user_session = opts.user_session;
-    this.logged_user = opts.logged_user;
-    this.render();
-    this.listenTo(this.collection, "update", this.render);
 	},
   events: {
     'click #save_and_publish_profile': 'update_profile',

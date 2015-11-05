@@ -23,10 +23,12 @@ var ProfileModel = Backbone.Model.extend({
 
 var ProjectModel = Backbone.Model.extend({
 	defaults: {
-		owners:[],
+		owner_reference:[],
 		title:'',
 		project_url_id:'',
+		github_repo_url:'',
 		mvp:'',
+		main_img:'',
 		tech_used: []
 	} ,
 	urlRoot: '/projects' ,

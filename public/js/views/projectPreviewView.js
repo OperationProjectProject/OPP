@@ -3,30 +3,78 @@
 //
 App.Views.ProjectPreviewView = Backbone.View.extend({
   tagName: 'li' ,
+
   className: 'project_preview col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2',
+
+  initialize: function(){
+    this.listenTo(this.model, "change", this.render);
+    this.render();
+  } ,
+
   render: function(){
     console.log("%cProjectPreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     //console.log(this);
 
     var $project_link = $('<a href="/#projects/' + this.model.attributes.project_url_id + '" ' + 'class="preview_link">');
-    var $project_title = $('<h2>').text(this.model.attributes.title);
+
+    //Create the two boxes that hold content inside of $project_link
+    var $project_img_box = $('<div>').attr({
+      'class':'col-sm-12 col-md-8 col-lg-6'
+    });
+
+    var $project_img = $("<img>").attr({
+      'alt': this.model.attributes.title + " main image." ,
+      'class': 'project_img_preview' ,
+      'id': this.model.attributes.project_url_id + '_profile_img' ,
+    });
+
+    if ( this.model.attributes.main_img !== '') {
+      $project_img.attr({
+        'src': this.model.attributes.main_img
+      });
+    } else {
+      $project_img.attr({
+        'src': 'https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/diamond.gif'
+        //'src': 'http://www.rammandir.ca/sites/default/files/default_images/defaul-avatar_0.jpg'
+      }).css('background','rgba(200,200,200,1.0)');
+    }
+
+    $project_img_box.append( $project_img );
 
 
-    console.log( $project_title.text().split('') );
 
 
 
-    $project_title.text().split('').forEach(function( e, i ){
+
+
+
+
+    var $text_div = $('<div>').attr({
+      'class':'col-sm-12 col-md4 col-lg-6 preview_text'
+    });
+
+
+
+
+
+
+
+
+
+
+    var $project_title = $('<h6>');
+
+    var $title_arr = $('<p>').text(this.model.attributes.title);
+
+    console.log( $title_arr.text().split('') );
+    $title_arr.text().split('').forEach(function( e, i ){
       console.log(e);
       function getRandomIntInclusive(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
-
       var $span = $('<span class="animated profile_preview_text_span">').text(e);
-
       var roll_dice = getRandomIntInclusive( 1, 6 );
       console.log(roll_dice);
-
       switch (roll_dice) {
         case 1:
           console.log("case 1");
@@ -63,28 +111,20 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
         default:
           console.log("default case." );
       }
-
-
       function getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
       }
-
-      var random_animation_durations = getRandomArbitrary(0.25, 1.0)
-      console.log('%c'+ random_animation_durations,'color:orange; font-size:3em;')
+      var random_animation_durations = getRandomArbitrary(0.2,0.8)
+      console.log('%c'+ random_animation_durations,'color:orange; font-size:3em;');
       $span.css('animation-duration' , random_animation_durations + 's');
-
-
-
-      $project_link.append( $span );
-
-
+      $project_title.append( $span );
     });
 
+    $text_div.append( $project_title );
+
+    $project_link.append( $project_img_box );
+    $project_link.append( $text_div );
 
     this.$el.append($project_link);
-  } ,
-  initialize: function(){
-    this.listenTo(this.model, "change", this.render);
-    this.render();
   }
 });

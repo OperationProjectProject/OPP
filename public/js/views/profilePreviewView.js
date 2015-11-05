@@ -30,8 +30,9 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
       });
     } else {
       $profile_img.attr({
-        'src': 'http://www.rammandir.ca/sites/default/files/default_images/defaul-avatar_0.jpg'
-      });
+        'src': 'https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/diamond.gif'
+        //'src': 'http://www.rammandir.ca/sites/default/files/default_images/defaul-avatar_0.jpg'
+      }).css('background','rgba(200,200,200,1.0)');
     }
 
 

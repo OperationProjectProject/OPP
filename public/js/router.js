@@ -157,15 +157,19 @@ App.Router = Backbone.Router.extend({
   project_editor: function(project_url_id) {
 
     var current_url = '';
+    var new_project = null;
 
     if (project_url_id) {
       console.log("%cRouter '/#projects/:url_id/edit'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
       current_url = '/%23projects/' + project_url_id + '/edit';
       console.log(current_url);
+      new_project = false;
     } else if (!project_url_id) {
       console.log("%cRouter '/#projects/new'", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
       current_url = '/%23projects/new';
       console.log(current_url);
+      new_project = true;
+      project_url_id = null;
     } else {
       console.log("%cRouter --> something's broken in project_editor method.", "color:rgba(51,51,51,1.0); font-size:1.25em; font-weight:bold;");
       console.log(current_url);
@@ -182,7 +186,9 @@ App.Router = Backbone.Router.extend({
     app.projectEditView = new App.Views.EditProjectView({
       collection: this.projects ,
       user_session: this.user_session ,
-      logged_user: this.logged_user
+      logged_user: this.logged_user,
+      new_project: new_project,
+      project_url_id: project_url_id
     });
     //console.log(app.profileEditView);
   } ,
