@@ -22,9 +22,12 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
       'class':'col-sm-12 col-md-8 col-lg-6'
     });
 
+
+
+    var ranomized_preview_revel = Math.random() > 0.5 ? 'fadeInLeftBig': 'fadeInRightBig'; 
     var $project_img = $("<img>").attr({
       'alt': this.model.attributes.title + " main image." ,
-      'class': 'project_img_preview' ,
+      'class': 'project_img_preview animated ' + ranomized_preview_revel,
       'id': this.model.attributes.project_url_id + '_profile_img' ,
     });
 
@@ -114,7 +117,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
       function getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
       }
-      var random_animation_durations = getRandomArbitrary(0.2,0.8)
+      var random_animation_durations = getRandomArbitrary(0.2,1.5);
       console.log('%c'+ random_animation_durations,'color:orange; font-size:3em;');
       $span.css('animation-duration' , random_animation_durations + 's');
       $project_title.append( $span );

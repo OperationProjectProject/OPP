@@ -117,6 +117,9 @@ footer p {
   color:rgba(100,100,100,1.0);
 }
 
+textarea.form-control {
+  height: 150px;
+}
 
 a#profiles_link.navigation_link ,
 a#projects_link.navigation_link  {
@@ -200,6 +203,14 @@ a#projects_link.navigation_link  {
   margin: 5px 5px 5px 0px;
 }
 
+.opp_display_block {
+  display: block !important;
+}
+
+
+.input-group-addon {
+  color: rgba(120,120,120,1.0);
+}
 
 .user_editor_input_label {
   font-size: 1.4em;
@@ -254,6 +265,7 @@ a#projects_link.navigation_link  {
   background: rgba(255,255,255,1.0);
   padding: 5em 5em;
   margin-bottom: 40px;
+  transition: height 10s;
 }
 
 .profile_preview .preview_link:hover ,

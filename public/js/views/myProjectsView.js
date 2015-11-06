@@ -42,8 +42,24 @@ App.Views.MyProjectsView = Backbone.View.extend({
     //Attach box to row
     $row_01.append( $edit_save_button_box );
 
-    //Attach row to this.$el
+    //create row 02
+    var $row_02 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_02'
+    });
+
+    //Create box for header and button
+    var $edit_save_button_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-12 col-lg-12' ,
+      'id': 'my_projects_preview_edit'
+    });
+
+
+
+
+    //Attach rows to this.$el
     this.$el.append( $row_01 );
+    this.$el.append( $row_02 );
 
     //Attach this.$el to .centerdiv
 		$( ".centerdiv" ).prepend( this.$el );
