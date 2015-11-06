@@ -48,8 +48,6 @@ router.use(cookieParser());
 
 router.get('/', function(req, res, next) {
   if(req.user){
-    console.log("cookie", req.cookies.user);
-    // console.log("user id is:", req.body);
     res.render('user_session', { title: "Hello, " + req.user.displayName ,layout: 'layout', logged_user:req.cookies.url, logged_user_key: req.cookies.id , banana:'yellow' , client_user_session: true});
   }
   else{
@@ -159,14 +157,14 @@ router.post("/projects", ensureAuthenticated, function(req, res, next){
 console.log("/projects --> 'POST'");
 
 console.log("project create(not really)");
-console.log("title:", req.body.owner_reference);
+console.log("owner_reference:", req.body.owner_reference);
 console.log("title:", req.body.title);
 console.log("project_url_id:", req.body.project_url_id);
-console.log("project_url_id:", req.body.github_repo_url);
+console.log("github_repo_url:", req.body.github_repo_url);
 console.log("mvp:", req.body.mvp);
 console.log("tech_used:", req.body.tech_used);
 
-  /*
+  
   db.post('OPP_projects', {
     "active": true,
     "owner_reference": req.body.owner_reference,
@@ -186,15 +184,15 @@ console.log("tech_used:", req.body.tech_used);
   })
   .then(function (result) {
     console.log("project added");
-    console.log("posted object is:", result.body.results[0].value);
-    console.log("posted key is:", result.body.results[0].path.key);
-    send({id:result.body.results[0].path.key, value: result.body.results[0].value});
+    // console.log("posted object is:", JSON.parse(result.request.body));
+    // console.log("posted key is:", result.path.key);
+    res.send({id:result.path.key, value: JSON.parse(result.request.body)});
   })
   .fail(function (err) {
     console.log("project post failed", err);
     send(err);
   });
-  */
+  
 });
 
 router.get('/projects', function(req, res, next) {
