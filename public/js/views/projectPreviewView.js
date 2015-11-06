@@ -6,7 +6,8 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
 
   className: 'project_preview col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2',
 
-  initialize: function(){
+  initialize: function( opts ){
+    this.edit_button = opts.edit_button;
     this.listenTo(this.model, "change", this.render);
     this.render();
   } ,
@@ -24,7 +25,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
 
 
 
-    var ranomized_preview_revel = Math.random() > 0.5 ? 'fadeInLeftBig': 'fadeInRightBig'; 
+    var ranomized_preview_revel = Math.random() > 0.5 ? 'fadeInLeftBig': 'fadeInRightBig';
     var $project_img = $("<img>").attr({
       'alt': this.model.attributes.title + " main image." ,
       'class': 'project_img_preview animated ' + ranomized_preview_revel,
@@ -53,7 +54,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
 
 
     var $text_div = $('<div>').attr({
-      'class':'col-sm-12 col-md4 col-lg-6 preview_text'
+      'class':'col-sm-12 col-md-4 col-lg-6 preview_text'
     });
 
 
@@ -69,7 +70,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
 
     var $title_arr = $('<p>').text(this.model.attributes.title);
 
-    console.log( $title_arr.text().split('') );
+    //console.log( $title_arr.text().split('') );
     $title_arr.text().split('').forEach(function( e, i ){
       console.log(e);
       function getRandomIntInclusive(min, max) {
@@ -77,48 +78,48 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
       }
       var $span = $('<span class="animated profile_preview_text_span">').text(e);
       var roll_dice = getRandomIntInclusive( 1, 6 );
-      console.log(roll_dice);
+      //console.log(roll_dice);
       switch (roll_dice) {
         case 1:
-          console.log("case 1");
+          //console.log("case 1");
           $span.addClass('bounceInDown');
           break;
         case 2:
-          console.log("case 2");
+          //console.log("case 2");
           $span.addClass('bounceInRight');
           break;
         case 3:
-          console.log("case 3");
+          //console.log("case 3");
           $span.addClass('bounceInDown');
           break;
         case 4:
-          console.log("case 4");
+          //console.log("case 4");
           $span.addClass('bounceInLeft');
           break;
         case 5:
-          console.log("case 5");
+          //console.log("case 5");
           $span.addClass('fadeInDownBig');
           break;
         case 6:
-          console.log("case 6");
+          //console.log("case 6");
           $span.addClass('fadeInUpBig');
           break;
         case 7:
-          console.log("case 7");
+          //console.log("case 7");
           $span.addClass('fadeInRightBig');
           break;
         case 8:
-          console.log("case 8");
+          //console.log("case 8");
           $span.addClass('fadeInLeftBig');
           break;
         default:
-          console.log("default case." );
+          //console.log("default case." );
       }
       function getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
       }
       var random_animation_durations = getRandomArbitrary(0.2,1.5);
-      console.log('%c'+ random_animation_durations,'color:orange; font-size:3em;');
+      console.log('%c'+ random_animation_durations,'color:orange; font-size:1em;');
       $span.css('animation-duration' , random_animation_durations + 's');
       $project_title.append( $span );
     });

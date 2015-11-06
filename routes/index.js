@@ -133,10 +133,12 @@ router.get('/profiles', function(req, res, next) {
 
 router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-
-    console.log("project updated(not really)");
+    console.log("/projects/:id --> 'PUT'");
+    console.log("project update(not really)");
+    console.log("title:", req.body.owner_reference);
     console.log("title:", req.body.title);
     console.log("project_url_id:", req.body.project_url_id);
+    console.log("project_url_id:", req.body.github_repo_url);
     console.log("mvp:", req.body.mvp);
     console.log("tech_used:", req.body.tech_used);
 
@@ -154,7 +156,17 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
 });
 
 router.post("/projects", ensureAuthenticated, function(req, res, next){
-console.log("post for projects ran");
+console.log("/projects --> 'POST'");
+
+console.log("project create(not really)");
+console.log("title:", req.body.owner_reference);
+console.log("title:", req.body.title);
+console.log("project_url_id:", req.body.project_url_id);
+console.log("project_url_id:", req.body.github_repo_url);
+console.log("mvp:", req.body.mvp);
+console.log("tech_used:", req.body.tech_used);
+
+  /*
   db.post('OPP_projects', {
     "active": true,
     "owner_reference": req.body.owner_reference,
@@ -182,6 +194,7 @@ console.log("post for projects ran");
     console.log("project post failed", err);
     send(err);
   });
+  */
 });
 
 router.get('/projects', function(req, res, next) {
@@ -298,7 +311,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
     }
 
     function updateInfo(key){
-      console.log("update key", key);
+      console.log("key", key);
       db.newPatchBuilder("OPP_users", key)
         .replace("github_api_data.github_id",req.user.id )
         .replace("github_api_data.github_email",req.user._json.email )
