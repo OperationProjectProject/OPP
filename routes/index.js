@@ -49,7 +49,8 @@ router.use(cookieParser());
 router.get('/', function(req, res, next) {
   if(req.user){
     console.log("cookie", req.cookies.user);
-    res.render('user_session', { title: "Hello, " + req.user.displayName ,layout: 'layout', logged_user:req.cookies.url , banana:'yellow' , client_user_session: true});
+    console.log("user id is:", req.body);
+    res.render('user_session', { title: "Hello, " + req.user.displayName ,layout: 'layout', logged_user:req.cookies.url, logged_user_key: req.cookies.url , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!req.user");
@@ -74,7 +75,6 @@ function ensureAuthenticated(req, res, next) {
 
 router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-
     console.log("profile updated(not really)");
     // console.log("request body", req.body);
     console.log("title:", req.body.title);
@@ -308,6 +308,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
           console.log("db post failed:",err);
         });
         res.cookie("url", req.user.username);
+        console.log("new user key is:", req.user);
     }
 
     function updateInfo(key){
@@ -332,11 +333,12 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       .then(function (result) {
         if(result.body.count>0){
           console.log("user exists");
-          console.log("user object is:", result.body.results[0].value);
+          // console.log("user object is:", result.body.results[0].value);
           cookieValue = result.body.results[0].value.profile_content.editable_text.url_id;
-          console.log("key", result.body.results[0].path.key);
+          // console.log("key", result.body.results[0].path.key);
           updateInfo(result.body.results[0].path.key);
           res.cookie("url", cookieValue);
+          res.cookie("id", result.body.results[0].path.key);
         }
         else{
           register();
@@ -361,6 +363,7 @@ router.get('/logout', function(req, res){
   res.clearCookie("logged");
   res.clearCookie("user");
   res.clearCookie("url");
+  res.clearCookie("id");
 
 
   res.redirect(req.session.returnTo || "/");
