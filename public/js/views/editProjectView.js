@@ -66,7 +66,6 @@ App.Views.EditProjectView = Backbone.View.extend({
       'class': 'row' ,
       'id': 'row_02'
     });
-
     //Create content box for user info box
     var $project_general_info_edit_box = $('<div>').attr({
       'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
@@ -76,7 +75,6 @@ App.Views.EditProjectView = Backbone.View.extend({
     var $project_general_info_edit_card = $('<div>').attr({
       'class': 'card' ,
     });
-
     var $project_general_info_edit_legend = $('<legend>');
     $project_general_info_edit_legend.attr({
       'class': ''
@@ -84,36 +82,69 @@ App.Views.EditProjectView = Backbone.View.extend({
     $project_general_info_edit_legend.append('<i class="fa fa-book fa-lg"></i>');
     $project_general_info_edit_card.append( $project_general_info_edit_legend );
 
+
+
+
+    //Build Form Group for User to Edit Project Title
+    var $project_title_form_group = $('<div>').attr({
+      'id': 'title_form_group',
+      'class': 'form-group'
+    });
+
     //Build User Title Label and Input
     var $project_title_edit_label = $('<label>');
     $project_title_edit_label.attr({
       'for': 'project_title_input',
-      'class': 'project_editor_input_label control-label'
+      'class': 'user_editor_input_label control-label'
     }).text("Project Title");
+    $project_title_form_group.append( $project_title_edit_label );
+
     var $project_title_edit_input = $('<input type="text">');
     $project_title_edit_input.attr({
       'id': 'project_title_input',
       'class': 'form-control',
       'value': 'test title value'
     });
+    $project_title_form_group.append( $project_title_edit_input );
+
+
+
+    //User Title Input get's attached to card
+    $project_general_info_edit_card.append( $project_title_form_group );
+    //
+
+
 
 
 
     //Build URL_ID Label and Input
+
+      //Form Group
     var $url_id_form_group = $('<div>').attr({
       'id': 'url_id_form_group' ,
       'class': 'form-group'
     });
 
+        //Label - Get's attached to the form group
     var $url_id_edit_label = $('<label>');
     $url_id_edit_label.attr({
       'for': 'project_title_input',
-      'class': 'project_editor_input_label control-label'
-    }).text("unique url:");
+      'class': 'user_editor_input_label control-label'
+    }).text("Custom URL");
+    $url_id_form_group.append( $url_id_edit_label );
+
+        //Input Group - Get's attached to the form group
     var $url_id_input_group = $('<div>').attr({
       'class':'input-group'
     });
+    $url_id_form_group.append( $url_id_input_group );
 
+      //These goes inside of the Input Group:
+          //Prefixer Span
+    var $project_url_id_input_prefixer =  $('<span>').attr({
+      'class': 'input-group-addon'
+    }).text('DemoDay.ninja/projects/');
+          //Input Element
     var $url_id_edit_input = $('<input type="text">');
     $url_id_edit_input.attr({
       'id': 'url_id_input',
@@ -121,17 +152,129 @@ App.Views.EditProjectView = Backbone.View.extend({
       'value': 'test_url_id_value'
     });
 
-    [ $url_id_edit_label ,
-      $url_id_edit_input ].forEach(function( e , i ){
+    //Input Prefixer and Input are appended to input group,
+    // , which is already attached to the Form Group
+    [ $project_url_id_input_prefixer ,
+      $url_id_edit_input
+    ].forEach(function( e , i ){
       $url_id_input_group.append( e );
     });
 
+    //Form Group get's attached to the card
+    $project_general_info_edit_card.append( $url_id_form_group );
+    //
 
-    $project_general_info_edit_card.append( $project_title_edit_label );
-    $project_general_info_edit_card.append( $project_title_edit_input );
-    $project_general_info_edit_card.append( $url_id_input_group );
 
+
+
+    //Build Github Repo URL Label and Input
+
+      //Form Group
+    var $github_repo_url_form_group = $('<div>').attr({
+      'id': 'github_repo_url_form_group' ,
+      'class': 'form-group'
+    });
+
+        //Label - Get's attached to the form group
+    var $github_repo_url_edit_label = $('<label>');
+    $github_repo_url_edit_label.attr({
+      'for': 'github_repo_url_input',
+      'class': 'user_editor_input_label control-label'
+    }).text("Link to Repository");
+    $github_repo_url_form_group.append( $github_repo_url_edit_label );
+
+
+        //Input Group
+    var $github_repo_url_input_group = $('<div>').attr({
+      'class':'input-group'
+    });
+      //Attach Input Group to Form Group
+    $github_repo_url_form_group.append( $github_repo_url_input_group );
+
+
+      //These goes inside of the Input Group:
+          //Prefixer Span
+    var $github_repo_url_input_prefixer =  $('<span>').attr({
+      'class': 'input-group-addon'
+    }).text('github.com/');
+          //Input Element
+    var $github_repo_url_edit_input = $('<input type="text">');
+    $github_repo_url_edit_input.attr({
+      'id': 'github_repo_url_input',
+      'class': 'form-control',
+      'value': 'test_github_repo_url_value'
+    });
+
+    //Input Prefixer and Input are appended to input group,
+    // , which is already attached to the Form Group
+    [ $github_repo_url_input_prefixer ,
+      $github_repo_url_edit_input
+    ].forEach(function( e , i ){
+      $github_repo_url_input_group.append( e );
+    });
+
+    //Form Group get's attached to the card
+    $project_general_info_edit_card.append( $github_repo_url_form_group );
+    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //MVP Info
+    // Build Form Group
+    var $mvp_form_group = $('<div>').attr({
+      'id': 'mvp_form_group' ,
+      'class': 'form-group'
+    });
+
+    //Label - Get's attached to the form group
+    var $mvp_edit_label = $('<label>');
+    $mvp_edit_label.attr({
+      'for': 'mvp_input',
+      'class': 'user_editor_input_label control-label'
+    }).text("Brief Description");
+    //Attach Label to Form Group
+    $mvp_form_group.append( $mvp_edit_label );
+
+
+    //Input Element
+    var $mvp_edit_input = $('<textarea>');
+    $mvp_edit_input.attr({
+      'id': 'mvp_input',
+      'class': 'form-control',
+      'value': 'test_mvp_value'
+    });
+    $mvp_form_group.append( $mvp_edit_input );
+
+    //Form Group get's attached to the card
+    $project_general_info_edit_card.append( $mvp_form_group );
+    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Card with a bunch of input elements, finally gets attached to it's parent box
     $project_general_info_edit_box.append( $project_general_info_edit_card );
+    //The Box containing the first card in this view, is append to it's parent row, row 02
     $row_02.append( $project_general_info_edit_box );
 
 
@@ -150,7 +293,7 @@ App.Views.EditProjectView = Backbone.View.extend({
       owner_reference: [],
       title: 'hello',
       project_url_id: 'this_isnt_a_new_project',
-      
+
     });
   }
 });
