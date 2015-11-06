@@ -311,7 +311,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
     }
 
     function updateInfo(key){
-      console.log("update key", key);
+      console.log("key", key);
       db.newPatchBuilder("OPP_users", key)
         .replace("github_api_data.github_id",req.user.id )
         .replace("github_api_data.github_email",req.user._json.email )
