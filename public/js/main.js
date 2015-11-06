@@ -12,8 +12,7 @@ $(function() { //when DOM is ready...
 		app.router = new App.Router({
 			user_session: app.user_session ,
 			profiles: app.profile_content ,
-			projects: app.project_content,
-			logged_user: app.logged_user
+			projects: app.project_content
 		});
 		//This sets up routes with hashtags. Like /#blog , /#products , /#users
 		Backbone.history.start();

@@ -8,12 +8,8 @@ App.Router = Backbone.Router.extend({
     this.profiles = opts.profiles;
     this.projects = opts.projects;
     this.logged_user = opts.logged_user;
+    this.logged_user_key = opts.logged_user_key;
 
-  //Needs to be passed by the server to the client
-    //this.logged_user_key= opts.logged_user_key;
-    this.logged_user_key = 'hello world';
-
-    
     this.logged_user_img_url = opts.logged_user_img_url;
     this.set_up_dom = function(){
       console.log("%cset_up_dom","font-size:2.5em; color:orange;");
