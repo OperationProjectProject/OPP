@@ -49,8 +49,8 @@ router.use(cookieParser());
 router.get('/', function(req, res, next) {
   if(req.user){
     console.log("cookie", req.cookies.user);
-    console.log("user id is:", req.body);
-    res.render('user_session', { title: "Hello, " + req.user.displayName ,layout: 'layout', logged_user:req.cookies.url, logged_user_key: req.cookies.url , banana:'yellow' , client_user_session: true});
+    // console.log("user id is:", req.body);
+    res.render('user_session', { title: "Hello, " + req.user.displayName ,layout: 'layout', logged_user:req.cookies.url, logged_user_key: req.cookies.id , banana:'yellow' , client_user_session: true});
   }
   else{
     console.log("!req.user");
@@ -260,6 +260,14 @@ function(req, res, done){
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
   console.log("2req.session.returnTo: ", req.session.returnTo);
     var cookieValue;
+    function direct(){
+      res.cookie("logged", true);
+      res.cookie("user", req.user.username);
+      console.log("2cookievalue: ", cookieValue);
+      res.redirect(req.session.returnTo || "/");
+      req.session.returnTo = null;
+    }
+    
     function register(){
       db.post('OPP_users', {
          "active":true,
@@ -303,12 +311,15 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       },false)
       .then(function(result){
         console.log("register function ran");
+        console.log("result body is:", result.path.key);
+        res.cookie("id", result.path.key);
+        direct();
       })
       .fail(function(err){
-          console.log("db post failed:",err);
+          console.log("db register post failed:",err);
         });
-        res.cookie("url", req.user.username);
-        console.log("new user key is:", req.user);
+      console.log("new user key is:", req.user);
+      res.cookie("url", req.user.username);
     }
 
     function updateInfo(key){
@@ -339,17 +350,11 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
           updateInfo(result.body.results[0].path.key);
           res.cookie("url", cookieValue);
           res.cookie("id", result.body.results[0].path.key);
+          direct();
         }
         else{
           register();
         }
-      })
-      .then(function(result){
-        res.cookie("logged", true);
-        res.cookie("user", req.user.username);
-        console.log("2cookievalue: ", cookieValue);
-        res.redirect(req.session.returnTo || "/");
-        req.session.returnTo = null;
       })
       .fail(function (err) {
         console.log("db search failed:", err);
