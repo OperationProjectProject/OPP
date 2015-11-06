@@ -18,7 +18,10 @@ App.Views.AllProjectsView = Backbone.View.extend({
 
 
     this.collection.models.forEach(function(e,i){
-      var project_preview = new App.Views.ProjectPreviewView({model:e});
+      var project_preview = new App.Views.ProjectPreviewView({
+        model: e ,
+        edit_button: false
+      });
 
 
       function getRandomIntInclusive(min, max) {

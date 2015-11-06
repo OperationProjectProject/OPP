@@ -8,6 +8,10 @@ App.Router = Backbone.Router.extend({
     this.profiles = opts.profiles;
     this.projects = opts.projects;
     this.logged_user = opts.logged_user;
+
+    //this.logged_user_key= opts.logged_user_key;
+    //this.logged_user_key = 'hello tinkerbell';
+    this.logged_user_key = '0d8576581f208262';
     this.logged_user_img_url = opts.logged_user_img_url;
     this.set_up_dom = function(){
       console.log("%cset_up_dom","font-size:2.5em; color:orange;");
@@ -187,6 +191,7 @@ App.Router = Backbone.Router.extend({
       collection: this.projects ,
       user_session: this.user_session ,
       logged_user: this.logged_user,
+      logged_user_key: this.logged_user_key ,
       new_project: new_project,
       project_url_id: project_url_id
     });
@@ -206,7 +211,8 @@ App.Router = Backbone.Router.extend({
     app.myProjectsView = new App.Views.MyProjectsView({
       collection: this.projects ,
       user_session: this.user_session ,
-      logged_user: this.logged_user
+      logged_user: this.logged_user ,
+      logged_user_key: this.logged_user_key
     });
   }
 

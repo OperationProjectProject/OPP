@@ -10,6 +10,11 @@ App.Views.EditProjectView = Backbone.View.extend({
       console.log("%c EditProjectView Init","font-size:2em;color:purple;");
       console.log(opts);
       console.log(this.collection);
+      this.model = opts.model;
+      this.user_session = opts.user_session;
+      this.logged_user = opts.logged_user;
+      this.logged_user_key = opts.logged_user_key;
+      this.new_project = opts.new_project;
       this.render();
   	} ,
 
@@ -47,11 +52,22 @@ App.Views.EditProjectView = Backbone.View.extend({
 
     var $my_content_header = $( '<h2>' ).addClass('my_content_header' ).text( 'Project Editor' );
 
+
+    console.log(this.new_project);
+
+
+
+    var id_for_save_and_publish_button = '';
+    id_for_save_and_publish_button = ( this.new_project === true ) ? 'save_and_publish_new_project' : 'save_and_publish_project';
+
+
+    console.log("%c "+ id_for_save_and_publish_button,'font-size: 1.25em;');
+
     //console.log("create 'edit my profile' button for logged-in-users");
     var $edit_my_profile = $( '<a>' ).attr({
       'class' : 'btn btn-primary btn-lg edit_save_button',
       'href': '#projects/my_projects',
-      'id': 'save_and_publish_project'
+      'id': id_for_save_and_publish_button
     }).text(
       "Save and Publish"
     );
@@ -128,7 +144,7 @@ App.Views.EditProjectView = Backbone.View.extend({
         //Label - Get's attached to the form group
     var $url_id_edit_label = $('<label>');
     $url_id_edit_label.attr({
-      'for': 'project_title_input',
+      'for': 'url_id_input',
       'class': 'user_editor_input_label control-label'
     }).text("Custom URL");
     $url_id_form_group.append( $url_id_edit_label );
@@ -143,7 +159,7 @@ App.Views.EditProjectView = Backbone.View.extend({
           //Prefixer Span
     var $project_url_id_input_prefixer =  $('<span>').attr({
       'class': 'input-group-addon'
-    }).text('DemoDay.ninja/projects/');
+    }).text('#projects/');
           //Input Element
     var $url_id_edit_input = $('<input type="text">');
     $url_id_edit_input.attr({
@@ -285,15 +301,31 @@ App.Views.EditProjectView = Backbone.View.extend({
 	},
 
   events: {
-
+    'click #save_and_publish_new_project': 'create_project' ,
+    'click #save_and_publish_project': 'update_project'
   } ,
 
   create_project: function() {
     this.collection.create({
-      owner_reference: [],
-      title: 'hello',
-      project_url_id: 'this_isnt_a_new_project',
+      owner_reference:[ this.logged_user_key ],
+  		title: $('input[id="project_title_input"]').val() ,
+  		project_url_id: $('input[id="url_id_input"]').val() ,
+  		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+  		mvp:$('textarea[id="mvp_input"]').val() ,
+  		main_img:'',
+  		tech_used: []
+    });
+  } ,
 
+  update_project: function() {
+    this.model.set({
+      owner_reference:[],
+      title: $('input[id="project_title_input"]').val() ,
+  		project_url_id: $('input[id="url_id_input"]').val() ,
+  		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+  		mvp:$('textarea[id="mvp_input"]').val() ,
+      main_img:'',
+      tech_used: []
     });
   }
 });
