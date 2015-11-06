@@ -11,6 +11,8 @@ $(function() { //when DOM is ready...
 		app.project_content = new ProjectCollection();
 		app.router = new App.Router({
 			user_session: app.user_session ,
+			logged_user: app.logged_user,
+			logged_user_key: app.logged_user_key,
 			profiles: app.profile_content ,
 			projects: app.project_content
 		});
