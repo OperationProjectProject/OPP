@@ -132,6 +132,12 @@ a#projects_link.navigation_link  {
   animation-duration: 1.2s;
 }
 
+#my_projects_preview_list {
+  padding-left: 0px;
+}
+
+
+
 .active a#profiles_link.navigation_link ,
 .active a#projects_link.navigation_link  {
   /*color: rgba(69,130,236,1.0);*/
@@ -188,8 +194,6 @@ a#projects_link.navigation_link  {
   margin-top: 0;
   padding-left: 0;
 }
-
-
 
 
 .badge {
@@ -823,5 +827,8 @@ div.content_box{
   footer {
     text-align: center;
   }
+
+
+
 
 }

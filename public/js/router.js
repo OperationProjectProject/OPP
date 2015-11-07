@@ -115,8 +115,11 @@ App.Router = Backbone.Router.extend({
       console.log("%c:project_url_id","color:green; font-size:1.25em;" );
       //console.log(this.profiles);
       app.projectView = new App.Views.ProjectView({
+        user_session: this.user_session,
+        logged_user: this.logged_user,
+        logged_user_key: this.logged_user_key,
         collection: this.projects ,
-        project_url_id: project_url_id
+        project_url_id: project_url_id,
       });
     } //end of the project_url_id param 'else' clause
   },

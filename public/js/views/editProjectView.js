@@ -66,7 +66,6 @@ App.Views.EditProjectView = Backbone.View.extend({
     //console.log("create 'edit my profile' button for logged-in-users");
     var $edit_my_profile = $( '<a>' ).attr({
       'class' : 'btn btn-primary btn-lg edit_save_button',
-      'href': '#projects/my_projects',
       'id': id_for_save_and_publish_button
     }).text(
       "Save and Publish"
@@ -306,26 +305,47 @@ App.Views.EditProjectView = Backbone.View.extend({
   } ,
 
   create_project: function() {
-    this.collection.create({
-      owner_reference:[ this.logged_user_key ],
-  		title: $('input[id="project_title_input"]').val() ,
-  		project_url_id: $('input[id="url_id_input"]').val() ,
-  		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
-  		mvp:$('textarea[id="mvp_input"]').val() ,
-  		main_img:'',
-  		tech_used: []
-    });
+    console.log("%c create_project method", "font-size: 3em; color: orange;");
+
+    if ( this.validate_form() ) {
+      console.log( this.validate_form() );
+      this.collection.create({
+        owner_reference:[ this.logged_user_key ],
+    		title: $('input[id="project_title_input"]').val() ,
+    		project_url_id: $('input[id="url_id_input"]').val() ,
+    		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+    		mvp:$('textarea[id="mvp_input"]').val() ,
+    		main_img:'',
+    		tech_used: []
+      });
+    } else {
+      console.log("Form not valid");
+      $('#url_id_form_group').addClass("has-error");
+    }
   } ,
 
   update_project: function() {
-    this.model.set({
-      owner_reference:[],
-      title: $('input[id="project_title_input"]').val() ,
-  		project_url_id: $('input[id="url_id_input"]').val() ,
-  		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
-  		mvp:$('textarea[id="mvp_input"]').val() ,
-      main_img:'',
-      tech_used: []
-    });
+    console.log("%c update_project method", "font-size: 3em; color: orange;");
+      this.model.set({
+        owner_reference:[],
+        title: $('input[id="project_title_input"]').val() ,
+    		project_url_id: $('input[id="url_id_input"]').val() ,
+    		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+    		mvp:$('textarea[id="mvp_input"]').val() ,
+        main_img:'',
+        tech_used: []
+      });
+
+      this.model.save();
+  } ,
+
+  validate_form: function() {
+    console.log("%c FORM VALIDATION", "font-size: 3em; color: orange;");
+    var form_is_valid = false;
+    console.log( form_is_valid );
+    console.log( this.collection );
+    console.log(form_is_valid);
+    return form_is_valid;
   }
+
 });

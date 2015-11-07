@@ -16,6 +16,8 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
     console.log("%cProjectPreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     //console.log(this);
 
+    this.$el.empty();
+
     var $project_link = $('<a href="/#projects/' + this.model.attributes.project_url_id + '" ' + 'class="preview_link">');
 
     //Create the two boxes that hold content inside of $project_link

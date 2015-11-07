@@ -6,6 +6,11 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
   className: 'profile_preview col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2',
   render: function(){
     console.log("%cProfilePreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+
+
+    this.$el.empty();
+
+
     var $profile_link = $('<a href="/#profiles/'+ this.model.attributes.url_id +'" class="preview_link">');
     var $text_div = $('<div class="col-sm-12 col-md-8 col-lg-6 preview_text">');
     var $user_name = $('<h2 class="user_name">').text(this.model.attributes.name);
