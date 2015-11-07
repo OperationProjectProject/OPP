@@ -1,43 +1,80 @@
-// var app = app || {};
-
 App.Views.EditProjectView = Backbone.View.extend({
     tagName: 'div' ,
 
     id: 'project_editor_view' ,
 
     initialize: function(opts) {
-      $('body').css({'background':'rgba(240,240,240,1.0)'});
-      console.log("%c EditProjectView Init","font-size:2em;color:purple;");
-      console.log(opts);
-      console.log(this.collection);
-      this.model = opts.model;
       this.user_session = opts.user_session;
       this.logged_user = opts.logged_user;
       this.logged_user_key = opts.logged_user_key;
       this.new_project = opts.new_project;
+      this.project_url_id = opts.project_url_id;
       this.render();
   	} ,
 
     render: function() {
-    console.log("%c EditProjectView Render","font-size:2em;color:purple;");
-  /*
-    console.log(" ---- EditProjectView rendered ---- ");
-		var $form = $('<form class="" action="/register" method="post">');
-		var $inputName = $('<input type="text" name="name" id = "fullName" placeholder="Enter Your Full Name"><br>');
-		var $inputEmail = $('<input type="text" name="email" id = "email" placeholder="Enter Your E-mail"><br>');
-		var $inputPassword = $('<input type="password" name="password" id = "password" placeholder="Enter A Password"><br>');
-		var $inputConfirmPass = $('<input type="password" name="confirmPass" id = "passwordConfirm" placeholder="Confirm Password"><br>');
-		var $inputSubmit = $('<input type="submit" name="submit" value="Sign Up">');
-		$form.append($inputName);
-		$form.append($inputEmail);
-		$form.append($inputPassword);
-		$form.append($inputConfirmPass);
-		$form.append($inputSubmit);
-		this.$el.append($form);
-		$('#app').append(this.$el);
-  */
+    $('body').css({'background':'rgba(240,240,240,1.0)'});
+    console.log("%c EditProjectView Render TEST","font-size:3em;color:purple;");
+    this.$el.empty();
+
     console.log(this.$el);
+    console.log(this.new_project);
     console.log(this.collection);
+    console.log(this.project_url_id);
+    console.log("%c this.model: " + this.model , "font-size:2em;color:purple;");
+
+
+    if ( this.new_project === true ) {
+      console.log("this is a new project");
+      this.model = undefined;
+    } else if ( this.new_project === false ) {
+      console.log("this is an existing project");
+      for( var i=0; i < this.collection.models.length; i++ ){
+        if( this.collection.models[i].attributes.project_url_id === this.project_url_id ){
+          this.model = this.collection.models[i];
+        }
+      }
+    } else {
+      console.log( "Something is wrong in the project editor, or the router that initialized it." );
+    }
+
+
+    console.log('%c this.model: ' + this.model , "font-size:2em; color: red;");
+          //Should router pass project editor a model?
+            //Or a collection and a project_url_id?
+            //Should the editor be told what its model is?
+            //Or  determine that on render? ...
+          //this.model = opts.model;
+
+
+
+
+
+
+    //Create the placeholder strings
+    var placeholder_title = '';
+    var placeholder_project_url_id = '';
+    var placeholder_github_repo_url = '';
+    var placeholder_mvp = '';
+
+    if ( (this.new_project === false) && ( this.model !== undefined ) ) {
+      console.log(this.model.attributes);
+      placeholder_title = this.model.attributes.title;
+      placeholder_project_url_id = this.model.attributes.project_url_id;
+      placeholder_github_repo_url = this.model.attributes.github_repo_url;
+      placeholder_mvp = this.model.attributes.mvp;
+    }
+
+    console.log("%c Placeholder Values: " , "font-size: 2em; color: orange;");
+    console.log(placeholder_title);
+    console.log(placeholder_project_url_id);
+    console.log(placeholder_github_repo_url);
+    console.log(placeholder_mvp);
+
+
+
+
+
 
     //create row 01
     var $row_01 =  $('<div>').attr({
@@ -61,12 +98,11 @@ App.Views.EditProjectView = Backbone.View.extend({
     id_for_save_and_publish_button = ( this.new_project === true ) ? 'save_and_publish_new_project' : 'save_and_publish_project';
 
 
-    console.log("%c "+ id_for_save_and_publish_button,'font-size: 1.25em;');
+    console.log("%c "+ id_for_save_and_publish_button + " button",'font-size: 1.25em;');
 
     //console.log("create 'edit my profile' button for logged-in-users");
     var $edit_my_profile = $( '<a>' ).attr({
       'class' : 'btn btn-primary btn-lg edit_save_button',
-      'href': '#projects/my_projects',
       'id': id_for_save_and_publish_button
     }).text(
       "Save and Publish"
@@ -119,7 +155,7 @@ App.Views.EditProjectView = Backbone.View.extend({
     $project_title_edit_input.attr({
       'id': 'project_title_input',
       'class': 'form-control',
-      'value': 'test title value'
+      'value': placeholder_title
     });
     $project_title_form_group.append( $project_title_edit_input );
 
@@ -165,7 +201,7 @@ App.Views.EditProjectView = Backbone.View.extend({
     $url_id_edit_input.attr({
       'id': 'url_id_input',
       'class': 'form-control',
-      'value': 'test_url_id_value'
+      'value': placeholder_project_url_id
     });
 
     //Input Prefixer and Input are appended to input group,
@@ -218,7 +254,7 @@ App.Views.EditProjectView = Backbone.View.extend({
     $github_repo_url_edit_input.attr({
       'id': 'github_repo_url_input',
       'class': 'form-control',
-      'value': 'test_github_repo_url_value'
+      'value': placeholder_github_repo_url
     });
 
     //Input Prefixer and Input are appended to input group,
@@ -264,35 +300,20 @@ App.Views.EditProjectView = Backbone.View.extend({
 
 
     //Input Element
-    var $mvp_edit_input = $('<textarea>');
+    var $mvp_edit_input = $('<textarea>').text( placeholder_mvp );
     $mvp_edit_input.attr({
       'id': 'mvp_input',
-      'class': 'form-control',
-      'value': 'test_mvp_value'
+      'class': 'form-control'
     });
     $mvp_form_group.append( $mvp_edit_input );
 
     //Form Group get's attached to the card
     $project_general_info_edit_card.append( $mvp_form_group );
-    //
-
-
-
-
-
-
-
-
-
-
-
-
 
     //Card with a bunch of input elements, finally gets attached to it's parent box
     $project_general_info_edit_box.append( $project_general_info_edit_card );
     //The Box containing the first card in this view, is append to it's parent row, row 02
     $row_02.append( $project_general_info_edit_box );
-
 
     //Append rows to this view
     this.$el.append( $row_01 );
@@ -302,30 +323,109 @@ App.Views.EditProjectView = Backbone.View.extend({
 
   events: {
     'click #save_and_publish_new_project': 'create_project' ,
-    'click #save_and_publish_project': 'update_project'
+    'click #save_and_publish_project': 'update_project' ,
+    'focus #url_id_input': 'clean_url_id_input'
   } ,
 
+
   create_project: function() {
-    this.collection.create({
-      owner_reference:[ this.logged_user_key ],
-  		title: $('input[id="project_title_input"]').val() ,
-  		project_url_id: $('input[id="url_id_input"]').val() ,
-  		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
-  		mvp:$('textarea[id="mvp_input"]').val() ,
-  		main_img:'',
-  		tech_used: []
-    });
+    console.log("%c create_project method", "font-size: 3em; color: orange;");
+
+    var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
+
+    if ( this.validate_form() ) {
+      console.log( this.validate_form() );
+      this.collection.create({
+        owner_reference:[ this.logged_user_key ],
+    		title: $('input[id="project_title_input"]').val() ,
+    		project_url_id: $('input[id="url_id_input"]').val() ,
+    		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+    		mvp:$('textarea[id="mvp_input"]').val() ,
+    		main_img:'',
+    		tech_used: []
+      } , {
+        wait: true ,
+        success: function() {
+          console.log('POST success!');
+          app.router.navigate("#projects/" + project_url_id_in_escrow , {trigger: true});
+        } ,
+        error: function() {
+          console.log('error');
+        }
+      });
+    } else {
+      console.log("Form not valid");
+      $( '#url_id_form_group' ).addClass( "has-error" );
+      var $error_message = $( '<span>' ).text( ' - please choose another url' );
+      $( '#url_id_form_group label' ).append( $error_message );
+    }
   } ,
 
   update_project: function() {
-    this.model.set({
-      owner_reference:[],
-      title: $('input[id="project_title_input"]').val() ,
-  		project_url_id: $('input[id="url_id_input"]').val() ,
-  		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
-  		mvp:$('textarea[id="mvp_input"]').val() ,
-      main_img:'',
-      tech_used: []
+    console.log("%c update_project method", "font-size: 3em; color: orange;");
+
+    var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
+
+    if ( this.validate_form() ) {
+      console.log("%c form passed validation", "font-size: 1.3em; color: orange;");
+      console.log(this);
+      this.model.save({
+        owner_reference:[],
+        title: $('input[id="project_title_input"]').val() ,
+    		project_url_id: $('input[id="url_id_input"]').val() ,
+    		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+    		mvp:$('textarea[id="mvp_input"]').val() ,
+        main_img:'',
+        tech_used: []
+      } , {
+        wait: true ,
+        success: function() {
+          console.log('successfully saved');
+          app.router.navigate("#projects/" + project_url_id_in_escrow , {trigger: true});
+        } ,
+        error: function() {
+          console.log("error");
+        }
+      });
+    } else {
+      console.log("Form not valid");
+      $( '#url_id_form_group' ).addClass( "has-error" );
+      var $error_message = $( '<span class="error_message">' ).text( ' - please choose another url' );
+      $( '#url_id_form_group label' ).append( $error_message );
+    }
+  } ,
+
+
+
+  validate_form: function() {
+    console.log("%c FORM VALIDATION", "font-size: 3em; color: orange;");
+    var form_is_valid = false;
+    console.log( form_is_valid );
+    console.log( this.collection.models );
+    console.log(form_is_valid);
+    var all_project_url_ids = this.collection.models.map(function( e, i ){
+      return e.attributes.project_url_id;
     });
+    console.log( all_project_url_ids );
+    console.log( all_project_url_ids.indexOf( $('input[id="url_id_input"]').val() ));
+
+    if  (
+      all_project_url_ids.indexOf( $( 'input[id="url_id_input"]' ).val() ) === -1
+      ||
+      $( 'input[id="url_id_input"]' ).val() === this.project_url_id
+    ) {
+      form_is_valid = true;
+    }
+
+    return form_is_valid;
+  } ,
+
+
+  clean_url_id_input: function() {
+    console.log("clean_url__id_input method ");
+    $( '#url_id_form_group' ).removeClass( "has-error" );
+    $( "#url_id_form_group span.error_message" ).remove();
   }
+
+
 });

@@ -16,6 +16,8 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
     console.log("%cProjectPreviewView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     //console.log(this);
 
+    this.$el.empty();
+
     var $project_link = $('<a href="/#projects/' + this.model.attributes.project_url_id + '" ' + 'class="preview_link">');
 
     //Create the two boxes that hold content inside of $project_link
@@ -72,7 +74,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
 
     //console.log( $title_arr.text().split('') );
     $title_arr.text().split('').forEach(function( e, i ){
-      console.log(e);
+      //console.log(e);
       function getRandomIntInclusive(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
@@ -118,8 +120,8 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
       function getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
       }
-      var random_animation_durations = getRandomArbitrary(0.2,1.5);
-      console.log('%c'+ random_animation_durations,'color:orange; font-size:1em;');
+      var random_animation_durations = getRandomArbitrary(0.1,1.3);
+      //console.log('%c'+ random_animation_durations,'color:orange; font-size:1em;');
       $span.css('animation-duration' , random_animation_durations + 's');
       $project_title.append( $span );
     });
