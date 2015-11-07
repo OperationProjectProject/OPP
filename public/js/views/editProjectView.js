@@ -366,7 +366,7 @@ App.Views.EditProjectView = Backbone.View.extend({
 
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
-    if ( true ) {
+    if ( this.validate_form() ) {
       console.log("%c form passed validation", "font-size: 1.3em; color: orange;");
       console.log(this);
       this.model.save({
