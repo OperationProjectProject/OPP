@@ -61,7 +61,7 @@ App.Views.EditProjectView = Backbone.View.extend({
     id_for_save_and_publish_button = ( this.new_project === true ) ? 'save_and_publish_new_project' : 'save_and_publish_project';
 
 
-    console.log("%c "+ id_for_save_and_publish_button,'font-size: 1.25em;');
+    console.log("%c "+ id_for_save_and_publish_button + " button",'font-size: 1.25em;');
 
     //console.log("create 'edit my profile' button for logged-in-users");
     var $edit_my_profile = $( '<a>' ).attr({
@@ -301,7 +301,8 @@ App.Views.EditProjectView = Backbone.View.extend({
 
   events: {
     'click #save_and_publish_new_project': 'create_project' ,
-    'click #save_and_publish_project': 'update_project'
+    'click #save_and_publish_project': 'update_project' ,
+    'focus #url_id_input': 'clean_url_id_input'
   } ,
 
   create_project: function() {
@@ -320,12 +321,18 @@ App.Views.EditProjectView = Backbone.View.extend({
       });
     } else {
       console.log("Form not valid");
-      $('#url_id_form_group').addClass("has-error");
+      $( '#url_id_form_group' ).addClass( "has-error" );
+      var $error_message = $( '<span>' ).text( ' - please choose another url' );
+      $( '#url_id_form_group label' ).append( $error_message );
     }
   } ,
 
   update_project: function() {
     console.log("%c update_project method", "font-size: 3em; color: orange;");
+
+    if ( this.validate_form() ) {
+      console.log("%c form passed validation", "font-size: 1.3em; color: orange;");
+      console.log(this);
       this.model.set({
         owner_reference:[],
         title: $('input[id="project_title_input"]').val() ,
@@ -335,17 +342,45 @@ App.Views.EditProjectView = Backbone.View.extend({
         main_img:'',
         tech_used: []
       });
-
       this.model.save();
+    } else {
+      console.log("Form not valid");
+      $( '#url_id_form_group' ).addClass( "has-error" );
+      var $error_message = $( '<span class="error_message">' ).text( ' - please choose another url' );
+      $( '#url_id_form_group label' ).append( $error_message );
+    }
   } ,
+
+
 
   validate_form: function() {
     console.log("%c FORM VALIDATION", "font-size: 3em; color: orange;");
     var form_is_valid = false;
     console.log( form_is_valid );
-    console.log( this.collection );
+    console.log( this.collection.models );
     console.log(form_is_valid);
+
+
+    var all_project_url_ids = this.collection.models.map(function( e, i ){
+      return e.attributes.project_url_id;
+    });
+
+    console.log( all_project_url_ids );
+    console.log( all_project_url_ids.indexOf( $('input[id="url_id_input"]').val() ));
+
+
+    if  ( all_project_url_ids.indexOf( $( 'input[id="url_id_input"]' ).val() ) === -1 ) {
+      form_is_valid = true;
+    }
+
     return form_is_valid;
+  } ,
+
+
+  clean_url_id_input: function() {
+    console.log("clean_url__id_input method ");
+    $( '#url_id_form_group' ).removeClass( "has-error" );
+    $( "#url_id_form_group span.error_message" ).remove();
   }
 
 });
