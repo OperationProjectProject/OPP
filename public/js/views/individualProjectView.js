@@ -56,7 +56,7 @@ App.Views.ProjectView = Backbone.View.extend({
       'id': 'testing_test'
     });
 
-/*
+
     //Create Headline & Byline
     var $title = $('<h2 class="headline">').text(this.model.attributes.title);
     var $byline = $('<p class="byline">').text(this.model.attributes.mvp);
@@ -72,7 +72,7 @@ App.Views.ProjectView = Backbone.View.extend({
     [ $title, $byline, $tech_used].forEach( function( e, i ){
       $project_detail_card.append(e);
     });
-*/
+
     $project_detail_box.append( $project_detail_card );
     $row_01.append( $project_detail_box );
 

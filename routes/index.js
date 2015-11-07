@@ -130,13 +130,14 @@ router.get('/profiles', function(req, res, next) {
 });
 
 router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
+
     var id = req.params.id;
     console.log("/projects/:id --> 'PUT'");
     console.log("project update(not really)");
-    console.log("title:", req.body.owner_reference);
+    console.log("owner_reference:", req.body.owner_reference);
     console.log("title:", req.body.title);
     console.log("project_url_id:", req.body.project_url_id);
-    console.log("project_url_id:", req.body.github_repo_url);
+    console.log("github_url:", req.body.github_repo_url);
     console.log("mvp:", req.body.mvp);
     console.log("tech_used:", req.body.tech_used);
 
@@ -155,7 +156,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
           .replace("project_content.tech_used", req.body.tech_used)
           .apply()
           .then(function (result) {
-            console.log("project added");
+            console.log("project updated");
             res.send({id:id, value: JSON.parse(result.request.body)});
           })
           .fail(function (err) {
@@ -167,6 +168,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
       .fail(function (err) {
         console.log("db project url search failed:", err);
       });
+
 });
 
 router.post("/projects", ensureAuthenticated, function(req, res, next){
@@ -209,7 +211,7 @@ db.search('OPP_projects', req.body.project_url_id)
   .fail(function (err) {
     console.log("db project url search failed:", err);
   });
-  
+
 });
 
 router.get('/projects', function(req, res, next) {
@@ -266,7 +268,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       res.redirect(req.session.returnTo || "/");
       req.session.returnTo = null;
     }
-    
+
     function register(){
       db.post('OPP_users', {
          "active":true,
