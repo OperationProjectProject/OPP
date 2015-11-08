@@ -134,6 +134,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
     console.log("/projects/:id --> 'PUT'");
     console.log("project update(not really)");
+    console.log("request body is", req.body);
     console.log("owner_reference:", req.body.owner_reference);
     console.log("title:", req.body.title);
     console.log("project_url_id:", req.body.project_url_id);
