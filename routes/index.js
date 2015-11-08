@@ -120,7 +120,7 @@ router.get('/profiles', function(req, res, next) {
           };
         // }
       });
-        // console.log("mapped: ", mapped);
+        console.log("mapped: ", mapped);
         res.send(mapped);
       })
       .fail(function(err){
@@ -134,6 +134,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
     console.log("/projects/:id --> 'PUT'");
     console.log("project update(not really)");
+    console.log("request body is", req.body);
     console.log("owner_reference:", req.body.owner_reference);
     console.log("title:", req.body.title);
     console.log("project_url_id:", req.body.project_url_id);
@@ -389,5 +390,71 @@ router.get('/logout', function(req, res){
   req.session.returnTo = null;
 });
 
+router.get('/search', function(req, res){
+  function profSearch(){
+    var data = result.body.results;
+    var mapped = data.map(function (element, index) {
+      // if(element.value.active === true){
+      return {
+        id: element.path.key,
+        name: element.value.profile_content.editable_text.name ,
+        title: element.value.profile_content.editable_text.title ,
+        github_url: element.value.github_api_data.github_url ,
+        profile_img_url: element.value.profile_content.img_urls.profile_img ,
+        personal_site_url: element.value.profile_content.social_urls.personal ,
+        linkedin_url: element.value.profile_content.social_urls.linkedin ,
+        twitter_url: element.value.profile_content.social_urls.twitter ,
+        url_id: element.value.profile_content.editable_text.url_id ,
+        top_skills: element.value.profile_content.editable_text.skills ,
+        top_tools: element.value.profile_content.editable_text.tools ,
+        js_tidbit: element.value.profile_content.editable_text.q_and_a.js_tidbit ,
+        work_status: element.value.profile_content.checkbox_content.work_status ,
+        dream_job: element.value.profile_content.editable_text.q_and_a.job_hope
+      };
+    // }
+    });
+    res.send(mapped);
+  }
+  
+  function projSearch(){
+    var data = result.body.results;
+    var mapped = data.map(function (element, index) {
+      // if(element.value.active === true){
+      return {
+        id: element.path.key,
+        owner_reference: element.value.owner_reference,
+        title: element.value.project_content.title ,
+        project_url_id: element.value.project_content.project_url_id,
+        github_repo_url: element.value.project_content.out_link_urls.github_repo_url,
+        mvp: element.value.project_content.mvp,
+        main_img: element.value.project_content.img_urls.main_img,
+        tech_used: element.value.project_content.tech_used
+      };
+      // }
+    });
+    res.send(mapped);
+  }
+  
+  db.search("OPP_users", req.body.searchText)
+  .then(function(result){
+    if(result.body.count===0){
+      db.search("OPP_projects")
+      .then(function(result){
+        if(result.body.count>0){
+          projSearch();
+        }
+        else{
+          send("No matching Search result");
+        }
+      });
+    }else{
+      profSearch();
+    }
+  });
+
+
+  res.redirect(req.session.returnTo || "/");
+  req.session.returnTo = null;
+});
 
 module.exports = router;
