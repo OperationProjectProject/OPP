@@ -87,7 +87,13 @@ App.Views.EditProjectView = Backbone.View.extend({
       'id': 'edit_save_button_box'
     });
 
-    var $my_content_header = $( '<h2>' ).addClass('my_content_header' ).text( 'Project Editor' );
+    var $my_content_header = $( '<h2>' ).addClass('my_content_header' );
+
+    if (this.new_project === true ) {
+      $my_content_header.text( 'New Project' );
+    } else {
+      $my_content_header.text( 'Edit' );
+    }
 
 
     console.log(this.new_project);
@@ -370,7 +376,7 @@ App.Views.EditProjectView = Backbone.View.extend({
       console.log("%c form passed validation", "font-size: 1.3em; color: orange;");
       console.log(this);
       this.model.save({
-        owner_reference:[],
+        owner_reference:[ this.logged_user_key ] ,
         title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
     		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
