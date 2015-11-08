@@ -141,11 +141,11 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     console.log("github_url:", req.body.github_repo_url);
     console.log("mvp:", req.body.mvp);
     console.log("tech_used:", req.body.tech_used);
-    
+
     function updateProjects(){
       db.newPatchBuilder("OPP_projects", id)
       .replace("project_content.title", req.body.title)
-      // .replace("owner_reference", req.body.owner_reference)
+      .replace("owner_reference", req.body.owner_reference)
       .replace("project_content.project_url_id", req.body.project_url_id)
       .replace("project_content.out_link_urls.github_repo_url", req.body.github_repo_url)
       .replace("project_content.mvp", req.body.mvp)
@@ -160,7 +160,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
         send(err);
       });
     }
-    
+
     db.search('OPP_projects', req.body.project_url_id)
       .then(function (result) {
         var key = result.body.results[0].path.key;

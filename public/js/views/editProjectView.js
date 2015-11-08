@@ -87,7 +87,13 @@ App.Views.EditProjectView = Backbone.View.extend({
       'id': 'edit_save_button_box'
     });
 
-    var $my_content_header = $( '<h2>' ).addClass('my_content_header' ).text( 'Project Editor' );
+    var $my_content_header = $( '<h2>' ).addClass('my_content_header' );
+
+    if (this.new_project === true ) {
+      $my_content_header.text( 'New Project' );
+    } else {
+      $my_content_header.text( 'Edit' );
+    }
 
 
     console.log(this.new_project);
@@ -331,6 +337,8 @@ App.Views.EditProjectView = Backbone.View.extend({
   create_project: function() {
     console.log("%c create_project method", "font-size: 3em; color: orange;");
 
+    $('#save_and_publish_new_project').text('Checking...');
+
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
     if ( this.validate_form() ) {
@@ -350,6 +358,7 @@ App.Views.EditProjectView = Backbone.View.extend({
           app.router.navigate("#projects/" + project_url_id_in_escrow , {trigger: true});
         } ,
         error: function() {
+          $('#save_and_publish_new_project').text('Edit and Resave');
           console.log('error');
         }
       });
@@ -364,13 +373,15 @@ App.Views.EditProjectView = Backbone.View.extend({
   update_project: function() {
     console.log("%c update_project method", "font-size: 3em; color: orange;");
 
+    $('#save_and_publish_project').text('Checking...');
+
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
     if ( this.validate_form() ) {
       console.log("%c form passed validation", "font-size: 1.3em; color: orange;");
       console.log(this);
       this.model.save({
-        owner_reference:[],
+        owner_reference:[ this.logged_user_key ] ,
         title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
     		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
@@ -384,6 +395,7 @@ App.Views.EditProjectView = Backbone.View.extend({
           app.router.navigate("#projects/" + project_url_id_in_escrow , {trigger: true});
         } ,
         error: function() {
+          $('#save_and_publish_project').text('Edit and Resave');
           console.log("error");
         }
       });
