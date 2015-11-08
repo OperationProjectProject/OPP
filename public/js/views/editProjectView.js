@@ -337,6 +337,8 @@ App.Views.EditProjectView = Backbone.View.extend({
   create_project: function() {
     console.log("%c create_project method", "font-size: 3em; color: orange;");
 
+    $('#save_and_publish_new_project').text('Checking...');
+
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
     if ( this.validate_form() ) {
@@ -356,6 +358,7 @@ App.Views.EditProjectView = Backbone.View.extend({
           app.router.navigate("#projects/" + project_url_id_in_escrow , {trigger: true});
         } ,
         error: function() {
+          $('#save_and_publish_new_project').text('Edit and Resave');
           console.log('error');
         }
       });
@@ -369,6 +372,8 @@ App.Views.EditProjectView = Backbone.View.extend({
 
   update_project: function() {
     console.log("%c update_project method", "font-size: 3em; color: orange;");
+
+    $('#save_and_publish_project').text('Checking...');
 
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
@@ -390,6 +395,7 @@ App.Views.EditProjectView = Backbone.View.extend({
           app.router.navigate("#projects/" + project_url_id_in_escrow , {trigger: true});
         } ,
         error: function() {
+          $('#save_and_publish_project').text('Edit and Resave');
           console.log("error");
         }
       });
