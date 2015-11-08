@@ -140,29 +140,42 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     console.log("github_url:", req.body.github_repo_url);
     console.log("mvp:", req.body.mvp);
     console.log("tech_used:", req.body.tech_used);
-
+    
+    function updateProjects(){
+      db.newPatchBuilder("OPP_projects", id)
+      .replace("project_content.title", req.body.title)
+      // .replace("owner_reference", req.body.owner_reference)
+      .replace("project_content.project_url_id", req.body.project_url_id)
+      .replace("project_content.out_link_urls.github_repo_url", req.body.github_repo_url)
+      .replace("project_content.mvp", req.body.mvp)
+      .replace("project_content.tech_used", req.body.tech_used)
+      .apply()
+      .then(function (result) {
+        console.log("project updated");
+        res.send({id:id, value: JSON.parse(result.request.body)});
+      })
+      .fail(function (err) {
+        console.log("project put failed");
+        send(err);
+      });
+    }
+    
     db.search('OPP_projects', req.body.project_url_id)
       .then(function (result) {
-        if(result.body.count>0){
+        var key = result.body.results[0].path.key;
+        if(result.body.count>1){
           console.log("project url already exists");
           res.status(409).send("project url already exists");
         }
-        else{
-          db.newPatchBuilder("OPP_projects", id)
-          .replace("project_content.title", req.body.title)
-          .replace("project_content.owner_reference", req.body.owner_reference)
-          .replace("project_content.project_url_id", req.body.project_url_id)
-          .replace("project_content.mvp", req.body.mvp)
-          .replace("project_content.tech_used", req.body.tech_used)
-          .apply()
-          .then(function (result) {
-            console.log("project updated");
-            res.send({id:id, value: JSON.parse(result.request.body)});
-          })
-          .fail(function (err) {
-            console.log("project put failed", err);
-            send(err);
-          });
+        else if(result.body.count===1){
+          if(key===id){
+            updateProjects();
+          }else{
+            console.log("project url already exists");
+            res.status(409).send("project url already exists");
+          }
+        }else{
+          updateProjects();
         }
       })
       .fail(function (err) {
