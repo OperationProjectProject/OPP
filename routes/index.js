@@ -28,7 +28,7 @@ passport.deserializeUser(function(obj, done) {
 
 
 // var callback = (process.env.HEROKU) ? "https://operationprojectproject.herokuapp.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
-var callback = (process.env.HEROKU) ? "https://demoday.ninja.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+var callback = (process.env.HEROKU) ? "http://demoday.ninja/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
 
 
 passport.use('github', new GitHubStrategy({
@@ -279,20 +279,20 @@ router.get('/projects', function(req, res, next) {
       });
 });
 
-router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
-  db.newPatchBuilder("OPP_projects", id)
-  .replace("active", req.body.active)
-  .apply()
-  .then(function (result) {
-    console.log("project deleted");
-    res.send({});
-  })
-  .fail(function (err) {
-    console.log("project delete failed");
-    send(err);
-  });
-
-});
+// router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
+//   db.newPatchBuilder("OPP_projects", id)
+//   .replace("active", req.body.active)
+//   .apply()
+//   .then(function (result) {
+//     console.log("project deleted");
+//     res.send({});
+//   })
+//   .fail(function (err) {
+//     console.log("project delete failed");
+//     send(err);
+//   });
+// 
+// });
 
 router.get('/auth/github',
   function(req, res, done){
