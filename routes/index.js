@@ -25,8 +25,8 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-// var callback = (process.env.HEROKU) ? "https://operationprojectproject.herokuapp.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
-var callback = (process.env.HEROKU) ? "https://demoday.ninja.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+var callback = (process.env.HEROKU) ? "https://operationprojectproject.herokuapp.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+// var callback = (process.env.HEROKU) ? "https://demoday.ninja.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
 
 
 passport.use('github', new GitHubStrategy({
