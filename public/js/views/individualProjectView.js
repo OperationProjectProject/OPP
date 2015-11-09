@@ -45,18 +45,80 @@ App.Views.ProjectView = Backbone.View.extend({
       'class': 'row' ,
       'id': 'row_01'
     });
-    //Create content box for user info box
-    var $project_detail_box = $('<div>').attr({
+    //Create content box for project title card
+    var $project_title_box = $('<div>').attr({
       'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
-      'id': 'project_detail_box'
+      'id': 'project_title_box'
     });
     //Create content box for social links edit
-    var $project_detail_card = $('<div>').attr({
+    var $project_title_card = $('<div>').attr({
       'class': 'card' ,
-      'id': 'testing_test'
+      'id': 'project_title_card'
     });
+    $project_title_box.append( $project_title_card );
+    $row_01.append( $project_title_box );
+
+    //Create div for project img
+    var $project_img_div = $('<div>').attr({
+      'class': 'col-xs-4 col-sm-4 col-md-4 col-lg-4'
+    });
+    var $project_img = $('<img>').addClass('project_main_img');
+
+    if ( this.model.attributes.main_img === '' ) {
+      $project_img.attr({
+        'src': 'https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/diamond.gif'
+      });
+    } else {
+      $project_img.attr({
+        'src': this.model.attributes.main_img
+      });
+    }
+    $project_img_div.append( $project_img );
+    $project_title_card.append( $project_img_div );
 
 
+    //Create div for project title
+    var $project_title_div = $('<div>').attr({
+      'class': 'project_headline col-xs-8 col-sm-8 col-md-8 col-lg-8'
+    });
+    var $project_title = $('<h2>').attr({
+      'class': 'headline '
+    });
+    $project_title.text( this.model.attributes.title );
+
+    $project_title_div.append( $project_title );
+    $project_title_card.append( $project_title_div );
+
+
+
+
+
+
+
+
+
+
+
+    //Create content box for project title card
+    var $project_mvp_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
+      'id': 'project_mvp_box'
+    });
+    //Create content box for social links edit
+    var $project_mvp_card = $('<div>').attr({
+      'class': 'card' ,
+      'id': 'project_mvp_card'
+    });
+    $project_mvp_box.append( $project_mvp_card );
+    $row_01.append( $project_mvp_box );
+
+    var $mvp_blockquote = $( '<blockquote>' );
+    var $mvp_blockquote_p = $( '<p>' ).text( this.model.attributes.mvp);
+    $mvp_blockquote.append( $mvp_blockquote_p );
+
+    $project_mvp_card.append( $mvp_blockquote );
+
+/*
     //Create Headline & Byline
     var $title = $('<h2 class="headline">').text(this.model.attributes.title);
     var $byline = $('<p class="byline">').text(this.model.attributes.mvp);
@@ -72,9 +134,8 @@ App.Views.ProjectView = Backbone.View.extend({
     [ $title, $byline, $tech_used].forEach( function( e, i ){
       $project_detail_card.append(e);
     });
+*/
 
-    $project_detail_box.append( $project_detail_card );
-    $row_01.append( $project_detail_box );
 
     //Attach elements to this view
     this.$el.append($row_01);
