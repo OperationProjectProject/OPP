@@ -100,10 +100,12 @@ router.get('/profiles', function(req, res, next) {
   db.list('OPP_users')
       .then(function (result) {
         var data = result.body.results;
+        var ray = [];
         var mapped = data.map(function (element, index) {
-          // if(element.value.active === true){
-          return {
+          if(element.value.active === true){
+          ray.push({
             id: element.path.key,
+            active: element.value.active,
             name: element.value.profile_content.editable_text.name ,
             title: element.value.profile_content.editable_text.title ,
             github_url: element.value.github_api_data.github_url ,
@@ -117,11 +119,11 @@ router.get('/profiles', function(req, res, next) {
             js_tidbit: element.value.profile_content.editable_text.q_and_a.js_tidbit ,
             work_status: element.value.profile_content.checkbox_content.work_status ,
             dream_job: element.value.profile_content.editable_text.q_and_a.job_hope
-          };
-        // }
+          });
+        }
       });
-        // console.log("mapped: ", mapped);
-        res.send(mapped);
+        // console.log("mapped: ", ray);
+        res.send(ray);
       })
       .fail(function(err){
         console.log("profiles get failed:", err);
@@ -164,7 +166,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     db.search('OPP_projects', req.body.project_url_id)
       .then(function (result) {
         if(result.body.count>1){
-          console.res("project url already exists");
+          console.log("project url already exists");
           res.status(409).send("project url already exists");
         }
         else if(result.body.count===1){
@@ -172,7 +174,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
           if(key===id){
             updateProjects();
           }else{
-            console.res("project url already exists");
+            console.log("project url already exists");
             res.status(409).send("project url already exists");
           }
         }else{
@@ -180,62 +182,91 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
         }
       })
       .fail(function (err) {
-        console.res("db project put url search failed:", err);
+        console.log("db project put url search failed:", err);
       });
 
 });
 
 router.post("/projects", ensureAuthenticated, function(req, res, next){
-console.res("/projects --> 'POST'");
+  console.log("/projects --> 'POST'");
 
-db.search('OPP_projects', req.body.project_url_id)
-  .then(function (result) {
-    if(result.body.count>0){
-      console.res("project url already exists");
-      res.status(409).send("project url already exists");
-    }
-    else{
-      db.post('OPP_projects', {
-        "active": true,
-        "owner_reference": req.body.owner_reference,
-        "project_content": {
-          "title": req.body.title ,
-          "project_url_id": req.body.project_url_id ,
-          "mvp": req.body.mvp,
-          "img_urls": {
-            "main_img": req.body.main_img
-          } ,
-          "out_link_urls" : {
-            "github_repo_url": req.body.github_repo_url ,
-            "live_project_site_url": ""
-          } ,
-          "tech_used": req.body.tech_used
-        }
-      })
-      .then(function (result) {
-        console.res("project added");
-        res.send({id:req.body.id, value: JSON.parse(result.request.body)});
-      })
-      .fail(function (err) {
-        console.res("project post failed", err);
-        send(err);
-      });
-    }
-  })
-  .fail(function (err) {
-    console.res("db project post url search failed:", err);
-  });
+  db.search('OPP_projects', req.body.project_url_id)
+    .then(function (result) {
+      if(result.body.count>0){
+        console.log("project url already exists");
+        res.status(409).send("project url already exists");
+      }
+      else{
+        db.post('OPP_projects', {
+          "active": true,
+          "owner_reference": req.body.owner_reference,
+          "project_content": {
+            "title": req.body.title ,
+            "project_url_id": req.body.project_url_id ,
+            "mvp": req.body.mvp,
+            "img_urls": {
+              "main_img": req.body.main_img
+            } ,
+            "out_link_urls" : {
+              "github_repo_url": req.body.github_repo_url ,
+              "live_project_site_url": ""
+            } ,
+            "tech_used": req.body.tech_used
+          }
+        })
+        .then(function (result) {
+          console.log("project added");
+          res.send({id:req.body.id, value: JSON.parse(result.request.body)});
+        })
+        .fail(function (err) {
+          console.log("project post failed", err);
+          send(err);
+        });
+      }
+    })
+    .fail(function (err) {
+      console.log("db project post url search failed:", err);
+    });
 
 });
+
+// router.get('/projects', function(req, res, next) {
+//   db.list('OPP_projects')
+//       .then(function (result) {
+//         var data = result.body.results;
+//         var mapped = data.map(function (element, index) {
+//           if(element.value.active === true){
+//           return {
+//             id: element.path.key,
+//             owner_reference: element.value.owner_reference,
+//             title: element.value.project_content.title ,
+//             project_url_id: element.value.project_content.project_url_id,
+//             github_repo_url: element.value.project_content.out_link_urls.github_repo_url,
+//             mvp: element.value.project_content.mvp,
+//             main_img: element.value.project_content.img_urls.main_img,
+//             tech_used: element.value.project_content.tech_used
+//           };
+//         }
+//       });
+//         console.log(mapped);
+//         res.send(mapped);
+//       })
+//       .fail(function(err){
+//         console.log("projects get failed:", err);
+//         send(err);
+//       });
+// });
 
 router.get('/projects', function(req, res, next) {
   db.list('OPP_projects')
       .then(function (result) {
         var data = result.body.results;
-        var mapped = data.map(function (element, index) {
-          // if(element.value.active === true){
-          return {
+        var ray = [];
+        var mapped = data.forEach(function (element, index) {
+          if(element.value.active === true){
+          ray.push( {
             id: element.path.key,
+            active: element.value.active,
             owner_reference: element.value.owner_reference,
             title: element.value.project_content.title ,
             project_url_id: element.value.project_content.project_url_id,
@@ -243,22 +274,22 @@ router.get('/projects', function(req, res, next) {
             mvp: element.value.project_content.mvp,
             main_img: element.value.project_content.img_urls.main_img,
             tech_used: element.value.project_content.tech_used
-          };
-        // }
+          });
+        }
       });
-        //console.res(mapped);
-        res.send(mapped);
+        console.log(ray);
+        res.send(ray);
       })
       .fail(function(err){
-        console.res("projects get failed:", err);
+        console.log("projects get failed:", err);
         send(err);
       });
 });
 
 router.get('/auth/github',
 function(req, res, done){
-  // console.res("req path", req.path);
-  // console.res("req session", req.session);
+  // console.log("req path", req.path);
+  // console.log("req session", req.session);
   // console.log("req.query.url", req.query.url);
   // console.log("query",req.query);
   req.session.returnTo = req.query.url;
