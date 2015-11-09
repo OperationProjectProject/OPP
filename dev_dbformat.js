@@ -502,7 +502,7 @@
     "project_url_id": "Meetworking" ,
     "mvp": "Looking for an elusive job in tech? Lost in the sea of Meetups? Meetworking helps you target up to three companies, showing you the Meetups those employees are attending as well as the events held at that company's location—a quick way to get your foot in the door. See talking points for each attendee and RSVP right through the app!" ,
     "img_urls": {
-      "main_img": "https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/animat-rocket-color.gif"
+      "main_img": ""
     } ,
     "out_link_urls" : {
       "github_repo_url": "MeetWorking/meetworking-app" ,
@@ -528,7 +528,7 @@
     "project_url_id": "MixeTapez" ,
     "mvp": "Bringing the mixtape into the digital age. We are designing a platform for people to use Youtube and Soundcloud to quickly and easily create the perfect mixtape for any situation. ",
     "img_urls": {
-      "main_img": "https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/animat-customize-color.gif"
+      "main_img": ""
     } ,
     "out_link_urls" : {
       "github_repo_url": "MixtapeCaptstone/mixtape" ,
@@ -551,7 +551,7 @@
     "project_url_id": "DashMonster" ,
     "mvp": "A Meteor crashed in Portland from which DashMonster emerged to boost both convenience and daily productivity in the lives of users. A quick glance at DashMonster will give you the transit and weather info you need without all the stuff you don't. \n DashMonster is the hyper-focused transit and weather app you need most of the time.",
     "img_urls": {
-      "main_img": "https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/animat-linechart-color.gif"
+      "main_img": ""
     } ,
     "out_link_urls" : {
       "github_repo_url": "" ,

@@ -87,9 +87,9 @@ App.Views.LogWidgetView = Backbone.View.extend({
 
 
 
-    var $caret = $( '<span class="caret">' );
+
     $thumbnail_link.append( $thumbnail_img );
-    $thumbnail_link.append( $caret );
+
 
     //Build the links
     $dropdown_links = $( '<ul class="dropdown-menu" role="menu">' );

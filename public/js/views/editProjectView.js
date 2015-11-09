@@ -321,9 +321,41 @@ App.Views.EditProjectView = Backbone.View.extend({
     //The Box containing the first card in this view, is append to it's parent row, row 02
     $row_02.append( $project_general_info_edit_box );
 
+
+    console.log('%c TEST AREA', 'font-size: 3.5em; color: rgba(220,220,220,1.0);');
+    //create row 03
+    var $row_03 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_03'
+    });
+
+    this.collaborator_selector_view = new App.Views.CollaboratorSelectorView({
+      logged_user_key: this.logged_user_key ,
+      project_being_edited: this.model
+    });
+    console.log( this.collaborator_selector_view );
+    console.log( this.collaborator_selector_view.$el );
+
+    $row_03.append( this.collaborator_selector_view.$el );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //Append rows to this view
     this.$el.append( $row_01 );
     this.$el.append( $row_02 );
+    this.$el.append( $row_03 );
     $( '.centerdiv' ).append( this.$el );
 	},
 
