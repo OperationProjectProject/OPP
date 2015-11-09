@@ -73,14 +73,14 @@ function ensureAuthenticated(req, res, next) {
 
 router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-    console.log("profile updated(not really)");
+    // console.log("profile updated(not really)");
     // console.log("request body", req.body);
-    console.log("title:", req.body.title);
-    console.log("twitter:", req.body.twitter_url);
-    console.log("linkedin_url:", req.body.linkedin_url);
-    console.log("personal_site_url:", req.body.personal_site_url);
-    console.log("top_skills:", req.body.top_skills);
-    console.log("top_tools:", req.body.top_tools);
+    // console.log("title:", req.body.title);
+    // console.log("twitter:", req.body.twitter_url);
+    // console.log("linkedin_url:", req.body.linkedin_url);
+    // console.log("personal_site_url:", req.body.personal_site_url);
+    // console.log("top_skills:", req.body.top_skills);
+    // console.log("top_tools:", req.body.top_tools);
 
     db.newPatchBuilder("OPP_users", id)
       .replace("profile_content.social_urls.twitter", req.body.twitter_url)
@@ -100,10 +100,12 @@ router.get('/profiles', function(req, res, next) {
   db.list('OPP_users')
       .then(function (result) {
         var data = result.body.results;
+        var ray = [];
         var mapped = data.map(function (element, index) {
-          // if(element.value.active === true){
-          return {
+          if(element.value.active === true){
+          ray.push({
             id: element.path.key,
+            active: element.value.active,
             name: element.value.profile_content.editable_text.name ,
             title: element.value.profile_content.editable_text.title ,
             github_url: element.value.github_api_data.github_url ,
@@ -117,11 +119,11 @@ router.get('/profiles', function(req, res, next) {
             js_tidbit: element.value.profile_content.editable_text.q_and_a.js_tidbit ,
             work_status: element.value.profile_content.checkbox_content.work_status ,
             dream_job: element.value.profile_content.editable_text.q_and_a.job_hope
-          };
-        // }
+          });
+        }
       });
-        console.log("mapped: ", mapped);
-        res.send(mapped);
+        // console.log("mapped: ", ray);
+        res.send(ray);
       })
       .fail(function(err){
         console.log("profiles get failed:", err);
@@ -133,14 +135,14 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
 
     var id = req.params.id;
     console.log("/projects/:id --> 'PUT'");
-    console.log("project update(not really)");
-    console.log("request body is", req.body);
-    console.log("owner_reference:", req.body.owner_reference);
-    console.log("title:", req.body.title);
-    console.log("project_url_id:", req.body.project_url_id);
-    console.log("github_url:", req.body.github_repo_url);
-    console.log("mvp:", req.body.mvp);
-    console.log("tech_used:", req.body.tech_used);
+    // console.log("project update(not really)");
+    // console.log("request body is", req.body);
+    // console.log("owner_reference:", req.body.owner_reference);
+    // console.log("title:", req.body.title);
+    // console.log("project_url_id:", req.body.project_url_id);
+    // console.log("github_url:", req.body.github_repo_url);
+    // console.log("mvp:", req.body.mvp);
+    // console.log("tech_used:", req.body.tech_used);
 
     function updateProjects(){
       db.newPatchBuilder("OPP_projects", id)
@@ -163,12 +165,12 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
 
     db.search('OPP_projects', req.body.project_url_id)
       .then(function (result) {
-        var key = result.body.results[0].path.key;
         if(result.body.count>1){
           console.log("project url already exists");
           res.status(409).send("project url already exists");
         }
         else if(result.body.count===1){
+          var key = result.body.results[0].path.key;
           if(key===id){
             updateProjects();
           }else{
@@ -180,62 +182,91 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
         }
       })
       .fail(function (err) {
-        console.log("db project url search failed:", err);
+        console.log("db project put url search failed:", err);
       });
 
 });
 
 router.post("/projects", ensureAuthenticated, function(req, res, next){
-console.log("/projects --> 'POST'");
+  console.log("/projects --> 'POST'");
 
-db.search('OPP_projects', req.body.project_url_id)
-  .then(function (result) {
-    if(result.body.count>0){
-      console.log("project url already exists");
-      res.status(409).send("project url already exists");
-    }
-    else{
-      db.post('OPP_projects', {
-        "active": true,
-        "owner_reference": req.body.owner_reference,
-        "project_content": {
-          "title": req.body.title ,
-          "project_url_id": req.body.project_url_id ,
-          "mvp": req.body.mvp,
-          "img_urls": {
-            "main_img": req.body.main_img
-          } ,
-          "out_link_urls" : {
-            "github_repo_url": req.body.github_repo_url ,
-            "live_project_site_url": ""
-          } ,
-          "tech_used": req.body.tech_used
-        }
-      })
-      .then(function (result) {
-        console.log("project added");
-        res.send({id:result.path.key, value: JSON.parse(result.request.body)});
-      })
-      .fail(function (err) {
-        console.log("project post failed", err);
-        send(err);
-      });
-    }
-  })
-  .fail(function (err) {
-    console.log("db project url search failed:", err);
-  });
+  db.search('OPP_projects', req.body.project_url_id)
+    .then(function (result) {
+      if(result.body.count>0){
+        console.log("project url already exists");
+        res.status(409).send("project url already exists");
+      }
+      else{
+        db.post('OPP_projects', {
+          "active": true,
+          "owner_reference": req.body.owner_reference,
+          "project_content": {
+            "title": req.body.title ,
+            "project_url_id": req.body.project_url_id ,
+            "mvp": req.body.mvp,
+            "img_urls": {
+              "main_img": req.body.main_img
+            } ,
+            "out_link_urls" : {
+              "github_repo_url": req.body.github_repo_url ,
+              "live_project_site_url": ""
+            } ,
+            "tech_used": req.body.tech_used
+          }
+        })
+        .then(function (result) {
+          console.log("project added");
+          res.send({id:req.body.id, value: JSON.parse(result.request.body)});
+        })
+        .fail(function (err) {
+          console.log("project post failed", err);
+          send(err);
+        });
+      }
+    })
+    .fail(function (err) {
+      console.log("db project post url search failed:", err);
+    });
 
 });
+
+// router.get('/projects', function(req, res, next) {
+//   db.list('OPP_projects')
+//       .then(function (result) {
+//         var data = result.body.results;
+//         var mapped = data.map(function (element, index) {
+//           if(element.value.active === true){
+//           return {
+//             id: element.path.key,
+//             owner_reference: element.value.owner_reference,
+//             title: element.value.project_content.title ,
+//             project_url_id: element.value.project_content.project_url_id,
+//             github_repo_url: element.value.project_content.out_link_urls.github_repo_url,
+//             mvp: element.value.project_content.mvp,
+//             main_img: element.value.project_content.img_urls.main_img,
+//             tech_used: element.value.project_content.tech_used
+//           };
+//         }
+//       });
+//         console.log(mapped);
+//         res.send(mapped);
+//       })
+//       .fail(function(err){
+//         console.log("projects get failed:", err);
+//         send(err);
+//       });
+// });
 
 router.get('/projects', function(req, res, next) {
   db.list('OPP_projects')
       .then(function (result) {
         var data = result.body.results;
-        var mapped = data.map(function (element, index) {
-          // if(element.value.active === true){
-          return {
+        var ray = [];
+        var mapped = data.forEach(function (element, index) {
+          if(element.value.active === true){
+          ray.push( {
             id: element.path.key,
+            active: element.value.active,
             owner_reference: element.value.owner_reference,
             title: element.value.project_content.title ,
             project_url_id: element.value.project_content.project_url_id,
@@ -243,11 +274,11 @@ router.get('/projects', function(req, res, next) {
             mvp: element.value.project_content.mvp,
             main_img: element.value.project_content.img_urls.main_img,
             tech_used: element.value.project_content.tech_used
-          };
-        // }
+          });
+        }
       });
-        //console.log(mapped);
-        res.send(mapped);
+        console.log(ray);
+        res.send(ray);
       })
       .fail(function(err){
         console.log("projects get failed:", err);
@@ -260,9 +291,9 @@ function(req, res, done){
   // console.log("req path", req.path);
   // console.log("req session", req.session);
   // console.log("req.query.url", req.query.url);
-  console.log("query",req.query);
+  // console.log("query",req.query);
   req.session.returnTo = req.query.url;
-  console.log("1req.session.returnTo: ", req.session.returnTo);
+  // console.log("1req.session.returnTo: ", req.session.returnTo);
   done();
 },
   passport.authenticate('github', { scope: [ 'user:email' ] }),
@@ -273,12 +304,12 @@ function(req, res, done){
 
 //keep history route
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
-  console.log("2req.session.returnTo: ", req.session.returnTo);
+  // console.log("2req.session.returnTo: ", req.session.returnTo);
     var cookieValue;
     function direct(){
       res.cookie("logged", true);
       res.cookie("user", req.user.username);
-      console.log("2cookievalue: ", cookieValue);
+      // console.log("2cookievalue: ", cookieValue);
       res.redirect(req.session.returnTo || "/");
       req.session.returnTo = null;
     }
@@ -326,19 +357,19 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       },false)
       .then(function(result){
         console.log("register function ran");
-        console.log("result body is:", result.path.key);
+        // console.log("result body is:", result.path.key);
         res.cookie("id", result.path.key);
         direct();
       })
       .fail(function(err){
           console.log("db register post failed:",err);
         });
-      console.log("new user key is:", req.user);
+      // console.log("new user key is:", req.user);
       res.cookie("url", req.user.username);
     }
 
     function updateInfo(key){
-      console.log("key", key);
+      // console.log("key", key);
       db.newPatchBuilder("OPP_users", key)
         .replace("github_api_data.github_id",req.user.id )
         .replace("github_api_data.github_email",req.user._json.email )
@@ -438,7 +469,7 @@ router.get('/search', function(req, res){
   db.search("OPP_users", req.body.searchText)
   .then(function(result){
     if(result.body.count===0){
-      db.search("OPP_projects")
+      db.search("OPP_projects", req.body.searchText)
       .then(function(result){
         if(result.body.count>0){
           projSearch();
