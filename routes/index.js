@@ -73,14 +73,14 @@ function ensureAuthenticated(req, res, next) {
 
 router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-    console.log("profile updated(not really)");
+    // console.log("profile updated(not really)");
     // console.log("request body", req.body);
-    console.log("title:", req.body.title);
-    console.log("twitter:", req.body.twitter_url);
-    console.log("linkedin_url:", req.body.linkedin_url);
-    console.log("personal_site_url:", req.body.personal_site_url);
-    console.log("top_skills:", req.body.top_skills);
-    console.log("top_tools:", req.body.top_tools);
+    // console.log("title:", req.body.title);
+    // console.log("twitter:", req.body.twitter_url);
+    // console.log("linkedin_url:", req.body.linkedin_url);
+    // console.log("personal_site_url:", req.body.personal_site_url);
+    // console.log("top_skills:", req.body.top_skills);
+    // console.log("top_tools:", req.body.top_tools);
 
     db.newPatchBuilder("OPP_users", id)
       .replace("profile_content.social_urls.twitter", req.body.twitter_url)
@@ -120,7 +120,7 @@ router.get('/profiles', function(req, res, next) {
           };
         // }
       });
-        console.log("mapped: ", mapped);
+        // console.log("mapped: ", mapped);
         res.send(mapped);
       })
       .fail(function(err){
@@ -133,14 +133,14 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
 
     var id = req.params.id;
     console.log("/projects/:id --> 'PUT'");
-    console.log("project update(not really)");
-    console.log("request body is", req.body);
-    console.log("owner_reference:", req.body.owner_reference);
-    console.log("title:", req.body.title);
-    console.log("project_url_id:", req.body.project_url_id);
-    console.log("github_url:", req.body.github_repo_url);
-    console.log("mvp:", req.body.mvp);
-    console.log("tech_used:", req.body.tech_used);
+    // console.log("project update(not really)");
+    // console.log("request body is", req.body);
+    // console.log("owner_reference:", req.body.owner_reference);
+    // console.log("title:", req.body.title);
+    // console.log("project_url_id:", req.body.project_url_id);
+    // console.log("github_url:", req.body.github_repo_url);
+    // console.log("mvp:", req.body.mvp);
+    // console.log("tech_used:", req.body.tech_used);
 
     function updateProjects(){
       db.newPatchBuilder("OPP_projects", id)
@@ -163,16 +163,16 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
 
     db.search('OPP_projects', req.body.project_url_id)
       .then(function (result) {
-        var key = result.body.results[0].path.key;
         if(result.body.count>1){
-          console.log("project url already exists");
+          console.res("project url already exists");
           res.status(409).send("project url already exists");
         }
         else if(result.body.count===1){
+          var key = result.body.results[0].path.key;
           if(key===id){
             updateProjects();
           }else{
-            console.log("project url already exists");
+            console.res("project url already exists");
             res.status(409).send("project url already exists");
           }
         }else{
@@ -180,18 +180,18 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
         }
       })
       .fail(function (err) {
-        console.log("db project url search failed:", err);
+        console.res("db project put url search failed:", err);
       });
 
 });
 
 router.post("/projects", ensureAuthenticated, function(req, res, next){
-console.log("/projects --> 'POST'");
+console.res("/projects --> 'POST'");
 
 db.search('OPP_projects', req.body.project_url_id)
   .then(function (result) {
     if(result.body.count>0){
-      console.log("project url already exists");
+      console.res("project url already exists");
       res.status(409).send("project url already exists");
     }
     else{
@@ -213,17 +213,17 @@ db.search('OPP_projects', req.body.project_url_id)
         }
       })
       .then(function (result) {
-        console.log("project added");
-        res.send({id:result.path.key, value: JSON.parse(result.request.body)});
+        console.res("project added");
+        res.send({id:req.body.id, value: JSON.parse(result.request.body)});
       })
       .fail(function (err) {
-        console.log("project post failed", err);
+        console.res("project post failed", err);
         send(err);
       });
     }
   })
   .fail(function (err) {
-    console.log("db project url search failed:", err);
+    console.res("db project post url search failed:", err);
   });
 
 });
@@ -246,23 +246,23 @@ router.get('/projects', function(req, res, next) {
           };
         // }
       });
-        //console.log(mapped);
+        //console.res(mapped);
         res.send(mapped);
       })
       .fail(function(err){
-        console.log("projects get failed:", err);
+        console.res("projects get failed:", err);
         send(err);
       });
 });
 
 router.get('/auth/github',
 function(req, res, done){
-  // console.log("req path", req.path);
-  // console.log("req session", req.session);
+  // console.res("req path", req.path);
+  // console.res("req session", req.session);
   // console.log("req.query.url", req.query.url);
-  console.log("query",req.query);
+  // console.log("query",req.query);
   req.session.returnTo = req.query.url;
-  console.log("1req.session.returnTo: ", req.session.returnTo);
+  // console.log("1req.session.returnTo: ", req.session.returnTo);
   done();
 },
   passport.authenticate('github', { scope: [ 'user:email' ] }),
@@ -273,12 +273,12 @@ function(req, res, done){
 
 //keep history route
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
-  console.log("2req.session.returnTo: ", req.session.returnTo);
+  // console.log("2req.session.returnTo: ", req.session.returnTo);
     var cookieValue;
     function direct(){
       res.cookie("logged", true);
       res.cookie("user", req.user.username);
-      console.log("2cookievalue: ", cookieValue);
+      // console.log("2cookievalue: ", cookieValue);
       res.redirect(req.session.returnTo || "/");
       req.session.returnTo = null;
     }
@@ -326,19 +326,19 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       },false)
       .then(function(result){
         console.log("register function ran");
-        console.log("result body is:", result.path.key);
+        // console.log("result body is:", result.path.key);
         res.cookie("id", result.path.key);
         direct();
       })
       .fail(function(err){
           console.log("db register post failed:",err);
         });
-      console.log("new user key is:", req.user);
+      // console.log("new user key is:", req.user);
       res.cookie("url", req.user.username);
     }
 
     function updateInfo(key){
-      console.log("key", key);
+      // console.log("key", key);
       db.newPatchBuilder("OPP_users", key)
         .replace("github_api_data.github_id",req.user.id )
         .replace("github_api_data.github_email",req.user._json.email )
