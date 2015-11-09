@@ -279,20 +279,20 @@ router.get('/projects', function(req, res, next) {
       });
 });
 
-router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
-  db.newPatchBuilder("OPP_projects", id)
-  .replace("active", req.body.active)
-  .apply()
-  .then(function (result) {
-    console.log("project deleted");
-    res.send({});
-  })
-  .fail(function (err) {
-    console.log("project delete failed");
-    send(err);
-  });
-
-});
+// router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
+//   db.newPatchBuilder("OPP_projects", id)
+//   .replace("active", req.body.active)
+//   .apply()
+//   .then(function (result) {
+//     console.log("project deleted");
+//     res.send({});
+//   })
+//   .fail(function (err) {
+//     console.log("project delete failed");
+//     send(err);
+//   });
+// 
+// });
 
 router.get('/auth/github',
   function(req, res, done){
