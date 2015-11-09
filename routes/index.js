@@ -438,7 +438,7 @@ router.get('/search', function(req, res){
   db.search("OPP_users", req.body.searchText)
   .then(function(result){
     if(result.body.count===0){
-      db.search("OPP_projects")
+      db.search("OPP_projects", req.body.searchText)
       .then(function(result){
         if(result.body.count>0){
           projSearch();
