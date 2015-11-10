@@ -79,6 +79,28 @@ App.Views.EditProfileView = Backbone.View.extend({
 
 
 
+    //Build User Name Label and input
+    var $user_name_edit_label = $('<label>');
+    $user_name_edit_label.attr({
+      'for': 'user_name_input',
+      'class': 'user_editor_input_label control-label'
+    }).text("My Name");
+    var $user_name_edit_input = $('<input type="text">');
+    $user_name_edit_input.attr({
+      'id': 'user_name_input',
+      'class': 'form-control',
+      'value': this.model.attributes.name
+    });
+
+    $user_job_title_edit_card.append( $user_name_edit_label );
+    $user_job_title_edit_card.append( $user_name_edit_input );
+
+
+
+
+
+
+
 
     //Build User Title Label and input
     var $user_job_title_edit_label = $('<label>');
@@ -422,6 +444,7 @@ $row_06.append( $edit_save_button_bottom_box );
     console.log("this user is: ", this.logged_user);
     //console.log(this.model);
     this.model.set({
+      name: $('input[id="user_name_input"]').val(),
       title: $('input[id="user_title_input"]').val(),
       personal_site_url: $('input[id="' + this.logged_user + '_personal_site_url_input"]').val(),
   		linkedin_url:  $('input[id="' + this.logged_user + '_linkedin_url_input"]').val(),
