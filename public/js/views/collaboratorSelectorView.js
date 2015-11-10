@@ -25,8 +25,6 @@ App.Views.CollaboratorSelectorView = Backbone.View.extend({
       //console.log(this.collection);
       this.$el.empty();
 
-
-
       //Create content box for social links edit
       var $collaborator_selector_card = $('<div>').attr({
         'class': 'card' ,
@@ -38,27 +36,15 @@ App.Views.CollaboratorSelectorView = Backbone.View.extend({
       $collaborator_selector_legend.append('<i class="fa fa-group fa-lg"></i>');
       $collaborator_selector_card.append( $collaborator_selector_legend );
 
-
       var $checkbox_form_group = $('<div>').attr({
         'class': 'form-group' ,
         'id': 'collaborator_selection_checkboxes'
       });
 
+      console.log(this.collection.models);
 
-
-
-
-
-console.log(this.collection.models);
-
-
-
-
-
-
-var self = this;
-console.log(self.collection.models);
-
+      var self = this;
+      console.log(self.collection.models);
 
       //forEach loop that cycles through every model in this.collection
       //Each model is a profile object
@@ -71,7 +57,6 @@ console.log(self.collection.models);
 
         if ( e.id !== self.logged_user_key ) {
 
-          console.log( self.project_being_edited.attributes.owner_reference );
           console.log( e.id );
 
           var $collaborator_label = $('<label>').attr({
@@ -92,6 +77,22 @@ console.log(self.collection.models);
           $collaborator_label.append( $text_span );
 
           $checkbox_form_group.append( $collaborator_label );
+
+
+          if ( self.project_being_edited ) {
+            console.log( self.project_being_edited.attributes.owner_reference );
+
+            self.project_being_edited.attributes.owner_reference.forEach( function( element, index ){
+              console.log( element );
+              console.log( e.id );
+              console.log( element === e.id );
+              if ( element === e.id ) {
+                $collaborator_checkbox.prop( "checked", true );
+              }
+            });
+
+
+          }
 
         }
 

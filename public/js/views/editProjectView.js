@@ -329,10 +329,15 @@ App.Views.EditProjectView = Backbone.View.extend({
       'id': 'row_03'
     });
 
+
+
     this.collaborator_selector_view = new App.Views.CollaboratorSelectorView({
       logged_user_key: this.logged_user_key ,
       project_being_edited: this.model
     });
+
+
+    
     console.log( this.collaborator_selector_view );
     console.log( this.collaborator_selector_view.$el );
 
