@@ -25,7 +25,11 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-var callback = (process.env.HEROKU) ? "https://operationprojectproject.herokuapp.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+
+
+// var callback = (process.env.HEROKU) ? "https://operationprojectproject.herokuapp.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+var callback = (process.env.HEROKU) ? "http://demoday.ninja/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+
 
 passport.use('github', new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
@@ -101,7 +105,7 @@ router.get('/profiles', function(req, res, next) {
       .then(function (result) {
         var data = result.body.results;
         var ray = [];
-        var mapped = data.map(function (element, index) {
+        var mapped = data.forEach(function (element, index) {
           if(element.value.active === true){
           ray.push({
             id: element.path.key,
@@ -129,6 +133,21 @@ router.get('/profiles', function(req, res, next) {
         console.log("profiles get failed:", err);
         send(err);
       });
+});
+
+router.delete("/profiles/:id", ensureAuthenticated, function(req, res, next){
+  db.newPatchBuilder("OPP_projects", id)
+  .replace("active", req.body.active)
+  .apply()
+  .then(function (result) {
+    console.log("profile deleted");
+    res.send({});
+  })
+  .fail(function (err) {
+    console.log("profile delete failed");
+    send(err);
+  });
+
 });
 
 router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
@@ -230,32 +249,6 @@ router.post("/projects", ensureAuthenticated, function(req, res, next){
 
 });
 
-// router.get('/projects', function(req, res, next) {
-//   db.list('OPP_projects')
-//       .then(function (result) {
-//         var data = result.body.results;
-//         var mapped = data.map(function (element, index) {
-//           if(element.value.active === true){
-//           return {
-//             id: element.path.key,
-//             owner_reference: element.value.owner_reference,
-//             title: element.value.project_content.title ,
-//             project_url_id: element.value.project_content.project_url_id,
-//             github_repo_url: element.value.project_content.out_link_urls.github_repo_url,
-//             mvp: element.value.project_content.mvp,
-//             main_img: element.value.project_content.img_urls.main_img,
-//             tech_used: element.value.project_content.tech_used
-//           };
-//         }
-//       });
-//         console.log(mapped);
-//         res.send(mapped);
-//       })
-//       .fail(function(err){
-//         console.log("projects get failed:", err);
-//         send(err);
-//       });
-// });
 
 router.get('/projects', function(req, res, next) {
   db.list('OPP_projects')
@@ -286,20 +279,35 @@ router.get('/projects', function(req, res, next) {
       });
 });
 
+// router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
+//   db.newPatchBuilder("OPP_projects", id)
+//   .replace("active", req.body.active)
+//   .apply()
+//   .then(function (result) {
+//     console.log("project deleted");
+//     res.send({});
+//   })
+//   .fail(function (err) {
+//     console.log("project delete failed");
+//     send(err);
+//   });
+// 
+// });
+
 router.get('/auth/github',
-function(req, res, done){
-  // console.log("req path", req.path);
-  // console.log("req session", req.session);
-  // console.log("req.query.url", req.query.url);
-  // console.log("query",req.query);
-  req.session.returnTo = req.query.url;
-  // console.log("1req.session.returnTo: ", req.session.returnTo);
-  done();
-},
-  passport.authenticate('github', { scope: [ 'user:email' ] }),
-  function(req, res){
-    // The req will be redirected to GitHub for authentication, so this
-    // function will not be called.
+  function(req, res, done){
+    // console.log("req path", req.path);
+    // console.log("req session", req.session);
+    // console.log("req.query.url", req.query.url);
+    // console.log("query",req.query);
+    req.session.returnTo = req.query.url;
+    // console.log("1req.session.returnTo: ", req.session.returnTo);
+    done();
+  },
+    passport.authenticate('github', { scope: [ 'user:email' ] }),
+    function(req, res){
+      // The req will be redirected to GitHub for authentication, so this
+      // function will not be called.
 });
 
 //keep history route
