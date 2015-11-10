@@ -89,6 +89,7 @@ router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     db.newPatchBuilder("OPP_users", id)
       .replace("profile_content.social_urls.twitter", req.body.twitter_url)
       .replace("profile_content.social_urls.linkedin", req.body.linkedin_url)
+      .replace("profile_content.editable_text.name", req.body.name)
       .replace("profile_content.editable_text.title", req.body.title)
       .replace("profile_content.social_urls.personal", req.body.personal_site_url)
       .replace("profile_content.editable_text.skills", req.body.top_skills)
@@ -291,7 +292,7 @@ router.get('/projects', function(req, res, next) {
 //     console.log("project delete failed");
 //     send(err);
 //   });
-// 
+//
 // });
 
 router.get('/auth/github',
@@ -454,7 +455,7 @@ router.get('/search', function(req, res){
     });
     res.send(mapped);
   }
-  
+
   function projSearch(){
     var data = result.body.results;
     var mapped = data.map(function (element, index) {
@@ -473,7 +474,7 @@ router.get('/search', function(req, res){
     });
     res.send(mapped);
   }
-  
+
   db.search("OPP_users", req.body.searchText)
   .then(function(result){
     if(result.body.count===0){

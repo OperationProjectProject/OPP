@@ -1,5 +1,7 @@
 #JSI CAPSTONE
-![Operation Project Project](http://DemoDay.ninja)
+
+##Checkout the live site:
+[demoday.ninja](http://DemoDay.ninja)
 
 ##MVP:
 A web platform for members of our community to showcase their work.
@@ -83,7 +85,7 @@ A web platform for members of our community to showcase their work.
 
 ##ROUTES:
 
-* **View Routing**
+###View Routing
 | use case                  | verb     | URI pattern   |
 |---------------------------|----------|---------------|
 | site root, landing page   | GET      | /             |
@@ -91,7 +93,7 @@ A web platform for members of our community to showcase their work.
 | authenticate user session | GET      | /auth/github  |
 | end a user session        | GET      | /logout       |
 
-* **API**
+###API
 | Backbone.js Object | method     | HTTP verb   | Express URI pattern |
 |--------------------|------------|-------------|---------------------|
 | profile collection | .fetch()   | GET         | /profiles           |
@@ -101,14 +103,6 @@ A web platform for members of our community to showcase their work.
 | project model      | .create()  | POST        | /projects           |
 | project model      | .save()    | PUT         | /projects/:id       |
 | project model      | .destroy() | DELETE      | /projects/:id       |
-
-##TEST TABLE:
-
-| Prefix                               | verb    | URI pattern                             | Controller#Action |
-|--------------------------------------|---------|-----------------------------------------|-------------------|
-| root                                 | GET     | /                                       | welcome#index     |
-
-
 
 ##RESOURCES USED:
 * Twitter Bootstrap
