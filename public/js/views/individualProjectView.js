@@ -86,8 +86,68 @@ App.Views.ProjectView = Backbone.View.extend({
     });
     $project_title.text( this.model.attributes.title );
 
-    $project_title_div.append( $project_title );
+
+    $project_title_div.prepend( $project_title );
     $project_title_card.append( $project_title_div );
+
+
+
+
+
+
+    var $project_github_repo_url_holder_holder = $('<div>').attr({
+      'class': 'project_out_link_holder_holder col-xs-12  col-sm-12 col-md-12 col-lg-12'
+    });
+
+    //If this project has a specified Github repo url, an anchor element will be created
+      //The anchor
+    console.log(this.model.attributes.github_repo_url);
+    console.log(this.model.attributes.github_repo_url !== "");
+    if ( this.model.attributes.github_repo_url !== "" ) {
+
+      var $project_github_repo_url_holder = $('<div>').attr({
+        'class': 'project_out_link_holder col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6'
+      });
+
+      var $project_github_repo_url = $('<a>').attr({
+        'href' : '#' ,
+        'class' : 'btn btn-primary' ,
+        'id': 'project_github_repo_link'
+      }).text('Github Repo');
+
+      $project_github_repo_url_holder.append( $project_github_repo_url );
+/**/
+      $project_github_repo_url_holder_holder.append( $project_github_repo_url_holder );
+
+    }
+
+console.log(this.model.attributes.live_project_site_url);
+console.log(this.model.attributes.live_project_site_url !== "");
+    //If this project has a specified live project url, an anchor element will be created
+    if ( this.model.attributes.live_project_site_url !== "" ) {
+
+      var $project_live_project_site_url_holder = $('<div>').attr({
+        'class': 'project_out_link_holder col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-lg-6'
+      });
+
+      var $project_live_project_site_url = $('<a>').attr({
+        'href' : '#' ,
+        'class' : 'btn btn-primary' ,
+        'id' : 'project_live_site_link'
+      }).text('Live Site');
+
+      $project_live_project_site_url_holder.append( $project_live_project_site_url );
+/**/
+      $project_github_repo_url_holder_holder.append( $project_live_project_site_url_holder );
+
+    }
+
+    $project_title_card.append( $project_github_repo_url_holder_holder );
+
+
+
+
+
 
 
 

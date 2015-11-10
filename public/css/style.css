@@ -66,19 +66,20 @@
 
  a,h2,h3,label,li,i {
    color: rgba(120,120,120,1.0);
-
  }
 
 a:hover,
 a:active, {
-  color: #07E1FF !important;
+  /*color: #07E1FF !important;*/
 }
 /****/
 
 
-
-
-
+hr.project_link_card_separator {
+  display: block;
+  width: 100%;
+  padding-top: 2em;
+}
 
 
 .fadeIn {
@@ -134,17 +135,20 @@ textarea.form-control {
 
 .btn ,
 .badge {
-  background: rgba(120,120,120,1.0);
+/*  background: rgba(120,120,120,1.0);
   border-color:rgba(120,120,120,1.0);
+  */
 }
 .btn:hover{
-  background: rgba(80,80,80,1.0);
+
+  /*background: rgba(80,80,80,1.0);*/
 }
 .btn:active {
-  background: rgba(60,60,60,1.0);
+  /*background: rgba(60,60,60,1.0);*/
 }
 
 .btn {
+  /*
   border: 0px;
   color: white;
   text-shadow: 0px 0px 0px #07E1FF, 0px 0px 0px rgb(255,0,121);
@@ -153,30 +157,37 @@ textarea.form-control {
     0 0 0 0px #07E1FF;
   background: rgba(110,110,110,1.0);
   transition: color .3s, text-shadow .2s, box-shadow .2s, background .3s;
+  */
 }
 
 .btn:hover{
+  /*
   border: 0px;
   text-shadow: 0px 1px 0px #07E1FF, 1px -1px 0px #FF0079;
   box-shadow:
     0px 0px 0px 4px transparent,
     0px 0px 0px 2px #07E1FF;
+  */
 }
 
 .btn:active {
+  /*
   color: #07E1FF;
   background: rgba(255,255,255,1.0) !important;
   box-shadow:
     0px 0px 0px 1000px rgba(255,0,121,0.1),
     0px 0px 0px 0px #07E1FF;
+  */
 }
 
 .btn:focus {
+  /*
   color: #07E1FF;
   background: rgba(255,255,255,1.0) !important;
   box-shadow:
     0px 0px 0px 0px rgba(255,0,121,0.2),
     0px 0px 0px 0px #07E1FF;
+  */
 }
 
 
@@ -186,20 +197,58 @@ textarea.form-control {
 
 
 
+.project_ninja_link {
+  margin: 10% 0;
+}
 
+/*
+project_out_link {
+  padding: 5%;
+  background: rgba(220,220,220,1.0);
+  color: white;
+  display: block;
+  margin: 7.5% 20%;
+  text-align: center;
+  margin: 0 auto;
+  transition: background .5s, color .4s;
+  border: 2px solid rgba(180,180,180,1.0);
+}
 
+project_out_link:hover {
+  color: red;
+  background: white;
+  margin: 0 auto;
+  border: 2px solid rgba(140,140,140,1.0);
+}
+*/
+.project_out_link_holder_holder {
+    /*background: red;*/
+    margin-top: 40px;
+    padding-top: 10px;
+    /*border-top: 1px solid rgba(230,230,230,1.0);*/
+}
+.project_out_link_holder {
+/*  background: rgba(230,230,230,1.0);*/
+/*  text-align: left;*/
+  margin: 0;
+}
 
-
-
+.project_out_link_holder a {
+  display: block;
+  margin: 0 auto;
+}
 
 
 
 /** Navbar Styles **/
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #07E1FF;
+    color: #4582EC;
 }
 .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-    color: rgba(110,110,110,1.0);
+    color: rgba(255,255,255,1.0);
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: rgba(255,255,255,1.0);
 }
 .active a#profiles_link.navigation_link ,
 .active a#projects_link.navigation_link  {
@@ -264,7 +313,7 @@ textarea.form-control {
 }
 
 #log_widget_toggle:focus {
-  border-color: #07E1FF;
+  border-color: #4582EC;
 }
 
 #log_widget_toggle img{
@@ -384,6 +433,18 @@ a#projects_link.navigation_link  {
 }
 
 
+
+.skill_pills {
+  font-size: 1.15em;
+  line-height: 1.75em;
+  padding: 0 1.45em;
+  margin-bottom: 0;
+}
+
+
+
+
+/*
 .badge {
   opacity:0.85;
   font-weight: 300;
@@ -393,6 +454,25 @@ a#projects_link.navigation_link  {
   padding: 7px;
   border-radius: 3px;
   margin: 5px 5px 5px 0px;
+  background: rgba(140,140,140,1.0);
+}
+*/
+
+
+.skill_pill {
+/*  border-radius: 5px;
+  color: rgba(255,255,255,1.0);
+  font-size: 1.5rem;
+  animation-duration: .35s;
+  width: 20%;
+  position: relative;
+  display: inline-block;
+  background: rgba(200,100,100,1.0);
+  padding: 15px;
+  text-align: center;
+  margin:1%;
+  overflow: hidden;
+*/
 }
 
 
@@ -508,7 +588,8 @@ ol.top_skills_edit_list,
 ol.top_tools_edit_list,
 ul.social_link_editor_list {
   list-style-type: none;
-  padding-left: 0px;
+  padding: 0;
+  margin-top: 0.85em;
   margin-bottom: 0;
 }
 
@@ -552,21 +633,6 @@ ul.social_link_editor_list:last-child{
   text-align: center;
 }
 
-.skill_pill {
-  border-radius: 5px;
-  color: rgba(255,255,255,1.0);
-  font-size: 1.5rem;
-  animation-duration: .35s;
-  width: 20%;
-  position: relative;
-  display: inline-block;
-  background: rgba(200,100,100,1.0);
-  padding: 15px;
-  text-align: center;
-  margin:1%;
-  overflow: hidden;
-}
-
 .testing_the_projects {
   color: red;
   font-family: sans-serif;
@@ -584,7 +650,7 @@ label {
 
 .dropdown-menu li a:hover ,
 .dropdown-menu li a:focus {
-  background: #07E1FF;
+  background: #4582EC;
 }
 
 
@@ -599,6 +665,17 @@ label {
  * Large Screen Media Query
  */
 @media (min-width: 993px) and ( max-width: 2048px ) {
+
+  #basic_info.content_box .card{
+    padding-bottom: 2.75em;
+  }
+
+  .project_out_link_holder {
+    /*background: orange;*/
+    padding: 10px 12.5%;
+    margin: 0;
+  }
+
 
   div.content_box{
     /*background: red;*/
@@ -718,6 +795,18 @@ label {
  */
 
 @media (min-width: 769px) and ( max-width: 992px ) {
+
+  #basic_info.content_box .card{
+    padding-bottom: 2em;
+  }
+
+  .project_out_link_holder {
+    /*background: yellow;*/
+    padding: 5px 15%;
+  }
+
+
+
 /** Jumbotron Styles **/
    .jumbotron {
      padding: 5%;
@@ -808,6 +897,19 @@ label {
   */
 
 @media screen and ( max-width: 768px ) {
+
+
+  #basic_info.content_box .card{
+    padding-bottom: 0.15em;
+  }
+
+
+  .project_out_link_holder {
+    padding: 2px 27.5%;
+    /*background: red;*/
+  }
+
+
 
 /** Nav Bar Styles **/
   .navbar-brand .logo_demo_day {
@@ -931,6 +1033,7 @@ label {
   }
 
   .skill_pill {
+    /*
     font-family: sans-serif;
     border-radius: 5px;
     color: rgba(255,255,255,1.0);
@@ -944,6 +1047,7 @@ label {
     text-align: center;
     margin: 1.5%;
     overflow: hidden;
+    */
   }
 
   footer {

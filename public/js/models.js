@@ -27,6 +27,7 @@ var ProjectModel = Backbone.Model.extend({
 		title:'',
 		project_url_id:'',
 		github_repo_url:'',
+		live_project_site_url: '',
 		mvp:'',
 		main_img:'',
 		tech_used: []

@@ -169,7 +169,7 @@ App.Views.EditProjectView = Backbone.View.extend({
 
     //User Title Input get's attached to card
     $project_general_info_edit_card.append( $project_title_form_group );
-    //
+
 
 
 

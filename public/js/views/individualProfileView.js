@@ -237,7 +237,7 @@ App.Views.ProfileView = Backbone.View.extend({
         shuffled_skill_pills.forEach( function( e, i ) {
           var $skill_pill = $( '<li>' );
           $skill_pill.attr({
-            'class': 'badge'
+            'class': 'skill_pill'
           }).text( e );
           //console.log(e);
 
