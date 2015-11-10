@@ -110,7 +110,7 @@ App.Views.ProjectView = Backbone.View.extend({
       });
 
       var $project_github_repo_url = $('<a>').attr({
-        'href' : '#' ,
+        'href' : 'https://github.com/' + this.model.attributes.github_repo_url ,
         'class' : 'btn btn-primary' ,
         'id': 'project_github_repo_link'
       }).text('Github Repo');
@@ -127,11 +127,11 @@ console.log(this.model.attributes.live_project_site_url !== "");
     if ( this.model.attributes.live_project_site_url !== "" ) {
 
       var $project_live_project_site_url_holder = $('<div>').attr({
-        'class': 'project_out_link_holder col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-lg-6'
+        'class': 'project_out_link_holder col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6'
       });
 
       var $project_live_project_site_url = $('<a>').attr({
-        'href' : '#' ,
+        'href' : this.model.attributes.live_project_site_url ,
         'class' : 'btn btn-primary' ,
         'id' : 'project_live_site_link'
       }).text('Live Site');

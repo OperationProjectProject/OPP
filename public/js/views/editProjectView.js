@@ -55,6 +55,7 @@ App.Views.EditProjectView = Backbone.View.extend({
     var placeholder_title = '';
     var placeholder_project_url_id = '';
     var placeholder_github_repo_url = '';
+    var placeholder_live_project_site_url = '';
     var placeholder_mvp = '';
 
     if ( (this.new_project === false) && ( this.model !== undefined ) ) {
@@ -62,6 +63,7 @@ App.Views.EditProjectView = Backbone.View.extend({
       placeholder_title = this.model.attributes.title;
       placeholder_project_url_id = this.model.attributes.project_url_id;
       placeholder_github_repo_url = this.model.attributes.github_repo_url;
+      placeholder_live_project_site_url = this.model.attributes.live_project_site_url;
       placeholder_mvp = this.model.attributes.mvp;
     }
 
@@ -69,6 +71,7 @@ App.Views.EditProjectView = Backbone.View.extend({
     console.log(placeholder_title);
     console.log(placeholder_project_url_id);
     console.log(placeholder_github_repo_url);
+    console.log(placeholder_live_project_site_url);
     console.log(placeholder_mvp);
 
 
@@ -278,6 +281,55 @@ App.Views.EditProjectView = Backbone.View.extend({
 
 
 
+///////
+
+//Live Site URL Editing
+//Build Live Site URL Label and Input
+
+  //Form Group
+var $live_project_site_url_form_group = $('<div>').attr({
+  'id': 'live_project_site_url_form_group' ,
+  'class': 'form-group'
+});
+
+    //Label - Get's attached to the form group
+var $live_project_site_url_edit_label = $('<label>');
+$live_project_site_url_edit_label.attr({
+  'for': 'live_project_site_url_input',
+  'class': 'user_editor_input_label control-label'
+}).text("Link to the Live Site");
+$live_project_site_url_form_group.append( $live_project_site_url_edit_label );
+
+
+    //Input Group
+var $live_project_site_url_input_group = $('<div>').attr({
+  'class':'input-group'
+});
+  //Attach Input Group to Form Group
+$live_project_site_url_form_group.append( $live_project_site_url_input_group );
+
+
+  //These goes inside of the Input Group:
+      //Input Element
+var $live_project_site_url_edit_input = $('<input type="text">');
+$live_project_site_url_edit_input.attr({
+  'id': 'live_project_site_url_input',
+  'class': 'form-control',
+  'value': placeholder_live_project_site_url
+});
+
+//Input Prefixer and Input are appended to input group,
+// , which is already attached to the Form Group
+
+  $live_project_site_url_form_group.append( $live_project_site_url_edit_input );
+
+
+//Form Group get's attached to the card
+$project_general_info_edit_card.append( $live_project_site_url_form_group );
+//
+
+//End of live site url
+
 
 
 
@@ -385,6 +437,7 @@ App.Views.EditProjectView = Backbone.View.extend({
     		title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
     		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+        live_project_site_url: $('input[id="live_project_site_url_input"]').val(),
     		mvp:$('textarea[id="mvp_input"]').val() ,
     		main_img:'',
     		tech_used: []
@@ -420,6 +473,8 @@ App.Views.EditProjectView = Backbone.View.extend({
     //This will be the array of user keys who will be given editing permission to this project
     console.log( this.collaborator_selector_view.tallied_owner_reference() );
 
+
+
     if ( this.validate_form() ) {
       console.log("%c form passed validation", "font-size: 1.3em; color: orange;");
       console.log(this);
@@ -428,6 +483,7 @@ App.Views.EditProjectView = Backbone.View.extend({
         title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
     		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+        live_project_site_url: $('input[id="live_project_site_url_input"]').val(),
     		mvp:$('textarea[id="mvp_input"]').val() ,
         main_img:'',
         tech_used: []

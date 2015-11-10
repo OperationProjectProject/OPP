@@ -161,6 +161,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
     // console.log("title:", req.body.title);
     // console.log("project_url_id:", req.body.project_url_id);
     // console.log("github_url:", req.body.github_repo_url);
+    console.log("live_project_site_url:", req.body.live_project_site_url);
     // console.log("mvp:", req.body.mvp);
     // console.log("tech_used:", req.body.tech_used);
 
@@ -170,6 +171,7 @@ router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
       .replace("owner_reference", req.body.owner_reference)
       .replace("project_content.project_url_id", req.body.project_url_id)
       .replace("project_content.out_link_urls.github_repo_url", req.body.github_repo_url)
+      .replace("project_content.out_link_urls.live_project_site_url", req.body.live_project_site_url)
       .replace("project_content.mvp", req.body.mvp)
       .replace("project_content.tech_used", req.body.tech_used)
       .apply()
@@ -265,6 +267,7 @@ router.get('/projects', function(req, res, next) {
             title: element.value.project_content.title ,
             project_url_id: element.value.project_content.project_url_id,
             github_repo_url: element.value.project_content.out_link_urls.github_repo_url,
+            live_project_site_url: element.value.project_content.out_link_urls.live_project_site_url,
             mvp: element.value.project_content.mvp,
             main_img: element.value.project_content.img_urls.main_img,
             tech_used: element.value.project_content.tech_used
