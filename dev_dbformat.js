@@ -469,6 +469,7 @@
 
 /** OPP **///                 Matt        &       Pat
 {
+  "active": true,
   "owner_reference": [ "0d7f883ac6206a42" ,"0d8576581f208262"] ,
   "project_content": {
     "title": "OPP" ,
@@ -496,6 +497,7 @@
 
 /** Meetworking **///      -- Mitch        & Jeff
 {
+  "active": true,
   "owner_reference": [ "0d8581f5eb20f846" ] ,
   "project_content": {
     "title": "Meetworking" ,
@@ -522,6 +524,7 @@
 
 /** MixTapez **///     --        Do        Ty, Mitch
 {
+  "active": true,
   "owner_reference": [ "0d857cdcec208264" ] ,
   "project_content": {
     "title": "MixTapez" ,

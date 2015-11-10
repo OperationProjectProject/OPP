@@ -1,5 +1,5 @@
 #JSI CAPSTONE
-![Operation Project Project](https://d13yacurqjgara.cloudfront.net/users/597558/screenshots/1998465/comp-2.gif)
+![Operation Project Project](http://DemoDay.ninja)
 
 ##MVP:
 A web platform for members of our community to showcase their work.
@@ -19,7 +19,7 @@ A web platform for members of our community to showcase their work.
 ![Operation Project Project](http://i.imgur.com/VM7hCLq.png)
 
 ##Orchestrate Data Models:
-* **Profile Object**
+###Profile Object
 ```javascript
   { "active": true ,
     "github_api_data": {
@@ -101,6 +101,14 @@ A web platform for members of our community to showcase their work.
 | project model      | .create()  | POST        | /projects           |
 | project model      | .save()    | PUT         | /projects/:id       |
 | project model      | .destroy() | DELETE      | /projects/:id       |
+
+##TEST TABLE:
+
+| Prefix                               | verb    | URI pattern                             | Controller#Action |
+|--------------------------------------|---------|-----------------------------------------|-------------------|
+| root                                 | GET     | /                                       | welcome#index     |
+
+
 
 ##RESOURCES USED:
 * Twitter Bootstrap
