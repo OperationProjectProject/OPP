@@ -337,7 +337,7 @@ App.Views.EditProjectView = Backbone.View.extend({
     });
 
 
-    
+
     console.log( this.collaborator_selector_view );
     console.log( this.collaborator_selector_view.$el );
 
@@ -396,6 +396,9 @@ App.Views.EditProjectView = Backbone.View.extend({
         } ,
         error: function() {
           $('#save_and_publish_new_project').text('Edit and Resave');
+          $( '#url_id_form_group' ).addClass( "has-error" );
+          var $error_message = $( '<span>' ).text( ' - please choose another url' );
+          $( '#url_id_form_group label' ).append( $error_message );
           console.log('error');
         }
       });
@@ -436,6 +439,9 @@ App.Views.EditProjectView = Backbone.View.extend({
         } ,
         error: function() {
           $('#save_and_publish_project').text('Edit and Resave');
+          $( '#url_id_form_group' ).addClass( "has-error" );
+          var $error_message = $( '<span>' ).text( ' - please choose another url' );
+          $( '#url_id_form_group label' ).append( $error_message );
           console.log("error");
         }
       });
