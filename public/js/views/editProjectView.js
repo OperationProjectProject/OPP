@@ -321,9 +321,43 @@ App.Views.EditProjectView = Backbone.View.extend({
     //The Box containing the first card in this view, is append to it's parent row, row 02
     $row_02.append( $project_general_info_edit_box );
 
+
+    console.log('%c TEST AREA', 'font-size: 3.5em; color: rgba(220,220,220,1.0);');
+    //create row 03
+    var $row_03 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_03'
+    });
+
+
+
+    this.collaborator_selector_view = new App.Views.CollaboratorSelectorView({
+      logged_user_key: this.logged_user_key ,
+      project_being_edited: this.model
+    });
+
+
+
+    console.log( this.collaborator_selector_view );
+    console.log( this.collaborator_selector_view.$el );
+
+    $row_03.append( this.collaborator_selector_view.$el );
+
+
+    //This will be the array of user keys who will be given editing permission to this project
+    console.log( this.collaborator_selector_view.tallied_owner_reference() );
+
+
+
+
+
+
+
+
     //Append rows to this view
     this.$el.append( $row_01 );
     this.$el.append( $row_02 );
+    this.$el.append( $row_03 );
     $( '.centerdiv' ).append( this.$el );
 	},
 
@@ -341,10 +375,13 @@ App.Views.EditProjectView = Backbone.View.extend({
 
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
+    //This will be the array of user keys who will be given editing permission to this project
+    console.log( this.collaborator_selector_view.tallied_owner_reference() );
+
     if ( this.validate_form() ) {
       console.log( this.validate_form() );
       this.collection.create({
-        owner_reference:[ this.logged_user_key ],
+        owner_reference: this.collaborator_selector_view.tallied_owner_reference() ,
     		title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
     		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
@@ -359,6 +396,9 @@ App.Views.EditProjectView = Backbone.View.extend({
         } ,
         error: function() {
           $('#save_and_publish_new_project').text('Edit and Resave');
+          $( '#url_id_form_group' ).addClass( "has-error" );
+          var $error_message = $( '<span>' ).text( ' - please choose another url' );
+          $( '#url_id_form_group label' ).append( $error_message );
           console.log('error');
         }
       });
@@ -377,11 +417,14 @@ App.Views.EditProjectView = Backbone.View.extend({
 
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
+    //This will be the array of user keys who will be given editing permission to this project
+    console.log( this.collaborator_selector_view.tallied_owner_reference() );
+
     if ( this.validate_form() ) {
       console.log("%c form passed validation", "font-size: 1.3em; color: orange;");
       console.log(this);
       this.model.save({
-        owner_reference:[ this.logged_user_key ] ,
+        owner_reference: this.collaborator_selector_view.tallied_owner_reference() ,
         title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
     		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
@@ -396,6 +439,9 @@ App.Views.EditProjectView = Backbone.View.extend({
         } ,
         error: function() {
           $('#save_and_publish_project').text('Edit and Resave');
+          $( '#url_id_form_group' ).addClass( "has-error" );
+          var $error_message = $( '<span>' ).text( ' - please choose another url' );
+          $( '#url_id_form_group label' ).append( $error_message );
           console.log("error");
         }
       });
@@ -432,12 +478,10 @@ App.Views.EditProjectView = Backbone.View.extend({
     return form_is_valid;
   } ,
 
-
   clean_url_id_input: function() {
     console.log("clean_url__id_input method ");
     $( '#url_id_form_group' ).removeClass( "has-error" );
     $( "#url_id_form_group span.error_message" ).remove();
   }
-
 
 });

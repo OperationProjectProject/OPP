@@ -12,7 +12,22 @@ App.Router = Backbone.Router.extend({
     this.logged_user_img_url = opts.logged_user_img_url;
     this.set_up_dom = function(){
       console.log("%cset_up_dom","font-size:2.5em; color:orange;");
+
       $('#app').empty();
+      $( "body" ).scrollTop( 0 );
+
+      if ( app.navigationView ) {
+        app.centerView.remove();
+      }
+
+      if ( app.centerView ) {
+        app.centerView.remove();
+      }
+
+      if ( app.footerView ) {
+        app.footerView.remove
+      }
+
       app.centerView = new App.Views.CenterView();
       app.footerView = new App.Views.FooterView();
     };

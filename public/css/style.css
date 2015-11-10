@@ -51,6 +51,7 @@
 
 
 
+
 /*
  *
  *        This is why the entire site is grayscale
@@ -162,7 +163,7 @@ textarea.form-control {
     0px 0px 0px 2px #07E1FF;
 }
 
-.btn:active{
+.btn:active {
   color: #07E1FF;
   background: rgba(255,255,255,1.0) !important;
   box-shadow:
@@ -170,7 +171,7 @@ textarea.form-control {
     0px 0px 0px 0px #07E1FF;
 }
 
-.btn:focus{
+.btn:focus {
   color: #07E1FF;
   background: rgba(255,255,255,1.0) !important;
   box-shadow:
@@ -179,7 +180,9 @@ textarea.form-control {
 }
 
 
-
+.collaborator_name {
+  margin-left: 20px;
+}
 
 
 
@@ -656,12 +659,29 @@ label {
     color: rgba(160,160,160,1.0);
     font-weight: 700;
     font-size: 3rem;
-    margin-top: 0.75rem;
+    margin-top: .2rem;
   }
 
   #brand_logo_h1 .logo_ninja {
     /*font-size: 2.5rem;*/
   }
+
+  a#log_widget_toggle.dropdown-toggle {
+    transition: box-shadow .4s;
+    border-radius: 50%;
+  }
+
+  a#log_widget_toggle.dropdown-toggle:hover {
+    box-shadow: 0px 0px 0px 1px rgba(100,100,100,0.2);
+  }
+
+
+
+
+
+
+
+
   /****/
 
 
@@ -720,6 +740,19 @@ label {
      font-size: 3.5rem;
      margin-top: .2rem;
    }
+
+   a#log_widget_toggle.dropdown-toggle {
+     transition: box-shadow .4s;
+     border-radius: 50%;
+   }
+
+   a#log_widget_toggle.dropdown-toggle:hover {
+     box-shadow: 0px 0px 0px 1px rgba(100,100,100,0.2);
+   }
+
+
+
+
 /****/
 
 
