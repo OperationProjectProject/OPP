@@ -339,11 +339,8 @@ App.Views.EditProjectView = Backbone.View.extend({
     $row_03.append( this.collaborator_selector_view.$el );
 
 
-
-
-
-
-
+    //This will be the array of user keys who will be given editing permission to this project
+    console.log( this.collaborator_selector_view.tallied_owner_reference() );
 
 
 
@@ -373,10 +370,13 @@ App.Views.EditProjectView = Backbone.View.extend({
 
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
+    //This will be the array of user keys who will be given editing permission to this project
+    console.log( this.collaborator_selector_view.tallied_owner_reference() );
+
     if ( this.validate_form() ) {
       console.log( this.validate_form() );
       this.collection.create({
-        owner_reference:[ this.logged_user_key ],
+        owner_reference: this.collaborator_selector_view.tallied_owner_reference() ,
     		title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
     		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
@@ -409,11 +409,14 @@ App.Views.EditProjectView = Backbone.View.extend({
 
     var project_url_id_in_escrow = $('input[id="url_id_input"]').val();
 
+    //This will be the array of user keys who will be given editing permission to this project
+    console.log( this.collaborator_selector_view.tallied_owner_reference() );
+
     if ( this.validate_form() ) {
       console.log("%c form passed validation", "font-size: 1.3em; color: orange;");
       console.log(this);
       this.model.save({
-        owner_reference:[ this.logged_user_key ] ,
+        owner_reference: this.collaborator_selector_view.tallied_owner_reference() ,
         title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
     		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
@@ -464,12 +467,10 @@ App.Views.EditProjectView = Backbone.View.extend({
     return form_is_valid;
   } ,
 
-
   clean_url_id_input: function() {
     console.log("clean_url__id_input method ");
     $( '#url_id_form_group' ).removeClass( "has-error" );
     $( "#url_id_form_group span.error_message" ).remove();
   }
-
 
 });

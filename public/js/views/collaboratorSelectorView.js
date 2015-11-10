@@ -40,13 +40,28 @@ App.Views.CollaboratorSelectorView = Backbone.View.extend({
 
 
       var $checkbox_form_group = $('<div>').attr({
-        'class': 'form-group'
+        'class': 'form-group' ,
+        'id': 'collaborator_selection_checkboxes'
       });
 
-      var self = this;
 
-      console.log(self.collection.models);
 
+
+
+
+console.log(this.collection.models);
+
+
+
+
+
+
+var self = this;
+console.log(self.collection.models);
+
+
+      //forEach loop that cycles through every model in this.collection
+      //Each model is a profile object
       this.collection.models.forEach( function( e , i ){
         // console.log( e.attributes.name );
         //console.log( self)
@@ -55,6 +70,9 @@ App.Views.CollaboratorSelectorView = Backbone.View.extend({
         // console.log( e.id === self.logged_user_key );
 
         if ( e.id !== self.logged_user_key ) {
+
+          console.log( self.project_being_edited.attributes.owner_reference );
+          console.log( e.id );
 
           var $collaborator_label = $('<label>').attr({
             'class': 'control-label' ,
@@ -76,11 +94,35 @@ App.Views.CollaboratorSelectorView = Backbone.View.extend({
           $checkbox_form_group.append( $collaborator_label );
 
         }
+
       });
+
+
+
+
 
 
       $collaborator_selector_card.append( $checkbox_form_group );
       this.$el.append( $collaborator_selector_card );
+  } ,
+
+  tallied_owner_reference: function() {
+    var arr = [];
+
+    arr.push( this.logged_user_key );
+
+    $('#collaborator_selection_checkboxes input:checked').each( function() {
+        console.log( this );
+        arr.push( $(this).val() );
+    });
+
+    console.log( arr );
+
+    //real:
+    return arr;
+    // dummy
+    //return [ this.logged_user_key ];
+
   }
 
 });
