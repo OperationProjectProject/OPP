@@ -17,7 +17,7 @@ App.Router = Backbone.Router.extend({
       $( "body" ).scrollTop( 0 );
 
       if ( app.navigationView ) {
-        app.centerView.remove();
+        app.navigationView.remove();
       }
 
       if ( app.centerView ) {

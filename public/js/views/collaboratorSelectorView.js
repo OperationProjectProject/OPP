@@ -9,7 +9,7 @@ App.Views.CollaboratorSelectorView = Backbone.View.extend({
 
   id: 'collaborator_selector_view' ,
 
-  className: 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
+  className: 'content_box col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
 
   initialize: function( opts ) {
     console.log("%c CollaboratorSelectorView initialize." , "font-size: 2em; color:green;");
