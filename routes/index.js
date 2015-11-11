@@ -403,7 +403,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       .then(function (result) {
         if(result.body.count>0){
           console.log("result count:", result.body.count);
-          console.log("result body", result.body);
+          console.log("result body", result.body.results[0].value);
           console.log("user exists");
           // console.log("user object is:", result.body.results[0].value);
           cookieValue = result.body.results[0].value.profile_content.editable_text.url_id;
