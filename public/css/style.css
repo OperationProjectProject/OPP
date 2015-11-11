@@ -49,6 +49,37 @@
  ***********
  ***********/
 
+
+
+.project_owner_anchor {
+  padding: 2.5%;
+  margin: 2.5% 0;
+}
+.project_owner_img {
+  width: 100%;
+  border-radius: 50%;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.project_owner_name {
+  border-top: 3px solid rgba(230,230,230,1.0);
+  padding-left: 0px;
+}
+.project_owner_anchor:hover {
+  opacity: 0.8;
+  background: rgba(230,230,230,1.0);
+}
+.project_owner_anchor:focus .project_owner_name {
+  color: rgba(100,100,100,1.0);
+}
+.project_owner_anchor:hover .project_owner_name {
+  color: rgba(100,100,100,1.0);
+}
+
+
+
  .form-group {
      margin-bottom: 25px;
  }
@@ -668,6 +699,10 @@ label {
  */
 @media (min-width: 993px) and ( max-width: 2048px ) {
 
+  .project_owner_img {
+    width: 50%;
+  }
+
   #basic_info.content_box .card{
     padding-bottom: 2.75em;
   }
@@ -798,6 +833,10 @@ label {
 
 @media (min-width: 769px) and ( max-width: 992px ) {
 
+  .project_owner_img {
+    width: 70%;
+  }
+
   #basic_info.content_box .card{
     padding-bottom: 2em;
   }
@@ -907,7 +946,7 @@ label {
 
 
   .project_out_link_holder {
-    padding: 2px 27.5%;
+    padding: 2px 17.5%;
     /*background: red;*/
   }
 
