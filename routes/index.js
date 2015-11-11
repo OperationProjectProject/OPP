@@ -398,10 +398,11 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
         console.log("patch failed");
       });
     }
-
+    console.log("req user is:", req.user.username);
     db.search('OPP_users', 'value.github_api_data.github_username:"'+req.user.username+'"')
       .then(function (result) {
         if(result.body.count>0){
+          console.log("result count:", result.body.count);
           console.log("user exists");
           // console.log("user object is:", result.body.results[0].value);
           cookieValue = result.body.results[0].value.profile_content.editable_text.url_id;
