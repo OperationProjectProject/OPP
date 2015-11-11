@@ -28,7 +28,8 @@ passport.deserializeUser(function(obj, done) {
 
 
 // var callback = (process.env.HEROKU) ? "https://operationprojectproject.herokuapp.com/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
-var callback = (process.env.HEROKU) ? "http://demoday.ninja/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+// var callback = (process.env.HEROKU) ? "http://demoday.ninja/auth/github/callback":"http://127.0.0.1:3000/auth/github/callback";
+var callback = "http://demoday.ninja/auth/github/callback";
 
 
 passport.use('github', new GitHubStrategy({
