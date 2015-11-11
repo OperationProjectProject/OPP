@@ -327,6 +327,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
     }
 
     function register(){
+      console.log("register test log");
       db.post('OPP_users', {
          "active":true,
          "github_api_data": {
