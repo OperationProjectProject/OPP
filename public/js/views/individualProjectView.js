@@ -141,21 +141,7 @@ console.log(this.model.attributes.live_project_site_url !== "");
       $project_github_repo_url_holder_holder.append( $project_live_project_site_url_holder );
 
     }
-
     $project_title_card.append( $project_github_repo_url_holder_holder );
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -178,6 +164,46 @@ console.log(this.model.attributes.live_project_site_url !== "");
 
     $project_mvp_card.append( $mvp_blockquote );
 
+
+
+
+
+    //Creat row 02
+    var $row_02 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_02'
+    });
+    //Create content box for project title card
+    var $project_owners_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
+      'id': 'project_owners_box'
+    });
+    //Create content box for social links edit
+    var $project_owners_card = $('<div>').attr({
+      'class': 'card' ,
+      'id': 'project_owners_card'
+    });
+    $project_owners_box.append( $project_owners_card );
+    $row_02.append( $project_owners_box );
+
+
+
+
+    console.log("%c TEST AREA","color: rgba(220,220,220,1.0); font-size: 3em;");
+    console.log( this.model.attributes.owner_reference );
+
+    var self = this;
+    this.model.attributes.owner_reference.forEach( function( e, i ){
+      console.log( e );
+      var individual_collaborator_view = new App.Views.ProjectOwnerView({
+        owner_id: e
+      });
+      $project_owners_card.append( individual_collaborator_view.$el );
+    });
+
+
+
+
 /*
     //Create Headline & Byline
     var $title = $('<h2 class="headline">').text(this.model.attributes.title);
@@ -199,7 +225,7 @@ console.log(this.model.attributes.live_project_site_url !== "");
 
     //Attach elements to this view
     this.$el.append($row_01);
-
+    this.$el.append($row_02);
 
     // console.log(this.$el);
     //console.log(this);
