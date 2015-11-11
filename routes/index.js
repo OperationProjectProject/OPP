@@ -102,7 +102,7 @@ router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
 });
 
 router.get('/profiles', function(req, res, next) {
-  db.list('OPP_users')
+  db.list('OPP_users', {limit:100})
       .then(function (result) {
         var data = result.body.results;
         var ray = [];
@@ -254,7 +254,7 @@ router.post("/projects", ensureAuthenticated, function(req, res, next){
 
 
 router.get('/projects', function(req, res, next) {
-  db.list('OPP_projects')
+  db.list('OPP_projects', {limit:100})
       .then(function (result) {
         var data = result.body.results;
         var ray = [];
