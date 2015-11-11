@@ -399,7 +399,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       });
     }
 
-    db.search('OPP_users', req.user.username)
+    db.search('OPP_users', 'value.github_api_data.github_username:"'+req.user.username+'"')
       .then(function (result) {
         if(result.body.count>0){
           console.log("user exists");
