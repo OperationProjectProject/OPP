@@ -123,7 +123,8 @@ App.Router = Backbone.Router.extend({
       console.log("%c!project_url_id","color:orange; font-size:1.25em;");
       //Add All Profiles page content to DOM
       app.allProjectsView = new App.Views.AllProjectsView({
-        collection: this.projects
+        collection: this.projects ,
+        logged_user: this.logged_user
       });
     }
     else {

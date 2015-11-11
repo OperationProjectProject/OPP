@@ -1,12 +1,12 @@
 #JSI CAPSTONE
 
-##Checkout the live site:
+##Checkout the live site
 [demoday.ninja](http://DemoDay.ninja)
 
-##MVP:
+##MVP
 A web platform for members of our community to showcase their work.
 
-##USER STORIES:
+##USER STORIES
 * **Prospective Employer**
 >"I need an easy way to browse the hottest tech talent in town."
 
@@ -17,10 +17,10 @@ A web platform for members of our community to showcase their work.
 >"I want to go to a coding bootcamp, but am not sure which one to pick.
 >It would be nice to check out some of the work that code school students are doing in my area."
 
-##WIREFRAMES:
+##WIREFRAMES
 ![Operation Project Project](http://i.imgur.com/VM7hCLq.png)
 
-##Orchestrate Data Models:
+##Orchestrate Data Models
 ###Profile Object
 ```javascript
   { "active": true ,
@@ -83,7 +83,7 @@ A web platform for members of our community to showcase their work.
 }
 ```
 
-##ROUTES:
+##ROUTES
 
 ###View Routing
 | use case                  | verb     | URI pattern   |
@@ -104,15 +104,16 @@ A web platform for members of our community to showcase their work.
 | project model      | .save()    | PUT         | /projects/:id       |
 | project model      | .destroy() | DELETE      | /projects/:id       |
 
-##RESOURCES USED:
+##RESOURCES USED
 * Twitter Bootstrap
 * Backbone.js
 * Express.js
 * Node.js / npm
+* Passport js
 * Github API
 * Orchestrate.io
 
-##CONTACT OUR TEAM:
+##CONTACT OUR TEAM
 [Matt Kelley](https://github.com/mkelley2)
 |
 [Pat Harry](http://patrickharry.com)
