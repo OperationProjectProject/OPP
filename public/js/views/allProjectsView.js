@@ -16,6 +16,9 @@ App.Views.AllProjectsView = Backbone.View.extend({
   render: function() {
     $('body').css({'background':'rgba(240,240,240,1.0)'});
     console.log("%cAllProjectsView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+
+    this.$el.empty();
+
     var self = this;
 
     console.log( this.logged_user );
@@ -68,7 +71,7 @@ App.Views.AllProjectsView = Backbone.View.extend({
       //Attach box to row
       $row_00.append( $edit_save_button_box );
 
-      $(".centerdiv").prepend( $row_00 );
+      this.$el.prepend( $row_00 );
     }
 
 
