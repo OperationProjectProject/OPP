@@ -22,7 +22,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
 
     //Create the two boxes that hold content inside of $project_link
     var $project_img_box = $('<div>').attr({
-      'class':'col-xs-4 col-sm-4 col-md-4 col-lg-6'
+      'class':'col-xs-4 col-sm-4 col-md-4 col-lg-4'
     });
 
 
@@ -56,7 +56,7 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
 
 
     var $text_div = $('<div>').attr({
-      'class':'col-xs-8 col-sm-8 col-md-8 col-lg-6 preview_text'
+      'class':'col-xs-8 col-sm-8 col-md-8 col-lg-8 preview_text'
     });
 
 

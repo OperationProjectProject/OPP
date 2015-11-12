@@ -12,7 +12,7 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
 
 
     var $profile_link = $('<a href="/#profiles/'+ this.model.attributes.url_id +'" class="preview_link">');
-    var $text_div = $('<div class="col-xs-8 col-sm-8 col-md-8 col-lg-6 preview_text">');
+    var $text_div = $('<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 preview_text">');
     var $user_name = $('<h2 class="user_name">').text(this.model.attributes.name);
     var $user_title = $('<h3 class="user_title">').text(this.model.attributes.title);
 
@@ -22,7 +22,7 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
 
     //console.log("%c profile_img: " + this.model.attributes.profile_img_url , "color: purple; font-size: 1.25em;");
 
-    var $profile_img_box = $('<div class="col-xs-4 col-sm-4 col-md-4 col-lg-6">')
+    var $profile_img_box = $('<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">')
     var $profile_img = $("<img>").attr({
       'alt': this.model.attributes.name + " profile image." ,
       'class': 'profile_img_preview animated fadeIn' ,
