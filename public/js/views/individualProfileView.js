@@ -175,6 +175,12 @@ App.Views.ProfileView = Backbone.View.extend({
         $row_02.append( $basic_info );
         $row_02.append( $social_links_div );
 
+
+
+
+
+
+//Row 03 is only created and append to
         //create row 03
         var $row_03 =  $('<div>').attr({
           'class': 'row' ,
@@ -183,7 +189,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Create content box for skill pills
         var $skill_pills_box = $('<div>').attr({
-          'class': 'content_box col-sm-12 col-md-12 col-lg-8 col-lg-offset-2' ,
+          'class': 'content_box col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2' ,
           'id': 'skill_pills_box'
         });
 
@@ -197,7 +203,12 @@ App.Views.ProfileView = Backbone.View.extend({
         $row_03.append( $skill_pills_box )
 
 
-        console.log("%cTEST AREA","font-size: 3em; color: rgba(220,220,220,1.0);");
+        var $skill_pill_legend = $('<legend>').text('skills & tools');
+
+        $skill_pill_card.append( $skill_pill_legend );
+
+
+
 
         var user_top_three_skills = this.model.attributes.top_skills;
         var user_top_five_tools = this.model.attributes.top_tools;
@@ -232,7 +243,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
         console.log(shuffled_skill_pills);
 
-        var $skill_pill_ul = $('<ul class="skill_pills col-sm-12 col-md-12 col-lg-12">');
+        var $skill_pill_ul = $('<ul id="skill_pill_list" class="skill_pills col-sm-12 col-md-12 col-lg-12">');
 
         shuffled_skill_pills.forEach( function( e, i ) {
           if ( e !== '' ) {
@@ -249,11 +260,49 @@ App.Views.ProfileView = Backbone.View.extend({
         $skill_pill_card.append( $skill_pill_ul );
 
 
+
+//////This is where the list of projects that this user has
+
+
+
+
+
+
+
+        console.log("%cTEST AREA","font-size: 3em; color: rgba(220,220,220,1.0);");
+
+        console.log(this);
+        console.log(this.model);
+        console.log(this.model.id);
+        //Create content box for skill pills
+        this.owned_projects_view = new App.Views.OwnedProjectsRowView({
+          id: 'row_04',
+          owner_id: this.model.id
+        });
+
+
+
+
+
         //Append bootstrap rows to this view
         var self = this;
-        [ $row_01 , $row_02 , $row_03 ].forEach(function( e, i ){
+        [ $row_01 , $row_02 ].forEach(function( e, i ){
             self.$el.append( e );
         });
+
+
+
+        console.log( $skill_pill_ul.children().length );
+
+        if ( $skill_pill_ul.children().length > 0 ) {
+          this.$el.append( $row_03 );
+        }
+
+        console.log( this.owned_projects_view.hasProjects() );
+        if ( this.owned_projects_view.hasProjects() ) {
+          this.$el.append( this.owned_projects_view.$el );
+        }
+
         //Attach this view to the DOM
         $(".centerdiv").append(this.$el);
       }
