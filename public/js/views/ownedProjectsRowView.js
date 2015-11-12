@@ -45,6 +45,43 @@ App.Views.OwnedProjectsRowView = Backbone.View.extend({
       if ( e.attributes.owner_reference.indexOf( self.owner_id ) > -1 ) {
         console.log(e.attributes.title)
         self.number_of_projects += 1;
+
+
+
+
+
+        $owned_project_link = $('<a>').attr({
+          'href' : '#projects/' + e.attributes.project_url_id,
+          'class' : 'owned_project_anchor col-xs-12 col-sm-12 col-md-12 col-lg-12'
+        });
+
+        var $img_div = $('<div>').attr({
+          'class' : 'col-xs-4 col-sm-4 col-md-4 col-lg-4'
+        });
+        var $text_div = $('<div>').attr({
+          'class' : 'col-xs-8 col-sm-8 col-md-8 col-lg-8 owned_project_title'
+        });
+
+        $owned_project_img = $('<img>').attr({
+          'src': (e.attributes.main_img === '') ? 'https://dl.dropboxusercontent.com/u/18467418/placeholder_animations/diamond.gif' : e.attributes.main_img ,
+          'id' : e.attributes.title + '_project_link' ,
+          'class' : 'owned_project_img'
+        });
+        $img_div.append( $owned_project_img );
+
+        $project_title = $('<h4>').attr({
+          'id' : e.attributes.title + '_project_title' ,
+          'class' : 'test'
+        }).text( e.attributes.title );
+        $text_div.append( $project_title );
+
+
+        $owned_project_link.append( $img_div );
+        $owned_project_link.append( $text_div );
+
+
+        $owned_projects_card.append( $owned_project_link );
+
       }
     });
 
