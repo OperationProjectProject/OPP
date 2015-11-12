@@ -235,13 +235,16 @@ App.Views.ProfileView = Backbone.View.extend({
         var $skill_pill_ul = $('<ul class="skill_pills col-sm-12 col-md-12 col-lg-12">');
 
         shuffled_skill_pills.forEach( function( e, i ) {
-          var $skill_pill = $( '<li>' );
-          $skill_pill.attr({
-            'class': 'skill_pill'
-          }).text( e );
-          //console.log(e);
+          if ( e !== '' ) {
+            var $skill_pill = $( '<li>' );
+            $skill_pill.attr({
+              'class': 'skill_pill'
+            }).text( e );
+            //console.log(e);
 
-          $skill_pill_ul.append( $skill_pill );
+            $skill_pill_ul.append( $skill_pill );
+
+          }
         });
         $skill_pill_card.append( $skill_pill_ul );
 
