@@ -195,7 +195,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Create content box for skill pills
         var $skill_pills_box = $('<div>').attr({
-          'class': 'content_box col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2' ,
+          'class': 'content_box col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
           'id': 'skill_pills_box'
         });
 

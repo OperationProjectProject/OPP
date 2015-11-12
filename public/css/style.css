@@ -752,7 +752,7 @@ label {
     display: inline-block;
     background: rgba(255,255,255,1.0);
     padding: 2.5em 2.5em;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
   }
   .profile_preview .preview_link:hover ,
   .project_preview .preview_link:hover {
@@ -874,7 +874,7 @@ label {
 
    .profile_preview ,
    .project_preview {
-     margin-bottom: 3.5%;
+    /* margin-bottom: 3.5%; */
    }
 
 /** Navbar Styles **/
@@ -903,7 +903,7 @@ label {
    .project_preview a.preview_link {
      border-radius: 4px;
      padding: 2em 2em;
-     margin-bottom: 20px;
+     margin-bottom: 10px;
    }
 
    .profile_img_preview {
@@ -1015,7 +1015,7 @@ label {
 
   .profile_preview ,
   .project_preview {
-    margin: 3.5% 0;
+    margin: 2% 0;
   }
 
   .profile_preview a.preview_link ,
