@@ -376,7 +376,7 @@ project_out_link:hover {
 }
 
 #login_button {
-  color: #07E1FF;
+  /*color: #07E1FF;*/
   transition: color 2s;
 }
 /****/
@@ -617,8 +617,9 @@ a#projects_link.navigation_link  {
 
 
 legend {
-  color: rgba(120,120,120,1.0);
-  margin-bottom: 1.5em;
+  font-size: 1em;
+  color: rgba(140,140,140,1.0);
+  margin-bottom: 1.25em;
   text-align: right;
 }
 legend i {
@@ -796,7 +797,7 @@ label {
   }
 
   a#log_widget_toggle.dropdown-toggle:hover {
-    box-shadow: 0px 0px 0px 1px rgba(100,100,100,0.2);
+    box-shadow: 0px 0px 0px 1px rgba(69,130,236,.8);
   }
 
 
@@ -888,7 +889,7 @@ label {
    }
 
    a#log_widget_toggle.dropdown-toggle:hover {
-     box-shadow: 0px 0px 0px 1px rgba(100,100,100,0.2);
+     box-shadow: 0px 0px 0px 1px rgba(69,130,236,1);
    }
 
 
@@ -902,7 +903,7 @@ label {
    .project_preview a.preview_link {
      border-radius: 4px;
      padding: 2em 2em;
-     margin-bottom: 40px;
+     margin-bottom: 20px;
    }
 
    .profile_img_preview {
@@ -1014,7 +1015,7 @@ label {
 
   .profile_preview ,
   .project_preview {
-    margin: 3.5%;
+    margin: 3.5% 0;
   }
 
   .profile_preview a.preview_link ,
@@ -1039,12 +1040,12 @@ label {
   }
 
   .preview_text h2 {
-    font-size: 1em;
+    font-size: 1.2em;
     margin-top: 10px;
   }
 
   .preview_text h3 {
-    font-size: 1em;
+    font-size: 1.1em;
   }
 
   .profile_preview_text_span {

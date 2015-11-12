@@ -158,6 +158,9 @@ console.log(this.model.attributes.live_project_site_url !== "");
     $project_mvp_box.append( $project_mvp_card );
     $row_01.append( $project_mvp_box );
 
+    var $mvp_legend = $('<legend>').text('overview');
+    $project_mvp_card.append( $mvp_legend );
+
     var $mvp_blockquote = $( '<blockquote>' );
     var $mvp_blockquote_p = $( '<p>' ).text( this.model.attributes.mvp);
     $mvp_blockquote.append( $mvp_blockquote_p );
@@ -186,7 +189,8 @@ console.log(this.model.attributes.live_project_site_url !== "");
     $project_owners_box.append( $project_owners_card );
     $row_02.append( $project_owners_box );
 
-
+    var $owners_legend = $('<legend>').text('owners');
+    $project_owners_card.append( $owners_legend );
 
 
     console.log("%c TEST AREA","color: rgba(220,220,220,1.0); font-size: 3em;");
