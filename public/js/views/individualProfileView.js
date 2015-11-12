@@ -57,7 +57,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Create content box for basic info
         var $basic_info = $('<div>').attr({
-          'class': 'content_box col-sm-12 col-md-12 col-lg-8' ,
+          'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
           'id': 'basic_info'
         });
 
@@ -112,7 +112,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Create Social Links Content Box
         var $social_links_div = $('<div>').attr({
-          'class': 'content_box col-sm-12 col-md-12 col-lg-4' ,
+          'class': 'content_box col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
           'id': 'social_links_div'
         });
 
@@ -120,6 +120,12 @@ App.Views.ProfileView = Backbone.View.extend({
         var $social_links_card = $('<div>').attr({
           'class': 'card'
         });
+
+        var $social_links_legend = $('<legend>').text('contact');
+        $social_links_card.append( $social_links_legend );
+
+
+
 
         //Create Social Links List
         var $social_link_list = $('<ul class="social_links col-sm-12 col-md-12 col-lg-12">');
@@ -189,7 +195,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
         //Create content box for skill pills
         var $skill_pills_box = $('<div>').attr({
-          'class': 'content_box col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2' ,
+          'class': 'content_box col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
           'id': 'skill_pills_box'
         });
 

@@ -18,7 +18,7 @@ App.Views.OwnedProjectsRowView = Backbone.View.extend({
 
     //Create Box for Owned Projects
     var $owned_projects_box = $('<div>').attr({
-      'class': 'content_box col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2' ,
+      'class': 'content_box col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' ,
       'id': 'owned_projects_box'
     });
 
