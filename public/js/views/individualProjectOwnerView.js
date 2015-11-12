@@ -4,7 +4,6 @@ App.Views.ProjectOwnerView = Backbone.View.extend({
   className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' ,
 
   initialize: function( opts ) {
-    console.log( "%c Project Owner View initialize()" , "color:purple;font-size:1.25em;" );
     this.collection = app.profile_content;
     this.owner_id = opts.owner_id;
     this.render();
@@ -12,7 +11,7 @@ App.Views.ProjectOwnerView = Backbone.View.extend({
   } ,
 
   render: function() {
-    console.log( "%c Project Owner View render()" , "color:purple;font-size:1.25em;" );
+    console.log("%c  individualProjectOwnerView","color:rgba(200,200,200,1.0);font-size:1.25em;");
 
     var self = this;
 
