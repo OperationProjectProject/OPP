@@ -436,7 +436,7 @@ $project_general_info_edit_card.append( $live_project_site_url_form_group );
         owner_reference: this.collaborator_selector_view.tallied_owner_reference() ,
     		title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
-    		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+    		github_repo_url: this.sanitizeGithubURL($('input[id="github_repo_url_input"]').val()) ,
         live_project_site_url: $('input[id="live_project_site_url_input"]').val(),
     		mvp:$('textarea[id="mvp_input"]').val() ,
     		main_img:'',
@@ -482,7 +482,7 @@ $project_general_info_edit_card.append( $live_project_site_url_form_group );
         owner_reference: this.collaborator_selector_view.tallied_owner_reference() ,
         title: $('input[id="project_title_input"]').val() ,
     		project_url_id: $('input[id="url_id_input"]').val() ,
-    		github_repo_url: $('input[id="github_repo_url_input"]').val() ,
+    		github_repo_url: this.sanitizeGithubURL($('input[id="github_repo_url_input"]').val()) ,
         live_project_site_url: $('input[id="live_project_site_url_input"]').val(),
     		mvp:$('textarea[id="mvp_input"]').val() ,
         main_img:'',
@@ -538,6 +538,18 @@ $project_general_info_edit_card.append( $live_project_site_url_form_group );
     console.log("clean_url__id_input method ");
     $( '#url_id_form_group' ).removeClass( "has-error" );
     $( "#url_id_form_group span.error_message" ).remove();
+  },
+  
+  sanitizeGithubURL:function(str){
+    console.log("sanitize ran");
+    var clean;
+    if(str.search("github.com")>-1){
+      var split = str.split("github.com/");
+      clean = split[split.length-1];
+    }else{
+      clean = str;
+    }
+    return clean;
   }
 
 });
