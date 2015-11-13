@@ -137,19 +137,20 @@ router.get('/profiles', function(req, res, next) {
 });
 
 router.delete("/profiles/:id", ensureAuthenticated, function(req, res, next){
+  var id = req.params.id
   console.log("/profiles/:id --> 'DELETE'");
-  // db.newPatchBuilder("OPP_projects", id)
-  // .replace("active", req.body.active)
-  // .apply()
-  // .then(function (result) {
-  //   console.log("profile deleted");
-  //   res.send({});
-  // })
-  // .fail(function (err) {
-  //   console.log("profile delete failed");
-  //   send(err);
-  // });
-  res.send();
+  db.newPatchBuilder("OPP_users", id)
+  .replace("active", false)
+  .apply()
+  .then(function (result) {
+    console.log("profile deleted");
+    res.send({});
+  })
+  .fail(function (err) {
+    console.log("profile delete failed");
+    send(err);
+  });
+
 });
 
 router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
@@ -239,7 +240,7 @@ router.post("/projects", ensureAuthenticated, function(req, res, next){
         })
         .then(function (result) {
           console.log("project added");
-          res.send({id:req.body.id, value: JSON.parse(result.request.body)});
+          res.send({id:result.path.key, value: JSON.parse(result.request.body)});
         })
         .fail(function (err) {
           console.log("project post failed", err);
@@ -284,23 +285,26 @@ router.get('/projects', function(req, res, next) {
       });
 });
 
-router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
- console.log("/projects/:id --> 'DELETE'");
 
-  // db.newPatchBuilder("OPP_projects", id)
-  // .replace("active", false)
-  // .apply()
-  // .then(function (result) {
-  //   console.log("project deleted");
-  //   res.send({});
-  // })
-  // .fail(function (err) {
-  //   console.log("project delete failed");
-  //   send(err);
-  // });
+ router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
+   console.log("/projects/:id --> 'DELETE'");
 
-  res.send({});
-});
+   var id = req.params.id;
+
+    db.newPatchBuilder("OPP_projects", id)
+    .replace("active", false)
+    .apply()
+    .then(function (result) {
+      console.log("project deleted");
+      res.send({});
+    })
+    .fail(function (err) {
+      console.log("project delete failed");
+      send(err);
+    });
+
+ });
+
 
 router.get('/auth/github',
   function(req, res, done){
@@ -322,8 +326,11 @@ router.get('/auth/github',
 router.get('/auth/github/callback', passport.authenticate('github'), function(req, res) {
   // console.log("2req.session.returnTo: ", req.session.returnTo);
     var cookieValue;
-    
-    function activate(){
+
+    function activate( result ){
+      var id = result.body.results[0].path.key;
+      console.log("activate();");
+      console.log("id:" , id);
       db.newPatchBuilder("OPP_users", id)
         .replace("active", true)
         .apply()
@@ -332,7 +339,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
           send(err);
         });
     }
-    
+
     function direct(){
       res.cookie("logged", true);
       res.cookie("user", req.user.username);
@@ -418,7 +425,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       .then(function (result) {
         if(result.body.count>0){
           if(result.body.results[0].value.active ===false){
-            activate();
+            activate(result);
           }
           console.log("result count:", result.body.count);
           console.log("result body", result.body.results[0].value);
@@ -458,7 +465,7 @@ router.get('/search', function(req, res){
   var searchArray = [];
   var projectArray = [];
   var userArray = [];
-  
+
   function searchProjects(){
     db.search("OPP_projects",'value.project_content.title:"'+req.body.searchText+'"')
     .then(function (result) {
@@ -491,7 +498,7 @@ router.get('/search', function(req, res){
       send(err);
     });
   }
-  
+
   function searchUsers(){
     db.search("OPP_users",'value.profile_content.editable_text.name:"'+req.body.searchText+'"')
       .then(function(result){
@@ -529,9 +536,9 @@ router.get('/search', function(req, res){
       console.log("search route function for users failed:", err);
     });
   }
-  
+
   searchUsers();
-  
+
 });
 
 // router.get('/search', function(req, res){
@@ -559,7 +566,7 @@ router.get('/search', function(req, res){
 //     });
 //     res.send(mapped);
 //   }
-// 
+//
 //   function projSearch(){
 //     var data = result.body.results;
 //     var mapped = data.map(function (element, index) {
@@ -578,7 +585,7 @@ router.get('/search', function(req, res){
 //     });
 //     res.send(mapped);
 //   }
-// 
+//
 //   db.search("OPP_users", req.body.searchText)
 //   .then(function(result){
 //     if(result.body.count===0){
@@ -595,8 +602,8 @@ router.get('/search', function(req, res){
 //       profSearch();
 //     }
 //   });
-// 
-// 
+//
+//
 //   res.redirect(req.session.returnTo || "/");
 //   req.session.returnTo = null;
 // });
