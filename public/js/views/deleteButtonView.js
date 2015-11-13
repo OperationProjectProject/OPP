@@ -46,9 +46,9 @@ App.Views.DeleteButtonView = Backbone.View.extend({
     console.log(this.model.collection === app.project_content)
     console.log(this.model.collection === app.profile_content)
 
-    if ( false ) {
+    if ( this.model.collection === app.project_content ) {
       redirector = 'projects';
-    } else if ( true ) {
+    } else if ( this.model.collection === app.profile_content ) {
       redirector = 'index';
     } else {
       console.log("something is broken in delete button");
