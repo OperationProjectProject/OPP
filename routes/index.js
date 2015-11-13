@@ -137,19 +137,20 @@ router.get('/profiles', function(req, res, next) {
 });
 
 router.delete("/profiles/:id", ensureAuthenticated, function(req, res, next){
+  var id = req.params.id
   console.log("/profiles/:id --> 'DELETE'");
-  // db.newPatchBuilder("OPP_projects", id)
-  // .replace("active", req.body.active)
-  // .apply()
-  // .then(function (result) {
-  //   console.log("profile deleted");
-  //   res.send({});
-  // })
-  // .fail(function (err) {
-  //   console.log("profile delete failed");
-  //   send(err);
-  // });
-  res.send({});
+  db.newPatchBuilder("OPP_users", id)
+  .replace("active", false)
+  .apply()
+  .then(function (result) {
+    console.log("profile deleted");
+    res.send({});
+  })
+  .fail(function (err) {
+    console.log("profile delete failed");
+    send(err);
+  });
+
 });
 
 router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
@@ -326,7 +327,10 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
   // console.log("2req.session.returnTo: ", req.session.returnTo);
     var cookieValue;
 
-    function activate(){
+    function activate( result ){
+      var id = result.body.results[0].path.key;
+      console.log("activate();");
+      console.log("id:" , id);
       db.newPatchBuilder("OPP_users", id)
         .replace("active", true)
         .apply()
@@ -421,7 +425,7 @@ router.get('/auth/github/callback', passport.authenticate('github'), function(re
       .then(function (result) {
         if(result.body.count>0){
           if(result.body.results[0].value.active ===false){
-            activate();
+            activate(result);
           }
           console.log("result count:", result.body.count);
           console.log("result body", result.body.results[0].value);

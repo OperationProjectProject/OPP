@@ -65,7 +65,7 @@ App.Views.DeleteButtonView = Backbone.View.extend({
         } else if ( redirector = 'index' ) {
 
           console.log( "navigate to /logout" );
-          app.router.navigate("/logout", {trigger: true});
+          app.router.navigate("/logout");
 
         } else {
 
