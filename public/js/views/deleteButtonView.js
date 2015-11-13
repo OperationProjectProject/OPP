@@ -4,7 +4,7 @@ App.Views.DeleteButtonView = Backbone.View.extend({
 
   id: 'delete_button_view' ,
 
-  className: 'content_box col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2' ,
+  className: 'content_box col-xs-12 col-sm-12 col-md-12 col-lg-12' ,
 
   initialize: function() {
     this.render();
@@ -42,13 +42,18 @@ App.Views.DeleteButtonView = Backbone.View.extend({
 
     var redirector = '';
 
-    if ( this.model.collection === app.project_content ) {
+    console.log("%c TEST AREA" , "font-size: 4em; color: rgba(220,220,220,1.0);")
+    console.log(this.model.collection === app.project_content)
+    console.log(this.model.collection === app.profile_content)
+
+    if ( false ) {
       redirector = 'projects';
-    } else if ( this.model.collection === app.profile_content ) {
+    } else if ( true ) {
       redirector = 'index';
     } else {
       console.log("something is broken in delete button");
     }
+
 
     this.model.destroy({
       wait: true ,
@@ -57,15 +62,15 @@ App.Views.DeleteButtonView = Backbone.View.extend({
         console.log("model.destroy() success");
         console.log( model , response );
 
-        if ( redirector = 'projects' ) {
+        if ( redirector === 'projects' ) {
 
           console.log( "navigate to #projects" );
           app.router.navigate("#projects", {trigger: true});
 
-        } else if ( redirector = 'index' ) {
+        } else if ( redirector === 'index' ) {
 
           console.log( "navigate to /logout" );
-          app.router.navigate("/logout");
+          window.location.href = '/logout';
 
         } else {
 
