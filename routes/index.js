@@ -137,7 +137,7 @@ router.get('/profiles', function(req, res, next) {
 });
 
 router.delete("/profiles/:id", ensureAuthenticated, function(req, res, next){
-  var id = req.params.id
+  var id = req.params.id;
   console.log("/profiles/:id --> 'DELETE'");
   db.newPatchBuilder("OPP_users", id)
   .replace("active", false)
@@ -254,7 +254,6 @@ router.post("/projects", ensureAuthenticated, function(req, res, next){
 
 });
 
-
 router.get('/projects', function(req, res, next) {
   db.list('OPP_projects', {limit:100})
       .then(function (result) {
@@ -285,25 +284,21 @@ router.get('/projects', function(req, res, next) {
       });
 });
 
+router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
+  console.log("/projects/:id --> 'DELETE'");
 
- router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
-   console.log("/projects/:id --> 'DELETE'");
+  var id = req.params.id;
 
-   var id = req.params.id;
+  db.remove('OPP_projects', id, true)
+  .then(function (result) {
+    res.send({});
+  })
+  .fail(function (err) {
+    console.log("delete project failed", err);
+    send(err);
+  });
 
-    db.newPatchBuilder("OPP_projects", id)
-    .replace("active", false)
-    .apply()
-    .then(function (result) {
-      console.log("project deleted");
-      res.send({});
-    })
-    .fail(function (err) {
-      console.log("project delete failed");
-      send(err);
-    });
-
- });
+});
 
 
 router.get('/auth/github',
@@ -541,71 +536,5 @@ router.get('/search', function(req, res){
 
 });
 
-// router.get('/search', function(req, res){
-//   function profSearch(){
-//     var data = result.body.results;
-//     var mapped = data.map(function (element, index) {
-//       // if(element.value.active === true){
-//       return {
-//         id: element.path.key,
-//         name: element.value.profile_content.editable_text.name ,
-//         title: element.value.profile_content.editable_text.title ,
-//         github_url: element.value.github_api_data.github_url ,
-//         profile_img_url: element.value.profile_content.img_urls.profile_img ,
-//         personal_site_url: element.value.profile_content.social_urls.personal ,
-//         linkedin_url: element.value.profile_content.social_urls.linkedin ,
-//         twitter_url: element.value.profile_content.social_urls.twitter ,
-//         url_id: element.value.profile_content.editable_text.url_id ,
-//         top_skills: element.value.profile_content.editable_text.skills ,
-//         top_tools: element.value.profile_content.editable_text.tools ,
-//         js_tidbit: element.value.profile_content.editable_text.q_and_a.js_tidbit ,
-//         work_status: element.value.profile_content.checkbox_content.work_status ,
-//         dream_job: element.value.profile_content.editable_text.q_and_a.job_hope
-//       };
-//     // }
-//     });
-//     res.send(mapped);
-//   }
-//
-//   function projSearch(){
-//     var data = result.body.results;
-//     var mapped = data.map(function (element, index) {
-//       // if(element.value.active === true){
-//       return {
-//         id: element.path.key,
-//         owner_reference: element.value.owner_reference,
-//         title: element.value.project_content.title ,
-//         project_url_id: element.value.project_content.project_url_id,
-//         github_repo_url: element.value.project_content.out_link_urls.github_repo_url,
-//         mvp: element.value.project_content.mvp,
-//         main_img: element.value.project_content.img_urls.main_img,
-//         tech_used: element.value.project_content.tech_used
-//       };
-//       // }
-//     });
-//     res.send(mapped);
-//   }
-//
-//   db.search("OPP_users", req.body.searchText)
-//   .then(function(result){
-//     if(result.body.count===0){
-//       db.search("OPP_projects", req.body.searchText)
-//       .then(function(result){
-//         if(result.body.count>0){
-//           projSearch();
-//         }
-//         else{
-//           send("No matching Search result");
-//         }
-//       });
-//     }else{
-//       profSearch();
-//     }
-//   });
-//
-//
-//   res.redirect(req.session.returnTo || "/");
-//   req.session.returnTo = null;
-// });
 
 module.exports = router;
