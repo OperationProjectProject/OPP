@@ -477,8 +477,10 @@ $project_general_info_edit_card.append( $live_project_site_url_form_group );
     		tech_used: []
       } , {
         wait: true ,
-        success: function() {
+        success: function( model , response ) {
           console.log('POST success!');
+          console.log( model );
+          console.log( response );
           app.router.navigate("#projects/" + project_url_id_in_escrow , {trigger: true});
         } ,
         error: function() {
