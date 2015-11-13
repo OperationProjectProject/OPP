@@ -709,6 +709,17 @@ label {
  */
 @media (min-width: 993px) and ( max-width: 2048px ) {
 
+  #edit_save_button_bottom_box ,
+  #delete_button_view {
+  padding: 5% 25%;
+  }
+
+  .edit_save_button_bottom {
+    display: block;
+    margin: 0 auto;
+  }
+
+
   .project_owner_img,
   .owned_project_img {
     width: 50%;
@@ -843,6 +854,17 @@ label {
  */
 
 @media (min-width: 769px) and ( max-width: 992px ) {
+
+  #edit_save_button_bottom_box ,
+  #delete_button_view {
+  padding: 5% 25%;
+  }
+
+  .edit_save_button_bottom {
+    display: block;
+    margin: 0 auto;
+  }
+
 
   .project_owner_img,
   .owned_project_img {

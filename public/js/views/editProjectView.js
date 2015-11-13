@@ -403,6 +403,38 @@ $project_general_info_edit_card.append( $live_project_site_url_form_group );
 
 
 
+    console.log("%c TEST AREA" , "font-size: 4em; color: rgba(220,220,220,1.0);");
+    //Create row 04
+    var $row_04 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_04'
+    });
+    //Create content box for basic info
+    var $edit_save_button_bottom_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-12 col-lg-12' ,
+      'id': 'edit_save_button_bottom_box'
+    });
+    var $edit_my_profile_bottom_button = $( '<a>' ).attr({
+      'class' : 'btn btn-primary btn-lg edit_save_button_bottom',
+      'id': id_for_save_and_publish_button
+    }).text(
+      "Save and Publish"
+    );
+    $edit_save_button_bottom_box.append( $edit_my_profile_bottom_button );
+    $row_04.append( $edit_save_button_bottom_box );
+
+    var $row_05 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_05'
+    });
+
+    if ( this.new_project !== true ) {
+      this.delete_button_view = new App.Views.DeleteButtonView({
+        model:  this.model
+      });
+      $row_05.append( this.delete_button_view.$el );
+    }
+
 
 
 
@@ -410,6 +442,8 @@ $project_general_info_edit_card.append( $live_project_site_url_form_group );
     this.$el.append( $row_01 );
     this.$el.append( $row_02 );
     this.$el.append( $row_03 );
+    this.$el.append( $row_04 );
+    this.$el.append( $row_05 );
     $( '.centerdiv' ).append( this.$el );
 	},
 
@@ -539,7 +573,7 @@ $project_general_info_edit_card.append( $live_project_site_url_form_group );
     $( '#url_id_form_group' ).removeClass( "has-error" );
     $( "#url_id_form_group span.error_message" ).remove();
   },
-  
+
   sanitizeGithubURL:function(str){
     console.log("sanitize ran");
     var clean;

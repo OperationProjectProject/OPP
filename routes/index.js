@@ -137,18 +137,19 @@ router.get('/profiles', function(req, res, next) {
 });
 
 router.delete("/profiles/:id", ensureAuthenticated, function(req, res, next){
-  db.newPatchBuilder("OPP_projects", id)
-  .replace("active", req.body.active)
-  .apply()
-  .then(function (result) {
-    console.log("profile deleted");
-    res.send({});
-  })
-  .fail(function (err) {
-    console.log("profile delete failed");
-    send(err);
-  });
-
+  console.log("/profiles/:id --> 'DELETE'");
+  // db.newPatchBuilder("OPP_projects", id)
+  // .replace("active", req.body.active)
+  // .apply()
+  // .then(function (result) {
+  //   console.log("profile deleted");
+  //   res.send({});
+  // })
+  // .fail(function (err) {
+  //   console.log("profile delete failed");
+  //   send(err);
+  // });
+  res.send();
 });
 
 router.put("/projects/:id", ensureAuthenticated, function(req, res, next){
@@ -283,20 +284,23 @@ router.get('/projects', function(req, res, next) {
       });
 });
 
-// router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
-//   db.newPatchBuilder("OPP_projects", id)
-//   .replace("active", req.body.active)
-//   .apply()
-//   .then(function (result) {
-//     console.log("project deleted");
-//     res.send({});
-//   })
-//   .fail(function (err) {
-//     console.log("project delete failed");
-//     send(err);
-//   });
-//
-// });
+ router.delete("/projects/:id", ensureAuthenticated, function(req, res, next){
+   console.log("/projects/:id --> 'DELETE'");
+
+    // db.newPatchBuilder("OPP_projects", id)
+    // .replace("active", false)
+    // .apply()
+    // .then(function (result) {
+    //   console.log("project deleted");
+    //   res.send({});
+    // })
+    // .fail(function (err) {
+    //   console.log("project delete failed");
+    //   send(err);
+    // });
+
+    res.send({});
+ });
 
 router.get('/auth/github',
   function(req, res, done){
