@@ -547,6 +547,65 @@
 
 /** DashMonster **///    --  Jason ,       Jennifer & Erik
 {
+  "active" : true,
+  "project_content" : {
+    "img_urls" : {
+      "main_img" : "https://dl.dropboxusercontent.com/u/18467418/demoday_ninja_assets/dmlogoblack.jpg"
+    },
+    "out_link_urls" : {
+      "github_repo_url" : "teambeastie/dashmonster",
+      "live_project_site_url" : ""
+    },
+    "title" : "DashMonster",
+    "project_url_id" : "DashMonster",
+    "mvp" : "A Meteor crashed in Portland from which DashMonster emerged to boost both convenience and daily productivity in the lives of users. A quick glance at DashMonster will give you the transit and weather info you need without all the stuff you don't. \n DashMonster is the hyper-focused transit and weather app you need most of the time.",
+    "tech_used" : [ ]
+  },
+  "owner_reference" : [ "0d8e36d6912065be", "0dad6f684c209364" ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "active" : true,
+  "owner_reference" : [ "0dae92043920de22" ],
+  "project_content" : {
+    "title" : "Profession Quest",
+    "project_url_id" : "professionQuest",
+    "mvp" : "A web application for members that simplify your job search.",
+    "img_urls" : {
+      "main_img" : ""
+    },
+    "out_link_urls" : {
+      "github_repo_url" : "professionQuest",
+      "live_project_site_url" : ""
+    },
+    "tech_used" : [ ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+{
   "active": true,
   "owner_reference": ["0d8e36d6912065be"] ,
   "project_content": {
@@ -569,4 +628,5 @@
     ]
   }
 }
+*/
 /** DashMonster **/

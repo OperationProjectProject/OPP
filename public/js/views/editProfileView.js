@@ -396,34 +396,43 @@ App.Views.EditProfileView = Backbone.View.extend({
 
 
 
+    console.log("%c TEST AREA" , "font-size: 4em; color: rgba(220,220,220,1.0);");
+
+    //Create row 6
+    var $row_06 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_06'
+    });
+    //Create content box for basic info
+    var $edit_save_button_bottom_box = $('<div>').attr({
+      'class': 'content_box col-sm-12 col-md-12 col-lg-12' ,
+      'id': 'edit_save_button_bottom_box'
+    });
+
+    //console.log("create 'edit my profile' button for logged-in-users");
+    var $edit_my_profile_bottom_button = $( '<a>' ).attr({
+      'class' : 'btn btn-primary btn-lg edit_save_button_bottom',
+      'href': '#profiles/' + this.logged_user,
+      'id': 'edit_my_profile_bottom_button'
+    }).text(
+      "Save and Publish"
+    );
 
 
-//Create row 6
-//create row 01
-var $row_06 =  $('<div>').attr({
-  'class': 'row' ,
-  'id': 'row_06'
-});
-//Create content box for basic info
-var $edit_save_button_bottom_box = $('<div>').attr({
-  'class': 'content_box col-sm-12 col-md-12 col-lg-12' ,
-  'id': 'edit_save_button_bottom_box'
-});
+    $edit_save_button_bottom_box.append( $edit_my_profile_bottom_button );
+    $row_06.append( $edit_save_button_bottom_box );
 
-//console.log("create 'edit my profile' button for logged-in-users");
-var $edit_my_profile_bottom_button = $( '<a>' ).attr({
-  'class' : 'btn btn-primary btn-lg edit_save_button_bottom',
-  'href': '#profiles/' + this.logged_user,
-  'id': 'edit_my_profile_bottom_button'
-}).text(
-  "Save and Publish"
-);
+    //Create row 07
+    var $row_07 =  $('<div>').attr({
+      'class': 'row' ,
+      'id': 'row_07'
+    });
 
+    this.delete_button_view = new App.Views.DeleteButtonView({
+      model:  this.model
+    });
 
-$edit_save_button_bottom_box.append( $edit_my_profile_bottom_button );
-$row_06.append( $edit_save_button_bottom_box );
-
-
+    $row_07.append( this.delete_button_view.$el );
 
 
     this.$el.append( $row_01 );
@@ -432,6 +441,7 @@ $row_06.append( $edit_save_button_bottom_box );
     this.$el.append( $row_04 );
     this.$el.append( $row_05 );
     this.$el.append( $row_06 );
+    this.$el.append( $row_07 );
 		$( ".centerdiv" ).prepend( this.$el );
 	},
   events: {
