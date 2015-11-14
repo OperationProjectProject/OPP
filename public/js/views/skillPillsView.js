@@ -5,11 +5,49 @@ App.Views.SkillPillsView = Backbone.View.extend({
   className: 'row' ,
 
   initialize: function() {
+
+    if ( this.model ) {
+      console.log( this.model );
+      this.skills_array = this.model.attributes.top_skills;
+      console.log( this.skills_array );
+      this.tools_array = this.model.attributes.top_tools;
+      console.log( this.tools_array );
+
+      //this.skills_and_tools_array = this.skills_array.concat( this.tools_array );
+      this.skills_and_tools_array = [];
+
+
+
+      var self = this;
+      this.skills_array.forEach( function( e, i ){
+          if ( e !== "") {
+            self.skills_and_tools_array.push( e );
+          }
+      });
+      this.tools_array.forEach( function( e, i ){
+          if ( e !== "") {
+            self.skills_and_tools_array.push( e );
+          }
+      });
+
+      console.log( this.skills_and_tools_array.length );
+      console.log( this.skills_and_tools_array );
+
+    }
+
     this.render();
     this.listenTo(this.model, "change", this.render);
   } ,
 
   render: function() {
+    console.log("%cSkillPillsView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+
+    this.$el.empty();
+
+
+
+
+
 
 
             //Create content box for skill pills
@@ -83,13 +121,17 @@ App.Views.SkillPillsView = Backbone.View.extend({
             $skill_pill_card.append( $skill_pill_ul );
 
 
+
+
+
   } ,
 
   hasContent: function() {
 
     console.log("hasConent function");
-    return true;
-
+    console.log( this.skills_and_tools_array.length );
+    console.log( this.skills_and_tools_array.length > 0 );
+    return ( this.skills_and_tools_array.length > 0 );
   }
 
 

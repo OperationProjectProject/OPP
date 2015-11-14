@@ -11,7 +11,7 @@ App.Views.OwnedProjectsRowView = Backbone.View.extend({
   } ,
 
   render: function() {
-    console.log("%c  OwnedProjectsRowView","color:rgba(200,200,200,1.0);font-size:1.25em;");
+    console.log("%cOwnedProjectsRowView","color:rgba(200,200,200,1.0);font-size:1.25em;");
     // console.log(this);
     // console.log(this.owner_id);
     // console.log(this.collection.models);
@@ -43,7 +43,7 @@ App.Views.OwnedProjectsRowView = Backbone.View.extend({
       // console.log( e.attributes.owner_reference.indexOf( self.owner_id ) );
       // console.log( e.attributes.owner_reference.indexOf( self.owner_id ) > -1 );
       if ( e.attributes.owner_reference.indexOf( self.owner_id ) > -1 ) {
-        console.log(e.attributes.title)
+        //console.log(e.attributes.title)
         self.number_of_projects += 1;
 
 
@@ -94,7 +94,7 @@ App.Views.OwnedProjectsRowView = Backbone.View.extend({
 
   hasProjects: function() {
 
-    console.log(this.number_of_projects);
+    //console.log(this.number_of_projects);
     return this.number_of_projects > 0;
 
   }

@@ -77,14 +77,14 @@ function ensureAuthenticated(req, res, next) {
 
 router.put("/profiles/:id", ensureAuthenticated, function(req, res, next){
     var id = req.params.id;
-    // console.log("profile updated(not really)");
+     console.log("profile updated");
     // console.log("request body", req.body);
     // console.log("title:", req.body.title);
     // console.log("twitter:", req.body.twitter_url);
     // console.log("linkedin_url:", req.body.linkedin_url);
     // console.log("personal_site_url:", req.body.personal_site_url);
-    // console.log("top_skills:", req.body.top_skills);
-    // console.log("top_tools:", req.body.top_tools);
+     console.log("top_skills:", req.body.top_skills);
+     console.log("top_tools:", req.body.top_tools);
 
     db.newPatchBuilder("OPP_users", id)
       .replace("profile_content.social_urls.twitter", req.body.twitter_url)
