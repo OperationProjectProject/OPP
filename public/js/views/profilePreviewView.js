@@ -22,7 +22,7 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
 
     //console.log("%c profile_img: " + this.model.attributes.profile_img_url , "color: purple; font-size: 1.25em;");
 
-    var $profile_img_box = $('<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">')
+    var $profile_img_box = $('<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 preview_img">')
     var $profile_img = $("<img>").attr({
       'alt': this.model.attributes.name + " profile image." ,
       'class': 'profile_img_preview animated fadeIn' ,
