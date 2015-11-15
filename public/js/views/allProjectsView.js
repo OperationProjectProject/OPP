@@ -10,7 +10,9 @@ App.Views.AllProjectsView = Backbone.View.extend({
   collection: app.project_content ,
 
   initialize: function( opts ) {
-    this.alphabetical = opts.alphabetical;
+    if ( opts.alphabetical === true || opts.alphabetical === false ) {
+      this.alphabetical = opts.alphabetical;
+    }
     this.logged_user = opts.logged_user;
     this.listenTo(this.collection, "update", this.render);
     this.render();
