@@ -37,7 +37,9 @@ App.Views.AllProfilesView = Backbone.View.extend({
 	},
 
   initialize: function( opts ) {
-    this.alphabetical = opts.alphabetical;
+    if ( opts.alphabetical === true || opts.alphabetical === false ) {
+      this.alphabetical = opts.alphabetical;
+    }
     this.render();
     this.listenTo(this.collection, "update", this.render);
 	} ,
