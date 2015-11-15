@@ -6,6 +6,8 @@ App.Views.AllProfilesView = Backbone.View.extend({
 
   className: 'all_profiles_view row',
 
+  id: 'profiles_preview_list',
+
   render: function() {
     $('body').css({'background':'rgba(240,240,240,1.0)'});
     console.log("%cAllProfilesView","color:rgba(200,200,200,1.0);font-size:1.25em;");
@@ -26,11 +28,39 @@ App.Views.AllProfilesView = Backbone.View.extend({
       }
     });
 
+    if ( this.alphabetical === true ) {
+      this.alphabetize_preview_links();
+    }
+
+
 		$(".centerdiv").prepend(this.$el);
 	},
 
-  initialize: function() {
+  initialize: function( opts ) {
+    this.alphabetical = opts.alphabetical;
     this.render();
     this.listenTo(this.collection, "update", this.render);
-	}
+	} ,
+
+  alphabetize_preview_links: function() {
+    if ( (this.$el instanceof $) && ( this.tagName === 'ul' || this.tagName === 'ol') ) {
+      console.log( "Alphabetize Links" );
+      var $list_items = this.$el.children('li');
+      // console.log( $list_items );
+      // console.log( typeof $list_items );
+      // console.log( $list_items instanceof $);
+      // console.log( $list_items === this.$el );
+      //Sort the list items
+      $list_items.sort( function( a, b ){
+      	var an = a.getAttribute( 'id' ),
+      		  bn = b.getAttribute( 'id' );
+      	if( an > bn ) { return 1; }
+      	if( an < bn ) { return -1; }
+      	return 0;
+      });
+      $list_items.detach().appendTo(this.$el);
+    } else {
+      console.log( "Something is broken in: " + this.id );
+    }
+  }
 });

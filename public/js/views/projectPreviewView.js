@@ -131,6 +131,14 @@ App.Views.ProjectPreviewView = Backbone.View.extend({
     $project_link.append( $project_img_box );
     $project_link.append( $text_div );
 
+    var title_string_for_id_with_spaces = this.model.attributes.title;
+
+    var title_string_for_id_with_no_spaces = title_string_for_id_with_spaces.replace(/\s/g, '_');
+
+    this.$el.attr({
+      'id' : title_string_for_id_with_no_spaces + '_preview_link'
+    });
+
     this.$el.append($project_link);
   }
 });

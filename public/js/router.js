@@ -87,7 +87,8 @@ App.Router = Backbone.Router.extend({
       console.log("%c!url_id","color:orange; font-size:1.25em;");
       //Add All Profiles page content to DOM
       app.allProfilesView = new App.Views.AllProfilesView({
-        collection: this.profiles
+        collection: this.profiles,
+        alphabetical: true
       });
     }
     else {
@@ -124,7 +125,8 @@ App.Router = Backbone.Router.extend({
       //Add All Profiles page content to DOM
       app.allProjectsView = new App.Views.AllProjectsView({
         collection: this.projects ,
-        logged_user: this.logged_user
+        logged_user: this.logged_user ,
+        alphabetical: true
       });
     }
     else {

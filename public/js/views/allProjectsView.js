@@ -5,9 +5,12 @@ App.Views.AllProjectsView = Backbone.View.extend({
 
   className: 'all_projects_view row' ,
 
+  id: 'projects_preview_list',
+
   collection: app.project_content ,
 
   initialize: function( opts ) {
+    this.alphabetical = opts.alphabetical;
     this.logged_user = opts.logged_user;
     this.listenTo(this.collection, "update", this.render);
     this.render();
@@ -64,17 +67,37 @@ App.Views.AllProjectsView = Backbone.View.extend({
       }).text(
         "Add New Project"
       );
-
       //Attach link to the box
       $edit_save_button_box.append( $add_new_project );
-
       //Attach box to row
       $row_00.append( $edit_save_button_box );
 
       this.$el.prepend( $row_00 );
     }
 
+    // console.log(  this );
+    // console.log(  this.alphabetical );
+    // console.log(  this.alphabetical === true );
+    if ( this.alphabetical === true ) {
+      this.alphabetize_preview_links();
+    }
 
 		$(".centerdiv").append(this.$el);
-	}
+	} ,
+  alphabetize_preview_links: function() {
+    if ( (this.$el instanceof $) && ( this.tagName === 'ul' || this.tagName === 'ol') ) {
+      console.log( "Alphabetize Links" );
+      var $list_items = this.$el.children('li');
+      $list_items.sort( function( a, b ){
+      	var an = a.getAttribute( 'id' ),
+      		  bn = b.getAttribute( 'id' );
+      	if( an > bn ) { return 1; }
+      	if( an < bn ) { return -1; }
+      	return 0;
+      });
+      $list_items.detach().appendTo(this.$el);
+    } else {
+      console.log( "Something is broken in: " + this.id );
+    }
+  }
 });
