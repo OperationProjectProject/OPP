@@ -5,6 +5,8 @@ App.Views.AllProjectsView = Backbone.View.extend({
 
   className: 'all_projects_view row' ,
 
+  id: 'projects_preview_list',
+
   collection: app.project_content ,
 
   initialize: function( opts ) {

@@ -6,6 +6,8 @@ App.Views.AllProfilesView = Backbone.View.extend({
 
   className: 'all_profiles_view row',
 
+  id: 'profiles_preview_list',
+
   render: function() {
     $('body').css({'background':'rgba(240,240,240,1.0)'});
     console.log("%cAllProfilesView","color:rgba(200,200,200,1.0);font-size:1.25em;");
@@ -25,6 +27,8 @@ App.Views.AllProfilesView = Backbone.View.extend({
         self.$el.prepend( profile_preview.$el );
       }
     });
+
+
 
 		$(".centerdiv").prepend(this.$el);
 	},
