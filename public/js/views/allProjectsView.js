@@ -3,7 +3,7 @@
 App.Views.AllProjectsView = Backbone.View.extend({
   tagName: 'ul' ,
 
-  className: 'all_projects_view' ,
+  className: 'all_projects_view row' ,
 
   collection: app.project_content ,
 

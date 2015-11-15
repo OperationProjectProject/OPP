@@ -121,8 +121,8 @@ App.Views.ProjectView = Backbone.View.extend({
 
     }
 
-console.log(this.model.attributes.live_project_site_url);
-console.log(this.model.attributes.live_project_site_url !== "");
+//console.log(this.model.attributes.live_project_site_url);
+//console.log(this.model.attributes.live_project_site_url !== "");
     //If this project has a specified live project url, an anchor element will be created
     if ( this.model.attributes.live_project_site_url !== "" ) {
 
@@ -193,8 +193,8 @@ console.log(this.model.attributes.live_project_site_url !== "");
     $project_owners_card.append( $owners_legend );
 
 
-    console.log("%c TEST AREA","color: rgba(220,220,220,1.0); font-size: 3em;");
-    console.log( this.model.attributes.owner_reference );
+    //console.log("%c TEST AREA","color: rgba(220,220,220,1.0); font-size: 3em;");
+    //console.log( this.model.attributes.owner_reference );
 
     var self = this;
     this.model.attributes.owner_reference.forEach( function( e, i ){
@@ -244,7 +244,7 @@ console.log(this.model.attributes.live_project_site_url !== "");
 
 
     if ( this.model.attributes.owner_reference.indexOf( this.logged_user_key ) > -1 ) {
-          console.log("%cTEST AREA",'font-size:3em;');
+          //console.log("%cTEST AREA",'font-size:3em;');
           //Creat row 00
           var $row_00 =  $('<div>').attr({
             'class': 'row' ,
@@ -258,7 +258,7 @@ console.log(this.model.attributes.live_project_site_url !== "");
 
 
           if ( (this.user_session === true) && ( this.model.attributes.owner_reference.indexOf( this.logged_user_key ) > -1 ) ) {
-            console.log("create 'edit this project' button for logged-in-users who are owners of this particular project");
+            //console.log("create 'edit this project' button for logged-in-users who are owners of this particular project");
             var $my_content_header = $( '<h2>' ).addClass(' my_content_header' ).text( this.model.attributes.title );
             var $edit_this_project = $( '<a>' ).attr({
               'class' : 'btn btn-primary btn-lg edit_save_button',

@@ -299,7 +299,7 @@ App.Views.EditProfileView = Backbone.View.extend({
 
       var $top_skills_edit_list = $('<ol class="top_skills_edit_list">');
 
-      for ( var i = 0; i <3; i++ ) {
+      for ( var i = 0; i < 5; i++ ) {
         console.log(i);
         var $top_skills_edit_li = $('<li>');
 
@@ -462,7 +462,9 @@ App.Views.EditProfileView = Backbone.View.extend({
       top_skills: [
         $('input[id="top_skill_1"]').val(),
         $('input[id="top_skill_2"]').val(),
-        $('input[id="top_skill_3"]').val()
+        $('input[id="top_skill_3"]').val(),
+        $('input[id="top_skill_4"]').val(),
+        $('input[id="top_skill_5"]').val()
       ],
       top_tools: [
         $('input[id="top_tools_1"]').val(),

@@ -523,6 +523,27 @@
 
 
 /** MixTapez **///     --        Do        Ty, Mitch
+
+{
+      "active" : true,
+      "project_content" : {
+        "img_urls" : {
+          "main_img" : "https://dl.dropboxusercontent.com/u/18467418/demoday_ninja_assets/mixtapez_logo.jpg"
+        },
+        "out_link_urls" : {
+          "github_repo_url" : "MixtapeCaptstone/mixtape",
+          "live_project_site_url" : "http://mixtapez-54438.onmodulus.net/"
+        },
+        "title" : "MixTapez",
+        "project_url_id" : "MixTapez",
+        "mvp" : "Bringing the mixtape into the digital age. We are designing a platform for people to use Youtube and Soundcloud to quickly and easily create the perfect mixtape for any situation. ",
+        "tech_used" : [ ]
+      },
+      "owner_reference" : [ "0db7eb5d3c20df3a", "0d8e3924ce208d10", "0db2e2b0582093eb" ]
+    }
+
+
+/*
 {
   "active": true,
   "owner_reference": [ "0d8e3924ce208d10" ] ,
@@ -542,6 +563,7 @@
     ]
   }
 }
+*/
 /** MixTapez **/
 
 
@@ -630,3 +652,73 @@
 }
 */
 /** DashMonster **/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Fetch.Love **/
+
+
+{
+  "active" : true,
+  "owner_reference" : [ "0da328ded220f11f", "0d7f8534b92081cb" ],
+  "project_content" : {
+    "title" : "Fetch!",
+    "project_url_id" : "fetch",
+    "mvp" : "A web application that helps connect pet owners to their lost pets.",
+    "img_urls" : {
+      "main_img" : "https://dl.dropboxusercontent.com/u/18467418/demoday_ninja_assets/Fetch_Logo_Placeholder.jpg"
+    },
+    "out_link_urls" : {
+      "github_repo_url" : "PCS-Capstone/fetch",
+      "live_project_site_url" : ""
+    },
+    "tech_used" : [ ]
+  }
+}
+
+/** Fetch.Love **/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** ProfessionQuest **/
+
+{
+  "active" : true,
+  "owner_reference" : [ "0dae92043920de22" ],
+  "project_content" : {
+    "title" : "Profession Quest",
+    "project_url_id" : "professionQuest",
+    "mvp" : "A web application for members that simplify your job search.",
+    "img_urls" : {
+      "main_img" : ""
+    },
+    "out_link_urls" : {
+      "github_repo_url" : "professionQuest",
+      "live_project_site_url" : ""
+    },
+    "tech_used" : [ ]
+  }
+}
+/** ProfessionQuest **/

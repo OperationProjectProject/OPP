@@ -475,6 +475,11 @@ a#projects_link.navigation_link  {
 }
 
 
+#top_tools_list ,
+#top_skills_list {
+  padding-left: 30px;
+}
+
 
 .skill_pills {
   font-size: 1.15em;
@@ -1037,13 +1042,15 @@ label {
 
   .profile_preview ,
   .project_preview {
-    margin: 2% 0;
+    padding: 0 2%;
+    margin: 1.5% 0;
   }
 
   .profile_preview a.preview_link ,
   .project_preview a.preview_link {
     border-radius: 4px;
-    padding: 1.75em 1.75em;
+    padding: 1.25em 1.25em;
+    /*padding: 1.75em 1.75em;*/
     margin-bottom: 0;
   }
 
@@ -1053,6 +1060,10 @@ label {
     margin: 0 auto 0 auto;
     width: 100%;
     border-radius: 100%;
+  }
+
+  .preview_img {
+    padding-left: 0;
   }
 
   .preview_text {
