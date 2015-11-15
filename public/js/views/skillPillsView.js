@@ -44,10 +44,10 @@ App.Views.SkillPillsView = Backbone.View.extend({
 
     this.$el.empty();
 
-
+//SKILLS
     //Create content box for skill pills
     var $skills_box = $('<div>').attr({
-      'class': 'content_box col-xs-12 col-sm-12 col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2' ,
+      'class': 'content_box' ,
       'id': 'skills_box'
     });
     //Create card for skill pills
@@ -58,24 +58,22 @@ App.Views.SkillPillsView = Backbone.View.extend({
     $skills_card.append( $skills_legend );
     //Append card to box, and box to row
     $skills_box.append( $skills_card );
-    this.$el.append( $skills_box );
-
 
     var $top_skills_ol = $('<ol id="top_skills_list" class="col-sm-12 col-md-12 col-lg-12">');
     $skills_card.append( $top_skills_ol );
 
     this.skills_array.forEach( function( e, i ) {
       if ( e !== "" ) {
-        var $skill_li = $('<li>').text( e );
+        var $skill_li = $('<li class="skill_pills" >').text( e );
         $top_skills_ol.append( $skill_li );
       }
     });
 
 
 
-
+//TOOLS
     var $tools_box = $('<div>').attr({
-      'class': 'content_box col-xs-12 col-sm-12 col-md-4 col-lg-4' ,
+      'class': 'content_box' ,
       'id': 'tools_box'
     });
     //Create card for skill pills
@@ -86,17 +84,50 @@ App.Views.SkillPillsView = Backbone.View.extend({
     $tools_card.append( $tools_legend );
     //Append card to box, and box to row
     $tools_box.append( $tools_card );
-    this.$el.append( $tools_box );
 
     var $top_tools_ol = $('<ol id="top_tools_list" class="col-sm-12 col-md-12 col-lg-12">');
     $tools_card.append( $top_tools_ol );
 
     this.tools_array.forEach( function( e, i ) {
       if ( e !== "" ) {
-        var $tool_li = $('<li>').text( e );
+        var $tool_li = $('<li class="skill_pills" >').text( e );
         $top_tools_ol.append( $tool_li );
       }
     });
+
+
+    console.log( $top_skills_ol.children().length > 0 );
+    console.log( $top_tools_ol.children().length > 0 );
+    if ( $top_skills_ol.children().length > 0 && $top_tools_ol.children().length > 0 ) {
+      $skills_box.addClass( 'col-xs-12 col-sm-12 col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2' );
+      $tools_box.addClass( 'col-xs-12 col-sm-12 col-md-4 col-lg-4' );
+      this.$el.append( $skills_box );
+      this.$el.append( $tools_box );
+    } else if ( $top_skills_ol.children().length > 0 && $top_tools_ol.children().length === 0 ) {
+      $skills_box.addClass( 'col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' );
+      this.$el.append( $skills_box );
+    } else if (  $top_skills_ol.children().length === 0 && $top_tools_ol.children().length > 0 ) {
+      $tools_box.addClass( 'col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2' );
+      this.$el.append( $tools_box );
+    } else {
+      console.log('no skills or tools content');
+    }
+
+
+/*
+
+    //console.log( $top_skills_ol instanceOf $);
+    console.log( $top_skills_ol.children().length > 0  );
+    if ( $top_skills_ol.children().length > 0 ) {
+      this.$el.append( $skills_box );
+    }
+
+    console.log( $top_tools_ol.children().length > 0);
+    if ( $top_tools_ol.children().length > 0 ) {
+      this.$el.append( $tools_box );
+    }
+*/
+
 
 
 /*
@@ -177,7 +208,6 @@ App.Views.SkillPillsView = Backbone.View.extend({
   } ,
 
   hasContent: function() {
-
     console.log("hasConent function");
     console.log( this.skills_and_tools_array.length );
     console.log( this.skills_and_tools_array.length > 0 );

@@ -475,6 +475,11 @@ a#projects_link.navigation_link  {
 }
 
 
+#top_tools_list ,
+#top_skills_list {
+  padding-left: 30px;
+}
+
 
 .skill_pills {
   font-size: 1.15em;
