@@ -50,16 +50,14 @@ App.Views.ProfilePreviewView = Backbone.View.extend({
     $profile_link.append( $profile_img_box );
     $profile_link.append( $text_div );
 
+    if ( this.model.attributes.name ) {
+      var name_string_for_id_with_spaces = this.model.attributes.name;
+      var name_string_for_id_with_no_spaces = name_string_for_id_with_spaces.replace(/\s/g, '_');
+      this.$el.attr({
+        'id' : name_string_for_id_with_no_spaces + '_preview_link'
+      });
+    }
 
-
-
-    var name_string_for_id_with_spaces = this.model.attributes.name;
-
-    var name_string_for_id_with_no_spaces = name_string_for_id_with_spaces.replace(/\s/g, '_');
-
-    this.$el.attr({
-      'id' : name_string_for_id_with_no_spaces + '_preview_link'
-    });
 
 
 

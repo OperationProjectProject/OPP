@@ -495,7 +495,46 @@
 /** OPP **/
 
 
+
+
+
+
+
+
+
+
 /** Meetworking **///      -- Mitch        & Jeff
+
+{
+  "active" : true,
+  "project_content" : {
+    "img_urls" : {
+      "main_img" : "https://dl.dropboxusercontent.com/u/18467418/demoday_ninja_assets/Meetworking_Logo.png"
+    },
+    "out_link_urls" : {
+      "github_repo_url" : "MeetWorking/meetworking-app",
+      "live_project_site_url" : "http://meetworking.co"
+    },
+    "title" : "Meetworking",
+    "project_url_id" : "Meetworking",
+    "mvp" : "Looking for an elusive job in tech? Lost in the sea of Meetups? Meetworking helps you target up to three companies, showing you the Meetups those employees are attending as well as the events held at that company's location—a quick way to get your foot in the door. See talking points for each attendee and RSVP right through the app!",
+    "tech_used" : [ ]
+  },
+  "owner_reference" : [ "0d8e3bbbc420f35d" ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   "active": true,
   "owner_reference": [ "0d8e3bbbc420f35d" ] ,
@@ -722,3 +761,24 @@
   }
 }
 /** ProfessionQuest **/
+
+
+/** Bands From Here **/
+{
+  "active" : true,
+  "project_content" : {
+    "img_urls" : {
+      "main_img" : "https://dl.dropboxusercontent.com/u/18467418/demoday_ninja_assets/Bands_from_here_logo.png"
+    },
+    "out_link_urls" : {
+      "github_repo_url" : "Team-Acme/city-sound",
+      "live_project_site_url" : "http://bandsfromhere.herokuapp.com/"
+    },
+    "title" : "Bands From Here",
+    "project_url_id" : "bandsfromhere",
+    "mvp" : "Bands From Here allows users to discover musical bands and artists from a particular city.",
+    "tech_used" : [ ]
+  },
+  "owner_reference" : [ "0dc100d6b420957c", "0db8e220f7207f65" ]
+}
+/** Bands From Here **/
